@@ -42,7 +42,12 @@ export function AuthPage() {
               Ayuda sin Fronteras
             </p>
           </div>
+          <div className="row"
+          >
+            <div className="">
 
+            </div>
+          </div>
         </div>
         <div className="col-8">
           2
