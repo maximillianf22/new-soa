@@ -4,7 +4,7 @@ import React, {useEffect} from 'react'
 // import {Registration} from './components/Registration'
 // import {ForgotPassword} from './components/ForgotPassword'
 // import {Login} from './components/Login'
-import {toAbsoluteUrl} from '../../../_metronic/helpers'
+import {KTSVG, toAbsoluteUrl} from '../../../_metronic/helpers'
 import './authPage.css'
 
 
@@ -17,14 +17,16 @@ export function AuthPage() {
     }
   }, [])
 
+  const toolbarButtonIconSizeClass = 'svg-icon-1'
+
   return (
 
 
-    <div className="container-fluid container-full-height">
+    <div className="container-fluid container-full-height px-3">
       <div className="row h-100">
   
         <div 
-          className="col-4 bg-dark h-100"
+          className="col-4 bg-dark h-100 px-10"
           style={{
             backgroundImage: `url(${toAbsoluteUrl('/media/soa/login/addimg.jpg')})`,
             backgroundRepeat: "no-repeat",
@@ -38,7 +40,7 @@ export function AuthPage() {
             </div>
 
             <div>
-              <p className="text-white text-center display-7 fw-bolder">
+              <p className="text-white text-center display-4 fw-bolder">
                 Ayuda sin Fronteras
               </p>
             </div>
@@ -68,25 +70,25 @@ export function AuthPage() {
           
           {/* <div className="d-flex justify-content-center"> */}
           <div className="w-50 m-auto">
-            <div className="text-center mb-5 p-5">
-              <p className="h1 fs-2x">Bienvenido al SOA</p>
-              <span className="text-secomdary">Ingrese su usuario y contraseña</span>
+            <div className="text-center mb-10 p-5">
+              <p className="fs-3x fw-bolder mb-0">Bienvenido al SOA</p>
+              <span className="text-muted fw-bold">Ingrese su usuario y contraseña</span>
             </div>
             <form className="w-75 m-auto">
-              <div className="form-text bg-info rounded w-100 p-4 mb-5 text-dark">El usuario o contraseña está incorrecto por favor verifique e intente de nuevo.</div>
-              <div className="mb-3">
-                <input type="email" className="form-control form-control-solid " id="exampleInputEmail1" placeholder="Usuario" />
+              <div className="form-text bg-light-danger rounded w-100 p-4 mb-5 text-dark">El <b>usuario</b> o <b>contraseña</b> está incorrecto por favor verifique e intente de nuevo.</div>
+              <div className="input-group input-group-lg mb-3 mt-10">
+                <input type="email" className="form-control form-control-solid h-60px" id="exampleInputEmail1" placeholder="Usuario" />
               </div>
-              <div className="text-end text-dark">
+              <div className="text-end text-dark mt-5">
                 <a href="!#" className="text-dark">¿Olvidó su contraseña?</a>
               </div>
-              <div className="input-group mb-3">
-                <input type="password" className="form-control form-control-solid" id="exampleInputPassword1" placeholder="Contraseña" />
-                <span className="input-group-text" id="basic-addon1"><i className="fas fa-coins"></i></span>
+              <div className="input-group input-group-lg mb-3">
+                <input aria-describedby="inputGroup-sizing-lg" type="password" className="form-control form-control-solid h-60px" id="exampleInputPassword1" placeholder="Contraseña" />
+                <span className="input-group-text border-0" id="inputGroup-sizing-lg"><i className="fas fa-eye fa-lg text-dark border-none"></i></span>
               </div>
 
-              <div className="d-grid">
-                <button type="submit" className="btn btn-dark">Submit</button>
+              <div className="d-grid mt-7">
+                <button type="submit" className="btn btn-lg btn-dark h-50px">Submit</button>
               </div>
             </form>
           </div>
