@@ -6,9 +6,26 @@
     background-repeat: no-repeat;
     background-size: contain;
 
-    min-height: 400px;
+    /* min-height: 100%; */
 }
 
 .display-7 {
     font-size: 26px;
+}
+
+.side-login {
+}
+
+.footer-login {
+    /* display: flex;
+    align-items: baseline; */
+    font-size: 10px;
+}
+
+.copy-rights {
+    /* margin-right: 1px; */
+}
+
+.footer-login a{
+    color: inherit;
 }

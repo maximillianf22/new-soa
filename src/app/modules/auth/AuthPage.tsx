@@ -20,8 +20,9 @@ export function AuthPage() {
   return (
 
 
-    <div className="container-fluid w-100 container-full-height">
+    <div className="container-fluid container-full-height">
       <div className="row h-100">
+  
         <div 
           className="col-4 bg-dark h-100"
           style={{
@@ -30,28 +31,69 @@ export function AuthPage() {
             backgroundSize: "cover"
           }}
         >
-          <div className="row logo m-5"
-            style={{
-              backgroundImage: `url(${toAbsoluteUrl('/media/soa/login/addiuva-logo.svg')})`,
-            }}
-          >
-          </div>
-          <div className="row"
-          >
-            <p className="text-white text-center display-7 fw-bolder">
-              Ayuda sin Fronteras
-            </p>
-          </div>
-          <div className="row"
-          >
-            <div className="">
 
+          <div className="d-flex flex-column mb-3 justify-content-between" style={{height: "100vh"}}>
+            <div className="p-2">
+              <img className="img-fluid mt-5" src={`${toAbsoluteUrl('/media/soa/login/addiuva-logo.svg')}`} alt="..." />
+            </div>
+
+            <div>
+              <p className="text-white text-center display-7 fw-bolder">
+                Ayuda sin Fronteras
+              </p>
+            </div>
+
+            <div className="d-flex justify-content-between text-white mb-2 p-3">
+              <p className="">&copy; 2022 SOA</p>
+              
+              <ul className="nav">
+                <li className="nav-item">
+                  <a className="p-1 text-white" href="#">Privacidad</a>
+                </li>
+                <li className="nav-item">
+                  <a className="p-1 text-white" href="#">Legal</a>
+                </li>
+                <li className="nav-item">
+                  <a className="p-1 text-white" href="#">Contacto</a>
+                </li>
+              </ul>
+              
             </div>
           </div>
+
         </div>
-        <div className="col-8">
-          2
+
+
+        <div className="col-8 d-flex align-items-center">
+          
+          {/* <div className="d-flex justify-content-center"> */}
+          <div className="w-50 m-auto">
+            <div className="text-center mb-5 p-5">
+              <p className="h1 fs-2x">Bienvenido al SOA</p>
+              <span className="text-secomdary">Ingrese su usuario y contraseña</span>
+            </div>
+            <form className="w-75 m-auto">
+              <div className="form-text bg-info rounded w-100 p-4 mb-5 text-dark">El usuario o contraseña está incorrecto por favor verifique e intente de nuevo.</div>
+              <div className="mb-3">
+                <input type="email" className="form-control form-control-solid " id="exampleInputEmail1" placeholder="Usuario" />
+              </div>
+              <div className="text-end text-dark">
+                <a href="!#" className="text-dark">¿Olvidó su contraseña?</a>
+              </div>
+              <div className="input-group mb-3">
+                <input type="password" className="form-control form-control-solid" id="exampleInputPassword1" placeholder="Contraseña" />
+                <span className="input-group-text" id="basic-addon1"><i className="fas fa-coins"></i></span>
+              </div>
+
+              <div className="d-grid">
+                <button type="submit" className="btn btn-dark">Submit</button>
+              </div>
+            </form>
+          </div>
+          
         </div>
+
+
       </div>
     </div>
 
