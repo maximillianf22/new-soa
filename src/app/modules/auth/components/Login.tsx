@@ -102,16 +102,16 @@ export function Login() {
         <div className="col-12  col-lg-8 col-xl-8 d-flex align-items-center">
           
           {/* <div className="d-flex justify-content-center"> */}
-          <div className="w-50 m-auto">
+          <div className="px-7 m-auto">
             <div className="text-center mb-10 p-5">
-              <p className="fs-3x fw-bolder mb-0">Bienvenido al SOA</p>
+              <p className="fs-3tx fw-bolder mb-0">Bienvenido al SOA</p>
               <span className="text-muted fw-bold">Ingrese su usuario y contraseña</span>
             </div>
 
 
 
             <form 
-              className="w-75 m-auto"
+              className="w-100 w-lg-100 w-xl-75 m-auto"
               onSubmit={formik.handleSubmit}
               id='kt_login_signin_form'
             >
