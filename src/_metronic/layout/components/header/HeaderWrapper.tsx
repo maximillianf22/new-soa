@@ -7,7 +7,7 @@ import {KTSVG, toAbsoluteUrl} from '../../../helpers'
 import {useLayout} from '../../core'
 import {Header} from './Header'
 import {DefaultTitle} from './page-title/DefaultTitle'
-import {Topbar} from './Topbar'
+import {MenuInnerLeft} from './MenuInnerLeft'
 
 export function HeaderWrapper() {
   const {pathname} = useLocation()
@@ -76,7 +76,7 @@ export function HeaderWrapper() {
           )}
 
           <div className='d-flex align-items-stretch flex-shrink-0'>
-            <Topbar />
+            <MenuInnerLeft />
           </div>
         </div>
         {/* end::Wrapper */}

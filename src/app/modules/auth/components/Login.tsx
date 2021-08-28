@@ -19,7 +19,7 @@ const loginSchema = Yup.object().shape({
     .min(3, 'Mínimo 3 carácteres')
     .max(16, 'Máximo 16 carácteres')
     .required('La contraseña es requerida'),
-});
+})
 
 const initialValues = {
   email: 'admin@demo.com',
@@ -40,76 +40,69 @@ export function Login() {
     validationSchema: loginSchema,
     onSubmit: (values, {setStatus, setSubmitting}) => {
       setLoading(true)
-        login(values.email, values.password)
-          .then(({data: {accessToken}}) => {
-            setLoading(false)
-            dispatch(auth.actions.login(accessToken))
-          })
-          .catch(() => {
-            setLoading(false)
-            setSubmitting(false)
-            setStatus('The login detail is incorrect')
-          })
+      login(values.email, values.password)
+        .then(({data: {accessToken}}) => {
+          setLoading(false)
+          dispatch(auth.actions.login(accessToken))
+        })
+        .catch(() => {
+          setLoading(false)
+          setSubmitting(false)
+          setStatus('The login detail is incorrect')
+        })
     },
   })
 
   return (
-
     <>
-      <div className="col-12  col-lg-8 col-xl-8 d-flex align-items-center">
-        
-        <div className="px-7 m-auto">
-          <div className="text-center mb-10 p-5">
-            <p className="fs-3tx fw-bolder mb-0">Bienvenido al SOA</p>
-            <span className="text-muted fw-bold">Ingrese su usuario y contraseña</span>
+      <div
+        className='col-12  col-lg-8 col-xl-8 d-flex align-items-center bg-white rounded'
+        style={{marginLeft: '-4px'}}
+      >
+        <div className='w-xl-50 w-lg-75 m-auto'>
+          <div className='text-center mb-5 p-5'>
+            <p className='fs-3x fw-bolder mb-0'>Bienvenido al SOA</p>
+            <span className='text-muted fw-bold'>Ingrese su usuario y contraseña</span>
           </div>
-
-
-
-          <form 
-            className="w-100 w-lg-100 w-xl-75 m-auto"
-            onSubmit={formik.handleSubmit}
-            id='kt_login_signin_form'
-          >
-            <div className="form-text bg-light-danger rounded w-100 p-4 mb-5 text-dark">El <b>usuario</b> o <b>contraseña</b> está incorrecto por favor verifique e intente de nuevo.</div>
-            <div className="input-group input-group-lg mb-3 mt-10">
-              <input 
-                placeholder="Usuario" 
+          <form className='w-75 m-auto' onSubmit={formik.handleSubmit} id='kt_login_signin_form'>
+            <div className='form-text bg-light-danger rounded w-100 p-4 mb-5 text-dark'>
+              El <b>usuario</b> o <b>contraseña</b> está incorrecto por favor verifique e intente de
+              nuevo.
+            </div>
+            <div className='input-group input-group-lg mb-3 mt-5'>
+              <input
+                placeholder='Usuario'
                 {...formik.getFieldProps('email')}
                 className={clsx(
-                  'form-control form-control-solid h-60px',
+                  'form-control form-control-solid h-50px',
                   {'is-invalid': formik.touched.email && formik.errors.email},
                   {
                     'is-valid': formik.touched.email && !formik.errors.email,
                   }
-                  )} 
-                type="email" 
-                name="email"
-                id="exampleInputEmail1"
-              /> 
+                )}
+                type='email'
+                name='email'
+                id='exampleInputEmail1'
+              />
             </div>
-              {formik.touched.email && formik.errors.email && (
-                <div className='fv-plugins-message-container'>
-                  <span role='alert'>{formik.errors.email}</span>
-                </div>
-              )}
-            <div className="text-end text-dark mt-5">
-              <Link
-                to='/auth/forgot-password'
-                className='text-dark'
-                style={{marginLeft: '5px'}}
-              >
+            {formik.touched.email && formik.errors.email && (
+              <div className='fv-plugins-message-container'>
+                <span role='alert'>{formik.errors.email}</span>
+              </div>
+            )}
+            <div className='text-end text-dark mt-5'>
+              <Link to='/auth/forgot-password' className='text-dark' style={{marginLeft: '5px'}}>
                 ¿Olvidó su contraseña?
               </Link>
             </div>
 
-            <div className="input-group input-group-lg mb-3">
-              <input 
-                type="password" 
-                aria-describedby="inputGroup-sizing-lg" 
+            <div className='input-group input-group-lg mb-3'>
+              <input
+                type='password'
+                aria-describedby='inputGroup-sizing-lg'
                 {...formik.getFieldProps('password')}
                 className={clsx(
-                  'form-control form-control-solid h-60px',
+                  'form-control form-control-solid h-50px',
                   {
                     'is-invalid': formik.touched.password && formik.errors.password,
                   },
@@ -117,24 +110,26 @@ export function Login() {
                     'is-valid': formik.touched.password && !formik.errors.password,
                   }
                 )}
-                id="exampleInputPassword1" 
-                placeholder="Contraseña"
+                id='exampleInputPassword1'
+                placeholder='Contraseña'
               />
-              <span className="input-group-text border-0" id="inputGroup-sizing-lg"><i className="fas fa-eye fa-lg text-dark border-none"></i></span>
+              <span className='input-group-text border-0' id='inputGroup-sizing-lg'>
+                <i className='fas fa-eye fa-lg text-dark border-none'></i>
+              </span>
             </div>
-              {formik.touched.password && formik.errors.password && (
-                <div className='fv-plugins-message-container'>
-                  <div className='fv-help-block'>
-                    <span role='alert'>{formik.errors.password}</span>
-                  </div>
+            {formik.touched.password && formik.errors.password && (
+              <div className='fv-plugins-message-container'>
+                <div className='fv-help-block'>
+                  <span role='alert'>{formik.errors.password}</span>
                 </div>
-              )}
+              </div>
+            )}
 
-            <div className="d-grid mt-7">
-              <button 
-                type="submit" 
+            <div className='d-grid mt-7'>
+              <button
+                type='submit'
                 id='kt_sign_in_submit'
-                className="btn btn-lg btn-dark h-50px"
+                className='btn btn-lg btn-dark h-45px'
                 disabled={formik.isSubmitting || !formik.isValid}
               >
                 {!loading && <span className='indicator-label'>Iniciar sesión</span>}
@@ -150,7 +145,7 @@ export function Login() {
         </div>
       </div>
     </>
-    
+
     // <form
     //   className='form w-100'
     //   onSubmit={formik.handleSubmit}

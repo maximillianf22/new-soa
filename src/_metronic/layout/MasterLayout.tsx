@@ -9,11 +9,7 @@ import {MasterInit} from './MasterInit'
 import {PageDataProvider} from './core'
 import {
   DrawerMessenger,
-  ExploreMain,
   ActivityDrawer,
-  Main,
-  InviteUsers,
-  UpgradePlan,
 } from '../partials'
 
 const MasterLayout: React.FC = ({children}) => {
@@ -24,7 +20,7 @@ const MasterLayout: React.FC = ({children}) => {
         <div className='wrapper d-flex flex-column flex-row-fluid' id='kt_wrapper'>
             <HeaderWrapper />
 
-            <div id='kt_content' className='content d-flex flex-column flex-column-fluid'>
+            <div id='kt_content' className='content d-flexflex-column flex-column-fluid'>
                 <Toolbar />
                 <div className='post d-flex flex-column-fluid' id='kt_post'>
                     <Content>{children}</Content>
@@ -36,15 +32,8 @@ const MasterLayout: React.FC = ({children}) => {
 
       {/* begin:: Drawers */}
       <ActivityDrawer />
-      <ExploreMain />
       <DrawerMessenger />
       {/* end:: Drawers */}
-
-      {/* begin:: Modals */}
-      <Main />
-      <InviteUsers />
-      <UpgradePlan />
-      {/* end:: Modals */}
 
       <MasterInit />
       <ScrollTop />

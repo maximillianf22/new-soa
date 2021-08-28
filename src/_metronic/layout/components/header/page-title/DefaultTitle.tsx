@@ -10,7 +10,7 @@ const DefaultTitle: FC = () => {
   return (
     <div
       {...attributes.pageTitle}
-      className={clsx('page-title d-flex', classes.pageTitle.join(' '))}
+      className={clsx('page-title d-flex pb-4', classes.pageTitle.join(' '))}
     >
       {/* begin::Title */}
       {pageTitle && (

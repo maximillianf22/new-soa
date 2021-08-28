@@ -8,6 +8,7 @@
     align-items: center;
     background-color: get($toolbar-config, bg-color);
     padding: get($toolbar-config, padding);
+    height: 65px;
 }
 
 // Desktop mode
@@ -26,7 +27,7 @@
 
 		// toolbar enabled & toolbar not fixed modes
 		.toolbar-enabled:not(.toolbar-fixed) & {
-			margin-bottom: get($content-spacing, desktop);
+			margin-bottom: 15px;
 		}
 
         // Fixed header & fixed toolbar modes
@@ -38,13 +39,13 @@
 
         // Aside default enabled, aside fixed & header sticky modes
 		.aside-enabled.aside-fixed.toolbar-fixed & {
-			left: get($aside-config, width);
+			left:0;
 			transition: left get($aside-config, transition-speed) ease;
 		}
 
 		// Aside default enabled, aside header sticky & aside minimize modes
 		.aside-enabled.aside-fixed.toolbar-fixed[data-kt-aside-minimize="on"] & {
-			left: get($aside-config, minimized-width);
+			left: 0;
 			transition: left get($aside-config, transition-speed) ease;
 		}
     }

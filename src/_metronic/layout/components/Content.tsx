@@ -3,6 +3,7 @@ import {useLocation} from 'react-router'
 import clsx from 'clsx'
 import {useLayout} from '../core'
 import {DrawerComponent} from '../../assets/ts/components'
+import {DefaultTitle} from './header/page-title/DefaultTitle'
 
 const Content: React.FC = ({children}) => {
   const {classes} = useLayout()
@@ -13,6 +14,7 @@ const Content: React.FC = ({children}) => {
 
   return (
     <div id='kt_content_container' className={clsx(classes.contentContainer.join(' '))}>
+      <DefaultTitle />
       {children}
     </div>
   )

@@ -37,11 +37,7 @@ const AsideDefault: FC = () => {
         )}
         {aside.theme === 'light' && (
           <Link to='/dashboard'>
-            <img
-              alt='Logo'
-              className='h-15px logo'
-              src={toAbsoluteUrl('/media/logos/logo-1-dark.svg')}
-            />
+            
           </Link>
         )}
         {/* end::Logo */}
@@ -72,24 +68,6 @@ const AsideDefault: FC = () => {
       </div>
       {/* end::Aside menu */}
 
-      {/* begin::Footer */}
-      <div className='aside-footer flex-column-auto pt-5 pb-7 px-5' id='kt_aside_footer'>
-        <a
-          target='_blank'
-          className='btn btn-custom btn-primary w-100'
-          href={process.env.REACT_APP_PREVIEW_DOCS_URL}
-          data-bs-toggle='tooltip'
-          data-bs-trigger='hover'
-          data-bs-dismiss-='click'
-          title='Check out the complete documentation with over 100 components'
-        >
-          <span className='btn-label'>Docs & Components</span>
-          <span className='btn-icon svg-icon-2'>
-            <KTSVG path='/media/icons/duotone/General/Clipboard.svg' />
-          </span>
-        </a>
-      </div>
-      {/* end::Footer */}
     </div>
   )
 }

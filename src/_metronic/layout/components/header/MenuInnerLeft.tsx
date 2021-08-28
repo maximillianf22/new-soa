@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import React, {FC} from 'react'
 import {KTSVG, toAbsoluteUrl} from '../../../helpers'
-import {HeaderNotificationsMenu, HeaderUserMenu, QuickLinks} from '../../../partials'
+import {HeaderUserMenu, QuickLinks} from '../../../partials'
 import {useLayout} from '../../core'
 
 const toolbarButtonMarginClass = 'ms-1 ms-lg-3',
@@ -9,16 +9,12 @@ const toolbarButtonMarginClass = 'ms-1 ms-lg-3',
   toolbarUserAvatarHeightClass = 'symbol-30px symbol-md-40px',
   toolbarButtonIconSizeClass = 'svg-icon-1'
 
-const Topbar: FC = () => {
+const MenuInnerLeft: FC = () => {
   const {config} = useLayout()
 
   return (
     <div className='d-flex align-items-stretch flex-shrink-0'>
-      {/* Search */}
-      {/* <div className={clsx('d-flex align-items-stretch', toolbarButtonMarginClass)}>
-        <Search />
-      </div> */}
-      {/* Activities */}
+      {/* Notifications */}
       <div className={clsx('d-flex align-items-center', toolbarButtonMarginClass)}>
         {/* begin::Drawer toggle */}
         <div
@@ -26,7 +22,7 @@ const Topbar: FC = () => {
           id='kt_activities_toggle'
         >
           <KTSVG
-            path='/media/icons/duotone/Media/Equalizer.svg'
+            path='/media/icons/duotone/General/Notifications1.svg'
             className={toolbarButtonIconSizeClass}
           />
         </div>
@@ -71,45 +67,35 @@ const Topbar: FC = () => {
         {/* end::Menu wrapper */}
       </div>
 
-      {/* NOTIFICATIONS */}
-      <div className={clsx('d-flex align-items-center', toolbarButtonMarginClass)}>
-        {/* begin::Menu- wrapper */}
-        <div
-          className={clsx(
-            'btn btn-icon btn-active-light-primary position-relative',
-            toolbarButtonHeightClass
-          )}
-          data-kt-menu-trigger='click'
-          data-kt-menu-attach='parent'
-          data-kt-menu-placement='bottom-end'
-          data-kt-menu-flip='bottom'
-        >
-          <KTSVG
-            path='/media/icons/duotone/Code/Compiling.svg'
-            className={toolbarButtonIconSizeClass}
-          />
-        </div>
-        <HeaderNotificationsMenu />
-        {/* end::Menu wrapper */}
-      </div>
-
       {/* begin::User */}
       <div
-        className={clsx('d-flex align-items-center', toolbarButtonMarginClass)}
+        className={clsx('d-flex align-items-center me-4', toolbarButtonMarginClass)}
         id='kt_header_user_menu_toggle'
+        data-bs-original-title=''
+        title=''
       >
-        {/* begin::Toggle */}
         <div
-          className={clsx('cursor-pointer symbol', toolbarUserAvatarHeightClass)}
+          className='btn btn-active-light d-flex align-items-center bg-hover-light py-2 px-2 px-md-3'
           data-kt-menu-trigger='click'
           data-kt-menu-attach='parent'
           data-kt-menu-placement='bottom-end'
           data-kt-menu-flip='bottom'
         >
-          <img src={toAbsoluteUrl('/media/avatars/150-2.jpg')} alt='metronic' />
+          <div className='d-none d-md-flex flex-column align-items-end justify-content-center me-2'>
+            <span className='text-white fs-7 fw-bold lh-1 mb-2'>Bienvenido</span>
+            <span className='text-muted fs-base fw-bolder lh-1'>Richard</span>
+          </div>
+          <div
+            className={clsx('cursor-pointer symbol', toolbarUserAvatarHeightClass)}
+            data-kt-menu-trigger='click'
+            data-kt-menu-attach='parent'
+            data-kt-menu-placement='bottom-end'
+            data-kt-menu-flip='bottom'
+          >
+            <img src={toAbsoluteUrl('/media/avatars/150-2.jpg')} alt='metronic' />
+          </div>
         </div>
         <HeaderUserMenu />
-        {/* end::Toggle */}
       </div>
       {/* end::User */}
 
@@ -128,4 +114,4 @@ const Topbar: FC = () => {
   )
 }
 
-export {Topbar}
+export {MenuInnerLeft}

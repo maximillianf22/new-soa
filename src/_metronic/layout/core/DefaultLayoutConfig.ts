@@ -28,24 +28,24 @@ export const DefaultLayoutConfig: ILayout = {
   },
   aside: {
     display: true,
-    theme: 'dark',
+    theme: 'light',
     menu: 'main',
     fixed: true,
-    minimized: false,
+    minimized: true,
     minimize: true,
-    hoverable: true,
+    hoverable: false,
     menuIcon: 'svg',
   },
   content: {
-    width: 'fixed', // Set fixed|fluid to change width
+    width: 'fluid', // Set fixed|fluid to change width
     layout: 'default',
   },
   toolbar: {
     display: true, // Display toolbar
     width: 'fluid', // Set fixed|fluid to change width type,
     fixed: {
-      desktop: true,
-      tabletAndMobileMode: true,
+      desktop: false,
+      tabletAndMobileMode: false,
     },
     layout: 'toolbar1',
     layouts: {

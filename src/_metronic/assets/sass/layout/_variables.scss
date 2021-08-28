@@ -27,7 +27,7 @@ $header-config: (
 			desktop: 65px,
 			tablet-and-mobile: 55px
 		),
-		bg-color: if(isDarkMode(),#1E1E2D, $white),
+		bg-color: if(isDarkMode(),#1E1E2D, $primary),
 	),
 
 	// Fixed Mode
@@ -37,7 +37,7 @@ $header-config: (
 			tablet-and-mobile: 55px
 		),
 		z-index: 100,
-		bg-color: if(isDarkMode(), #1E1E2D, $white),
+		bg-color: if(isDarkMode(), #1E1E2D, $primary),
 		box-shadow: if(isDarkMode(), none, 0px 10px 30px 0px rgba(82,63,105,0.05))
 	)
 ) !default;
@@ -67,7 +67,6 @@ $aside-config: (
 	scrollbar-hover-color: if(isDarkMode(), $gray-300, lighten(#3b3b64, 3%)),
 	width: 265px, // Aside width for desktop mode
 	minimized-width: 75px,  // Aside minimized width for desktop mode
-	box-shadow: if(isDarkMode(), none, 0 0 28px 0 rgba(82,63,105,.05)), // Aside box shadow
 	minimized-hover-box-shadow: if(isDarkMode(), none, 5px 0px 10px rgba(70, 78, 95, 0.075)) // Monimized hover box shadow
 ) !default;
 

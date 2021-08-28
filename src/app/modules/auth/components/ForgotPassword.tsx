@@ -44,94 +44,95 @@ export function ForgotPassword() {
 
   return (
     <>
-    <div className="col-12  col-lg-8 col-xl-8 d-flex align-items-center">
-      <div className="px-7 m-auto">
-    
-        <form
-          className='w-100 w-lg-100 w-xl-100 m-auto'
-          noValidate
-          id='kt_login_password_reset_form'
-          onSubmit={formik.handleSubmit}
-        >
-          <div className='text-center mb-10'>
+      <div
+        className='col-12 col-lg-8 col-xl-8 d-flex align-items-center bg-white rounded'
+        style={{marginLeft: '-4px'}}
+      >
+        <div className='w-xl-50 w-lg-75 m-auto'>
+          <form
+            className='w-75 m-auto'
+            noValidate
+            id='kt_login_password_reset_form'
+            onSubmit={formik.handleSubmit}
+          >
+            <div className='text-center mb-10'>
+              {/* begin::Title */}
+              <p className='fs-2x fw-bolder mb-0 lh-1'>Recuperación de contraseña</p>
+              {/* end::Title */}
+
+              {/* begin::Link */}
+              <span className='text-muted fw-bold'>
+                Ingrese su correo para recuperar su contraseña.
+              </span>
+              {/* end::Link */}
+            </div>
+
             {/* begin::Title */}
-            <h1 className='text-dark mb-3'>¿Olvidó su contraseña?</h1>
-            {/* end::Title */}
-
-            {/* begin::Link */}
-            <div className='text-gray-400 fw-bold fs-4'>Ingrese su correo para recuperar su contraseña.</div>
-            {/* end::Link */}
-          </div>
-
-          {/* begin::Title */}
-          {hasErrors === true && (
-            <div className='mb-lg-15 alert alert-danger'>
-              <div className='alert-text font-weight-bold'>
-                Sorry, looks like there are some errors detected, please try again.
-              </div>
-            </div>
-          )}
-
-          {hasErrors === false && (
-            <div className='mb-10 bg-light-info p-8 rounded'>
-              <div className='text-info'>Sent password reset. Please check your email</div>
-            </div>
-          )}
-          {/* end::Title */}
-
-          {/* begin::Form group */}
-          <div className='input-group input-group-lg mb-3 mt-10'>
-            <input
-              type='email'
-              placeholder=''
-              autoComplete='off'
-              {...formik.getFieldProps('email')}
-              className={clsx(
-                'form-control form-control-solid h-60px',
-                {'is-invalid': formik.touched.email && formik.errors.email},
-                {
-                  'is-valid': formik.touched.email && !formik.errors.email,
-                }
-              )}
-            />
-            {formik.touched.email && formik.errors.email && (
-              <div className='fv-plugins-message-container'>
-                <div className='fv-help-block'>
-                  <span role='alert'>{formik.errors.email}</span>
+            {hasErrors === true && (
+              <div className='mb-lg-15 alert alert-danger'>
+                <div className='alert-text font-weight-bold'>
+                  Sorry, looks like there are some errors detected, please try again.
                 </div>
               </div>
             )}
-          </div>
-          {/* end::Form group */}
 
-          {/* begin::Form group */}
-          <div className='d-flex flex-wrap justify-content-center pb-lg-0'>
-            <button
-              type='submit'
-              id='kt_password_reset_submit'
-              className='btn btn-lg btn-primary fw-bolder me-4'
-            >
-              <span className='indicator-label'>Submit</span>
-              {loading && (
-                <span className='indicator-progress'>
-                  Please wait...
-                  <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
-                </span>
+            {hasErrors === false && (
+              <div className='mb-10 bg-light-info p-8 rounded'>
+                <div className='text-info'>Sent password reset. Please check your email</div>
+              </div>
+            )}
+            {/* end::Title */}
+
+            {/* begin::Form group */}
+            <div className='input-group input-group-lg mb-3 mt-5'>
+              <input
+                type='email'
+                placeholder=''
+                autoComplete='off'
+                {...formik.getFieldProps('email')}
+                className={clsx(
+                  'form-control form-control-solid h-50px',
+                  {'is-invalid': formik.touched.email && formik.errors.email},
+                  {
+                    'is-valid': formik.touched.email && !formik.errors.email,
+                  }
+                )}
+              />
+              {formik.touched.email && formik.errors.email && (
+                <div className='fv-plugins-message-container'>
+                  <div className='fv-help-block'>
+                    <span role='alert'>{formik.errors.email}</span>
+                  </div>
+                </div>
               )}
-            </button>
-            <Link to='/auth/login'>
+            </div>
+            {/* end::Form group */}
+
+            {/* begin::Form group */}
+            <div className='row'>
+            <div className='col-8 d-grid gap-2'>
               <button
-                type='button'
-                id='kt_login_password_reset_form_cancel_button'
-              className='btn btn-lg btn-light-danger fw-bolder me-4'
-                disabled={formik.isSubmitting || !formik.isValid}
+                type='submit'
+                id='kt_password_reset_submit'
+                className='btn btn-lg btn-dark h-45px'
               >
-                Cancel
+                <span className='indicator-label'>Recuperar contraseña</span>
+                {loading && (
+                  <span className='indicator-progress'>
+                    Por favor espere...
+                    <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
+                  </span>
+                )}
               </button>
-            </Link>{' '}
-          </div>
-          {/* end::Form group */}
-        </form>
+            </div>
+            <div className='col-4 d-grid gap-2'>
+              <Link to='/auth/login' className='btn btn-lg btn-light-danger fw-bolder px-0'>
+                  Cancelar
+              </Link>{' '}
+            </div>
+            </div>
+            {/* end::Form group */}
+          </form>
         </div>
       </div>
     </>
