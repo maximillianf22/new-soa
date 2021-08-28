@@ -56,143 +56,99 @@ export function Login() {
   return (
 
     <>
-      <div className="container-fluid container-full-height px-3">
-        <div className="row h-100">
-  
-          <div 
-          className="col-4 d-none d-lg-block d-xl-block bg-dark h-100 px-10"
-          style={{
-            backgroundImage: `url(${toAbsoluteUrl('/media/soa/login/addimg.jpg')})`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover"
-          }}
-        >
-          <div className="d-flex flex-column mb-3 justify-content-between" style={{height: "100vh"}}>
-            <div className="p-2">
-              <img className="img-fluid mt-5" src={`${toAbsoluteUrl('/media/soa/login/addiuva-logo.svg')}`} alt="..." />
-            </div>
-
-            <div>
-              <p className="text-white text-center display-4 fw-bolder">
-                Ayuda sin Fronteras
-              </p>
-            </div>
-
-            <div className="d-flex justify-content-between text-white mb-2 p-3">
-              <p className="">&copy; 2022 SOA</p>
-              
-              <ul className="nav">
-                <li className="nav-item">
-                  <a className="p-1 text-white" href="#">Privacidad</a>
-                </li>
-                <li className="nav-item">
-                  <a className="p-1 text-white" href="#">Legal</a>
-                </li>
-                <li className="nav-item">
-                  <a className="p-1 text-white" href="#">Contacto</a>
-                </li>
-              </ul>
-              
-            </div>
+      <div className="col-12  col-lg-8 col-xl-8 d-flex align-items-center">
+        
+        <div className="px-7 m-auto">
+          <div className="text-center mb-10 p-5">
+            <p className="fs-3tx fw-bolder mb-0">Bienvenido al SOA</p>
+            <span className="text-muted fw-bold">Ingrese su usuario y contraseña</span>
           </div>
 
-        </div>
 
 
-        <div className="col-12  col-lg-8 col-xl-8 d-flex align-items-center">
-          
-          {/* <div className="d-flex justify-content-center"> */}
-          <div className="px-7 m-auto">
-            <div className="text-center mb-10 p-5">
-              <p className="fs-3tx fw-bolder mb-0">Bienvenido al SOA</p>
-              <span className="text-muted fw-bold">Ingrese su usuario y contraseña</span>
+          <form 
+            className="w-100 w-lg-100 w-xl-75 m-auto"
+            onSubmit={formik.handleSubmit}
+            id='kt_login_signin_form'
+          >
+            <div className="form-text bg-light-danger rounded w-100 p-4 mb-5 text-dark">El <b>usuario</b> o <b>contraseña</b> está incorrecto por favor verifique e intente de nuevo.</div>
+            <div className="input-group input-group-lg mb-3 mt-10">
+              <input 
+                placeholder="Usuario" 
+                {...formik.getFieldProps('email')}
+                className={clsx(
+                  'form-control form-control-solid h-60px',
+                  {'is-invalid': formik.touched.email && formik.errors.email},
+                  {
+                    'is-valid': formik.touched.email && !formik.errors.email,
+                  }
+                  )} 
+                type="email" 
+                name="email"
+                id="exampleInputEmail1"
+              /> 
+            </div>
+              {formik.touched.email && formik.errors.email && (
+                <div className='fv-plugins-message-container'>
+                  <span role='alert'>{formik.errors.email}</span>
+                </div>
+              )}
+            <div className="text-end text-dark mt-5">
+              <Link
+                to='/auth/forgot-password'
+                className='text-dark'
+                style={{marginLeft: '5px'}}
+              >
+                ¿Olvidó su contraseña?
+              </Link>
             </div>
 
-
-
-            <form 
-              className="w-100 w-lg-100 w-xl-75 m-auto"
-              onSubmit={formik.handleSubmit}
-              id='kt_login_signin_form'
-            >
-              <div className="form-text bg-light-danger rounded w-100 p-4 mb-5 text-dark">El <b>usuario</b> o <b>contraseña</b> está incorrecto por favor verifique e intente de nuevo.</div>
-              <div className="input-group input-group-lg mb-3 mt-10">
-                <input 
-                  placeholder="Usuario" 
-                  {...formik.getFieldProps('email')}
-                  className={clsx(
-                    'form-control form-control-solid h-60px',
-                    {'is-invalid': formik.touched.email && formik.errors.email},
-                    {
-                      'is-valid': formik.touched.email && !formik.errors.email,
-                    }
-                    )} 
-                  type="email" 
-                  name="email"
-                  id="exampleInputEmail1"
-                /> 
-              </div>
-                {formik.touched.email && formik.errors.email && (
-                  <div className='fv-plugins-message-container'>
-                    <span role='alert'>{formik.errors.email}</span>
-                  </div>
+            <div className="input-group input-group-lg mb-3">
+              <input 
+                type="password" 
+                aria-describedby="inputGroup-sizing-lg" 
+                {...formik.getFieldProps('password')}
+                className={clsx(
+                  'form-control form-control-solid h-60px',
+                  {
+                    'is-invalid': formik.touched.password && formik.errors.password,
+                  },
+                  {
+                    'is-valid': formik.touched.password && !formik.errors.password,
+                  }
                 )}
-              <div className="text-end text-dark mt-5">
-                <a href="!#" className="text-dark">¿Olvidó su contraseña?</a>
-              </div>
-
-
-
-              <div className="input-group input-group-lg mb-3">
-                <input 
-                  type="password" 
-                  aria-describedby="inputGroup-sizing-lg" 
-                  {...formik.getFieldProps('password')}
-                  className={clsx(
-                    'form-control form-control-solid h-60px',
-                    {
-                      'is-invalid': formik.touched.password && formik.errors.password,
-                    },
-                    {
-                      'is-valid': formik.touched.password && !formik.errors.password,
-                    }
-                  )}
-                  id="exampleInputPassword1" 
-                  placeholder="Contraseña"
-                />
-                <span className="input-group-text border-0" id="inputGroup-sizing-lg"><i className="fas fa-eye fa-lg text-dark border-none"></i></span>
-              </div>
-                {formik.touched.password && formik.errors.password && (
-                  <div className='fv-plugins-message-container'>
-                    <div className='fv-help-block'>
-                      <span role='alert'>{formik.errors.password}</span>
-                    </div>
+                id="exampleInputPassword1" 
+                placeholder="Contraseña"
+              />
+              <span className="input-group-text border-0" id="inputGroup-sizing-lg"><i className="fas fa-eye fa-lg text-dark border-none"></i></span>
+            </div>
+              {formik.touched.password && formik.errors.password && (
+                <div className='fv-plugins-message-container'>
+                  <div className='fv-help-block'>
+                    <span role='alert'>{formik.errors.password}</span>
                   </div>
+                </div>
+              )}
+
+            <div className="d-grid mt-7">
+              <button 
+                type="submit" 
+                id='kt_sign_in_submit'
+                className="btn btn-lg btn-dark h-50px"
+                disabled={formik.isSubmitting || !formik.isValid}
+              >
+                {!loading && <span className='indicator-label'>Iniciar sesión</span>}
+                {loading && (
+                  <span className='indicator-progress' style={{display: 'block'}}>
+                    Por favor espere...
+                    <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
+                  </span>
                 )}
-
-
-
-              <div className="d-grid mt-7">
-                <button 
-                  type="submit" 
-                  id='kt_sign_in_submit'
-                  className="btn btn-lg btn-dark h-50px"
-                  disabled={formik.isSubmitting || !formik.isValid}
-                >
-                  {!loading && <span className='indicator-label'>Iniciar sesión</span>}
-                  {loading && (
-                    <span className='indicator-progress' style={{display: 'block'}}>
-                      Por favor espere...
-                      <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
-                    </span>
-                  )}
-                </button>
-              </div>
-            </form>
-          </div>
+              </button>
+            </div>
+          </form>
         </div>
       </div>
-    </div>
     </>
     
     // <form
