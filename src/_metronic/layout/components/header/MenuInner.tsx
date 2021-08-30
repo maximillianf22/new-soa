@@ -7,7 +7,7 @@ export function MenuInner() {
 
   return (
     <>
-      <Link to='/dashboard' className='my-lg-auto me-4'>
+      <Link to='/' className='my-lg-auto me-4'>
         <img
           alt='Logo'
           className='my-auto logo'
