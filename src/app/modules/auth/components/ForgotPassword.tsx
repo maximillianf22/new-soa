@@ -110,7 +110,7 @@ export function ForgotPassword() {
 
             {/* begin::Form group */}
             <div className='row'>
-            <div className='col-8 d-grid gap-2'>
+            <div className='col-lg-8 col-md-12 d-grid gap-2'>
               <button
                 type='submit'
                 id='kt_password_reset_submit'
@@ -125,7 +125,7 @@ export function ForgotPassword() {
                 )}
               </button>
             </div>
-            <div className='col-4 d-grid gap-2'>
+            <div className='col-lg-4 col-md-12 d-grid gap-2'>
               <Link to='/auth/login' className='btn btn-lg btn-light-danger fw-bolder px-0'>
                   Cancelar
               </Link>{' '}
