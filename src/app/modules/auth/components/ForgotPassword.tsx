@@ -114,7 +114,7 @@ export function ForgotPassword() {
               <button
                 type='submit'
                 id='kt_password_reset_submit'
-                className='btn btn-lg btn-dark h-45px'
+                className='btn btn-lg btn-dark h-45px px-0'
               >
                 <span className='indicator-label'>Recuperar contraseña</span>
                 {loading && (
