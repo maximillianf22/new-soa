@@ -3,22 +3,15 @@ import {Redirect, Route, Switch} from 'react-router-dom'
 import {FallbackView} from '../../_metronic/partials'
 import {IndexPage} from '../pages/home'
 
+
 export function PrivateRoutes() {
-  const ProfilePage = lazy(() => import('../modules/profile/ProfilePage'))
-  const WizardsPage = lazy(() => import('../modules/wizards/WizardsPage'))
-  const AccountPage = lazy(() => import('../modules/accounts/AccountPage'))
-  const WidgetsPage = lazy(() => import('../modules/widgets/WidgetsPage'))
-  const ChatPage = lazy(() => import('../modules/apps/chat/ChatPage'))
+  const UsersPage = lazy(() => import('../modules/users/UsersPage'))
 
   return (
     <Suspense fallback={<FallbackView />}>
       <Switch>
         <Route path='/inicio' component={IndexPage} />
-        <Route path='/crafted/pages/profile' component={ProfilePage} />
-        <Route path='/crafted/pages/wizards' component={WizardsPage} />
-        <Route path='/crafted/widgets' component={WidgetsPage} />
-        <Route path='/crafted/account' component={AccountPage} />
-        <Route path='/apps/chat' component={ChatPage} />
+        <Route path='/usuarios' component={UsersPage} />
         <Redirect from='/auth' to='/inicio' />
         <Redirect exact from='/' to='/inicio' />
         <Redirect to='error/404' />

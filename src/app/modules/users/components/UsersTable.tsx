@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import {KTSVG, toAbsoluteUrl} from '../../../_metronic/helpers'
+import {KTSVG, toAbsoluteUrl} from '../../../../_metronic/helpers'
+import { Link } from 'react-router-dom';
 
 type Props = {
-  className: string
+  className?: string
 }
 
 const UsersTable: React.FC<Props> = ({className}) => {
@@ -53,15 +54,15 @@ const UsersTable: React.FC<Props> = ({className}) => {
           data-bs-placement='top'
           data-bs-trigger='hover'
         >
-          <a
-            href='#'
+          <Link
+            to='/usuarios/crear'
             className='btn btn-sm btn-primary'
             // data-bs-toggle='modal'
             // data-bs-target='#kt_modal_invite_friends'
           >
             <i className='fas fa-plus'></i>
             Nuevo
-          </a>
+          </Link>
           <a className='btn btn-info btn-sm btn-icon ms-2'>
             <i className='fa fa-filter'></i>
           </a>
