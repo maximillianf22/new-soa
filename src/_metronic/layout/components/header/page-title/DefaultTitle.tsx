@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import React, {FC} from 'react'
+import { Dropdown } from 'react-bootstrap-v5'
 import {Link} from 'react-router-dom'
 import {useLayout} from '../../../core/LayoutProvider'
 import {usePageData} from '../../../core/PageData'
@@ -10,8 +11,9 @@ const DefaultTitle: FC = () => {
   return (
     <div
       {...attributes.pageTitle}
-      className={clsx('page-title d-flex pb-4', classes.pageTitle.join(' '))}
+      className={clsx('page-title d-flex pb-4 justify-content-between', classes.pageTitle.join(' '))}
     >
+      <div className="d-flex">
       {/* begin::Title */}
       {pageTitle && (
         <h1 className='d-flex align-items-center text-dark fw-bolder my-1 fs-3'>
@@ -54,8 +56,21 @@ const DefaultTitle: FC = () => {
               ))}
               <li className='breadcrumb-item text-dark'>{pageTitle}</li>
             </ul>
+              
           </>
         )}
+        </div>
+        <Dropdown>
+          <Dropdown.Toggle size="sm" id="dropdown-basic">
+            Seleccionar cliente
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu>
+            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
     </div>
   )
 }
