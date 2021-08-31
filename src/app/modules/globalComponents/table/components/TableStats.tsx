@@ -1,10 +1,11 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react'
+import React from 'react';
 
-export const UsersStats = () => {
-  return (
-    <>
-      <div className='row mb-7'>
+
+
+export const TableStats: React.FC = () => {
+    return (
+        <>
+            <div className='row mb-7'>
         <div className='col-3'>
           <div className='card h-100px p-5'>
             <p className='text-muted mb-0 fw-bold fs-7'>Usuarios</p>
@@ -34,6 +35,6 @@ export const UsersStats = () => {
           </div>
         </div>
       </div>
-    </>
-  )
+        </>
+    )
 }

@@ -1,7 +1,7 @@
 import React, {FC} from 'react'
 import { PageTitle } from '../../../_metronic/layout/core'
 import { useIntl } from 'react-intl';
-import { UsersTable } from './components/UsersTable/UsersTable';
+import { UsersTable } from './components/UsersTable';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { PageLink } from '../../../_metronic/layout/core';
 import { UsersCreate } from './components/UsersCreate';
