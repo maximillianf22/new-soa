@@ -4,7 +4,7 @@ import { useIntl } from 'react-intl';
 import { UsersTable } from './components/UsersTable/UsersTable';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { PageLink } from '../../../_metronic/layout/core';
-import { UserCreate } from './components/UsersCreate';
+import { UsersCreate } from './components/UsersCreate';
 
 
 const usersBreadCrumbs: Array<PageLink> = [
@@ -32,7 +32,7 @@ const usersBreadCrumbs: Array<PageLink> = [
 
         <Route path='/usuarios/crear'>
           <PageTitle breadcrumbs={usersBreadCrumbs}>Nuevo Usuario</PageTitle>
-          <UserCreate />
+          <UsersCreate />
         </Route>
 
         <Redirect from='/usuarios' exact={true} to='/usuarios/tabla' />
