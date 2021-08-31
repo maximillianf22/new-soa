@@ -168,7 +168,6 @@ export class LayoutSetup {
       this.classes.pageTitle.push('align-items-center')
       this.classes.pageTitle.push('flex-wrap')
     }
-    this.classes.pageTitle.push('me-3')
 
     if (config.responsive) {
       this.classes.pageTitle.push('mb-5')

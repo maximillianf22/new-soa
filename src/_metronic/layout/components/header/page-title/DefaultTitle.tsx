@@ -11,7 +11,7 @@ const DefaultTitle: FC = () => {
   return (
     <div
       {...attributes.pageTitle}
-      className={clsx('page-title d-flex pb-4 justify-content-between', classes.pageTitle.join(' '))}
+      className={clsx('page-title d-flex pb-5 justify-content-between', classes.pageTitle.join(' '))}
     >
       <div className="d-flex">
       {/* begin::Title */}

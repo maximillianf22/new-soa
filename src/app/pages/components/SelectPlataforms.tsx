@@ -1,20 +1,17 @@
 import React from 'react'
-import { Dropdown } from 'react-bootstrap-v5'
+import {Form} from 'react-bootstrap-v5'
 
 export const SelectPlataforms = () => {
-    return (
-        <>
-            <Dropdown>
-                <Dropdown.Toggle size="sm" id="dropdown-basic">
-                    Seleccionar cliente
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-                </Dropdown.Menu>
-            </Dropdown>
-        </>
-    )
+  return (
+    <>
+      <div className='col-3'>
+        <Form.Select className="border-0">
+          <option>Seleccione la Plataforma o Cliente</option>
+          <option value='1'>Plataforma One</option>
+          <option value='2'>Plataforma Two</option>
+          <option value='3'>Plataforma Three</option>
+        </Form.Select>
+      </div>
+    </>
+  )
 }
