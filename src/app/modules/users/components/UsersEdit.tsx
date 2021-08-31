@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const UserCreate = () => {
+export const UserEdite = () => {
     return (
         <div>
             NUEVO USUARIOOOO

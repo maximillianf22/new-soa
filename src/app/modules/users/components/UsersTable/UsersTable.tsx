@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import {KTSVG, toAbsoluteUrl} from '../../../../_metronic/helpers'
 import { Link } from 'react-router-dom';
+import {UsersStats} from './UsersStats'
 
 type Props = {
   className?: string
@@ -10,37 +10,7 @@ type Props = {
 const UsersTable: React.FC<Props> = ({className}) => {
   return (
 <>
-    <div className="row mb-10">
-        <div className="col-3">
-            <div className="card h-100px p-5">
-                <p className="text-muted mb-0 fw-bold fs-7">Usuarios</p>
-                <h1>Usuarios</h1>
-                <p className="text-muted fs-7">Usuarios Registrados en la plataforma</p>
-            </div>
-        </div>
-        <div className="col-3">
-            <div className="card h-100px p-5">
-                <p className="text-muted mb-0 fw-bold fs-7">Usuarios</p>
-                <h1>Usuarios</h1>
-                <p className="text-muted fs-7">Usuarios Registrados en la plataforma</p>
-            </div>
-        </div>
-        <div className="col-3">
-            <div className="card h-100px p-5">
-                <p className="text-muted mb-0 fw-bold fs-7">Usuarios</p>
-                <h1>Usuarios</h1>
-                <p className="text-muted fs-7">Usuarios Registrados en la plataforma</p>
-            </div>
-        </div>
-        <div className="col-3">
-            <div className="card h-100px p-5">
-                <p className="text-muted mb-0 fw-bold fs-7">Usuarios</p>
-                <h1>Usuarios</h1>
-                <p className="text-muted fs-7">Usuarios Registrados en la plataforma</p>
-            </div>
-        </div>
-    </div>
-    
+    <UsersStats />
     <div className="card p-5">
       {/* begin::Header */}
       <div className='card-header border-0 pt-5'>
@@ -124,7 +94,7 @@ const UsersTable: React.FC<Props> = ({className}) => {
                 </td>
                 <td>
                   <div className='d-flex justify-content-end flex-shrink-0'>
-                    <a href='#' className='btn btn-icon btn-primary btn-sm me-1'>
+                    <a href='#' className='btn btn-icon btn-info btn-sm me-1'>
                       <i className='fa fa-eye'></i>
                     </a>
                     <a href='#' className='btn btn-icon btn-success btn-sm me-1'>
@@ -166,7 +136,7 @@ const UsersTable: React.FC<Props> = ({className}) => {
                 </td>
                 <td>
                   <div className='d-flex justify-content-end flex-shrink-0'>
-                    <a href='#' className='btn btn-icon btn-primary btn-sm me-1'>
+                    <a href='#' className='btn btn-icon btn-info btn-sm me-1'>
                       <i className='fa fa-eye'></i>
                     </a>
                     <a href='#' className='btn btn-icon btn-success btn-sm me-1'>
@@ -208,7 +178,7 @@ const UsersTable: React.FC<Props> = ({className}) => {
                 </td>
                 <td>
                   <div className='d-flex justify-content-end flex-shrink-0'>
-                    <a href='#' className='btn btn-icon btn-primary btn-sm me-1'>
+                    <a href='#' className='btn btn-icon btn-info btn-sm me-1'>
                       <i className='fa fa-eye'></i>
                     </a>
                     <a href='#' className='btn btn-icon btn-success btn-sm me-1'>
@@ -250,7 +220,7 @@ const UsersTable: React.FC<Props> = ({className}) => {
                 </td>
                 <td>
                   <div className='d-flex justify-content-end flex-shrink-0'>
-                    <a href='#' className='btn btn-icon btn-primary btn-sm me-1'>
+                    <a href='#' className='btn btn-icon btn-info btn-sm me-1'>
                       <i className='fa fa-eye'></i>
                     </a>
                     <a href='#' className='btn btn-icon btn-success btn-sm me-1'>
@@ -292,7 +262,7 @@ const UsersTable: React.FC<Props> = ({className}) => {
                 </td>
                 <td>
                   <div className='d-flex justify-content-end flex-shrink-0'>
-                    <a href='#' className='btn btn-icon btn-primary btn-sm me-1'>
+                    <a href='#' className='btn btn-icon btn-info btn-sm me-1'>
                       <i className='fa fa-eye'></i>
                     </a>
                     <a href='#' className='btn btn-icon btn-success btn-sm me-1'>
@@ -334,7 +304,7 @@ const UsersTable: React.FC<Props> = ({className}) => {
                 </td>
                 <td>
                   <div className='d-flex justify-content-end flex-shrink-0'>
-                    <a href='#' className='btn btn-icon btn-primary btn-sm me-1'>
+                    <a href='#' className='btn btn-icon btn-info btn-sm me-1'>
                       <i className='fa fa-eye'></i>
                     </a>
                     <a href='#' className='btn btn-icon btn-success btn-sm me-1'>
@@ -376,7 +346,7 @@ const UsersTable: React.FC<Props> = ({className}) => {
                 </td>
                 <td>
                   <div className='d-flex justify-content-end flex-shrink-0'>
-                    <a href='#' className='btn btn-icon btn-primary btn-sm me-1'>
+                    <a href='#' className='btn btn-icon btn-info btn-sm me-1'>
                       <i className='fa fa-eye'></i>
                     </a>
                     <a href='#' className='btn btn-icon btn-success btn-sm me-1'>

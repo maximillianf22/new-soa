@@ -8,29 +8,29 @@
 // Primary
 $primary:       									if(isDarkMode(), #181818, #1C133E);
 $primary-active:    								if(isDarkMode(), #181818, #2d1e63);
-$primary-light:    								    if(isDarkMode(), #1c133ee5, #F8F5FF);
+$primary-light:    								    if(isDarkMode(), #2f2553, #F8F5FF);
 $primary-inverse:  									#FFFFFF;
 
 // Success
-$success:       									if(isDarkMode(), #0BB783, #50CD89);
-$success-active:    								if(isDarkMode(), #04AA77, #47BE7D);
+$success:       									if(isDarkMode(), #0BB783, #1BC5BD);
+$success-active:    								if(isDarkMode(), #04AA77, #0BB7AF);
 $success-light:    									if(isDarkMode(), #1C3238, #E8FFF3);
 $success-inverse:  									#FFFFFF;
 
 // Info
-$info:       									    if(isDarkMode(), #8950FC, #7239EA);
-$info-active:    									if(isDarkMode(), #7337EE, #5014D0);
-$info-light:    									if(isDarkMode(), #2F264F, #F8F5FF);
+$info:       									    if(isDarkMode(), #3699FF, #3699FF);
+$info-active:    									if(isDarkMode(), #187DE4, #187DE4);
+$info-light:    									if(isDarkMode(), #23294e, #F8F5FF);
 $info-inverse:  									#FFFFFF;
 
 // Danger
-$danger:       									    if(isDarkMode(), #F64E60, #F1416C);
-$danger-active:    									if(isDarkMode(), #EE2D41, #D9214E);
+$danger:       									    if(isDarkMode(), #F64E60, #F64E60);
+$danger-active:    									if(isDarkMode(), #EE2D41, #EE2D41);
 $danger-light:    									if(isDarkMode(), #3A2434, #FFF5F8);
 $danger-inverse:  									#FFFFFF;
 
 // Warning
-$warning:       									if(isDarkMode(), #FFA800, #FFC700);
-$warning-active:    								if(isDarkMode(), #EE9D01, #F1BC00);
+$warning:       									if(isDarkMode(), #FFA800, #FFA800);
+$warning-active:    								if(isDarkMode(), #EE9D01, #EE9D01);
 $warning-light:    									if(isDarkMode(), #392F28, #FFF8DD);
 $warning-inverse:  									#FFFFFF;

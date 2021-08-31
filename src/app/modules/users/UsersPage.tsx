@@ -1,10 +1,10 @@
 import React, {FC} from 'react'
 import { PageTitle } from '../../../_metronic/layout/core'
 import { useIntl } from 'react-intl';
-import { UsersTable } from './components/UsersTable';
+import { UsersTable } from './components/UsersTable/UsersTable';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { PageLink } from '../../../_metronic/layout/core';
-import { UserCreate } from './components/UserCreate';
+import { UserCreate } from './components/UsersCreate';
 
 
 const usersBreadCrumbs: Array<PageLink> = [
