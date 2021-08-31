@@ -7,13 +7,13 @@ import { TableBody } from './components/TableBody';
 
 export const TableComponent: React.FC = () => {
 
-    const tableHeads: string[] = ['Nombre','Correo','Usuario','Rol','Opciones'];
+    const tableHeads: string[] = ['Nombre','Correo','Usuario','Rol'];
     
     return (
         <>
             <TableStats />
             <div className="card p-5">
-                <TableHeader title='didiusuarios' count={50} btnPath='/usuarios/crear' />
+                <TableHeader title='Usuario' count={234} btnPath='/usuarios/crear' />
                 <TableBody tableHeads={tableHeads} />
             </div>
             </>

@@ -4,7 +4,7 @@ type Props = {
   tableHeads: string[]
 }
 
-export const TableBody = ({tableHeads}: Props) => {
+export const TableBody: React.FC<Props> = ({tableHeads}: Props) => {
     return (
         <>
              {/* begin::Body */}
@@ -16,15 +16,10 @@ export const TableBody = ({tableHeads}: Props) => {
                     {/* begin::Table head */}
                     <thead>
                       <tr className='fw-bolder text-muted'>
-                        {tableHeads.map((th) => {
-                          <h1>HOoLa</h1>
-                          
-                        })}
-                        {/* <th className='min-w-150px'>Nombre</th>
-                        <th className='min-w-130px'>Correo</th>
-                        <th className='min-w-130px'>Usuario</th>
-                        <th className='min-w-130px'>Rol</th>
-                        <th className='min-w-100px text-end'>Opciones</th> */}
+                        {tableHeads && tableHeads.map( (th, i) => (
+                          <th key={th} className={`min-w-1${ i === 0 ? '5' : '3' }0px`} >{th}</th>
+                        ))}
+                        <th className='min-w-80px text-end'>Opciones</th>
                       </tr>
                     </thead>
                     {/* end::Table head */}
