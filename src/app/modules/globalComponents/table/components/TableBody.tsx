@@ -1,10 +1,18 @@
 import React from 'react';
 
-type Props = {
-  tableHeads: string[]
+type TableContent = {
+  name: 'Ana Simmons',
+  email: 'Ana@demo.com',
+  user: 'ASOANG',
+  rol: 'Coordinador'
 }
 
-export const TableBody: React.FC<Props> = ({tableHeads}: Props) => {
+type Props = {
+  tableHeads: string[],
+  tableContent: TableContent[]
+}
+
+export const TableBody: React.FC<Props> = ({tableHeads, tableContent}: Props) => {
     return (
         <>
              {/* begin::Body */}
@@ -25,300 +33,50 @@ export const TableBody: React.FC<Props> = ({tableHeads}: Props) => {
                     {/* end::Table head */}
                     {/* begin::Table body */}
                     <tbody>
-                      <tr>
-                        <td>
-                          <div className='d-flex align-items-center'>
-                            <div className='d-flex justify-content-start flex-column'>
-                              <a href='#' className='text-dark fw-bolder text-hover-primary fs-6'>
-                                Ana Simmons
-                              </a>
-                              <span className='text-muted fw-bold text-muted d-block fs-7'>
-                                CC: 1007345398
-                              </span>
+                      {tableContent && tableContent.map(({name, email, user, rol}) => (
+                        <tr key={email}>
+                          <td>
+                            <div className='d-flex align-items-center'>
+                              <div className='d-flex justify-content-start flex-column'>
+                                <a href='!#' className='text-dark fw-bolder text-hover-primary fs-6'>
+                                  {name}
+                                </a>
+                                <span className='text-muted fw-bold text-muted d-block fs-7'>
+                                  CC: 1007345398
+                                </span>
+                              </div>
                             </div>
-                          </div>
-                        </td>
-                        <td>
-                          <a href='#' className='text-dark fw-bolder text-hover-primary d-block fs-6'>
-                            Ana@demo.com
-                          </a>
-                        </td>
-                        <td>
-                          <a href='#' className='text-dark fw-bolder text-hover-primary d-block fs-6'>
-                            ASOANG
-                          </a>
-                        </td>
-                        <td>
-                          <a href='#' className='text-dark fw-bolder text-hover-primary d-block fs-6'>
-                            Coordinador
-                          </a>
-                        </td>
-                        <td>
-                          <div className='d-flex justify-content-end flex-shrink-0'>
-                            <a href='#' className='btn btn-icon btn-info btn-sm me-1'>
-                              <i className='fa fa-eye'></i>
+                          </td>
+                          <td>
+                            <a href='!#' className='text-dark fw-bolder text-hover-primary d-block fs-6'>
+                              {email}
                             </a>
-                            <a href='#' className='btn btn-icon btn-success btn-sm me-1'>
-                              <i className='fa fa-edit'></i>
+                          </td>
+                          <td>
+                            <a href='!#' className='text-dark fw-bolder text-hover-primary d-block fs-6'>
+                              {user}
                             </a>
-                            <a href='#' className='btn btn-icon btn-danger btn-sm'>
-                              <i className='fa fa-trash'></i>
+                          </td>
+                          <td>
+                            <a href='!#' className='text-dark fw-bolder text-hover-primary d-block fs-6'>
+                              {rol}
                             </a>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div className='d-flex align-items-center'>
-                            <div className='d-flex justify-content-start flex-column'>
-                              <a href='#' className='text-dark fw-bolder text-hover-primary fs-6'>
-                                Ana Simmons
+                          </td>
+                          <td>
+                            <div className='d-flex justify-content-end flex-shrink-0'>
+                              <a href='!#' className='btn btn-icon btn-info btn-sm me-1'>
+                                <i className='fa fa-eye'></i>
                               </a>
-                              <span className='text-muted fw-bold text-muted d-block fs-7'>
-                                CC: 1007345398
-                              </span>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <a href='#' className='text-dark fw-bolder text-hover-primary d-block fs-6'>
-                            Ana@demo.com
-                          </a>
-                        </td>
-                        <td>
-                          <a href='#' className='text-dark fw-bolder text-hover-primary d-block fs-6'>
-                            ASOANG
-                          </a>
-                        </td>
-                        <td>
-                          <a href='#' className='text-dark fw-bolder text-hover-primary d-block fs-6'>
-                            Coordinador
-                          </a>
-                        </td>
-                        <td>
-                          <div className='d-flex justify-content-end flex-shrink-0'>
-                            <a href='#' className='btn btn-icon btn-info btn-sm me-1'>
-                              <i className='fa fa-eye'></i>
-                            </a>
-                            <a href='#' className='btn btn-icon btn-success btn-sm me-1'>
-                              <i className='fa fa-edit'></i>
-                            </a>
-                            <a href='#' className='btn btn-icon btn-danger btn-sm'>
-                              <i className='fa fa-trash'></i>
-                            </a>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div className='d-flex align-items-center'>
-                            <div className='d-flex justify-content-start flex-column'>
-                              <a href='#' className='text-dark fw-bolder text-hover-primary fs-6'>
-                                Ana Simmons
+                              <a href='!#' className='btn btn-icon btn-success btn-sm me-1'>
+                                <i className='fa fa-edit'></i>
                               </a>
-                              <span className='text-muted fw-bold text-muted d-block fs-7'>
-                                CC: 1007345398
-                              </span>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <a href='#' className='text-dark fw-bolder text-hover-primary d-block fs-6'>
-                            Ana@demo.com
-                          </a>
-                        </td>
-                        <td>
-                          <a href='#' className='text-dark fw-bolder text-hover-primary d-block fs-6'>
-                            ASOANG
-                          </a>
-                        </td>
-                        <td>
-                          <a href='#' className='text-dark fw-bolder text-hover-primary d-block fs-6'>
-                            Coordinador
-                          </a>
-                        </td>
-                        <td>
-                          <div className='d-flex justify-content-end flex-shrink-0'>
-                            <a href='#' className='btn btn-icon btn-info btn-sm me-1'>
-                              <i className='fa fa-eye'></i>
-                            </a>
-                            <a href='#' className='btn btn-icon btn-success btn-sm me-1'>
-                              <i className='fa fa-edit'></i>
-                            </a>
-                            <a href='#' className='btn btn-icon btn-danger btn-sm'>
-                              <i className='fa fa-trash'></i>
-                            </a>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div className='d-flex align-items-center'>
-                            <div className='d-flex justify-content-start flex-column'>
-                              <a href='#' className='text-dark fw-bolder text-hover-primary fs-6'>
-                                Ana Simmons
+                              <a href='!#' className='btn btn-icon btn-danger btn-sm'>
+                                <i className='fa fa-trash'></i>
                               </a>
-                              <span className='text-muted fw-bold text-muted d-block fs-7'>
-                                CC: 1007345398
-                              </span>
                             </div>
-                          </div>
-                        </td>
-                        <td>
-                          <a href='#' className='text-dark fw-bolder text-hover-primary d-block fs-6'>
-                            Ana@demo.com
-                          </a>
-                        </td>
-                        <td>
-                          <a href='#' className='text-dark fw-bolder text-hover-primary d-block fs-6'>
-                            ASOANG
-                          </a>
-                        </td>
-                        <td>
-                          <a href='#' className='text-dark fw-bolder text-hover-primary d-block fs-6'>
-                            Coordinador
-                          </a>
-                        </td>
-                        <td>
-                          <div className='d-flex justify-content-end flex-shrink-0'>
-                            <a href='#' className='btn btn-icon btn-info btn-sm me-1'>
-                              <i className='fa fa-eye'></i>
-                            </a>
-                            <a href='#' className='btn btn-icon btn-success btn-sm me-1'>
-                              <i className='fa fa-edit'></i>
-                            </a>
-                            <a href='#' className='btn btn-icon btn-danger btn-sm'>
-                              <i className='fa fa-trash'></i>
-                            </a>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div className='d-flex align-items-center'>
-                            <div className='d-flex justify-content-start flex-column'>
-                              <a href='#' className='text-dark fw-bolder text-hover-primary fs-6'>
-                                Ana Simmons
-                              </a>
-                              <span className='text-muted fw-bold text-muted d-block fs-7'>
-                                CC: 1007345398
-                              </span>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <a href='#' className='text-dark fw-bolder text-hover-primary d-block fs-6'>
-                            Ana@demo.com
-                          </a>
-                        </td>
-                        <td>
-                          <a href='#' className='text-dark fw-bolder text-hover-primary d-block fs-6'>
-                            ASOANG
-                          </a>
-                        </td>
-                        <td>
-                          <a href='#' className='text-dark fw-bolder text-hover-primary d-block fs-6'>
-                            Coordinador
-                          </a>
-                        </td>
-                        <td>
-                          <div className='d-flex justify-content-end flex-shrink-0'>
-                            <a href='#' className='btn btn-icon btn-info btn-sm me-1'>
-                              <i className='fa fa-eye'></i>
-                            </a>
-                            <a href='#' className='btn btn-icon btn-success btn-sm me-1'>
-                              <i className='fa fa-edit'></i>
-                            </a>
-                            <a href='#' className='btn btn-icon btn-danger btn-sm'>
-                              <i className='fa fa-trash'></i>
-                            </a>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div className='d-flex align-items-center'>
-                            <div className='d-flex justify-content-start flex-column'>
-                              <a href='#' className='text-dark fw-bolder text-hover-primary fs-6'>
-                                Ana Simmons
-                              </a>
-                              <span className='text-muted fw-bold text-muted d-block fs-7'>
-                                CC: 1007345398
-                              </span>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <a href='#' className='text-dark fw-bolder text-hover-primary d-block fs-6'>
-                            Ana@demo.com
-                          </a>
-                        </td>
-                        <td>
-                          <a href='#' className='text-dark fw-bolder text-hover-primary d-block fs-6'>
-                            ASOANG
-                          </a>
-                        </td>
-                        <td>
-                          <a href='#' className='text-dark fw-bolder text-hover-primary d-block fs-6'>
-                            Coordinador
-                          </a>
-                        </td>
-                        <td>
-                          <div className='d-flex justify-content-end flex-shrink-0'>
-                            <a href='#' className='btn btn-icon btn-info btn-sm me-1'>
-                              <i className='fa fa-eye'></i>
-                            </a>
-                            <a href='#' className='btn btn-icon btn-success btn-sm me-1'>
-                              <i className='fa fa-edit'></i>
-                            </a>
-                            <a href='#' className='btn btn-icon btn-danger btn-sm'>
-                              <i className='fa fa-trash'></i>
-                            </a>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div className='d-flex align-items-center'>
-                            <div className='d-flex justify-content-start flex-column'>
-                              <a href='#' className='text-dark fw-bolder text-hover-primary fs-6'>
-                                Ana Simmons
-                              </a>
-                              <span className='text-muted fw-bold text-muted d-block fs-7'>
-                                CC: 1007345398
-                              </span>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <a href='#' className='text-dark fw-bolder text-hover-primary d-block fs-6'>
-                            Ana@demo.com
-                          </a>
-                        </td>
-                        <td>
-                          <a href='#' className='text-dark fw-bolder text-hover-primary d-block fs-6'>
-                            ASOANG
-                          </a>
-                        </td>
-                        <td>
-                          <a href='#' className='text-dark fw-bolder text-hover-primary d-block fs-6'>
-                            Coordinador
-                          </a>
-                        </td>
-                        <td>
-                          <div className='d-flex justify-content-end flex-shrink-0'>
-                            <a href='#' className='btn btn-icon btn-info btn-sm me-1'>
-                              <i className='fa fa-eye'></i>
-                            </a>
-                            <a href='#' className='btn btn-icon btn-success btn-sm me-1'>
-                              <i className='fa fa-edit'></i>
-                            </a>
-                            <a href='#' className='btn btn-icon btn-danger btn-sm'>
-                              <i className='fa fa-trash'></i>
-                            </a>
-                          </div>
-                        </td>
-                      </tr>
+                          </td>
+                        </tr>
+                      ))}
                     </tbody>
                     {/* end::Table body */}
                   </table>

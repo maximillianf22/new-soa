@@ -2,9 +2,11 @@ import {all} from 'redux-saga/effects'
 import {combineReducers} from 'redux'
 
 import * as auth from '../../app/modules/auth'
+import { tableReducer } from '../../app/modules/globalComponents/table/Redux/TableRedux';
 
 export const rootReducer = combineReducers({
   auth: auth.reducer,
+  table: tableReducer
 })
 
 export type RootState = ReturnType<typeof rootReducer>

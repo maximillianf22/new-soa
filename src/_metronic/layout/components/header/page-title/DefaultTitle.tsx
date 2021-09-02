@@ -61,6 +61,7 @@ const DefaultTitle: FC = () => {
         )}
         </div>
         <SelectPlataforms />
+        {/* TODO: Hacer un componente SideHeader que dentro tendrá <SelectPlataforms /> y botonera del monitor */}
     </div>
   )
 }
