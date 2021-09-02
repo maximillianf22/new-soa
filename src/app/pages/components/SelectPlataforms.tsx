@@ -4,7 +4,7 @@ import {Form} from 'react-bootstrap-v5'
 export const SelectPlataforms = () => {
   return (
     <>
-      <div className='col-3'>
+      <div className='col-5 ps-4 col-md-4 col-lg-3'>
         <Form.Select className="border-0">
           <option>Seleccione la Plataforma o Cliente</option>
           <option value='1'>Plataforma One</option>

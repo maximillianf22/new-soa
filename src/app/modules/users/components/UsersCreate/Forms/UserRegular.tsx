@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const UserEdit = () => {
+export const UserRegularForm = () => {
     return (
         <div>
             NUEVO USUARIOOOO

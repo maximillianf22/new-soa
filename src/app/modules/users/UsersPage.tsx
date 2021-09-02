@@ -1,10 +1,12 @@
 import React, {FC} from 'react'
 import { PageTitle } from '../../../_metronic/layout/core'
 import { useIntl } from 'react-intl';
-import { UsersTable } from './components/UsersTable';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { PageLink } from '../../../_metronic/layout/core';
-import { UsersCreate } from './components/UsersCreate';
+import { SelectType } from './components/UsersCreate/SelectType';
+import { UsersTable } from './components/UsersTable';
+import { UserRegularForm } from './components/UsersCreate/Forms/UserRegular';
+import { WizzardForm } from './components/UsersCreate/Forms/UserMultiplataform/WizzardForm';
 
 
 const usersBreadCrumbs: Array<PageLink> = [
@@ -32,8 +34,10 @@ const usersBreadCrumbs: Array<PageLink> = [
 
         <Route path='/usuarios/crear'>
           <PageTitle breadcrumbs={usersBreadCrumbs}>Nuevo Usuario</PageTitle>
-          <UsersCreate />
+          <SelectType />
         </Route>
+        <Route path='/usuarios/crear-multiplataforma' component={WizzardForm} />
+        <Route path='/usuarios/crear-regular' component={UserRegularForm} />
 
         <Redirect from='/usuarios' exact={true} to='/usuarios/tabla' />
         <Redirect to='/usuarios/tabla' />

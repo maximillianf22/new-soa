@@ -11,7 +11,7 @@ const DefaultTitle: FC = () => {
   return (
     <div
       {...attributes.pageTitle}
-      className={clsx('page-title d-flex pb-5 justify-content-between', classes.pageTitle.join(' '))}
+      className={clsx('page-title d-flex pb-lg-5 pb-0 pt-lg-0 pt-5 justify-content-between ', classes.pageTitle.join(' '))}
     >
       <div className="d-flex">
       {/* begin::Title */}
@@ -39,7 +39,7 @@ const DefaultTitle: FC = () => {
             <ul className='breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1'>
               {Array.from(pageBreadcrumbs).map((item, index) => (
                 <li
-                  className={clsx('breadcrumb-item', {
+                  className={clsx('breadcrumb-item  d-none d-sm-none d-md-block d-lg-block text-nowrap', {
                     'text-dark': !item.isSeparator && item.isActive,
                     'text-muted': !item.isSeparator && !item.isActive,
                   })}
@@ -50,11 +50,11 @@ const DefaultTitle: FC = () => {
                       {item.title}
                     </Link>
                   ) : (
-                    <span className='bullet bg-gray-200 w-5px h-2px'></span>
+                    <span className='bullet bg-gray-200 w-5px h-2px  d-none d-sm-none d-md-block d-lg-block text-nowrap'></span>
                   )}
                 </li>
               ))}
-              <li className='breadcrumb-item text-dark'>{pageTitle}</li>
+              <li className='breadcrumb-item text-dark  d-none d-sm-none d-md-block d-lg-block text-nowrap'>{pageTitle}</li>
             </ul>
               
           </>
