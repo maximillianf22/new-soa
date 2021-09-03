@@ -63,24 +63,13 @@ const WizzardForm: FC = () => {
         >
           <div className='stepper-nav mb-5'>
             <div className='stepper-item current' data-kt-stepper-element='nav'>
-              <h3 className='stepper-title'>Account Type</h3>
+              <h3 className='stepper-title'>Formulario de usuario</h3>
             </div>
 
             <div className='stepper-item' data-kt-stepper-element='nav'>
-              <h3 className='stepper-title'>Account Info</h3>
+              <h3 className='stepper-title'>Configuracion de Plataformas</h3>
             </div>
 
-            <div className='stepper-item' data-kt-stepper-element='nav'>
-              <h3 className='stepper-title'>Business Info</h3>
-            </div>
-
-            <div className='stepper-item' data-kt-stepper-element='nav'>
-              <h3 className='stepper-title'>Billing Details</h3>
-            </div>
-
-            <div className='stepper-item' data-kt-stepper-element='nav'>
-              <h3 className='stepper-title'>Completed</h3>
-            </div>
           </div>
 
           <Formik validationSchema={currentSchema} initialValues={initValues} onSubmit={submitStep}>
@@ -117,8 +106,8 @@ const WizzardForm: FC = () => {
                   <div>
                     <button type='submit' className='btn btn-lg btn-primary me-3'>
                       <span className='indicator-label'>
-                        {!isSubmitButton && 'Continue'}
-                        {isSubmitButton && 'Submit'}
+                        {!isSubmitButton && 'Continuar'}
+                        {isSubmitButton && 'Guardar'}
                         <KTSVG
                           path='/media/icons/duotune/arrows/arr064.svg'
                           className='svg-icon-3 ms-2 me-0'
