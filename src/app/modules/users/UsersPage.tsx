@@ -3,7 +3,7 @@ import { PageTitle } from '../../../_metronic/layout/core'
 import { useIntl } from 'react-intl';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { PageLink } from '../../../_metronic/layout/core';
-import { SelectType } from './components/UsersCreate/SelectType';
+import { SelectType } from './components/UsersCreate/SelectTypeModal';
 import { UsersTable } from './components/UsersTable';
 import { UserRegularForm } from './components/UsersCreate/Forms/UserRegular';
 import { WizzardForm } from './components/UsersCreate/Forms/UserMultiplataform/WizzardForm';

@@ -1,4 +1,6 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../../../setup';
 
 type TableContent = {
   name: 'Ana Simmons',
@@ -12,7 +14,10 @@ type Props = {
   tableContent: TableContent[]
 }
 
-export const TableBody: React.FC<Props> = ({tableHeads, tableContent}: Props) => {
+export const TableBody: React.FC = () => {
+  const table: any = useSelector<RootState>(({table}) => table)
+  
+  const {tableBody: {tableHeads, tableContent}} = table;
     return (
         <>
              {/* begin::Body */}
@@ -24,8 +29,8 @@ export const TableBody: React.FC<Props> = ({tableHeads, tableContent}: Props) =>
                     {/* begin::Table head */}
                     <thead>
                       <tr className='fw-bolder text-muted'>
-                        {tableHeads && tableHeads.map( (th, i) => (
-                          <th key={th} className={`min-w-1${ i === 0 ? '5' : '3' }0px`} >{th}</th>
+                        {tableHeads && tableHeads.map( (th: string, i: number) => (
+                          <th key={i} className={`min-w-1${ i === 0 ? '5' : '3' }0px`} >{th}</th>
                         ))}
                         <th className='min-w-80px text-end'>Opciones</th>
                       </tr>
@@ -33,8 +38,8 @@ export const TableBody: React.FC<Props> = ({tableHeads, tableContent}: Props) =>
                     {/* end::Table head */}
                     {/* begin::Table body */}
                     <tbody>
-                      {tableContent && tableContent.map(({name, email, user, rol}) => (
-                        <tr key={email}>
+                      {tableContent && tableContent.map(({name, email, user, rol} : TableContent, i: number) => (
+                        <tr key={i}>
                           <td>
                             <div className='d-flex align-items-center'>
                               <div className='d-flex justify-content-start flex-column'>
