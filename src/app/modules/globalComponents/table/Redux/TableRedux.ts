@@ -40,8 +40,8 @@ export type TableHeader = {
   btnTarget?: string
 }
 export type TableBody = {
-  tableHeads: any[]
-  tableContent: any[]
+  tableHeads: string[]
+  tableContent: object[]
 }
 
 export const tableReducer = persistReducer(

@@ -7,17 +7,6 @@ import { TableComponent } from '../../globalComponents/table/TableComponent';
 
 export const UsersTable = () => {
 
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
-    const buttonModal = () => (
-        <Button variant="primary" onClick={handleShow}>
-            Launch demo modal
-        </Button>
-    );
-
     const dispatch = useDispatch();
 
     const initialTableState: ITableState = {
