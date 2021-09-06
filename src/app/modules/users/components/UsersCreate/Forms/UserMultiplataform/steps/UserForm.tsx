@@ -3,6 +3,7 @@ import {toAbsoluteUrl} from '../../../../../../../../_metronic/helpers'
 import * as Yup from 'yup'
 import {useFormik} from 'formik'
 import {Button, Collapse} from 'react-bootstrap-v5'
+import Select from 'react-select'
 
 const profileDetailsSchema = Yup.object().shape({
   // fName: Yup.string().required('First name is required'),
@@ -15,7 +16,12 @@ export interface IProfileDetails {
   username: string
   password: string
   confirmPassword: string
+  initialDate: Date
+  finalDate: Date
+  dueDate: string
+  year: string
 }
+
 
 const initialValues = {
   name: '',
@@ -24,14 +30,31 @@ const initialValues = {
   username: '',
   password: '',
   confirmPassword: '',
+  initialDate: new Date(),
+  finalDate: new Date(),
+  dueDate: '',
+  year: '',
 }
+
+
+const yearOptions = [
+  { value: "1960", label: "1960" },
+  { value: "1961", label: "1961" },
+  { value: "1962", label: "1962" },
+  { value: "1963", label: "1963" },
+  { value: "1964", label: "1964" },
+  { value: "1965", label: "1965" }
+];
 
 export const UserForm = () => {
   const [loading, setLoading] = useState(false)
   const formik = useFormik<IProfileDetails>({
     initialValues,
     validationSchema: profileDetailsSchema,
-    onSubmit: (values) => {},
+    onSubmit: (values) => {
+      console.log(values)
+      console.log('hola')
+    },
   })
 
   const [open, setOpen] = useState(false)
@@ -39,7 +62,6 @@ export const UserForm = () => {
   return (
     <div>
       <div id='kt_account_profile_details' className='collapse show w-100'>
-        <form onSubmit={formik.handleSubmit} noValidate className='form'>
           <div className='card-body p-9 pt-5'>
             <div className='row mb-6'>
               <div className='col-lg-12'>
@@ -48,7 +70,7 @@ export const UserForm = () => {
                     <label className='col-form-label required fw-bold fs-6'>Nombre</label>
                     <input
                       type='text'
-                      className='form-control form-control form-control-solid mb-3 mb-lg-0'
+                      className='form-control form-control-solid mb-3 mb-lg-0'
                       placeholder='Nombre'
                       {...formik.getFieldProps('name')}
                     />
@@ -63,7 +85,7 @@ export const UserForm = () => {
                     <label className='col-form-label required fw-bold fs-6'>Apellido</label>
                     <input
                       type='text'
-                      className='form-control form-control form-control-solid'
+                      className='form-control form-control-solid'
                       placeholder='Apellido'
                       {...formik.getFieldProps('lastName')}
                     />
@@ -77,7 +99,7 @@ export const UserForm = () => {
                     <label className='col-form-label required fw-bold fs-6'>Correo</label>
                     <input
                       type='email'
-                      className='form-control form-control form-control-solid'
+                      className='form-control form-control-solid'
                       placeholder='Correo'
                       {...formik.getFieldProps('email')}
                     />
@@ -93,7 +115,7 @@ export const UserForm = () => {
                 <label className='col-form-label required fw-bold fs-6'>Usuario</label>
                 <input
                   type='text'
-                  className='form-control form-control form-control-solid mb-3 mb-lg-0'
+                  className='form-control form-control-solid mb-3 mb-lg-0'
                   placeholder='Nombre'
                   {...formik.getFieldProps('username')}
                 />
@@ -108,7 +130,7 @@ export const UserForm = () => {
                 <label className='col-form-label required fw-bold fs-6'>Contraseña</label>
                 <input
                   type='password'
-                  className='form-control form-control form-control-solid'
+                  className='form-control form-control-solid'
                   placeholder='Apellido'
                   {...formik.getFieldProps('password')}
                 />
@@ -122,7 +144,7 @@ export const UserForm = () => {
                 <label className='col-form-label required fw-bold fs-6'>Confirmar contraeña</label>
                 <input
                   type='password'
-                  className='form-control form-control form-control-solid'
+                  className='form-control form-control-solid'
                   placeholder='Correo'
                   {...formik.getFieldProps('confirmPassword')}
                 />
@@ -133,15 +155,21 @@ export const UserForm = () => {
                 )}
               </div>
               <div className='col-md-4 px-5 py-3 fv-row'>
-                <label className='col-form-label required fw-bold fs-6'>Confirmar contraeña</label>
+                <label className='col-form-label required fw-bold fs-6'>Vigencia</label>
                 <div className='row'>
                   <div className='col-10'>
-                    <input
-                      type='text'
-                      className='form-control form-control form-control-solid col-md-8'
-                      placeholder='Correo'
-                      {...formik.getFieldProps('confirmPassword')}
-                    />
+
+
+                  <Select
+                  placeholder="Year"
+                  isSearchable={true}
+                  options={yearOptions}
+                  name="year"
+                  isLoading={false}
+                  loadingMessage={() => "Fetching year"}
+                  noOptionsMessage={() => "Year appears here"}
+                />
+
                   </div>
                   <div className='col p-0'>
                     <Button
@@ -154,16 +182,42 @@ export const UserForm = () => {
                     </Button>
                   </div>
                 </div>
-                {formik.touched.confirmPassword && formik.errors.confirmPassword && (
+                <p className='m-0 p-1 text-sm'>
+                  Si deseas personalizar la vigencia haz click en el boton
+                </p>
+                {formik.touched.dueDate && formik.errors.dueDate && (
                   <div className='fv-plugins-message-container'>
-                    <div className='fv-help-block'>{formik.errors.confirmPassword}</div>
+                    <div className='fv-help-block'>{formik.errors.dueDate}</div>
                   </div>
                 )}
                 <Collapse in={open}>
-                  <div id='example-collapse-text'>
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                    richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes
-                    anderson cred nesciunt sapiente ea proident.
+                  <div className='row'>
+                    <div className='col-6 pe-1'>
+                      <input
+                        type='date'
+                        className='form-control form-control-sm form-control-solid'
+                        placeholder='Correo'
+                        {...formik.getFieldProps('initialDate')}
+                      />
+                      {formik.touched.initialDate && formik.errors.initialDate && (
+                        <div className='fv-plugins-message-container'>
+                          <div className='fv-help-block'>{formik.errors.initialDate}</div>
+                        </div>
+                      )}
+                    </div>
+                    <div className='col-6 ps-1'>
+                      <input
+                        type='date'
+                        className='form-control form-control-sm form-control-solid'
+                        placeholder='Correo'
+                        {...formik.getFieldProps('finalDate')}
+                      />
+                      {formik.touched.finalDate && formik.errors.finalDate && (
+                        <div className='fv-plugins-message-container'>
+                          <div className='fv-help-block'>{formik.errors.finalDate}</div>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </Collapse>
               </div>
@@ -194,19 +248,6 @@ export const UserForm = () => {
               </div>
             </div> */}
           </div>
-
-          <div className='card-footer d-flex justify-content-end py-6 px-9'>
-            <button type='submit' className='btn btn-primary' disabled={loading}>
-              {!loading && 'Save Changes'}
-              {loading && (
-                <span className='indicator-progress' style={{display: 'block'}}>
-                  Please wait...{' '}
-                  <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
-                </span>
-              )}
-            </button>
-          </div>
-        </form>
       </div>
     </div>
   )

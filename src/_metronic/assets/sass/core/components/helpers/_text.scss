@@ -3,6 +3,7 @@
 //
 
 // Text colors
+
 @each $name, $color in $theme-text-colors {
     // Base color
     .text-#{$name} {
@@ -152,4 +153,8 @@ a {
     &:hover {
         transition:$transition-link;
     }
+}
+
+.text-sm {
+	font-size:10px;
 }
