@@ -7,17 +7,6 @@ import { TableComponent } from '../../globalComponents/table/TableComponent';
 
 export const UsersTable = () => {
 
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
-    const buttonModal = () => (
-        <Button variant="primary" onClick={handleShow}>
-            Launch demo modal
-        </Button>
-    );
-
     const dispatch = useDispatch();
 
     const initialTableState: ITableState = {
@@ -26,7 +15,7 @@ export const UsersTable = () => {
           count: 234,
         //   btnPath: '/usuarios/crear',
           btnPath: '',
-          btnTarget: '#kt_modal_2'
+          btnTarget: '#kt_modal_1'
         },
         tableBody: {
             tableHeads: ['Nombre','Correo','Usuario','Rol'],

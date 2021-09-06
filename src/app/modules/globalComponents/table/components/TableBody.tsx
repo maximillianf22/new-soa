@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../../../setup';
+import { ITableState } from '../Redux/TableRedux';
 
 type TableContent = {
   name: 'Ana Simmons',
@@ -9,10 +10,6 @@ type TableContent = {
   rol: 'Coordinador'
 }
 
-type Props = {
-  tableHeads: string[],
-  tableContent: TableContent[]
-}
 
 export const TableBody: React.FC = () => {
   const table: any = useSelector<RootState>(({table}) => table)

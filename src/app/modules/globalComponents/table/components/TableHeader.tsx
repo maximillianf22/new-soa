@@ -1,10 +1,12 @@
+import { Formik, useFormik } from 'formik'
 import React, {FC, useState} from 'react'
 import {Button, Modal} from 'react-bootstrap-v5'
-import {shallowEqual, useSelector} from 'react-redux'
+import {shallowEqual, useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {RootState} from '../../../../../setup'
 import {KTSVG} from '../../../../../_metronic/helpers'
 import {ITableState} from '../Redux/TableRedux'
+import * as Yup from 'yup'
 
 type Props = {
   title: string
@@ -13,10 +15,33 @@ type Props = {
   btnTarget?: string
 }
 
+
+const searchSchema = Yup.object().shape({
+  search: Yup.string()
+    .min(3, 'Mínimo 3 carácteres')
+    .max(30, 'Máximo 30 carácteres')
+    .required('Debes escribir algo para hacer una busqueda'),
+})
+
+const initialValues = {
+  search: ''
+}
+
+
 export const TableHeader = () => {
   const table: any = useSelector<RootState>(({table}) => table)
 
   const {tableHeader} = table
+
+  const [loading, setLoading] = useState(false)
+  const formik = useFormik({
+    initialValues,
+    validationSchema: searchSchema,
+    onSubmit: (values, {setStatus, setSubmitting}) => {
+      setLoading(true)
+      console.log("Haciendo submit", values)
+    },
+  })
 
   return (
     <>
@@ -35,16 +60,24 @@ export const TableHeader = () => {
           data-bs-trigger='hover'
         >
           <div className='d-flex align-items-center position-relative d-sm-none d-none d-md-block d-lg-block'>
-            <KTSVG
-              path='/media/icons/duotone/General/Search.svg'
-              className='svg-icon-2 svg-icon-lg-1 svg-icon-gray-500 position-absolute top-50 ms-5 translate-middle-y'
-            />
+            <form
+              onSubmit={formik.handleSubmit}
+            >
+            <button type='submit' className="btn btn-link"> 
+              <KTSVG
+                path='/media/icons/duotone/General/Search.svg'
+                className='svg-icon-2 svg-icon-lg-1 svg-icon-gray-500 position-absolute top-50 ms-5 translate-middle-y'
+              />
+            </button>
+
             <input
+              {...formik.getFieldProps('search')}
               type='text'
               id='kt_filter_search'
               className='form-control form-control-solid form-control-sm w-250px ps-15'
               placeholder='Search'
             />
+            </form>
           </div>
           {tableHeader.btnPath ? (
             <Link to={tableHeader.btnPath} className='btn btn-sm btn-primary ms-2'>
