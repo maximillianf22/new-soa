@@ -62,6 +62,7 @@ export const TableHeader = () => {
           <div className='d-flex align-items-center position-relative d-sm-none d-none d-md-block d-lg-block'>
             <form
               onSubmit={formik.handleSubmit}
+              style={{marginTop: "-20px"}}
             >
             <button type='submit' className="btn btn-link"> 
               <KTSVG
