@@ -58,7 +58,7 @@ const WizzardForm: FC = () => {
       <div className='card-body'>
         <div
           ref={stepperRef}
-          className='stepper stepper-links d-flex flex-column pt-15'
+          className='stepper stepper-links d-flex flex-column pt-5'
           id='kt_create_account_stepper'
         >
           <div className='stepper-nav mb-5'>
@@ -74,7 +74,7 @@ const WizzardForm: FC = () => {
 
           <Formik validationSchema={currentSchema} initialValues={initValues} onSubmit={submitStep}>
             {() => (
-              <Form className='mx-auto mw-600px w-100 pt-15 pb-10' id='kt_create_account_form'>
+              <Form className='mx-auto w-100' id='kt_create_account_form'>
                 <div className='current' data-kt-stepper-element='content'>
                   <UserForm />
                 </div>
