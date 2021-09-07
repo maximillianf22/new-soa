@@ -1,5 +1,6 @@
 import React, {FC, useEffect, useRef, useState} from 'react'
 import {UserForm} from './steps/UserForm'
+import {PlataformForm} from './steps/PlataformForm'
 import {KTSVG} from '../../../../../../../_metronic/helpers'
 import {StepperComponent} from '../../../../../../../_metronic/assets/ts/components'
 import {Formik, Form, FormikValues} from 'formik'
@@ -58,7 +59,7 @@ const WizzardForm: FC = () => {
       <div className='card-body'>
         <div
           ref={stepperRef}
-          className='stepper stepper-links d-flex flex-column pt-5'
+          className='stepper stepper-links d-flex flex-column pt-0'
           id='kt_create_account_stepper'
         >
           <div className='stepper-nav mb-5'>
@@ -79,16 +80,16 @@ const WizzardForm: FC = () => {
                   <UserForm />
                 </div>
 
-                {/* <div data-kt-stepper-element='content'>
-                  <UserNotifications />
+                <div data-kt-stepper-element='content'>
+                  <PlataformForm />
                 </div>
 
-                <div data-kt-stepper-element='content'>
+                {/*<div data-kt-stepper-element='content'>
                   <UserPermits />
                 </div> */}
 
-                <div className='d-flex flex-stack pt-15'>
-                  <div className='mr-2'>
+                <div className='d-flex flex-stack pt-0'>
+                  <div className='ms-6'>
                     <button
                       onClick={prevStep}
                       type='button'

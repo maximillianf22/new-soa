@@ -7,6 +7,7 @@ import { SelectType } from './components/UsersCreate/SelectTypeModal';
 import { UsersTable } from './components/UsersTable';
 import { UserRegularForm } from './components/UsersCreate/Forms/UserRegular';
 import { WizzardForm } from './components/UsersCreate/Forms/UserMultiplataform/WizzardForm';
+import { PlataformForm } from './components/UsersCreate/Forms/UserMultiplataform/steps/PlataformForm';
 
 
 const usersBreadCrumbs: Array<PageLink> = [
@@ -34,7 +35,7 @@ const usersBreadCrumbs: Array<PageLink> = [
 
         <Route path='/usuarios/crear'>
           <PageTitle breadcrumbs={usersBreadCrumbs}>Nuevo Usuario</PageTitle>
-          <SelectType />
+          <PlataformForm />
         </Route>
         <Route path='/usuarios/crear-multiplataforma' component={WizzardForm} />
         <Route path='/usuarios/crear-regular' component={UserRegularForm} />
