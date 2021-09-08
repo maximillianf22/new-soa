@@ -93,18 +93,18 @@ export interface ResponseGenerator{
 }
 
 export function* saga() {
-  yield takeLatest(actionTypes.Login, function* loginSaga() {
-    yield put(actions.requestUser())
-  })
+  // yield takeLatest(actionTypes.Login, function* loginSaga() {
+  //   yield put(actions.requestUser())
+  // })
 
-  yield takeLatest(actionTypes.Register, function* registerSaga() {
-    yield put(actions.requestUser())
-  })
+  // yield takeLatest(actionTypes.Register, function* registerSaga() {
+  //   yield put(actions.requestUser())
+  // })
 
-  yield takeLatest(actionTypes.UserRequested, function* userRequested() {
-    // const {data: user} = yield getUserByToken()
-    // yield put(actions.fulfillUser(user))
-  })
+  // yield takeLatest(actionTypes.UserRequested, function* userRequested() {
+  //   // const {data: user} = yield getUserByToken()
+  //   // yield put(actions.fulfillUser(user))
+  // })
 
   function* loadTasks() {
   console.log("En el WORKER Saga")
