@@ -53,16 +53,16 @@ export function Registration() {
     validationSchema: registrationSchema,
     onSubmit: (values, {setStatus, setSubmitting}) => {
       setLoading(true)
-        register(values.email, values.firstname, values.lastname, values.password)
-          .then(({data: {accessToken}}) => {
-            setLoading(false)
-            dispatch(auth.actions.login(accessToken))
-          })
-          .catch(() => {
-            setLoading(false)
-            setSubmitting(false)
-            setStatus('Registration process has broken')
-          })
+        // register(values.email, values.firstname, values.lastname, values.password)
+        //   .then(({data: {accessToken}}) => {
+        //     setLoading(false)
+        //     dispatch(auth.actions.login(accessToken))
+        //   })
+        //   .catch(() => {
+        //     setLoading(false)
+        //     setSubmitting(false)
+        //     setStatus('Registration process has broken')
+        //   })
     },
   })
 

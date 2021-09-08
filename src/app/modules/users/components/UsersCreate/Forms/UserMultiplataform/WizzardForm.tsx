@@ -43,6 +43,7 @@ const WizzardForm: FC = () => {
     } else {
       stepper.current.goto(1)
       actions.resetForm()
+      console.log('Haciendo submit', values)
     }
   }
 

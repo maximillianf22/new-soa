@@ -1,11 +1,10 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React from 'react'
-import {useIntl} from 'react-intl'
-import {KTSVG} from '../../../helpers'
+// import {useIntl} from 'react-intl'
 import {AsideMenuItem} from './AsideMenuItem'
 
 export function AsideMenuMain() {
-  const intl = useIntl()
+  // const intl = useIntl()
 
   return (
     <>

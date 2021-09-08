@@ -1,7 +1,6 @@
 import clsx from 'clsx'
 import React from 'react'
 import {useLayout} from '../../core/LayoutProvider'
-import {KTSVG} from '../../../helpers'
 import {Nav} from 'react-bootstrap-v5'
 
 const Toolbar: React.FC = () => {

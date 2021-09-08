@@ -64,20 +64,20 @@ export const TableHeader = () => {
               onSubmit={formik.handleSubmit}
               style={{marginTop: "-20px"}}
             >
-            <button type='submit' className="btn btn-link"> 
-              <KTSVG
-                path='/media/icons/duotone/General/Search.svg'
-                className='svg-icon-2 svg-icon-lg-1 svg-icon-gray-500 position-absolute top-50 ms-5 translate-middle-y'
-              />
-            </button>
+              <button type='submit' className="btn btn-link"> 
+                <KTSVG
+                  path='/media/icons/duotone/General/Search.svg'
+                  className='svg-icon-2 svg-icon-lg-1 svg-icon-gray-500 position-absolute top-50 ms-5 translate-middle-y'
+                />
+              </button>
 
-            <input
-              {...formik.getFieldProps('search')}
-              type='text'
-              id='kt_filter_search'
-              className='form-control form-control-solid form-control-sm w-250px ps-15'
-              placeholder='Search'
-            />
+              <input
+                {...formik.getFieldProps('search')}
+                type='text'
+                id='kt_filter_search'
+                className='form-control form-control-solid form-control-sm w-250px ps-15'
+                placeholder='Search'
+              />
             </form>
           </div>
           {tableHeader.btnPath ? (

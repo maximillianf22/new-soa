@@ -2,7 +2,6 @@ import {FC, useRef, useEffect, useState} from 'react'
 import {shallowEqual, useSelector, connect, useDispatch, ConnectedProps} from 'react-redux'
 import {LayoutSplashScreen} from '../../../../_metronic/layout/core'
 import * as auth from './AuthRedux'
-import {getUserByToken} from './AuthCRUD'
 import {RootState} from '../../../../setup'
 
 const mapState = (state: RootState) => ({auth: state.auth})
@@ -18,19 +17,19 @@ const AuthInit: FC<PropsFromRedux> = (props) => {
   // We should request user by authToken before rendering the application
   useEffect(() => {
     const requestUser = async () => {
-      try {
-        if (!didRequest.current) {
-          const {data: user} = await getUserByToken()
-          dispatch(props.fulfillUser(user))
-        }
-      } catch (error) {
-        console.error(error)
-        if (!didRequest.current) {
-          dispatch(props.logout())
-        }
-      } finally {
+      // try {
+      //   if (!didRequest.current) {
+      //     const {data: user} = await getUserByToken()
+      //     dispatch(props.fulfillUser(user))
+      //   }
+      // } catch (error) {
+      //   console.error(error)
+      //   if (!didRequest.current) {
+      //     dispatch(props.logout())
+      //   }
+      // } finally {
         setShowSplashScreen(false)
-      }
+      // }
 
       return () => (didRequest.current = true)
     }

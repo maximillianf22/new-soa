@@ -1,5 +1,4 @@
-import React, {useState, FC} from 'react'
-import {useDispatch} from 'react-redux'
+import React, {FC} from 'react'
 import * as Yup from 'yup'
 import {useFormik} from 'formik'
 import {KTSVG} from '../../../helpers'
@@ -17,18 +16,18 @@ export const MenuInnerSearch: FC<Props> = ({className = ''}) => {
     search: '',
   }
 
-  const [loading, setLoading] = useState(false)
-  const dispatch = useDispatch()
-  const formik = useFormik({
-    initialValues,
-    validationSchema: searchSchema,
-    onSubmit: (values, {setStatus, setSubmitting}) => {
-      setLoading(true)
-      // useEffect(() => {
-      //   Aquí va la función que hace axios a la API
-      // }, [])
-    },
-  })
+  // const [loading, setLoading] = useState(false)
+  // const dispatch = useDispatch()
+  // const formik = useFormik({
+  //   initialValues,
+  //   validationSchema: searchSchema,
+  //   onSubmit: (values, {setStatus, setSubmitting}) => {
+  //     // setLoading(true)
+  //     // useEffect(() => {
+  //     //   Aquí va la función que hace axios a la API
+  //     // }, [])
+  //   },
+  // })
 
   return (
     <>
