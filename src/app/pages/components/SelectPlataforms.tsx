@@ -1,16 +1,24 @@
 import React from 'react'
-import {Form} from 'react-bootstrap-v5'
+import Select from 'react-select'
+
+const options = [
+  {value: 'plataforma1', label: 'Plaaforma One'},
+  {value: 'plataforma2', label: 'Plataform Two'},
+  {value: 'plataforma3', label: 'Plataform Three'},
+  {value: 'Plataforma4', label: 'Plataform Four'},
+]
 
 export const SelectPlataforms = () => {
   return (
     <>
       <div className='col-5 ps-4 col-md-4 col-lg-3'>
-        <Form.Select className="border-0">
-          <option>Seleccione la Plataforma o Cliente</option>
-          <option value='1'>Plataforma One</option>
-          <option value='2'>Plataforma Two</option>
-          <option value='3'>Plataforma Three</option>
-        </Form.Select>
+        <Select
+          className='form-control form-control-sm form-control border-0 p-0'
+          placeholder='Seleccione la Plataforma o Cliente'
+          name='selectPlataform'
+          options={options}
+          id='plataform'
+        />
       </div>
     </>
   )
