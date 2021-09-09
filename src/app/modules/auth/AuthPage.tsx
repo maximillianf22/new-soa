@@ -14,7 +14,6 @@ export function AuthPage() {
     }
   }, [])
 
-  const toolbarButtonIconSizeClass = 'svg-icon-1'
 
   return (
     <>

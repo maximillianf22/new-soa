@@ -1,15 +1,5 @@
-import {useState} from 'react'
-import {Formik, FormikHelpers, useFormik} from 'formik'
 import Select from 'react-select'
 import {KTSVG} from '../../../../../../../../_metronic/helpers'
-
-interface selectors {
-  estaciones: string
-}
-
-const initialValues = {
-  search: '',
-}
 
 export function PlataformForm() {
   const optionsProfile = [
@@ -24,14 +14,14 @@ export function PlataformForm() {
     {value: 'elRoble', label: 'El Roble'},
   ]
 
-  const [loading, setLoading] = useState(false)
-  const formik = useFormik({
-    initialValues,
-    onSubmit: (values, {setStatus, setSubmitting}) => {
-      setLoading(true)
-      console.log('Haciendo submit', values)
-    },
-  })
+  // const [loading, setLoading] = useState(false)
+  // const formik = useFormik({
+  //   initialValues,
+  //   onSubmit: (values, {setStatus, setSubmitting}) => {
+  //     setLoading(true)
+  //     console.log('Haciendo submit', values)
+  //   },
+  // })
 
   return (
     <>

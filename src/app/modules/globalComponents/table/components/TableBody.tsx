@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallowEqual, useSelector } from 'react-redux';
 import { RootState } from '../../../../../setup';
-import { ITableState } from '../Redux/TableRedux';
 
 type TableContent = {
   name: 'Ana Simmons',

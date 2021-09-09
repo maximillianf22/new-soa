@@ -1,11 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, {useState} from 'react'
-import {useDispatch} from 'react-redux'
 import {useFormik} from 'formik'
 import * as Yup from 'yup'
 import clsx from 'clsx'
-import * as auth from '../redux/AuthRedux'
-import {register} from '../redux/AuthCRUD'
 import {Link} from 'react-router-dom'
 import {toAbsoluteUrl} from '../../../../_metronic/helpers'
 
@@ -47,12 +44,12 @@ const registrationSchema = Yup.object().shape({
 
 export function Registration() {
   const [loading, setLoading] = useState(false)
-  const dispatch = useDispatch()
   const formik = useFormik({
     initialValues,
     validationSchema: registrationSchema,
-    onSubmit: (values, {setStatus, setSubmitting}) => {
+    onSubmit: (values) => {
       setLoading(true)
+      console.log(values)
         // register(values.email, values.firstname, values.lastname, values.password)
         //   .then(({data: {accessToken}}) => {
         //     setLoading(false)

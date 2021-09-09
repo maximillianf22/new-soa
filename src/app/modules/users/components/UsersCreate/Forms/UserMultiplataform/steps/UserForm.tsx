@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import {toAbsoluteUrl} from '../../../../../../../../_metronic/helpers'
 import * as Yup from 'yup'
 import {useFormik} from 'formik'
 import {Button, Collapse} from 'react-bootstrap-v5'
@@ -44,7 +43,6 @@ const initialValues = {
 }
 
 export const UserForm = () => {
-  const [loading, setLoading] = useState(false)
   const formik = useFormik<IUserForm>({
     initialValues,
     validationSchema: profileDetailsSchema,

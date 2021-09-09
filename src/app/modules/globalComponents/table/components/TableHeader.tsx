@@ -1,19 +1,10 @@
-import { Formik, useFormik } from 'formik'
-import React, {FC, useState} from 'react'
-import {Button, Modal} from 'react-bootstrap-v5'
-import {shallowEqual, useDispatch, useSelector} from 'react-redux'
+import { useFormik } from 'formik'
+import React, {useState} from 'react'
+import {useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {RootState} from '../../../../../setup'
 import {KTSVG} from '../../../../../_metronic/helpers'
-import {ITableState} from '../Redux/TableRedux'
 import * as Yup from 'yup'
-
-type Props = {
-  title: string
-  count: number
-  btnPath?: string | undefined
-  btnTarget?: string
-}
 
 
 const searchSchema = Yup.object().shape({
@@ -37,7 +28,7 @@ export const TableHeader = () => {
   const formik = useFormik({
     initialValues,
     validationSchema: searchSchema,
-    onSubmit: (values, {setStatus, setSubmitting}) => {
+    onSubmit: (values) => {
       setLoading(true)
       console.log("Haciendo submit", values)
     },
@@ -99,13 +90,13 @@ export const TableHeader = () => {
             </>
           )}
 
-          <a className='btn btn-info btn-sm btn-icon ms-2'>
+          <a href="!#" className='btn btn-info btn-sm btn-icon ms-2'>
             <i className='fa fa-filter'></i>
           </a>
-          <a className='btn btn-success btn-sm btn-icon ms-2'>
+          <a href="!#" className='btn btn-success btn-sm btn-icon ms-2'>
             <i className='fa fa-download'></i>
           </a>
-          <a className='btn btn-secondary btn-sm btn-icon ms-2'>
+          <a href="!#" className='btn btn-secondary btn-sm btn-icon ms-2'>
             <i className='fa fa-cog'></i>
           </a>
         </div>
