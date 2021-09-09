@@ -8,8 +8,7 @@ import {useFormik} from 'formik'
 import * as auth from '../redux/AuthRedux'
 
 const loginSchema = Yup.object().shape({
-  email: Yup.string()
-    .email('Formato de correo incorrecto')
+  username: Yup.string()
     .min(3, 'Mínimo 3 carácteres')
     .max(50, 'Máximo 50 carácteres')
     .required('Usuario es requerido'),
@@ -20,8 +19,8 @@ const loginSchema = Yup.object().shape({
 })
 
 const initialValues = {
-  email: 'admin@demo.com',
-  password: 'demo',
+  username: 'admin',
+  password: 'admin',
 }
 
 export function Login() {
@@ -32,8 +31,8 @@ export function Login() {
     validationSchema: loginSchema,
     onSubmit: (values, {setStatus, setSubmitting}) => {
       setLoading(true)
-      console.log("haciendo dispatch")
-      dispatch({type: auth.actionTypes.asyncLogin})
+      console.log("haciendo dispatch", values)
+      dispatch({type: auth.actionTypes.asyncLogin, payload: values})
 
       // login(values.email, values.password)
       //   .then(({data: {accessToken}}) => {
@@ -67,22 +66,22 @@ export function Login() {
             <div className='input-group input-group-lg mb-3 mt-5'>
               <input
                 placeholder='Usuario'
-                {...formik.getFieldProps('email')}
+                {...formik.getFieldProps('username')}
                 className={clsx(
                   'form-control form-control-solid h-50px',
-                  {'is-invalid': formik.touched.email && formik.errors.email},
+                  {'is-invalid': formik.touched.username && formik.errors.username},
                   {
-                    'is-valid': formik.touched.email && !formik.errors.email,
+                    'is-valid': formik.touched.username && !formik.errors.username,
                   }
                 )}
-                type='email'
-                name='email'
+                type='text'
+                name='username'
                 id='exampleInputEmail1'
               />
             </div>
-            {formik.touched.email && formik.errors.email && (
+            {formik.touched.username && formik.errors.username && (
               <div className='fv-plugins-message-container'>
-                <span role='alert'>{formik.errors.email}</span>
+                <span role='alert'>{formik.errors.username}</span>
               </div>
             )}
             <div className='text-end text-dark mt-5'>

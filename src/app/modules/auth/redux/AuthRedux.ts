@@ -1,9 +1,10 @@
+import { SagaIterator } from '@redux-saga/types'
 import {Action} from '@reduxjs/toolkit'
 import {persistReducer} from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import {put, takeLatest, call} from 'redux-saga/effects'
 import {UserModel} from '../models/UserModel'
-import {login} from './AuthCRUD'
+import { login, Data } from './AuthCRUD';
 
 export interface ActionWithPayload<T> extends Action {
   payload?: T
@@ -106,17 +107,20 @@ export function* saga() {
   //   // yield put(actions.fulfillUser(user))
   // })
 
-  function* loadTasks() {
+  interface test {
+    type: string, 
+    payload: Data
+  }
+
+  function* loginSaga({payload}:test) {
   console.log("En el WORKER Saga")
 
-    const response:ResponseGenerator = yield call(login)
-    // console.log("DESPUES", response.access)
-    // console.log(actions.login(response))
+    const response:ResponseGenerator = yield call(login, payload)
     yield put(actions.login(response))
 };
 
   // Watcher Sagas
-  yield takeLatest(actionTypes.asyncLogin, loadTasks)
+  yield takeLatest(actionTypes.asyncLogin, loginSaga)
 
   
 }
