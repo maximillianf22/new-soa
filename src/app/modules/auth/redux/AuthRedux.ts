@@ -40,22 +40,23 @@ export const reducer = persistReducer(
       case actionTypes.Login: {
         const access = action.payload?.access
         const user = action.payload?.user
-        return {...state, access, user}
+        return {...state, access, user, error: undefined}
       }
 
       case actionTypes.Loading: {
         return {...state, loading: !state.loading}
       }
 
+      case actionTypes.LoginError: {
+        const error = action.payload
+        return {...state, error}
+      }
+      
       case actionTypes.Register: {
         const access = action.payload?.access
         return {access, user: undefined}
       }
       
-      case actionTypes.LoginError: {
-        const error = action.payload
-        return {...state, error}
-      }
 
       case actionTypes.Logout: {
         return initialAuthState
