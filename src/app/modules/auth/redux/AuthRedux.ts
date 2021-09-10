@@ -12,6 +12,7 @@ export interface ActionWithPayload<T> extends Action {
 export const actionTypes = {
   asyncLogin: '[Login] asyncLogin',
   Login: '[Login] Action',
+  LoginError: '[Login] Login error',
   Loading: '[Login] Loading',
   Logout: '[Logout] Action',
   Register: '[Register] Action',
@@ -23,7 +24,8 @@ export const actionTypes = {
 const initialAuthState: ResponseGenerator = {
   user: undefined,
   access: undefined,
-  loading: false
+  loading: false,
+  error: undefined,
 }
 
 export interface IAuthState {
@@ -48,6 +50,11 @@ export const reducer = persistReducer(
       case actionTypes.Register: {
         const access = action.payload?.access
         return {access, user: undefined}
+      }
+      
+      case actionTypes.LoginError: {
+        const error = action.payload
+        return {...state, error}
       }
 
       case actionTypes.Logout: {
@@ -77,6 +84,7 @@ export const reducer = persistReducer(
 export const actions = {
   login: (loginResponse: ResponseGenerator | undefined) => ({type: actionTypes.Login, payload: loginResponse}),
   loading: () => ({type: actionTypes.Loading}),
+  loginError: (error: ResponseGenerator) => ({type: actionTypes.LoginError, payload: error}),
   register: (accessToken: string) => ({
     type: actionTypes.Register,
     payload: {accessToken},
@@ -93,17 +101,25 @@ export interface ResponseGenerator{
   access?: string | undefined
   refresh?:string,
   user?:UserModel,
-  loading?: boolean
+  loading?: boolean,
+  error?: ResponseGenerator | undefined
+}
+
+interface response {
+  data?: ResponseGenerator | undefined
 }
 
 interface ActionTypePayload {
   type: string, 
   payload: Data
 }
-
-interface response {
-  data?: ResponseGenerator | undefined
-}
+// interface IerrorResponse {
+//   config: object
+//   data: object
+//   headers: { detail: string }
+//   status: number
+//   statusText: string
+// }
 
 export function* saga() {
   // Worker Sagas
@@ -112,9 +128,8 @@ export function* saga() {
       yield put(actions.loading());
       const {data}:response = yield call(login, payload);
       yield put(actions.login(data))
-      console.log("final del try", data)
-    } catch (error) {
-      console.log(error)
+    } catch (error:any) {
+      yield put(actions.loginError(error.response.data.detail))
     } finally {
       yield put(actions.loading());
     }

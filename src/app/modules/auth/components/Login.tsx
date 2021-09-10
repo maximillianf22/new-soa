@@ -1,12 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, {useState} from 'react'
+import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import * as Yup from 'yup'
 import clsx from 'clsx'
 import {Link} from 'react-router-dom'
 import {useFormik} from 'formik'
 import * as auth from '../redux/AuthRedux'
-import { login } from '../redux/AuthCRUD'
 import { RootState } from '../../../../setup/redux/RootReducer';
 
 const loginSchema = Yup.object().shape({
@@ -27,8 +26,7 @@ const initialValues = {
 
 export function Login() {
   const dispatch = useDispatch()
-  const {loading}: any = useSelector<RootState>(({auth}) => auth)
-  console.log(loading)
+  const {loading, error}: any = useSelector<RootState>(({auth}) => auth)
   const formik = useFormik({
     initialValues,
     validationSchema: loginSchema,
@@ -49,10 +47,12 @@ export function Login() {
             <span className='text-muted fw-bold'>Ingrese su usuario y contraseña</span>
           </div>
           <form className='w-75 m-auto' onSubmit={formik.handleSubmit} id='kt_login_signin_form'>
-            <div className='form-text bg-light-danger rounded w-100 p-4 mb-5 text-dark'>
-              El <b>usuario</b> o <b>contraseña</b> está incorrecto por favor verifique e intente de
-              nuevo.
-            </div>
+            { error && 
+              (<div className='form-text bg-light-danger rounded w-100 p-4 mb-5 text-dark'>
+                {error}
+              </div>) 
+            }
+            
             <div className='input-group input-group-lg mb-3 mt-5'>
               <input
                 placeholder='Usuario'
