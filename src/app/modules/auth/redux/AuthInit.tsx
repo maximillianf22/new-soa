@@ -12,7 +12,7 @@ const AuthInit: FC<PropsFromRedux> = (props) => {
   const didRequest = useRef(false)
   const dispatch = useDispatch()
   const [showSplashScreen, setShowSplashScreen] = useState(true)
-  const accessToken = useSelector<RootState>(({auth}) => auth.accessToken, shallowEqual)
+  const access = useSelector<RootState>(({auth}) => auth.access, shallowEqual)
 
   // We should request user by authToken before rendering the application
   useEffect(() => {
@@ -34,7 +34,7 @@ const AuthInit: FC<PropsFromRedux> = (props) => {
       return () => (didRequest.current = true)
     }
 
-    if (accessToken) {
+    if (access) {
       requestUser()
     } else {
       dispatch(props.logout())

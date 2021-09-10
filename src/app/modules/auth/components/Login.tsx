@@ -1,11 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, {useState} from 'react'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import * as Yup from 'yup'
 import clsx from 'clsx'
 import {Link} from 'react-router-dom'
 import {useFormik} from 'formik'
 import * as auth from '../redux/AuthRedux'
+import { login } from '../redux/AuthCRUD'
+import { RootState } from '../../../../setup/redux/RootReducer';
 
 const loginSchema = Yup.object().shape({
   username: Yup.string()
@@ -24,26 +26,14 @@ const initialValues = {
 }
 
 export function Login() {
-  const [loading, setLoading] = useState(false)
   const dispatch = useDispatch()
+  const {loading}: any = useSelector<RootState>(({auth}) => auth)
+  console.log(loading)
   const formik = useFormik({
     initialValues,
     validationSchema: loginSchema,
     onSubmit: (values, {setStatus, setSubmitting}) => {
-      setLoading(true)
-      console.log("haciendo dispatch", values)
       dispatch({type: auth.actionTypes.asyncLogin, payload: values})
-
-      // login(values.email, values.password)
-      //   .then(({data: {accessToken}}) => {
-      //     setLoading(false)
-      //     dispatch(auth.actions.login(accessToken))
-      //   })
-      //   .catch(() => {
-      //     setLoading(false)
-      //     setSubmitting(false)
-      //     setStatus('The login detail is incorrect')
-      //   })
     },
   })
 
@@ -124,7 +114,7 @@ export function Login() {
                 type='submit'
                 id='kt_sign_in_submit'
                 className='btn btn-lg btn-dark h-45px'
-                disabled={formik.isSubmitting || !formik.isValid}
+                disabled={loading || !formik.isValid}
               >
                 {!loading && <span className='indicator-label'>Iniciar sesión</span>}
                 {loading && (

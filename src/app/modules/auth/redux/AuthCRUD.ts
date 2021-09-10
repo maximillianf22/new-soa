@@ -18,8 +18,6 @@ export interface Data {
 // Servidor debe retonar UserModel
 export function login(data:Data): Promise<UserModel> {
   return axios.post(LOGIN_URL, data)
-    .then(res => res.data)
-    .catch(e=>console.log(e))
 }
 
 // Servidor debe retonar AuthModel
