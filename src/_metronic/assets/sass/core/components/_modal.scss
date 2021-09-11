@@ -1,10 +1,10 @@
 //
 // Modal
 //
-
 .modal-backdrop {
-    background-color: transparent !important;
-  }
+    min-width: 150vw;
+    min-height: 150vh;
+}
 // Base
 .modal {
     // Mobile header

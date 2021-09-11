@@ -1,25 +1,9 @@
 import React, {useState} from 'react'
-import {toAbsoluteUrl} from '../../../../../../../../_metronic/helpers'
 import * as Yup from 'yup'
 import {useFormik} from 'formik'
 import {Button, Collapse} from 'react-bootstrap-v5'
 import Select from 'react-select'
-
-const profileDetailsSchema = Yup.object().shape({
-  // fName: Yup.string().required('First name is required'),
-})
-
-export interface IUserForm {
-  name: string
-  lastName: string
-  email: string
-  username: string
-  password: string
-  confirmPassword: string
-  initialDate: Date
-  finalDate: Date
-  dueDate: string
-}
+import {ICreateUser, createUserSchemas, initialValues} from './Helpers'
 
 const options = [
   {value: 'Anual', label: 'Anual'},
@@ -31,26 +15,12 @@ const options = [
   {value: '7 Dias', label: '7 Dias'},
 ]
 
-const initialValues = {
-  name: '',
-  lastName: '',
-  email: '',
-  username: '',
-  password: '',
-  confirmPassword: '',
-  initialDate: new Date(),
-  finalDate: new Date(),
-  dueDate: '',
-}
-
-export const UserForm = () => {
+export const StepUserForm = () => {
   const [loading, setLoading] = useState(false)
-  const formik = useFormik<IUserForm>({
+  const formik = useFormik<ICreateUser>({
     initialValues,
-    validationSchema: profileDetailsSchema,
-    onSubmit: (values) => {
-      console.log(values)
-    },
+    validationSchema: createUserSchemas,
+    onSubmit: (values) => {},
   })
 
   const [open, setOpen] = useState(false)
@@ -233,9 +203,7 @@ export const UserForm = () => {
                     id='flexSwitchChecked'
                     checked
                   />
-                  <label className='form-check-label'>
-                    ¿Activo?
-                  </label>
+                  <label className='form-check-label'>¿Activo?</label>
                 </div>
               </div>
             </div>

@@ -1,17 +1,10 @@
 import {useState} from 'react'
 import {Formik, FormikHelpers, useFormik} from 'formik'
 import Select from 'react-select'
-import {KTSVG} from '../../../../../../../../_metronic/helpers'
+import {KTSVG} from '../../../../../_metronic/helpers'
+import {createUserSchemas, ICreateUser, initialValues} from './Helpers'
 
-interface selectors {
-  estaciones: string
-}
-
-const initialValues = {
-  search: '',
-}
-
-export function PlataformForm() {
+export function StepMultiplatform() {
   const optionsProfile = [
     {value: 'admin', label: 'Administrador'},
     {value: 'supervisor', label: 'Supervisor'},
@@ -25,13 +18,13 @@ export function PlataformForm() {
   ]
 
   const [loading, setLoading] = useState(false)
-  const formik = useFormik({
-    initialValues,
-    onSubmit: (values, {setStatus, setSubmitting}) => {
-      setLoading(true)
-      console.log('Haciendo submit', values)
-    },
-  })
+    const formik = useFormik<ICreateUser>({
+      initialValues,
+      validationSchema: createUserSchemas,
+      onSubmit: (values) => {
+        
+      },
+    })
 
   return (
     <>
@@ -206,33 +199,6 @@ export function PlataformForm() {
           </div>
         </div>
       </div>
-
-      {/*   
-      <Formik
-
-        initialValues={{estaciones: ''}}
-        onSubmit={(values: selectors, {setSubmitting}: FormikHelpers<selectors>) => {
-          setSubmitting(true)
-          console.log('Submitting form:', values)
-          setSubmitting(false)
-        }}
-      >
-        {({handleBlur,handleSubmit,setFieldValue,}) => (
-          <Form id='addLocationForm' onSubmit={handleSubmit}>
-              <Select
-                name='locationType'
-                options={locationTypeOptions}
-                onBlur={handleBlur}
-                id='estaciones'
-                onChange={(locationTypeOptions) => setFieldValue('estaciones', locationTypeOptions)}
-              />
-
-            <button type='submit' className='btn btn-primary'>
-              a dormir
-            </button>
-          </Form>
-        )}
-      </Formik> */}
     </>
   )
 }

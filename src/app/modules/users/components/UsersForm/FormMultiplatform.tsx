@@ -1,43 +1,35 @@
 import React, {FC, useEffect, useRef, useState} from 'react'
-import {UserForm} from './steps/UserForm'
-import {PlataformForm} from './steps/PlataformForm'
-import {KTSVG} from '../../../../../../../_metronic/helpers'
-import {StepperComponent} from '../../../../../../../_metronic/assets/ts/components'
+import {StepUserForm} from './StepUser'
+import {StepMultiplatform} from './StepMultiplatform'
+import {KTSVG} from '../../../../../_metronic/helpers'
+import {StepperComponent} from '../../../../../_metronic/assets/ts/components'
 import {Formik, Form, FormikValues} from 'formik'
-import {createUserSchemas, ICreateUser, inits} from './FormHelpers'
+import {createUserSchemas, ICreateUser, initialValues, wizzardSchemas} from './Helpers'
 
-const WizzardForm: FC = () => {
+const FormMultiplatform: FC = () => {
   const stepperRef = useRef<HTMLDivElement | null>(null)
   const stepper = useRef<StepperComponent | null>(null)
-  const [currentSchema, setCurrentSchema] = useState(createUserSchemas[0])
-  const [initValues] = useState<ICreateUser>(inits)
+  const [currentSchema, setCurrentSchema] = useState(wizzardSchemas[0])
+  const [initValues] = useState<ICreateUser>(initialValues)
   const [isSubmitButton, setSubmitButton] = useState(false)
 
   const loadStepper = () => {
     stepper.current = StepperComponent.createInsance(stepperRef.current as HTMLDivElement)
   }
-
   const prevStep = () => {
     if (!stepper.current) {
       return
     }
-
     setSubmitButton(stepper.current.currentStepIndex === stepper.current.totatStepsNumber! - 1)
-
     stepper.current.goPrev()
-
-    setCurrentSchema(createUserSchemas[stepper.current.currentStepIndex - 1])
+    setCurrentSchema(wizzardSchemas[stepper.current.currentStepIndex - 1])
   }
-
   const submitStep = (values: ICreateUser, actions: FormikValues) => {
     if (!stepper.current) {
       return
     }
-
     setSubmitButton(stepper.current.currentStepIndex === stepper.current.totatStepsNumber! - 1)
-
-    setCurrentSchema(createUserSchemas[stepper.current.currentStepIndex])
-
+    setCurrentSchema(wizzardSchemas[stepper.current.currentStepIndex])
     if (stepper.current.currentStepIndex !== stepper.current.totatStepsNumber) {
       stepper.current.goNext()
     } else {
@@ -46,15 +38,12 @@ const WizzardForm: FC = () => {
       console.log('Haciendo submit', values)
     }
   }
-
   useEffect(() => {
     if (!stepperRef.current) {
       return
     }
-
     loadStepper()
   }, [stepperRef])
-
   return (
     <div className='card'>
       <div className='card-body'>
@@ -71,24 +60,16 @@ const WizzardForm: FC = () => {
             <div className='stepper-item' data-kt-stepper-element='nav'>
               <h3 className='stepper-title'>Configuracion de Plataformas</h3>
             </div>
-
           </div>
-
           <Formik validationSchema={currentSchema} initialValues={initValues} onSubmit={submitStep}>
             {() => (
               <Form className='mx-auto w-100' id='kt_create_account_form'>
                 <div className='current' data-kt-stepper-element='content'>
-                  <UserForm />
+                  <StepUserForm />
                 </div>
-
                 <div data-kt-stepper-element='content'>
-                  <PlataformForm />
+                  <StepMultiplatform />
                 </div>
-
-                {/*<div data-kt-stepper-element='content'>
-                  <UserPermits />
-                </div> */}
-
                 <div className='d-flex flex-stack pt-0'>
                   <div className='ms-6'>
                     <button
@@ -104,7 +85,6 @@ const WizzardForm: FC = () => {
                       Regresar
                     </button>
                   </div>
-
                   <div>
                     <button type='submit' className='btn btn-lg btn-primary me-3'>
                       <span className='indicator-label'>
@@ -126,5 +106,4 @@ const WizzardForm: FC = () => {
     </div>
   )
 }
-
-export {WizzardForm}
+export {FormMultiplatform}

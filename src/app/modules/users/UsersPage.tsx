@@ -1,13 +1,10 @@
 import React, {FC} from 'react'
 import { PageTitle } from '../../../_metronic/layout/core'
-import { useIntl } from 'react-intl';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { PageLink } from '../../../_metronic/layout/core';
-import { SelectType } from './components/UsersCreate/SelectTypeModal';
 import { UsersTable } from './components/UsersTable';
-import { UserRegularForm } from './components/UsersCreate/Forms/UserRegular';
-import { WizzardForm } from './components/UsersCreate/Forms/UserMultiplataform/WizzardForm';
-import { PlataformForm } from './components/UsersCreate/Forms/UserMultiplataform/steps/PlataformForm';
+import { FormRegular } from './components/UsersForm/FormRegular';
+import { FormMultiplatform } from './components/UsersForm/FormMultiplatform';
 
 
 const usersBreadCrumbs: Array<PageLink> = [
@@ -33,12 +30,15 @@ const usersBreadCrumbs: Array<PageLink> = [
           <UsersTable />
         </Route>
 
-        <Route path='/usuarios/crear'>
-          <PageTitle breadcrumbs={usersBreadCrumbs}>Nuevo Usuario</PageTitle>
-          <PlataformForm />
+        <Route path='/usuarios/crear-multiplataforma'>
+          <PageTitle breadcrumbs={usersBreadCrumbs}>Registro de usuario Multiplataforma</PageTitle>
+          <FormMultiplatform />
         </Route>
-        <Route path='/usuarios/crear-multiplataforma' component={WizzardForm} />
-        <Route path='/usuarios/crear-regular' component={UserRegularForm} />
+
+        <Route path='/usuarios/crear-regular'>
+          <PageTitle breadcrumbs={usersBreadCrumbs}>Registro de usuario</PageTitle>
+          <FormRegular />
+        </Route>
 
         <Redirect from='/usuarios' exact={true} to='/usuarios/tabla' />
         <Redirect to='/usuarios/tabla' />
