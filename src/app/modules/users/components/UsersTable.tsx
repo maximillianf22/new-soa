@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux';
 import { KTSVG } from '../../../../_metronic/helpers';
-import { actions, ITableState } from '../../globalComponents/table/Redux/TableRedux';
+import { actions, ITableState, actionTypes } from '../../globalComponents/table/Redux/TableRedux';
 import { TableComponent } from '../../globalComponents/table/TableComponent';
 
 export const UsersTable = () => {
@@ -61,7 +61,8 @@ export const UsersTable = () => {
                 ]
             }
         }
-        dispatch(actions.load(initialTableState));
+        // dispatch(actions.load(initialTableState));
+        dispatch({type: actionTypes.asyncLoad})
         return () => {
             dispatch(actions.clear())
         }

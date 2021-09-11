@@ -106,7 +106,7 @@ export interface ResponseGenerator{
   error?: ResponseGenerator | undefined
 }
 
-interface response {
+export interface response {
   data?: ResponseGenerator | undefined
 }
 

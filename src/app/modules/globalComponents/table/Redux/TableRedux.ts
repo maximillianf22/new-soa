@@ -1,6 +1,11 @@
+import { call, put } from '@redux-saga/core/effects';
 import {Action} from '@reduxjs/toolkit'
 import {persistReducer} from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
+import { getUsers } from './TableCRUD';
+import { UserModel } from '../../../auth/models/UserModel';
+import { takeLatest } from 'redux-saga/effects';
+import { response } from '../../../auth/redux/AuthRedux';
 
 export interface ActionWithPayload<T> extends Action {
   payload?: T
@@ -47,6 +52,7 @@ export const tableReducer = persistReducer(
   (state: ITableState = initialTableState, action: ActionWithPayload<ITableState>) => {
     switch (action.type) {
       case actionTypes.Load: { 
+        console.log(action.payload)
         const tableHeader = action.payload?.tableHeader
         const tableBody = action.payload?.tableBody
         return {tableHeader, tableBody}
@@ -62,9 +68,36 @@ export const tableReducer = persistReducer(
 )
 
 export const actions = {
-  load: (payload: ITableState) => ({type: actionTypes.Load, payload: payload}),
+  load: (payload: any) => ({type: actionTypes.Load, payload: payload}),
   clear: () => ({type: actionTypes.clearTable,}),
 }
 
 export function* saga() {
+  // Worker Sagas
+  function* asyncLoad() {
+    try {
+      console.log("llegando")
+      const {data}: response = yield call(getUsers)
+      yield put(actions.load({
+        tableHeader: {
+          title: 'Usuario',
+          count: 234,
+          btnPath: '/usuarios/crear',
+        //   btnPath: '',
+          btnTarget: ''
+        },
+        tableBody: {
+            tableHeads: ['Nombre','Correo','Usuario','Rol'],
+            tableContent: data
+        }
+    }))
+      console.log(data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  // Watcher Sagas
+  yield takeLatest(actionTypes.asyncLoad, asyncLoad)
+  
 }
