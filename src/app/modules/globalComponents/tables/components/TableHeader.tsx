@@ -11,8 +11,8 @@ import * as Yup from 'yup'
 type Props = {
   title: string
   count: number
-  btnPath?: string | undefined
-  btnTarget?: string
+  btnLink?: string | undefined
+  btnModal?: string
 }
 
 
@@ -80,8 +80,8 @@ export const TableHeader = () => {
               />
             </form>
           </div>
-          {tableHeader.btnPath ? (
-            <Link to={tableHeader.btnPath} className='btn btn-sm btn-primary ms-2'>
+          {tableHeader.btnLink ? (
+            <Link to={tableHeader.btnLink} className='btn btn-sm btn-primary ms-2'>
               <i className='fas fa-plus'></i>
               Nuevo
             </Link>
@@ -91,7 +91,7 @@ export const TableHeader = () => {
                 type='button'
                 className='btn btn-sm btn-primary ms-2'
                 data-bs-toggle='modal'
-                data-bs-target={tableHeader.btnTarget}
+                data-bs-target={tableHeader.btnModal}
               >
                 <i className='fas fa-plus'></i>
                 Nuevo

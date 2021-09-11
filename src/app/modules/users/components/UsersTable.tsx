@@ -12,8 +12,8 @@ export const UsersTable = () => {
     tableHeader: {
       title: 'Usuario',
       count: 234,
-      btnPath: '',
-      btnTarget: '#kt_modal_2',
+      btnLink: '',
+      btnModal: '#kt_modal_2',
     },
     tableBody: {
       tableHeads: ['Nombre', 'Correo', 'Usuario', 'Rol'],
