@@ -3,7 +3,6 @@ import {Action} from '@reduxjs/toolkit'
 import {persistReducer} from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import { getUsers } from './TableCRUD';
-import { UserModel } from '../../../models/UserModel';
 import { takeLatest } from 'redux-saga/effects';
 import { response } from '../../../../auth';
 
