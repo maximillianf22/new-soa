@@ -2,7 +2,7 @@ import {Action} from '@reduxjs/toolkit'
 import {persistReducer} from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import {put, takeLatest, call} from 'redux-saga/effects'
-import { UserModel } from '../models/UserModel';
+import { UserModel } from '../../global/models/UserModel';
 import { login, Data } from './AuthCRUD';
 
 export interface ActionWithPayload<T> extends Action {

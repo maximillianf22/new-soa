@@ -2,7 +2,7 @@
 import {FC} from 'react'
 import {shallowEqual, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {UserModel} from '../../../../app/modules/auth/models/UserModel'
+import {UserModel} from '../../../../app/modules/global/models/UserModel'
 import {RootState} from '../../../../setup'
 import {Languages} from './Languages'
 

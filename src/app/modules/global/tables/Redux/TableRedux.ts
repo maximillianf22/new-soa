@@ -2,10 +2,9 @@ import { call, put } from '@redux-saga/core/effects';
 import {Action} from '@reduxjs/toolkit'
 import {persistReducer} from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-import { getUsers } from './TableCRUD';
-import { UserModel } from '../../../auth/models/UserModel';
 import { takeLatest } from 'redux-saga/effects';
 import { response } from '../../../auth/redux/AuthRedux';
+import { getUsers } from '../../components/tables/Redux/TableCRUD';
 
 export interface ActionWithPayload<T> extends Action {
   payload?: T
@@ -83,7 +82,6 @@ export function* saga() {
           title: 'Usuario',
           count: 234,
           btnLink: '/usuarios/crear',
-        //   btnLink: '',
           btnModal: ''
         },
         tableBody: {

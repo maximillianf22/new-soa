@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallowEqual, useSelector } from 'react-redux';
-import { RootState } from '../../../../../setup';
+import { RootState } from '../../../../../../setup';
 
 type TableContent = {
   name: string,

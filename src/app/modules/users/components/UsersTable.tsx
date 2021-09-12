@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {useDispatch} from 'react-redux'
-import {actions, ITableState, actionTypes} from '../../globalComponents/tables/Redux/TableRedux'
-import {TableComponent} from '../../globalComponents/tables/TableComponent'
+import {actions, ITableState, actionTypes} from '../../global/components/tables/Redux/TableRedux'
+import {TableComponent} from '../../global/components/tables/TableComponent'
 
 export const UsersTable = () => {
   const dispatch = useDispatch()

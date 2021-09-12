@@ -2,8 +2,8 @@ import { useFormik } from 'formik'
 import React, {useState} from 'react'
 import {useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {RootState} from '../../../../../setup'
-import {KTSVG} from '../../../../../_metronic/helpers'
+import {RootState} from '../../../../../../setup'
+import {KTSVG} from '../../../../../../_metronic/helpers'
 import * as Yup from 'yup'
 
 const searchSchema = Yup.object().shape({
