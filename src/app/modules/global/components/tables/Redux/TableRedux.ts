@@ -3,14 +3,13 @@ import {Action} from '@reduxjs/toolkit'
 import {persistReducer} from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import { getUsers } from './TableCRUD';
-import { takeLatest } from 'redux-saga/effects';
 import { response } from '../../../../auth';
 
 export interface ActionWithPayload<T> extends Action {
   payload?: T
 }
 
-export const actionTypes = {
+export const tableActionTypes = {
   asyncLoad: '[TableRedux] start loading data',
   Load: '[TableRedux] load data to reducer',
   clearTable: '[TableRedux] clear data to reducer',
@@ -50,13 +49,12 @@ export const tableReducer = persistReducer(
   {storage, key: 'v100-demo1-table', whitelist: ['TableHeader', 'TableBody']},
   (state: ITableState = initialTableState, action: ActionWithPayload<ITableState>) => {
     switch (action.type) {
-      case actionTypes.Load: { 
-        console.log(action.payload)
+      case tableActionTypes.Load: { 
         const tableHeader = action.payload?.tableHeader
         const tableBody = action.payload?.tableBody
         return {tableHeader, tableBody}
       }
-      case actionTypes.clearTable: {
+      case tableActionTypes.clearTable: {
         return {...initialTableState}
       }
 
@@ -66,18 +64,17 @@ export const tableReducer = persistReducer(
   }
 )
 
-export const actions = {
-  load: (payload: any) => ({type: actionTypes.Load, payload: payload}),
-  clear: () => ({type: actionTypes.clearTable,}),
+export const tableActions = {
+  load: (payload: any) => ({type: tableActionTypes.Load, payload: payload}),
+  clear: () => ({type: tableActionTypes.clearTable,}),
 }
 
 export function* saga() {
   // Worker Sagas
   function* asyncLoad() {
     try {
-      console.log("llegando")
       const {data}: response = yield call(getUsers)
-      yield put(actions.load({
+      yield put(tableActions.load({
         tableHeader: {
           title: 'Usuario',
           count: 234,
@@ -89,13 +86,12 @@ export function* saga() {
             tableContent: data
         }
     }))
-      console.log(data)
     } catch (error) {
       console.log(error)
     }
   }
 
   // Watcher Sagas
-  yield takeLatest(actionTypes.asyncLoad, asyncLoad)
+  // yield takeLatest(tableActionTypes.asyncLoad, asyncLoad)
   
 }

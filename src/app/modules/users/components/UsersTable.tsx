@@ -1,13 +1,20 @@
-import React, {useEffect, useState} from 'react'
-import {useDispatch} from 'react-redux'
-import {actions, ITableState, actionTypes} from '../../global/components/tables/Redux/TableRedux'
+import React, {useEffect} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import { tableActionTypes, tableActions } from '../../global/components/tables/Redux/TableRedux';
 import {TableComponent} from '../../global/components/tables/TableComponent'
+import {actions, actionTypes } from '../redux/UsersRedux'
+import { RootState } from '../../../../setup/redux/RootReducer';
 
 export const UsersTable = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+
+  const users: any = useSelector<RootState>(({users}) => users.users)
 
   useEffect(() => {
-    const initialTableState: ITableState = {
+    
+    dispatch({type: actionTypes.AsyncLoad})
+    if(users){
+      dispatch({type: tableActionTypes.Load, payload: {
         tableHeader: {
           title: 'Usuario',
           count: 234,
@@ -16,51 +23,17 @@ export const UsersTable = () => {
         },
         tableBody: {
             tableHeads: ['Nombre','Correo','Usuario','Rol'],
-            tableContent: [{
-                name: 'Ana Simmons',
-                email: 'Ana@demo.com',
-                user: 'ASOANG',
-                rol: 'Coordinador'
-            },{
-                name: 'Ana Simmons',
-                email: 'Ana@demo.com',
-                user: 'ASOANG',
-                rol: 'Coordinador'
-            },{
-                name: 'Ana Simmons',
-                email: 'Ana@demo.com',
-                user: 'ASOANG',
-                rol: 'Coordinador'
-            },{
-                name: 'Ana Simmons',
-                email: 'Ana@demo.com',
-                user: 'ASOANG',
-                rol: 'Coordinador'
-            },{
-                name: 'Ana Simmons',
-                email: 'Ana@demo.com',
-                user: 'ASOANG',
-                rol: 'Coordinador'
-            },{
-                name: 'Ana Simmons',
-                email: 'Ana@demo.com',
-                user: 'ASOANG',
-                rol: 'Coordinador'
-            },{
-                name: 'Ana Simmons',
-                email: 'Ana@demo.com',
-                user: 'ASOANG',
-                rol: 'Coordinador'
-            },
-            ]
+            tableContent: users
         }
+      }})
     }
-    // dispatch(actions.load(initialTableState));
-    dispatch({type: actionTypes.asyncLoad})
+
     return () => {
-        dispatch(actions.clear())
+      dispatch(actions.clear())
+      dispatch(tableActions.clear())
     }
-}, [dispatch])
+
+}, [dispatch])// eslint-disable-line 
 
   return (
     <>
