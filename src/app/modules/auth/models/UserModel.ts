@@ -5,7 +5,7 @@ import {UserEmailSettingsModel} from './UserEmailSettingsModel'
 import {UserSocialNetworksModel} from './UserSocialNetworksModel'
 
 export interface UserModel {
-    id: 4,
+    id: number,
     clients: [
         {
             cltId: number,

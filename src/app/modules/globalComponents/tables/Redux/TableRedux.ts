@@ -1,7 +1,11 @@
+import { call, put } from '@redux-saga/core/effects';
 import {Action} from '@reduxjs/toolkit'
 import {persistReducer} from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-// import {string[]} from '../models/string[]'
+import { getUsers } from './TableCRUD';
+import { UserModel } from '../../../auth/models/UserModel';
+import { takeLatest } from 'redux-saga/effects';
+import { response } from '../../../auth/redux/AuthRedux';
 
 export interface ActionWithPayload<T> extends Action {
   payload?: T
@@ -48,6 +52,7 @@ export const tableReducer = persistReducer(
   (state: ITableState = initialTableState, action: ActionWithPayload<ITableState>) => {
     switch (action.type) {
       case actionTypes.Load: { 
+        console.log(action.payload)
         const tableHeader = action.payload?.tableHeader
         const tableBody = action.payload?.tableBody
         return {tableHeader, tableBody}
@@ -56,25 +61,6 @@ export const tableReducer = persistReducer(
         return {...initialTableState}
       }
 
-      // case actionTypes.Register: {
-      //   const accessToken = action.payload?.accessTokenreturn {accessToken, TableBody}
-      //   return initialTableState
-      // }
-
-      // case actionTypes.UserRequested: {
-      //   return {...state, user: undefined}
-      // }
-
-      // case actionTypes.UserLoaded: {
-      //   const user = action.payload?.user
-      //   return {...state, user}
-      // }
-
-      // case actionTypes.SetUser: {
-      //   const user = action.payload?.user
-      //   return {...state, user}
-      // }
-
       default:
         return state
     }
@@ -82,31 +68,36 @@ export const tableReducer = persistReducer(
 )
 
 export const actions = {
-  load: (payload: ITableState) => ({type: actionTypes.Load, payload: payload}),
+  load: (payload: any) => ({type: actionTypes.Load, payload: payload}),
   clear: () => ({type: actionTypes.clearTable,}),
-  // register: (accessToken: string) => ({
-  //   type: actionTypes.Register,
-  //   payload: {accessToken},
-  // }),
-  // logout: () => ({type: actionTypes.Logout}),
-  // requestUser: () => ({
-  //   type: actionTypes.UserRequested,
-  // }),
-  // fulfillUser: (user: string[]) => ({type: actionTypes.UserLoaded, payload: {user}}),
-  // setUser: (user: string[]) => ({type: actionTypes.SetUser, payload: {user}}),
 }
 
 export function* saga() {
-  // yield takeLatest(actionTypes.Load, function* loginSaga() {
-  //   yield put(actions.load())
-  // })
+  // Worker Sagas
+  function* asyncLoad() {
+    try {
+      console.log("llegando")
+      const {data}: response = yield call(getUsers)
+      yield put(actions.load({
+        tableHeader: {
+          title: 'Usuario',
+          count: 234,
+          btnLink: '/usuarios/crear',
+        //   btnLink: '',
+          btnModal: ''
+        },
+        tableBody: {
+            tableHeads: ['Nombre','Correo','Usuario','Rol'],
+            tableContent: data
+        }
+    }))
+      console.log(data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
-  // yield takeLatest(actionTypes.Register, function* registerSaga() {
-  //   yield put(actions.requestUser())
-  // })
-
-  // yield takeLatest(actionTypes.UserRequested, function* userRequested() {
-  //   const {data: user} = yield getUserByToken()
-  //   yield put(actions.fulfillUser(user))
-  // })
+  // Watcher Sagas
+  yield takeLatest(actionTypes.asyncLoad, asyncLoad)
+  
 }

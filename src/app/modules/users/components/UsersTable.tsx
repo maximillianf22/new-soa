@@ -1,75 +1,66 @@
 import React, {useEffect, useState} from 'react'
-import {Button} from 'react-bootstrap-v5'
 import {useDispatch} from 'react-redux'
-import {KTSVG} from '../../../../_metronic/helpers'
-import {actions, ITableState} from '../../globalComponents/tables/Redux/TableRedux'
+import {actions, ITableState, actionTypes} from '../../globalComponents/tables/Redux/TableRedux'
 import {TableComponent} from '../../globalComponents/tables/TableComponent'
 
 export const UsersTable = () => {
   const dispatch = useDispatch()
 
-  const initialTableState: ITableState = {
-    tableHeader: {
-      title: 'Usuario',
-      count: 234,
-      btnLink: '',
-      btnModal: '#kt_modal_2',
-    },
-    tableBody: {
-      tableHeads: ['Nombre', 'Correo', 'Usuario', 'Rol'],
-      tableContent: [
-        {
-          name: 'Ana Simmons',
-          email: 'Ana@demo.com',
-          user: 'ASOANG',
-          rol: 'Coordinador',
-        },
-        {
-          name: 'Ana Simmons',
-          email: 'Ana@demo.com',
-          user: 'ASOANG',
-          rol: 'Coordinador',
-        },
-        {
-          name: 'Ana Simmons',
-          email: 'Ana@demo.com',
-          user: 'ASOANG',
-          rol: 'Coordinador',
-        },
-        {
-          name: 'Ana Simmons',
-          email: 'Ana@demo.com',
-          user: 'ASOANG',
-          rol: 'Coordinador',
-        },
-        {
-          name: 'Ana Simmons',
-          email: 'Ana@demo.com',
-          user: 'ASOANG',
-          rol: 'Coordinador',
-        },
-        {
-          name: 'Ana Simmons',
-          email: 'Ana@demo.com',
-          user: 'ASOANG',
-          rol: 'Coordinador',
-        },
-        {
-          name: 'Ana Simmons',
-          email: 'Ana@demo.com',
-          user: 'ASOANG',
-          rol: 'Coordinador',
-        },
-      ],
-    },
-  }
-
   useEffect(() => {
-    dispatch(actions.load(initialTableState))
-    return () => {
-      dispatch(actions.clear())
+    const initialTableState: ITableState = {
+        tableHeader: {
+          title: 'Usuario',
+          count: 234,
+          btnLink: '/usuarios/crear',
+          btnModal: ''
+        },
+        tableBody: {
+            tableHeads: ['Nombre','Correo','Usuario','Rol'],
+            tableContent: [{
+                name: 'Ana Simmons',
+                email: 'Ana@demo.com',
+                user: 'ASOANG',
+                rol: 'Coordinador'
+            },{
+                name: 'Ana Simmons',
+                email: 'Ana@demo.com',
+                user: 'ASOANG',
+                rol: 'Coordinador'
+            },{
+                name: 'Ana Simmons',
+                email: 'Ana@demo.com',
+                user: 'ASOANG',
+                rol: 'Coordinador'
+            },{
+                name: 'Ana Simmons',
+                email: 'Ana@demo.com',
+                user: 'ASOANG',
+                rol: 'Coordinador'
+            },{
+                name: 'Ana Simmons',
+                email: 'Ana@demo.com',
+                user: 'ASOANG',
+                rol: 'Coordinador'
+            },{
+                name: 'Ana Simmons',
+                email: 'Ana@demo.com',
+                user: 'ASOANG',
+                rol: 'Coordinador'
+            },{
+                name: 'Ana Simmons',
+                email: 'Ana@demo.com',
+                user: 'ASOANG',
+                rol: 'Coordinador'
+            },
+            ]
+        }
     }
-  }, [])
+    // dispatch(actions.load(initialTableState));
+    dispatch({type: actionTypes.asyncLoad})
+    return () => {
+        dispatch(actions.clear())
+    }
+}, [dispatch])
 
   return (
     <>

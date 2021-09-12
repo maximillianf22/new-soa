@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
 import { TableStats } from './components/TableStats';
 import { TableHeader } from './components/TableHeader';
 import { TableBody } from './components/TableBody';
@@ -14,6 +13,6 @@ export const TableComponent: React.FC = () => {
                 <TableHeader />
                 <TableBody />
             </div>
-            </>
-          )
+        </>
+    )
 }

@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, {FC} from 'react'
-import {useIntl} from 'react-intl'
 import {PageTitle} from '../../../_metronic/layout/core'
 // import {
 //   UsersTable,
@@ -20,7 +19,6 @@ const HomePage: FC = () => (
 )
 
 const IndexPage: FC = () => {
-  const intl = useIntl()
   return (
     <>
       <PageTitle breadcrumbs={[]}>Inicio</PageTitle>

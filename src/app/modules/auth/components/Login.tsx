@@ -1,15 +1,15 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, {useState} from 'react'
-import {useDispatch} from 'react-redux'
+import React from 'react'
+import {useDispatch, useSelector} from 'react-redux'
 import * as Yup from 'yup'
 import clsx from 'clsx'
 import {Link} from 'react-router-dom'
 import {useFormik} from 'formik'
 import * as auth from '../redux/AuthRedux'
+import { RootState } from '../../../../setup/redux/RootReducer';
 
 const loginSchema = Yup.object().shape({
-  email: Yup.string()
-    .email('Formato de correo incorrecto')
+  username: Yup.string()
     .min(3, 'Mínimo 3 carácteres')
     .max(50, 'Máximo 50 carácteres')
     .required('Usuario es requerido'),
@@ -20,31 +20,18 @@ const loginSchema = Yup.object().shape({
 })
 
 const initialValues = {
-  email: 'admin@demo.com',
-  password: 'demo',
+  username: 'admin',
+  password: 'admin',
 }
 
 export function Login() {
-  const [loading, setLoading] = useState(false)
   const dispatch = useDispatch()
+  const {loading, error}: any = useSelector<RootState>(({auth}) => auth)
   const formik = useFormik({
     initialValues,
     validationSchema: loginSchema,
     onSubmit: (values, {setStatus, setSubmitting}) => {
-      setLoading(true)
-      console.log("haciendo dispatch")
-      dispatch({type: auth.actionTypes.asyncLogin})
-
-      // login(values.email, values.password)
-      //   .then(({data: {accessToken}}) => {
-      //     setLoading(false)
-      //     dispatch(auth.actions.login(accessToken))
-      //   })
-      //   .catch(() => {
-      //     setLoading(false)
-      //     setSubmitting(false)
-      //     setStatus('The login detail is incorrect')
-      //   })
+      dispatch({type: auth.actionTypes.asyncLogin, payload: values})
     },
   })
 
@@ -60,29 +47,31 @@ export function Login() {
             <span className='text-muted fw-bold'>Ingrese su usuario y contraseña</span>
           </div>
           <form className='w-75 m-auto' onSubmit={formik.handleSubmit} id='kt_login_signin_form'>
-            <div className='form-text bg-light-danger rounded w-100 p-4 mb-5 text-dark'>
-              El <b>usuario</b> o <b>contraseña</b> está incorrecto por favor verifique e intente de
-              nuevo.
-            </div>
+            { error && 
+              (<div className='form-text bg-light-danger rounded w-100 p-4 mb-5 text-dark'>
+                {error}
+              </div>) 
+            }
+            
             <div className='input-group input-group-lg mb-3 mt-5'>
               <input
                 placeholder='Usuario'
-                {...formik.getFieldProps('email')}
+                {...formik.getFieldProps('username')}
                 className={clsx(
                   'form-control form-control-solid h-50px',
-                  {'is-invalid': formik.touched.email && formik.errors.email},
+                  {'is-invalid': formik.touched.username && formik.errors.username},
                   {
-                    'is-valid': formik.touched.email && !formik.errors.email,
+                    'is-valid': formik.touched.username && !formik.errors.username,
                   }
                 )}
-                type='email'
-                name='email'
+                type='text'
+                name='username'
                 id='exampleInputEmail1'
               />
             </div>
-            {formik.touched.email && formik.errors.email && (
+            {formik.touched.username && formik.errors.username && (
               <div className='fv-plugins-message-container'>
-                <span role='alert'>{formik.errors.email}</span>
+                <span role='alert'>{formik.errors.username}</span>
               </div>
             )}
             <div className='text-end text-dark mt-5'>
@@ -125,7 +114,7 @@ export function Login() {
                 type='submit'
                 id='kt_sign_in_submit'
                 className='btn btn-lg btn-dark h-45px'
-                disabled={formik.isSubmitting || !formik.isValid}
+                disabled={loading || !formik.isValid}
               >
                 {!loading && <span className='indicator-label'>Iniciar sesión</span>}
                 {loading && (

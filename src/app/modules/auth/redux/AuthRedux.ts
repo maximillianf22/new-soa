@@ -2,8 +2,8 @@ import {Action} from '@reduxjs/toolkit'
 import {persistReducer} from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import {put, takeLatest, call} from 'redux-saga/effects'
-import {UserModel} from '../models/UserModel'
-import {login} from './AuthCRUD'
+import { UserModel } from '../models/UserModel';
+import { login, Data } from './AuthCRUD';
 
 export interface ActionWithPayload<T> extends Action {
   payload?: T
@@ -12,6 +12,8 @@ export interface ActionWithPayload<T> extends Action {
 export const actionTypes = {
   asyncLogin: '[Login] asyncLogin',
   Login: '[Login] Action',
+  LoginError: '[Login] Login error',
+  Loading: '[Login] Loading',
   Logout: '[Logout] Action',
   Register: '[Register] Action',
   UserRequested: '[Request User] Action',
@@ -19,30 +21,42 @@ export const actionTypes = {
   SetUser: '[Set User] Action',
 }
 
-const initialAuthState: IAuthState = {
+const initialAuthState: ResponseGenerator = {
   user: undefined,
-  accessToken: undefined,
+  access: undefined,
+  loading: false,
+  error: undefined,
 }
 
 export interface IAuthState {
   user?: UserModel
-  accessToken?: any
+  access?: any
 }
 
 export const reducer = persistReducer(
-  {storage, key: 'v100-demo1-auth', whitelist: ['user', 'accessToken']},
-  (state: IAuthState = initialAuthState, action: ActionWithPayload<IAuthState>) => {
+  {storage, key: 'v100-demo1-auth', whitelist: ['user', 'access']},
+  (state: ResponseGenerator = initialAuthState, action: ActionWithPayload<ResponseGenerator>) => {
     switch (action.type) {
       case actionTypes.Login: {
-        const accessToken = action.payload?.accessToken
-        console.log( "en el reducer" ,action.payload)
-        return {accessToken: accessToken?.access, user: accessToken.user.username}
+        const access = action.payload?.access
+        const user = action.payload?.user
+        return {...state, access, user, error: undefined}
       }
 
-      case actionTypes.Register: {
-        const accessToken = action.payload?.accessToken
-        return {accessToken, user: undefined}
+      case actionTypes.Loading: {
+        return {...state, loading: !state.loading}
       }
+
+      case actionTypes.LoginError: {
+        const error = action.payload
+        return {...state, error}
+      }
+      
+      case actionTypes.Register: {
+        const access = action.payload?.access
+        return {access, user: undefined}
+      }
+      
 
       case actionTypes.Logout: {
         return initialAuthState
@@ -69,7 +83,9 @@ export const reducer = persistReducer(
 )
 
 export const actions = {
-  login: (accessToken: ResponseGenerator) => ({type: actionTypes.Login, payload: {accessToken}}),
+  login: (loginResponse: ResponseGenerator | undefined) => ({type: actionTypes.Login, payload: loginResponse}),
+  loading: () => ({type: actionTypes.Loading}),
+  loginError: (error: ResponseGenerator) => ({type: actionTypes.LoginError, payload: error}),
   register: (accessToken: string) => ({
     type: actionTypes.Register,
     payload: {accessToken},
@@ -83,16 +99,46 @@ export const actions = {
 }
 
 export interface ResponseGenerator{
-  access: string
-  config?:any,
-  data?:any,
-  headers?:any,
-  request?:any,
-  status?:number,
-  statusText?:string
+  access?: string | undefined
+  refresh?:string,
+  user?:UserModel,
+  loading?: boolean,
+  error?: ResponseGenerator | undefined
 }
 
+export interface response {
+  data?: ResponseGenerator | undefined
+}
+
+interface ActionTypePayload {
+  type: string, 
+  payload: Data
+}
+// interface IerrorResponse {
+//   config: object
+//   data: object
+//   headers: { detail: string }
+//   status: number
+//   statusText: string
+// }
+
 export function* saga() {
+  // Worker Sagas
+  function* loginSaga({payload}:ActionTypePayload) {
+    try {
+      yield put(actions.loading());
+      const {data}:response = yield call(login, payload);
+      yield put(actions.login(data))
+    } catch (error:any) {
+      yield put(actions.loginError(error.response.data.detail))
+    } finally {
+      yield put(actions.loading());
+    }
+  };
+
+  // Watcher Sagas
+  yield takeLatest(actionTypes.asyncLogin, loginSaga)
+  
   // yield takeLatest(actionTypes.Login, function* loginSaga() {
   //   yield put(actions.requestUser())
   // })
@@ -105,18 +151,4 @@ export function* saga() {
   //   // const {data: user} = yield getUserByToken()
   //   // yield put(actions.fulfillUser(user))
   // })
-
-  function* loadTasks() {
-  console.log("En el WORKER Saga")
-
-    const response:ResponseGenerator = yield call(login)
-    // console.log("DESPUES", response.access)
-    // console.log(actions.login(response))
-    yield put(actions.login(response))
-};
-
-  // Watcher Sagas
-  yield takeLatest(actionTypes.asyncLogin, loadTasks)
-
-  
 }

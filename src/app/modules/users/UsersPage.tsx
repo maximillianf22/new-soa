@@ -1,4 +1,4 @@
-import React, {FC} from 'react'
+import React from 'react'
 import { PageTitle } from '../../../_metronic/layout/core'
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { PageLink } from '../../../_metronic/layout/core';

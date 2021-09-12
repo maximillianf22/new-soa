@@ -1,13 +1,12 @@
 import React from 'react';
 import { shallowEqual, useSelector } from 'react-redux';
 import { RootState } from '../../../../../setup';
-import { ITableState } from '../Redux/TableRedux';
 
 type TableContent = {
-  name: 'Ana Simmons',
-  email: 'Ana@demo.com',
-  user: 'ASOANG',
-  rol: 'Coordinador'
+  name: string,
+  email: string,
+  username: string,
+  rolId: []
 }
 
 
@@ -35,7 +34,7 @@ export const TableBody: React.FC = () => {
                     {/* end::Table head */}
                     {/* begin::Table body */}
                     <tbody>
-                      {tableContent && tableContent.map(({name, email, user, rol} : TableContent, i: number) => (
+                      {tableContent && tableContent.map(({name, email, username, rolId} : TableContent, i: number) => (
                         <tr key={i}>
                           <td>
                             <div className='d-flex align-items-center'>
@@ -56,12 +55,12 @@ export const TableBody: React.FC = () => {
                           </td>
                           <td>
                             <a href='!#' className='text-dark fw-bolder text-hover-primary d-block fs-6'>
-                              {user}
+                              {username}
                             </a>
                           </td>
                           <td>
                             <a href='!#' className='text-dark fw-bolder text-hover-primary d-block fs-6'>
-                              {rol}
+                              {rolId}
                             </a>
                           </td>
                           <td>

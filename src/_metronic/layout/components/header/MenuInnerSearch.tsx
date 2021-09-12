@@ -1,6 +1,4 @@
 import React, {FC} from 'react'
-import * as Yup from 'yup'
-import {useFormik} from 'formik'
 import {KTSVG} from '../../../helpers'
 
 type Props = {
@@ -8,13 +6,13 @@ type Props = {
 }
 
 export const MenuInnerSearch: FC<Props> = ({className = ''}) => {
-  const searchSchema = Yup.object().shape({
-    search: Yup.string().min(3, 'Para realizar una busqueda debes escribir al menos 3 carácteres'),
-  })
+  // const searchSchema = Yup.object().shape({
+  //   search: Yup.string().min(3, 'Para realizar una busqueda debes escribir al menos 3 carácteres'),
+  // })
 
-  const initialValues = {
-    search: '',
-  }
+  // const initialValues = {
+  //   search: '',
+  // }
 
   // const [loading, setLoading] = useState(false)
   // const dispatch = useDispatch()
