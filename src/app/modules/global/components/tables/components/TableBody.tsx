@@ -21,12 +21,12 @@ export const TableBody: React.FC = () => {
                 {/* begin::Table container */}
                 <div className='table-responsive'>
                   {/* begin::Table */}
-                  <table className='table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4 mb-0'>
+                  <table className='table table-row-dashed table-hover table-row-gray-300 align-middle gs-0 gy-3 mb-0'>
                     {/* begin::Table head */}
                     <thead>
                       <tr className='fw-bolder text-muted'>
                         {tableHeads && tableHeads.map( (th: string, i: number) => (
-                          <th key={i} className={`min-w-1${ i === 0 ? '5' : '3' }0px`} >{th}</th>
+                          <th key={i} className='' >{th}</th>
                         ))}
                         <th className='min-w-80px text-end'>Opciones</th>
                       </tr>

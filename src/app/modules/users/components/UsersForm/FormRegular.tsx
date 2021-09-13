@@ -6,6 +6,18 @@ import {Button, Collapse} from 'react-bootstrap-v5'
 import Select from 'react-select'
 import {ICreateUser, createUserSchemas, initialValues} from './Helpers'
 
+const optionsProfile = [
+  {value: 'admin', label: 'Administrador'},
+  {value: 'supervisor', label: 'Supervisor'},
+  {value: 'coordinador', label: 'Coordinador'},
+]
+
+const optionsPlataforms = [
+  {value: 'addiuva', label: 'Addiuva'},
+  {value: 'ikatech', label: 'Ikatech'},
+  {value: 'elRoble', label: 'El Roble'},
+]
+
 const options = [
   {value: 'Anual', label: 'Anual'},
   {value: 'Semestral', label: 'Semestral'},
@@ -29,12 +41,11 @@ export const FormRegular = () => {
 
   const [open, setOpen] = useState(false)
 
-
     return (
-      <div className="card">
+      <div className="card" style={{minHeight: "62vh"}}>
       <div className='card-body'>
         <div className='card-body py-0 px-4'>
-          <div className='row mb-6'>
+          <div className='row'>
             <div className='col-md-4 px-5 py-3 fv-row'>
               <label className='col-form-label required fw-bold fs-6'>Nombre</label>
               <input
@@ -187,8 +198,41 @@ export const FormRegular = () => {
                 </div>
               </Collapse>
             </div>
-            <div className='col px-5 py-3 fv-row text-center'>
-              <div className='form-check form-check-custom form-check-solid mt-13 ms-4'>
+            <div className='col-md-4 px-5 py-3 fv-row'>
+                <label className='col-form-label required fw-bold fs-6'>Plataforma</label>
+                <div className='d-flex bd-highlight'>
+                  <div className='pe-3 flex-fill bd-highlight w-100'>
+                    <Select
+                      className='form-control form-control-sm form-control-solid p-0'
+                      placeholder='Plataformas o clientes'
+                      name='selectPlataform'
+                      options={optionsPlataforms}
+                      id='selectPlataform'
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className='col-md-4 px-5 py-3 fv-row'>
+                <label className='col-form-label required fw-bold fs-6'>Perfil</label>
+                <div className='d-flex bd-highlight'>
+                  <div className='pe-3 flex-fill bd-highlight w-100'>
+                    <Select
+                      className='form-control form-control-sm form-control-solid p-0'
+                      placeholder='Perfiles del usuario'
+                      name='seletProfile'
+                      options={optionsProfile}
+                      id='selectProfile'
+                    />
+                  </div>
+                  <div className='px-0 flex-fill bd-highlight'>
+                    <button className='btn btn-icon btn-primary btn-form'>
+                      <i className='fa fa-cog'></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            <div className='col-md-3 px-5 fv-row text-end'>
+              <div className='form-check form-check-custom form-check-solid mt-8'>
                 <input
                   className='form-check-input h-25px w-25px'
                   type='checkbox'
@@ -198,8 +242,8 @@ export const FormRegular = () => {
                 <label className='form-check-label'>¿Permite cambio de contraseña?</label>
               </div>
             </div>
-            <div className='col px-5 py-3 fv-row'>
-              <div className='mt-13 text-center ms-4'>
+            <div className='col-md-3 px-5 fv-row'>
+              <div className='mt-8 text-center'>
                 <div className='form-check form-switch form-check-custom form-check-solid'>
                   <input
                     className='form-check-input h-25px'
@@ -215,6 +259,11 @@ export const FormRegular = () => {
               </div>
             </div>
           </div>
+        </div>
+        <div className='px-5 py-0 fv-row text-end'>
+          <button  className="btn btn-primary" type="submit">
+            Guardar
+            </button> 
         </div>
       </div>
     </div>  

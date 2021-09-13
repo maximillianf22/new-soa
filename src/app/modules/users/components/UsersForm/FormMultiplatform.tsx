@@ -45,7 +45,7 @@ const FormMultiplatform: FC = () => {
     loadStepper()
   }, [stepperRef])
   return (
-    <div className='card'>
+      <div className="card" style={{minHeight: "62vh"}}>
       <div className='card-body'>
         <div
           ref={stepperRef}

@@ -18,8 +18,8 @@ export const UsersTable = () => {
         tableHeader: {
           title: 'Usuario',
           count: 234,
-          btnLink: '/usuarios/crear',
-          btnModal: ''
+          btnLink: '',
+          btnModal: '#kt_modal'
         },
         tableBody: {
             tableHeads: ['Nombre','Correo','Usuario','Rol'],
@@ -38,7 +38,7 @@ export const UsersTable = () => {
   return (
     <>
       <TableComponent />
-      <div className='modal fade' tabIndex={-1} id='kt_modal_2'>
+      <div className='modal fade' tabIndex={-1} id='kt_modal'>
         <div className='modal-dialog modal-lg modal-dialog-centered'>
           <div className='modal-content'>
             <div className='modal-body'>

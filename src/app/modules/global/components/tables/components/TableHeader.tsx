@@ -1,10 +1,13 @@
-import { useFormik } from 'formik'
+import {useFormik} from 'formik'
 import React, {useState} from 'react'
 import {useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {RootState} from '../../../../../../setup'
 import {KTSVG} from '../../../../../../_metronic/helpers'
 import * as Yup from 'yup'
+import {DropdownHeads} from './DropdownHeads'
+import {Collapse} from 'react-bootstrap-v5'
+import CollapseFilters from './CollapseFilters'
 
 const searchSchema = Yup.object().shape({
   search: Yup.string()
@@ -14,7 +17,7 @@ const searchSchema = Yup.object().shape({
 })
 
 const initialValues = {
-  search: ''
+  search: '',
 }
 
 export const TableHeader = () => {
@@ -28,9 +31,11 @@ export const TableHeader = () => {
     validationSchema: searchSchema,
     onSubmit: (values) => {
       setLoading(true)
-      console.log("Haciendo submit", values)
+      console.log('Haciendo submit', values)
     },
   })
+
+  const [open, setOpen] = useState(false)
 
   return (
     <>
@@ -49,11 +54,8 @@ export const TableHeader = () => {
           data-bs-trigger='hover'
         >
           <div className='d-flex align-items-center position-relative d-sm-none d-none d-md-block d-lg-block'>
-            <form
-              onSubmit={formik.handleSubmit}
-              style={{marginTop: "-20px"}}
-            >
-              <button type='submit' className="btn btn-link"> 
+            <form onSubmit={formik.handleSubmit} style={{marginTop: '-20px'}}>
+              <button type='submit' className='btn btn-link'>
                 <KTSVG
                   path='/media/icons/duotone/General/Search.svg'
                   className='svg-icon-2 svg-icon-lg-1 svg-icon-gray-500 position-absolute top-50 ms-5 translate-middle-y'
@@ -88,18 +90,33 @@ export const TableHeader = () => {
             </>
           )}
 
-          <a href="!#" className='btn btn-info btn-sm btn-icon ms-2'>
+          <button
+            className='btn btn-info btn-sm btn-icon ms-2'
+            onClick={() => setOpen(!open)}
+            aria-controls='example-collapse-text'
+            aria-expanded={open}
+          >
             <i className='fa fa-filter'></i>
-          </a>
-          <a href="!#" className='btn btn-success btn-sm btn-icon ms-2'>
+          </button>
+          <a href='!#' className='btn btn-success btn-sm btn-icon ms-2'>
             <i className='fa fa-download'></i>
           </a>
-          <a href="!#" className='btn btn-secondary btn-sm btn-icon ms-2'>
+          <button
+            type='button'
+            className='btn btn-secondary btn-sm btn-icon ms-2'
+            data-kt-menu-trigger='click'
+            data-kt-menu-overflow='true'
+            data-kt-menu-placement='bottom-end'
+            data-kt-menu-flip='top-end'
+          >
             <i className='fa fa-cog'></i>
-          </a>
+          </button>
+          <DropdownHeads />
         </div>
       </div>
       {/* end::Header */}
+      
+        <CollapseFilters open={open}/>
     </>
   )
 }
