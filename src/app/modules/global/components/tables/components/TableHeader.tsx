@@ -100,17 +100,17 @@ export const TableHeader = () => {
           <a href='!#' className='btn btn-success btn-sm btn-icon ms-2'>
             <i className='fa fa-download'></i>
           </a>
-          <button
-            type='button'
-            className='btn btn-secondary btn-sm btn-icon ms-2'
-            data-kt-menu-trigger='click'
-            data-kt-menu-overflow='true'
-            data-kt-menu-placement='bottom-end'
-            data-kt-menu-flip='top-end'
-          >
-            <i className='fa fa-cog'></i>
-          </button>
-          <DropdownHeads />
+          <div className='ms-2'>
+            <button
+              className='btn btn-sm btn-icon btn-bg-light btn-active-color-primary'
+              data-kt-menu-trigger='click'
+              data-kt-menu-placement='bottom-end'
+              data-kt-menu-flip='top-end'
+            >
+              <i className='fas fa-cog'></i>
+            </button>
+            <DropdownHeads />
+          </div>
         </div>
       </div>
       {/* end::Header */}
