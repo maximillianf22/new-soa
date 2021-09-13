@@ -102,7 +102,7 @@ export const TableHeader = () => {
           </a>
           <div className='ms-2'>
             <button
-              className='btn btn-sm btn-icon btn-bg-light btn-active-color-primary'
+              className='btn btn-sm btn-icon btn-gray btn-active-dark btn-active-color-white btn-color-dark'
               data-kt-menu-trigger='click'
               data-kt-menu-placement='bottom-end'
               data-kt-menu-flip='top-end'
