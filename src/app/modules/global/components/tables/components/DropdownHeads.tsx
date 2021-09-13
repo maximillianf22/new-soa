@@ -8,7 +8,7 @@ const initialValues = {
 }
 
 
-export function DropdownHeads() {
+const DropdownHeads = () => {
   const formik = useFormik({
     initialValues,
     onSubmit: (values, {setStatus, setSubmitting}) => {
@@ -29,7 +29,7 @@ export function DropdownHeads() {
             <table className='table table-sm table-hover align-middle gs-0 gy-1 mb-0'>
               <tbody className='table-striped'>
                 <tr>
-                  <th className='d-flex align-items-center my-auto mt-1 w-150px ms-3'>Nombre</th>
+                  <th className='d-flex align-items-center my-auto mt-1 w-150px ms-3'>Notification</th>
                   <td className=' text-end'>
                     <div className='form-check form-switch form-check-custom form-check-solid p-0  ms-10'>
                       <input
@@ -64,3 +64,5 @@ export function DropdownHeads() {
     </div>
   )
 }
+
+export default DropdownHeads

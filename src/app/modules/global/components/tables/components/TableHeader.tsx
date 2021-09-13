@@ -5,8 +5,7 @@ import {Link} from 'react-router-dom'
 import {RootState} from '../../../../../../setup'
 import {KTSVG} from '../../../../../../_metronic/helpers'
 import * as Yup from 'yup'
-import {DropdownHeads} from './DropdownHeads'
-import {Collapse} from 'react-bootstrap-v5'
+import DropdownHeads from './DropdownHeads'
 import CollapseFilters from './CollapseFilters'
 
 const searchSchema = Yup.object().shape({
@@ -115,8 +114,7 @@ export const TableHeader = () => {
         </div>
       </div>
       {/* end::Header */}
-      
-        <CollapseFilters open={open}/>
+      <CollapseFilters open={open} />
     </>
   )
 }
