@@ -35,6 +35,8 @@ export function Login() {
     },
   })
 
+  console.log(formik.values)
+
   return (
     <>
       <div
@@ -108,10 +110,8 @@ export function Login() {
                 </div>
               </div>
             )}
-
             <div className='d-grid mt-7'>
-
-              {formik.touched.password || formik.touched.username 
+              {formik.values.password || formik.values.username 
                 ? 
                   (<button
                     type='submit'
@@ -143,7 +143,6 @@ export function Login() {
                     )}
                   </button>)
               }
-              
             </div>
           </form>
         </div>

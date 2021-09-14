@@ -36,13 +36,6 @@ const DropdownHeads: React.FC<Iprops> = ( tableHeads: Iprops ) => {
                   <th className='d-flex align-items-center my-auto mt-1 w-150px ms-3'>Notification</th>
                   <td className=' text-end'>
                     <div className='form-check form-switch form-check-custom form-check-solid p-0  ms-10'>
-                      <input
-                        className='form-check-input h-25px'
-                        type='checkbox'
-                        id='flexSwitchChecked3'
-                        checked
-                        {...formik.getFieldProps('username')}
-                      />
                     </div>
                   </td>
                 </tr>
