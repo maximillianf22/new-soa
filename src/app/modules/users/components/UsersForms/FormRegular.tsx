@@ -5,6 +5,7 @@ import {useFormik} from 'formik'
 import {Button, Collapse} from 'react-bootstrap-v5'
 import Select from 'react-select'
 import {ICreateUser, createUserSchemas, initialValues} from './Helpers'
+import {ModalPermits} from '../UserPermits/ModalPermits'
 
 const optionsProfile = [
   {value: 'admin', label: 'Administrador'},
@@ -27,22 +28,19 @@ const options = [
   {value: '15 Dias', label: '15 Dias'},
   {value: '7 Dias', label: '7 Dias'},
 ]
-    
-export const FormRegular = () => {
 
-    const [loading, setLoading] = useState(false)
-    const formik = useFormik<ICreateUser>({
-      initialValues,
-      validationSchema: createUserSchemas,
-      onSubmit: (values) => {
-        
-      },
-    })
+export const FormRegular = () => {
+  const [loading, setLoading] = useState(false)
+  const formik = useFormik<ICreateUser>({
+    initialValues,
+    validationSchema: createUserSchemas,
+    onSubmit: (values) => {},
+  })
 
   const [open, setOpen] = useState(false)
 
-    return (
-      <div className="card" style={{minHeight: "62vh"}}>
+  return (
+    <div className='card' style={{minHeight: '62vh'}}>
       <div className='card-body'>
         <div className='card-body py-0 px-4'>
           <div className='row'>
@@ -199,38 +197,42 @@ export const FormRegular = () => {
               </Collapse>
             </div>
             <div className='col-md-4 px-5 py-3 fv-row'>
-                <label className='col-form-label required fw-bold fs-6'>Plataforma</label>
-                <div className='d-flex bd-highlight'>
-                  <div className='pe-3 flex-fill bd-highlight w-100'>
-                    <Select
-                      className='form-control form-control-sm form-control-solid p-0'
-                      placeholder='Plataformas o clientes'
-                      name='selectPlataform'
-                      options={optionsPlataforms}
-                      id='selectPlataform'
-                    />
-                  </div>
+              <label className='col-form-label required fw-bold fs-6'>Plataforma</label>
+              <div className='d-flex bd-highlight'>
+                <div className='pe-3 flex-fill bd-highlight w-100'>
+                  <Select
+                    className='form-control form-control-sm form-control-solid p-0'
+                    placeholder='Plataformas o clientes'
+                    name='selectPlataform'
+                    options={optionsPlataforms}
+                    id='selectPlataform'
+                  />
                 </div>
               </div>
-              <div className='col-md-4 px-5 py-3 fv-row'>
-                <label className='col-form-label required fw-bold fs-6'>Perfil</label>
-                <div className='d-flex bd-highlight'>
-                  <div className='pe-3 flex-fill bd-highlight w-100'>
-                    <Select
-                      className='form-control form-control-sm form-control-solid p-0'
-                      placeholder='Perfiles del usuario'
-                      name='seletProfile'
-                      options={optionsProfile}
-                      id='selectProfile'
-                    />
-                  </div>
-                  <div className='px-0 flex-fill bd-highlight'>
-                    <button className='btn btn-icon btn-primary btn-form'>
-                      <i className='fa fa-cog'></i>
-                    </button>
-                  </div>
+            </div>
+            <div className='col-md-4 px-5 py-3 fv-row'>
+              <label className='col-form-label required fw-bold fs-6'>Perfil</label>
+              <div className='d-flex bd-highlight'>
+                <div className='pe-3 flex-fill bd-highlight w-100'>
+                  <Select
+                    className='form-control form-control-sm form-control-solid p-0'
+                    placeholder='Perfiles del usuario'
+                    name='seletProfile'
+                    options={optionsProfile}
+                    id='selectProfile'
+                  />
+                </div>
+                <div className='px-0 flex-fill bd-highlight'>
+                  <button
+                    className='btn btn-icon btn-primary btn-form'
+                    data-bs-toggle='modal'
+                    data-bs-target='#kt_modal_2'
+                  >
+                    <i className='fa fa-cog'></i>
+                  </button>
                 </div>
               </div>
+            </div>
             <div className='col-md-3 px-5 fv-row text-end'>
               <div className='form-check form-check-custom form-check-solid mt-8'>
                 <input
@@ -252,20 +254,19 @@ export const FormRegular = () => {
                     id='flexSwitchChecked'
                     checked
                   />
-                  <label className='form-check-label'>
-                    ¿Activo?
-                  </label>
+                  <label className='form-check-label'>¿Activo?</label>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div className='px-5 py-0 fv-row text-end'>
-          <button  className="btn btn-primary" type="submit">
+          <button className='btn btn-primary' type='submit'>
             Guardar
-            </button> 
+          </button>
         </div>
+        <ModalPermits />
       </div>
-    </div>  
-      )
+    </div>
+  )
 }

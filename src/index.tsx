@@ -14,9 +14,10 @@ import {MetronicI18nProvider} from './_metronic/i18n/Metronici18n'
 /**
  * TIP: Replace this style import with dark styles to enable dark mode
  *
- * import './_metronic/assets/sass/style.dark.scss'
  **/
 import './_metronic/assets/sass/style.scss'
+// import './_metronic/assets/sass/style.dark.scss'
+
 /**
  * Base URL of the website.
  *

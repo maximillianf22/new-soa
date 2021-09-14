@@ -18,7 +18,7 @@ const MenuInnerLeft: FC = () => {
       <div className={clsx('d-flex align-items-center', toolbarButtonMarginClass)}>
         {/* begin::Drawer toggle */}
         <div
-          className={clsx('btn btn-icon btn-active-light-primary', toolbarButtonHeightClass)}
+          className={clsx('btn btn-icon btn-active-light-primary btn-color-white', toolbarButtonHeightClass)}
           id='kt_activities_toggle'
         >
           <KTSVG
@@ -32,7 +32,7 @@ const MenuInnerLeft: FC = () => {
       <div className={clsx('d-flex align-items-center', toolbarButtonMarginClass)}>
         {/* begin::Menu wrapper */}
         <div
-          className={clsx('btn btn-icon btn-active-light-primary', toolbarButtonHeightClass)}
+          className={clsx('btn btn-icon btn-active-light-primary btn-color-white', toolbarButtonHeightClass)}
           data-kt-menu-trigger='click'
           data-kt-menu-attach='parent'
           data-kt-menu-placement='bottom-end'
@@ -52,7 +52,7 @@ const MenuInnerLeft: FC = () => {
         {/* begin::Menu wrapper */}
         <div
           className={clsx(
-            'btn btn-icon btn-active-light-primary position-relative',
+            'btn btn-icon btn-active-light-primary btn-color-white position-relative',
             toolbarButtonHeightClass
           )}
           id='kt_drawer_chat_toggle'
@@ -75,15 +75,15 @@ const MenuInnerLeft: FC = () => {
         title=''
       >
         <div
-          className='btn btn-active-light d-flex align-items-center bg-hover-light py-2 px-2 px-md-3'
+          className='btn btn-active-white btn-color-white btn-active-color-primary d-flex align-items-center bg-hover-light py-1 px-1 px-md-3'
           data-kt-menu-trigger='click'
           data-kt-menu-attach='parent'
           data-kt-menu-placement='bottom-end'
           data-kt-menu-flip='bottom'
         >
           <div className='d-none d-md-flex flex-column align-items-end justify-content-center me-2'>
-            <span className='text-white fs-7 fw-bold lh-1 mb-2'>Bienvenido</span>
-            <span className='text-muted fs-base fw-bolder lh-1'>Richard</span>
+            <span className=' fs-7 fw-bold lh-1 mb-2'>Bienvenido</span>
+            <span className=' fs-base fw-bolder lh-1'>Richard</span>
           </div>
           <div
             className={clsx('cursor-pointer symbol', toolbarUserAvatarHeightClass)}
@@ -103,7 +103,7 @@ const MenuInnerLeft: FC = () => {
       {config.header.left === 'menu' && (
         <div className='d-flex align-items-center d-lg-none ms-2 me-n3' title='Show header menu'>
           <div
-            className='btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px'
+            className='btn btn-icon btn-active-light-primary btn-color-white w-30px h-30px w-md-40px h-md-40px'
             id='kt_header_menu_mobile_toggle'
           >
             <KTSVG path='/media/icons/duotone/Text/Toggle-Right.svg' className='svg-icon-1' />

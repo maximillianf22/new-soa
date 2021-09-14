@@ -3,8 +3,8 @@ import { PageTitle } from '../../../_metronic/layout/core'
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { PageLink } from '../../../_metronic/layout/core';
 import { UsersTable } from './components/UsersTable';
-import { FormRegular } from './components/UsersForm/FormRegular';
-import { FormMultiplatform } from './components/UsersForm/FormMultiplatform';
+import { FormRegular } from './components/UsersForms/FormRegular';
+import { FormMultiplatform } from './components/UsersForms/FormMultiplatform';
 
 
 const usersBreadCrumbs: Array<PageLink> = [
