@@ -21,7 +21,8 @@ const initialTableState: ITableState = {
     title: '',
     count: 0,
     btnLink: '',
-    btnModal: ''
+    btnModal: '',
+    tableHeads: []
   },
   tableBody: {
     tableHeads: ['', '', '', ''],
@@ -38,7 +39,8 @@ export type TableHeader = {
   title?: string,
   count?: number,
   btnLink?: string,
-  btnModal?: string
+  btnModal?: string,
+  tableHeads: string[]
 }
 export type TableBody = {
   tableHeads: string[]

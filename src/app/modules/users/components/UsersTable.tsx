@@ -10,6 +10,8 @@ export const UsersTable = () => {
 
   const users: any = useSelector<RootState>(({users}) => users.users)
 
+  const tableHeads = ['id', 'usuario', 'nombre', 'apellido', 'correo', 'activo', 'fecha creación', 'rol' ]
+  
   useEffect(() => {
     
     dispatch({type: actionTypes.AsyncLoad})
@@ -19,7 +21,8 @@ export const UsersTable = () => {
           title: 'Usuario',
           count: 234,
           btnLink: '',
-          btnModal: '#kt_modal'
+          btnModal: '#kt_modal',
+          tableHeads: tableHeads
         },
         tableBody: {
             tableHeads: ['Nombre','Correo','Usuario','Rol'],

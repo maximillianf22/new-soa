@@ -109,7 +109,7 @@ export const TableHeader = () => {
             >
               <i className='fas fa-cog'></i>
             </button>
-            <DropdownHeads />
+            <DropdownHeads tableHeads={tableHeader.tableHeads} />
           </div>
         </div>
       </div>
