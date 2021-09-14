@@ -35,8 +35,6 @@ export function Login() {
     },
   })
 
-  console.log(formik.values)
-
   return (
     <>
       <div
