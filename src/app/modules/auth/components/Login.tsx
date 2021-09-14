@@ -110,20 +110,40 @@ export function Login() {
             )}
 
             <div className='d-grid mt-7'>
-              <button
-                type='submit'
-                id='kt_sign_in_submit'
-                className='btn btn-lg btn-dark h-45px'
-                disabled={loading || !formik.isValid}
-              >
-                {!loading && <span className='indicator-label'>Iniciar sesión</span>}
-                {loading && (
-                  <span className='indicator-progress' style={{display: 'block'}}>
-                    Por favor espere...
-                    <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
-                  </span>
-                )}
-              </button>
+
+              {formik.touched.password || formik.touched.username 
+                ? 
+                  (<button
+                    type='submit'
+                    id='kt_sign_in_submit'
+                    className='btn btn-lg btn-dark h-45px'
+                    disabled={loading || !formik.isValid}
+                  >
+                    {!loading && <span className='indicator-label'>Iniciar sesión</span>}
+                    {loading && (
+                      <span className='indicator-progress' style={{display: 'block'}}>
+                        Por favor espere...
+                        <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
+                      </span>
+                    )}
+                  </button>)
+                :
+                  (<button
+                    type='submit'
+                    id='kt_sign_in_submit'
+                    className='btn btn-lg btn-dark h-45px'
+                    disabled={true}
+                  >
+                    {!loading && <span className='indicator-label'>Iniciar sesión</span>}
+                    {loading && (
+                      <span className='indicator-progress' style={{display: 'block'}}>
+                        Por favor espere...
+                        <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
+                      </span>
+                    )}
+                  </button>)
+              }
+              
             </div>
           </form>
         </div>

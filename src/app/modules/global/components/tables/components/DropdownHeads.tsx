@@ -1,12 +1,17 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import {useFormik} from 'formik'
+import {useFormik} from 'formik';
+import { FC } from 'react';
+import React from 'react';
 
 const initialValues = {
   username: '',
 }
 
+interface Iprops {
+  tableHeads: string[]
+}
 
-const DropdownHeads = () => {
+const DropdownHeads: React.FC<Iprops> = ( tableHeads: Iprops ) => {
   const formik = useFormik({
     initialValues,
     onSubmit: (values, {setStatus, setSubmitting}) => {
