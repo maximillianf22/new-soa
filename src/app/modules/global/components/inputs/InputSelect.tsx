@@ -21,7 +21,7 @@ export const InputSelect = ({
         onChange={(option) => setFieldValue(field.name, (option as any).value)}
         placeholder='Seleccione...'
       />
-      {touched[field.name] && errors[field.name] && <div>{errors[field.name]}</div>}
+      {touched[field.name] && errors[field.name] && <div className="text-danger fs-help">{errors[field.name]}</div>}
     </>
   )
 }

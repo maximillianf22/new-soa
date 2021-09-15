@@ -28,7 +28,7 @@ export const InputProfile = () => {
             </button>
           </div>
         </div>
-        <p className='m-0 p-1 text-sm'>
+        <p className='m-0 p-1 fs-help'>
           Si deseas personalizar los permisos, haz click en el boton
         </p>
         <ModalPermits />

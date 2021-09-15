@@ -10,7 +10,7 @@ const CollapseFilters = ({open}: any) => {
             <div className='row  bg-secondary px-5 py-5 rounded'>
               <div className='col-md-10 pe-1 row'>
                 <div className='col-md-4 px-5'>
-                  <label className='col-form-label m-0 p-0 lh-1 text-sm w-100'>Nombre</label>
+                  <label className='col-form-label m-0 p-0 lh-1 fs-help w-100'>Nombre</label>
                   <input
                     type='text'
                     className='form-control form-control-sm form-control-white'
@@ -18,7 +18,7 @@ const CollapseFilters = ({open}: any) => {
                   />
                 </div>
                 <div className='col-md-4 px-5'>
-                  <label className='col-form-label m-0 p-0 lh-1 text-sm w-100'>Apellido</label>
+                  <label className='col-form-label m-0 p-0 lh-1 fs-help w-100'>Apellido</label>
                   <input
                     type='text'
                     className='form-control form-control-sm form-control-white'
@@ -26,7 +26,7 @@ const CollapseFilters = ({open}: any) => {
                   />
                 </div>
                 <div className='col-md-4 px-5'>
-                  <label className='col-form-label m-0 p-0 lh-1 text-sm w-100'>Documento</label>
+                  <label className='col-form-label m-0 p-0 lh-1 fs-help w-100'>Documento</label>
                   <input
                     type='text'
                     className='form-control form-control-sm form-control-white'
@@ -34,7 +34,7 @@ const CollapseFilters = ({open}: any) => {
                   />
                 </div>
                 <div className='col-md-4 px-5'>
-                  <label className='col-form-label m-0 p-0 lh-1 text-sm w-100'>Correo</label>
+                  <label className='col-form-label m-0 p-0 lh-1 fs-help w-100'>Correo</label>
                   <input
                     type='text'
                     className='form-control form-control-sm form-control-white'
@@ -42,7 +42,7 @@ const CollapseFilters = ({open}: any) => {
                   />
                 </div>
                 <div className='col-md-4 px-5'>
-                  <label className='col-form-label m-0 p-0 lh-1 text-sm w-100'>Rol</label>
+                  <label className='col-form-label m-0 p-0 lh-1 fs-help w-100'>Rol</label>
                   <input
                     type='text'
                     className='form-control form-control-sm form-control-white'
@@ -50,7 +50,7 @@ const CollapseFilters = ({open}: any) => {
                   />
                 </div>
                 <div className='col-md-4 px-5'>
-                  <label className='col-form-label m-0 p-0 lh-1 text-sm w-100'>Tipo</label>
+                  <label className='col-form-label m-0 p-0 lh-1 fs-help w-100'>Tipo</label>
                   <input
                     type='text'
                     className='form-control form-control-sm form-control-white'
