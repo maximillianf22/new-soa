@@ -30,7 +30,6 @@ export function StepMultiplatform() {
                   <label className='col-form-label required fw-bold fs-6'>Plataforma</label>
                   <Field name={'plataform'} component={InputSelect} options={optionsPlataforms} />
                 </div>
-
                 <div className='col-md-5 px-5 fv-row my-3'>
                   <InputProfile />
                 </div>
