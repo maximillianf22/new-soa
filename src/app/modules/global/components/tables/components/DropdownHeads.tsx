@@ -21,7 +21,6 @@ const DropdownHeads: React.FC = (  ) => {
           tableHeads.push(name)
         }
       }
-      console.log(tableHeads)
       dispatch(tableActions.updateTableHeads({tableBody: {tableHeads}}));
     },
   })
