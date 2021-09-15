@@ -28,54 +28,38 @@ export const FormRegular = () => {
                   <label className='col-form-label required fw-bold fs-6'>Nombre</label>
                   <Form.Input name='name' placeholder='Nombre' />
                 </div>
-
                 <div className='col-md-4 px-5 fv-row my-3'>
                   <label className='col-form-label required fw-bold fs-6'>Apellido</label>
                   <Form.Input name='lastName' placeholder='Apellido' />
                 </div>
-
                 <div className='col-md-4 px-5 fv-row my-3'>
                   <label className='col-form-label required fw-bold fs-6'>Correo</label>
                   <Form.Input name='email' type='email' placeholder='Correo' />
                 </div>
-
                 <div className='col-md-4 px-5 fv-row my-3'>
                   <label className='col-form-label required fw-bold fs-6'>Usuario</label>
                   <Form.Input name='username' placeholder='Usuario' />
                 </div>
-
                 <div className='col-md-4 px-5 fv-row my-3'>
                   <label className='col-form-label required fw-bold fs-6'>Contraseña</label>
                   <Form.Input name='password' type='password' placeholder='Contraseña' />
                 </div>
-
                 <div className='col-md-4 px-5 fv-row my-3'>
                   <label className='col-form-label required fw-bold fs-6'>
                     Confirmar contraseña
                   </label>
                   <Form.Input name='confirmPassword' type='password' placeholder='Confirmar' />
                 </div>
-
                 <div className='col-md-4 px-5 fv-row my-3'>
                   <InputDueDate isRequired='required' />
                 </div>
-
                 <div className='col-md-4 px-5 fv-row my-3'>
                   <label className='col-form-label required fw-bold fs-6'>Plataforma</label>
                   <Field name='plataform' component={InputSelect} options={optionsPlataforms} />
                 </div>
-
                 <div className='col-md-4 px-5 fv-row my-3'>
                   <InputProfile />
                 </div>
-
-                {/* <Form.Checkbox
-                  custom
-                  label='Checkbox 2'
-                  name='checkbox2'
-                  onChange={function noRefCheck() {}}
-                /> */}
-
                 <div className='col-md-3 px-5 fv-row text-end'>
                   <div className='form-check form-check-custom form-check-solid mt-8'>
                     <input
@@ -87,7 +71,6 @@ export const FormRegular = () => {
                     <label className='form-check-label'>¿Permite cambio de contraseña?</label>
                   </div>
                 </div>
-
                 <div className='col-md-3 px-5 fv-row'>
                   <div className='mt-8 text-center'>
                     <div className='form-check form-switch form-check-custom form-check-solid'>

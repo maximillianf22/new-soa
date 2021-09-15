@@ -1,14 +1,8 @@
-import Select from 'react-select'
 import {KTSVG} from '../../../../../_metronic/helpers'
 import {InputSelect, InputProfile} from '../../../global/components/inputs'
 import {Field} from 'formik'
 
 export function StepMultiplatform() {
-  const optionsProfile = [
-    {value: 'admin', label: 'Administrador'},
-    {value: 'supervisor', label: 'Supervisor'},
-    {value: 'coordinador', label: 'Coordinador'},
-  ]
 
   const optionsPlataforms = [
     {value: 'addiuva', label: 'Addiuva'},

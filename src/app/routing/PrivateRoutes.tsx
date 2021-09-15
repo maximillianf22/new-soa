@@ -10,10 +10,10 @@ export function PrivateRoutes() {
   return (
     <Suspense fallback={<FallbackView />}>
       <Switch>
-        <Route path='/inicio' component={IndexPage} />
-        <Route path='/usuarios' component={UsersPage} />
-        <Redirect from='/auth' to='/inicio' />
-        <Redirect exact from='/' to='/inicio' />
+        <Route path='/home' component={IndexPage} />
+        <Route path='/users' component={UsersPage} />
+        <Redirect from='/auth' to='/home' />
+        <Redirect exact from='/' to='/home' />
         <Redirect to='error/404' />
       </Switch>
     </Suspense>

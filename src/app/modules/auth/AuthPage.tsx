@@ -69,7 +69,7 @@ export function AuthPage() {
 
           <Switch>
             <Route path='/auth/login' component={Login} />
-            <Route path='/auth/recuperar-contraseña' component={ForgotPassword} />
+            <Route path='/auth/recovery' component={ForgotPassword} />
             <Redirect from='/auth' exact={true} to='/auth/login' />
             <Redirect to='/auth/login' />
           </Switch>
