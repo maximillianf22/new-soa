@@ -1,9 +1,11 @@
 import React from 'react'
+import Notifications from './components/Notifications'
 
 export const ModalPermits = () => {
-  return (
+    return (
+
     <>
-      <div className='modal bg-white fade' tabIndex={-1} id='kt_modal_2'>
+      <div className='modal bg-white fade' tabIndex={-1} id='kt_modal_permits'>
         <div className='modal-dialog modal-fullscreen'>
           <div className='modal-content shadow-none'>
             <div className='modal-header'>
@@ -17,6 +19,7 @@ export const ModalPermits = () => {
               </div>
             </div>
             <div className='modal-body'>
+              <Notifications />
               <p>Modal body text goes here.</p>
             </div>
             <div className='modal-footer'>

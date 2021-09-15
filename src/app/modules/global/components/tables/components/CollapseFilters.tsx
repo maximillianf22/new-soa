@@ -13,7 +13,7 @@ const CollapseFilters = ({open}: any) => {
                   <label className='col-form-label m-0 p-0 lh-1 text-sm w-100'>Nombre</label>
                   <input
                     type='text'
-                    className='form-control form-control-sm form-control'
+                    className='form-control form-control-sm form-control-white'
                     placeholder='Filtro'
                   />
                 </div>
@@ -21,7 +21,7 @@ const CollapseFilters = ({open}: any) => {
                   <label className='col-form-label m-0 p-0 lh-1 text-sm w-100'>Apellido</label>
                   <input
                     type='text'
-                    className='form-control form-control-sm form-control'
+                    className='form-control form-control-sm form-control-white'
                     placeholder='Filtro'
                   />
                 </div>
@@ -29,7 +29,7 @@ const CollapseFilters = ({open}: any) => {
                   <label className='col-form-label m-0 p-0 lh-1 text-sm w-100'>Documento</label>
                   <input
                     type='text'
-                    className='form-control form-control-sm form-control'
+                    className='form-control form-control-sm form-control-white'
                     placeholder='Filtro'
                   />
                 </div>
@@ -37,7 +37,7 @@ const CollapseFilters = ({open}: any) => {
                   <label className='col-form-label m-0 p-0 lh-1 text-sm w-100'>Correo</label>
                   <input
                     type='text'
-                    className='form-control form-control-sm form-control'
+                    className='form-control form-control-sm form-control-white'
                     placeholder='Filtro'
                   />
                 </div>
@@ -45,7 +45,7 @@ const CollapseFilters = ({open}: any) => {
                   <label className='col-form-label m-0 p-0 lh-1 text-sm w-100'>Rol</label>
                   <input
                     type='text'
-                    className='form-control form-control-sm form-control'
+                    className='form-control form-control-sm form-control-white'
                     placeholder='Filtro'
                   />
                 </div>
@@ -53,7 +53,7 @@ const CollapseFilters = ({open}: any) => {
                   <label className='col-form-label m-0 p-0 lh-1 text-sm w-100'>Tipo</label>
                   <input
                     type='text'
-                    className='form-control form-control-sm form-control'
+                    className='form-control form-control-sm form-control-white'
                     placeholder='Filtro'
                   />
                 </div>

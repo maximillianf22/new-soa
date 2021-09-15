@@ -10,7 +10,7 @@ import { FormMultiplatform } from './components/UsersForms/FormMultiplatform';
 const usersBreadCrumbs: Array<PageLink> = [
     {
       title: 'Usuarios',
-      path: '/usuarios/tabla',
+      path: '/users/home',
       isSeparator: false,
       isActive: false,
     },
@@ -25,23 +25,23 @@ const usersBreadCrumbs: Array<PageLink> = [
   const UsersPage: React.FC = () => {
     return (
       <Switch>
-        <Route path='/usuarios/tabla'>
+        <Route path='/users/home'>
           <PageTitle breadcrumbs={usersBreadCrumbs}>Tabla de Usuarios</PageTitle>
           <UsersTable />
         </Route>
 
-        <Route path='/usuarios/crear-multiplataforma'>
+        <Route path='/users/create-multiplatform'>
           <PageTitle breadcrumbs={usersBreadCrumbs}>Registro de usuario Multiplataforma</PageTitle>
           <FormMultiplatform />
         </Route>
 
-        <Route path='/usuarios/crear-regular'>
+        <Route path='/users/create-regular'>
           <PageTitle breadcrumbs={usersBreadCrumbs}>Registro de usuario</PageTitle>
           <FormRegular />
         </Route>
 
-        <Redirect from='/usuarios' exact={true} to='/usuarios/tabla' />
-        <Redirect to='/usuarios/tabla' />
+        <Redirect from='/users' exact={true} to='/users/home' />
+        <Redirect to='/users/home' />
       </Switch>
     )
   }

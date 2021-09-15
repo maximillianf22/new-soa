@@ -65,3 +65,5 @@ const Toolbar: React.FC = () => {
   )
 }
 export {Toolbar}
+
+// TODO: Agregar esto al menu en el responsive

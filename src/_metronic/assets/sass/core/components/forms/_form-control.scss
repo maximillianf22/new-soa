@@ -21,7 +21,7 @@
 	}
 
 	// Solid style
-	&.form-control-solid {
+	&.form-control {
 		background-color: $input-solid-bg;
 		border-color: $input-solid-bg;
 		@include placeholder($input-solid-placeholder-color);
@@ -75,7 +75,7 @@
 	resize: none;
 }
 
-.col-form-label {
+.col-form-label, .form-label {
     padding-top: calc(0.75rem + 1px);
     padding-bottom: calc(0.75rem + 1px);
     margin-bottom: 0;

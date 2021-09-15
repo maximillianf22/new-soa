@@ -15,7 +15,7 @@ export function AsideMenuMain() {
         fontIcon='bi-layers'
       />
       <AsideMenuItem
-        to='/monitor-novedades'
+        to=''
         icon='/media/icons/duotone/Interface/Grid.svg'
         title='Monitor de Novedades'
         // title={intl.formatMessage({id: 'MENU.DASHBOARD'})} De esta forma se usa la internacionalizacion (Idioma)
@@ -23,19 +23,19 @@ export function AsideMenuMain() {
       />
       <AsideMenuItem
         className="active"
-        to='/usuarios'
+        to='/users/home'
         icon='/media/icons/duotone/Communication/Group.svg'
         title='Usuarios'
         fontIcon='bi-layers'
       />
       <AsideMenuItem
-        to='/seguimiento-operativo'
+        to=''
         icon='/media/icons/duotone/Map/Direction2.svg'
         title='Seguimiento Operativo'
         fontIcon='bi-layers'
       />
       <AsideMenuItem
-        to='/configuracion'
+        to=''
         icon='/media/icons/duotone/Code/Settings4.svg'
         title='Configuracion'
         fontIcon='bi-layers'
