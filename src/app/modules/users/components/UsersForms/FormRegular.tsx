@@ -71,6 +71,7 @@ export const FormRegular = () => {
                     <label className='form-check-label'>¿Permite cambio de contraseña?</label>
                   </div>
                 </div>
+                
                 <div className='col-md-3 px-5 fv-row'>
                   <div className='mt-8 text-center'>
                     <div className='form-check form-switch form-check-custom form-check-solid'>

@@ -24,7 +24,7 @@ export const ModalSelectType = () => {
                     <div className='fv-row'>
                       <div className='row'>
                         <div className='col-lg-6'>
-                          <a href='/usuarios/crear-regular'>
+                          <a href='/users/create-regular'>
                             <label className='btn btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center mb-10 active'>
                               <span className='svg-icon svg-icon-3x me-5'>
                                 <i className='fa fa-user fs-1'></i>
@@ -41,7 +41,7 @@ export const ModalSelectType = () => {
                           </a>
                         </div>
                         <div className='col-lg-6'>
-                          <a href='/usuarios/crear-multiplataforma'>
+                          <a href='/users/create-multiplatform'>
                             <label className='btn btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center'>
                               <span className='svg-icon svg-icon-3x me-5'>
                                 <i className='fa fa-globe-americas fs-1'></i>

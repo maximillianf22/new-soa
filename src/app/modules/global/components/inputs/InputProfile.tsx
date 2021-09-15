@@ -1,5 +1,5 @@
 import React from 'react'
-import {InputSelect} from '.'
+import {InputSelect} from './InputSelect'
 import {Field} from 'formik'
 import {ModalPermits} from '../modals/ModalPermits/ModalPermits'
 
