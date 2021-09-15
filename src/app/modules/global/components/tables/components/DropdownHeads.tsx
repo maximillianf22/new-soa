@@ -1,18 +1,16 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import {useFormik} from 'formik';
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { tableActions } from '../Redux/TableRedux';
+import { useDispatch, useSelector } from 'react-redux';
+import { tableActions, TableHeader } from '../Redux/TableRedux';
+import { RootState } from '../../../../../../setup/redux/RootReducer';
 
-const initialValues = {
-
-}
 
 const DropdownHeads: React.FC = (  ) => {
-  const tableHeads = ['id', 'usuario', 'nombre', 'apellido', 'correo', 'activo', 'fecha creación', 'rol' ]
+  const {tableHeader: {tableHeads}}:any = useSelector<RootState>(({table}) => table)
   const dispatch = useDispatch();
   const formik = useFormik({
-    initialValues,
+    initialValues: {},
     onSubmit: (values: any, {setStatus, setSubmitting}) => {
       const tableHeads = [];
       for(var name in values) {
@@ -42,7 +40,7 @@ const DropdownHeads: React.FC = (  ) => {
           <div className='py-3 fv-row table table-hover'>
             <table className='table table-sm table-hover align-middle gs-0 gy-1 mb-0'>
               <tbody className='table-striped'>
-                {tableHeads.map( (th, i) => (
+                {tableHeads?.map( (th:string, i:number) => (
                   <tr key={i}>
                     <th className='d-flex align-items-center my-auto mt-1 w-150px ms-3'>{th}</th>
                     <td className=' text-end'>
