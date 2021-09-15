@@ -1,25 +1,35 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import {useFormik} from 'formik';
-import { FC } from 'react';
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { tableActions } from '../Redux/TableRedux';
 
 const initialValues = {
-  username: '',
+
 }
 
-interface Iprops {
-  tableHeads: string[]
-}
-
-const DropdownHeads: React.FC<Iprops> = ( tableHeads: Iprops ) => {
+const DropdownHeads: React.FC = (  ) => {
+  const tableHeads = ['id', 'usuario', 'nombre', 'apellido', 'correo', 'activo', 'fecha creación', 'rol' ]
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues,
-    onSubmit: (values, {setStatus, setSubmitting}) => {
-      //
+    onSubmit: (values: any, {setStatus, setSubmitting}) => {
+      const tableHeads = [];
+      for(var name in values) {
+        var value = values[name];
+        if (value) {
+          tableHeads.push(name)
+        }
+      }
+      console.log(tableHeads)
+      dispatch(tableActions.updateTableHeads({tableBody: {tableHeads}}));
     },
   })
+
+
   return (
     <>
+
     <div className='menu menu-sub menu-sub-dropdown w-250px w-md-300px' data-kt-menu='true'>
       <div className='px-7 py-5'>
         <div className='fs-5 text-dark fw-bolder'>Campos disponibles:</div>
@@ -28,24 +38,26 @@ const DropdownHeads: React.FC<Iprops> = ( tableHeads: Iprops ) => {
       <div className='separator border-gray-200'></div>
 
       <div className='px-7 py-5'>
+            <form onSubmit={formik.handleSubmit} style={{marginTop: '-20px'}}>
         <div className='mb-3'>
           <div className='py-3 fv-row table table-hover'>
             <table className='table table-sm table-hover align-middle gs-0 gy-1 mb-0'>
               <tbody className='table-striped'>
-                <tr>
-                  <th className='d-flex align-items-center my-auto mt-1 w-150px ms-3'>Notification</th>
-                  <td className=' text-end'>
-                    <div className='form-check form-switch form-check-custom form-check-solid p-0  ms-10'>
-                      <input
-                          className='form-check-input h-25px'
-                          type='checkbox'
-                          id='flexSwitchChecked3'
-                          checked
-                          {...formik.getFieldProps('username')}
-                      />
-                    </div>
-                  </td>
-                </tr>
+                {tableHeads.map( (th, i) => (
+                  <tr key={i}>
+                    <th className='d-flex align-items-center my-auto mt-1 w-150px ms-3'>{th}</th>
+                    <td className=' text-end'>
+                      <div className='form-check form-switch form-check-custom form-check-solid p-0  ms-10'>
+                        <input
+                            className='form-check-input h-25px'
+                            type='checkbox'
+                            id='flexSwitchChecked3'
+                            {...formik.getFieldProps(th)}
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                ) )}
               </tbody>
             </table>
           </div>
@@ -64,8 +76,10 @@ const DropdownHeads: React.FC<Iprops> = ( tableHeads: Iprops ) => {
             Aplicar
           </button>
         </div>
+            </form>
       </div>
     </div>
+
     </>
   )
 }

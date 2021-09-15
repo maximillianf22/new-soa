@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import {useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { tableActionTypes, tableActions } from '../../global/components/tables/Redux/TableRedux';
 import {TableComponent} from '../../global/components/tables/TableComponent'
@@ -25,7 +25,7 @@ export const UsersTable = () => {
           tableHeads: tableHeads
         },
         tableBody: {
-            tableHeads: ['Nombre','Correo','Usuario','Rol'],
+            tableHeads: ['nombre','correo','usuario','rol'],
             tableContent: users
         }
       }})
