@@ -44,10 +44,11 @@
 	}
 }
 
+
 // Estilos Form Select de la libreria React-Select
 
 .css-yk16xz-control {
-    background-color: transparent !important;
+    background-color: inherit !important;
     border-width: 0px !important;
 	min-height: 40px !important;
 	font-size: 1.1rem;
@@ -57,7 +58,7 @@
 }
 
 .css-1pahdxg-control {
-    background-color: transparent !important;
+    background-color: inherit !important;
     border-width: 0px !important;
 	min-height: 40px !important;
 	font-size: 1.1rem;
@@ -74,4 +75,3 @@
 	border: 0px solid transparent !important;
     box-shadow: 0px 0px 50px 0px rgb(82 63 105 / 10%) !important;
 }
-

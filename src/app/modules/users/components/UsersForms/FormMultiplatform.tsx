@@ -4,7 +4,7 @@ import {StepMultiplatform} from './StepMultiplatform'
 import {KTSVG} from '../../../../../_metronic/helpers'
 import {StepperComponent} from '../../../../../_metronic/assets/ts/components'
 import {Formik, Form, FormikValues} from 'formik'
-import {createUserSchemas, ICreateUser, initialValues, wizzardSchemas} from './Helpers'
+import {ICreateUser, initialValues, wizzardSchemas} from './Helpers'
 
 const FormMultiplatform: FC = () => {
   const stepperRef = useRef<HTMLDivElement | null>(null)

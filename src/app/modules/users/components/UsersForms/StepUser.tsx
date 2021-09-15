@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import * as Yup from 'yup'
 import {useFormik} from 'formik'
 import {Button, Collapse} from 'react-bootstrap-v5'
 import Select from 'react-select'
@@ -16,7 +15,6 @@ const options = [
 ]
 
 export const StepUserForm = () => {
-  const [loading, setLoading] = useState(false)
   const formik = useFormik<ICreateUser>({
     initialValues,
     validationSchema: createUserSchemas,

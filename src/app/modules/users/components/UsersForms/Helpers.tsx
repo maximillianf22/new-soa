@@ -23,7 +23,8 @@ const wizzardSchemas = [
 ]
 
 const createUserSchemas = Yup.object().shape({
-  // fName: Yup.string().required('First name is required'),
+  platform: Yup.string().min(10, 'te tengo'),
+  
 })
 
 const initialValues: ICreateUser = {

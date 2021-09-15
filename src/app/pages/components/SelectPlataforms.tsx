@@ -13,7 +13,7 @@ export const SelectPlataforms = () => {
     <>
       <div className='col-5 ps-4 col-md-4 col-lg-3'>
         <Select
-          className='form-control form-control-sm form-control border-0 p-0'
+          className='form-control form-control-sm form-control-white border-0 p-0'
           placeholder='Seleccione la Plataforma o Cliente'
           name='selectPlataform'
           options={options}
