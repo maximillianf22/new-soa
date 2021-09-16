@@ -2,7 +2,7 @@ import { call, put } from '@redux-saga/core/effects';
 import {Action} from '@reduxjs/toolkit'
 import {persistReducer} from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-import { getUsers } from './UsersCRUD';
+import { deleteUser, getUsers } from './UsersCRUD';
 import { takeLatest } from 'redux-saga/effects';
 import { response } from '../../auth/redux/AuthRedux';
 import { UserModel } from '../../global/models/UserModel';
@@ -15,6 +15,7 @@ export const actionTypes = {
   AsyncLoad: '[usersRedux] start loading data',
   Load: '[usersRedux] load data do reducer',
   Clear: '[usersRedux] clear reducer data',
+  Delete: '[usersRedux] delete user',
 }
 
 const initialUsersState = {
@@ -47,6 +48,11 @@ export const actions = {
   clear: () => ({type: actionTypes.Clear,}),
 }
 
+interface ActionTypePayload {
+  type: string, 
+  payload: number
+}
+
 export function* sagaUsers() {
   // Worker Sagas
   function* asyncLoad() {
@@ -58,7 +64,16 @@ export function* sagaUsers() {
     }
   }
 
+  function* sagaDeleteUser({payload}:ActionTypePayload) {
+    try {
+      const resp: response = yield call(deleteUser, payload)
+      console.log(resp)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   // Watcher Sagas
   yield takeLatest(actionTypes.AsyncLoad, asyncLoad)
-  
+  yield takeLatest(actionTypes.Delete, sagaDeleteUser)
 }

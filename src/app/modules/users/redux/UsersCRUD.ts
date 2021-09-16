@@ -14,7 +14,7 @@ export function getUser(id: number): Promise<UserModel[]> {
 };
 
 export function deleteUser(id: number): Promise<UserModel[]> {
-  return httpClient.delete(`${GET_USERS_URL}/id`)
+  return httpClient.delete(`${GET_USERS_URL}${id}/`)
 };
 
 export function updateUser(id: number, user: UserModel): Promise<UserModel[]> {
