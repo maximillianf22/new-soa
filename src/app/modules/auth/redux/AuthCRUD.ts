@@ -2,7 +2,6 @@ import {AuthModel} from '../models/AuthModel'
 import { UserModel } from '../../global/models/UserModel';
 import { httpClient } from '../../../../setup/axios/setUpAxios';
 
-import httpClient from '../../../../api/httpClient'
 // import axios from 'axios';
 
 const API_URL = process.env.REACT_APP_API_URL 
