@@ -4,6 +4,7 @@ import storage from 'redux-persist/lib/storage'
 import {put, takeLatest, call} from 'redux-saga/effects'
 import { UserModel } from '../../global/models/UserModel';
 import { login, Data } from './AuthCRUD';
+import { toast } from "react-toastify";
 
 export interface ActionWithPayload<T> extends Action {
   payload?: T
@@ -48,6 +49,7 @@ export const reducer = persistReducer(
       }
 
       case actionTypes.LoginError: {
+        toast.error("Usuario y/o contraseña incorrecta")
         const error = action.payload
         return {...state, error}
       }
