@@ -66,3 +66,11 @@
 		}
 	}	
 }
+
+.accordion-button::after {
+    margin-left: 0;
+}
+
+.accordion-button {
+    padding: 1rem 1rem;
+}

@@ -1,7 +1,8 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Form} from 'react-bootstrap-formik'
 import {createUserSchemas, initialValues} from './Helpers'
-import {InputDueDate, InputSelect, InputProfile} from '../../../global/components/inputs'
+import {InputDueDate, InputSelect} from '../../../global/components/inputs'
+import {InputProfile} from '../UserPermits/InputProfile'
 import {Field} from 'formik'
 
 const optionsPlataforms = [
@@ -40,6 +41,7 @@ export const FormRegular = () => {
                   <label className='col-form-label required fw-bold fs-6'>Usuario</label>
                   <Form.Input name='username' placeholder='Usuario' />
                 </div>
+                
                 <div className='col-md-4 px-5 fv-row my-3'>
                   <label className='col-form-label required fw-bold fs-6'>Contraseña</label>
                   <Form.Input name='password' type='password' placeholder='Contraseña' />
@@ -60,8 +62,17 @@ export const FormRegular = () => {
                 <div className='col-md-4 px-5 fv-row my-3'>
                   <InputProfile />
                 </div>
+
+                {/* TODO: cambiar los checkboxes de toda la plataforma a los que trae react-bootstrap-formik
+                <Form.Checkbox
+                  custom
+                  label='Checkbox 1'
+                  name='checkbox1'
+                  onChange={function noRefCheck() {}}
+                /> */}
+
                 <div className='col-md-3 px-5 fv-row text-end'>
-                  <div className='form-check form-check-custom form-check-solid mt-8'>
+                  <div className='form-check form-check-custom form-check-solid my-auto h-100'>
                     <input
                       className='form-check-input h-25px w-25px'
                       type='checkbox'
@@ -71,9 +82,9 @@ export const FormRegular = () => {
                     <label className='form-check-label'>¿Permite cambio de contraseña?</label>
                   </div>
                 </div>
-                
+
                 <div className='col-md-3 px-5 fv-row'>
-                  <div className='mt-8 text-center'>
+                  <div className='my-auto h-100 text-center'>
                     <div className='form-check form-switch form-check-custom form-check-solid'>
                       <input
                         className='form-check-input h-25px'

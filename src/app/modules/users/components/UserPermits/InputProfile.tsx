@@ -1,7 +1,7 @@
 import React from 'react'
-import {InputSelect} from './InputSelect'
+import {InputSelect} from '../../../global/components/inputs/InputSelect'
 import {Field} from 'formik'
-import {ModalPermits} from '../modals/ModalPermits/ModalPermits'
+import {ModalPermits} from './ModalPermits'
 
 const optionsProfile = [
     {value: 'admin', label: 'Administrador'},
@@ -17,7 +17,7 @@ export const InputProfile = () => {
             <label className='col-form-label required fw-bold fs-6'>Perfil</label>
             <Field name={'profile'} component={InputSelect} options={optionsProfile} />
           </div>
-          <div className='px-0 flex-fill bd-highlight mt-auto'>
+          <div className='px-0 flex-fill bd-highlight mt-13'>
             <button
               className='btn btn-icon btn-primary btn-form'
               data-bs-toggle='modal'

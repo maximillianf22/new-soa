@@ -85,3 +85,79 @@
     color: #959cb6;
 	margin-left: 2px !important;
 }
+
+// Estilos de primereact
+.p-inputtext, .p-inputtext:enabled:focus {
+	color: inherit !important;
+	min-height: 40px !important;
+	background-color: inherit !important;
+	border: inherit !important;
+	box-shadow: inherit !important;
+}
+
+// Estilos de dual list box-shadow:
+
+.rdl-filter {
+    background-color: #F2F3F7;
+    border-color: #F2F3F7 !important;
+    color: #5E6278;
+    transition: color 0.2s ease, background-color 0.2s ease;
+	border-radius: 0.475rem !important;
+}
+
+.rdl-available, .rdl-selected {
+	padding-left: 2rem;
+	padding-right: 2rem;
+}
+
+
+.react-dual-listbox button, .react-dual-listbox select {
+    line-height: 1.42857;
+    font-family: inherit;
+}
+
+.rdl-control {
+    display: block;
+    border: 2px solid #f2f3f7 !important;
+    border-radius: 0.475rem !important;
+    padding: 20px 20px !important;
+    width: 100%;
+    color: #333;
+    font-size: 14px;
+    min-height: 50vh;
+}
+
+.rdl-move {
+	background-color: $primary !important;
+	color: white !important;
+	display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    height: calc(1.5em + 1.5rem + 2px);
+    width: calc(1.5em + 1.5rem + 2px);
+}
+
+.rdl-move {
+    display: inline-block;
+    font-weight: 500;
+    line-height: 1.5;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .75rem 1.5rem;
+    font-size: 1.1rem;
+    border-radius: .475rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.rdl-move {
+	border-radius: 100px !important;
+	height: 50px !important;
+	width: 50px !important;
+}

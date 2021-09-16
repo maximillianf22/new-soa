@@ -11,7 +11,6 @@ export const InputSelect = ({
 
   return (
     <>
-      <label htmlFor={field.name}>{props.label}</label>
       <Select
         className='form-control p-0'
         {...field}
@@ -19,7 +18,7 @@ export const InputSelect = ({
         options={options}
         value={(options ? options.find((option) => option.value === field.value) : '') as any}
         onChange={(option) => setFieldValue(field.name, (option as any).value)}
-        placeholder='Seleccione...'
+        placeholder={props.label}
       />
       {touched[field.name] && errors[field.name] && <div className="text-danger fs-help">{errors[field.name]}</div>}
     </>

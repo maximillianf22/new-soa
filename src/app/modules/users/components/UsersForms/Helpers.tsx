@@ -29,16 +29,16 @@ const wizzardSchemas = [
 ]
 
 const createUserSchemas = Yup.object().shape({
-  platform: Yup.string().required(),
-  name: Yup.string().required(),
-  lastName: Yup.string().required(),
-  email: Yup.string().required(),
-  username: Yup.string().required(),
-  password: Yup.string().required(),
-  confirmPassword: Yup.string().required(),
-  initialDate: Yup.string().required(),
-  finalDate: Yup.string().required(),
-  dueDate: Yup.string().required(),
+  platform: Yup.string().required('Este campo es requerido'),
+  name: Yup.string().required('Este campo es requerido'),
+  lastName: Yup.string().required('Este campo es requerido'),
+  email: Yup.string().required('Este campo es requerido'),
+  username: Yup.string().required('Este campo es requerido'),
+  password: Yup.string().required('Este campo es requerido'),
+  confirmPassword: Yup.string().required('Este campo es requerido'),
+  initialDate: Yup.string().required('Este campo es requerido'),
+  finalDate: Yup.string().required('Este campo es requerido'),
+  dueDate: Yup.string().required('Este campo es requerido'),
   search: Yup.string().min(3, 'Minimo 3 caracteres para realizar una busqueda'),
 })
 
