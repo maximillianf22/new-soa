@@ -49,7 +49,7 @@ export function NewPassword() {
       newPassword(values)
         .then(response => {
           console.log(response)
-          // setAlertMessage(response.data.success)
+          setAlertMessage(response.data.detail)
           setHasErrors(false)
           setLoading(false)
         })
