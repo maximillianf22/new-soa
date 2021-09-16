@@ -1,1 +1,3 @@
 declare module 'react-dual-listbox';
+
+// TODO: Mostrar estados de la aplicacion conetado, desconectado, internet lento, etc.. con posibles soluciones para instruir al usuario, evitamos llamas molestias, etc...
