@@ -1,11 +1,12 @@
 import axios from 'axios'
 import {AuthModel} from '../models/AuthModel'
 import { UserModel } from '../../global/models/UserModel';
+import { httpClient } from '../../../../setup/axios/setUpAxios';
 
 const API_URL = process.env.REACT_APP_API_URL 
 
 export const GET_USER_BY_ACCESSTOKEN_URL = `${API_URL}/auth/get-user`
-export const LOGIN_URL = `${API_URL}/soaang-users/api/token/`
+export const LOGIN_URL = `/soaang-users/api/token/`
 export const REGISTER_URL = `${API_URL}/auth/register`
 export const REQUEST_PASSWORD_URL = `${API_URL}/auth/forgot-password`
 
@@ -17,7 +18,7 @@ export interface Data {
 
 // Servidor debe retonar UserModel
 export function login(data:Data): Promise<UserModel> {
-  return axios.post(LOGIN_URL, data)
+  return httpClient.post(LOGIN_URL, data)
 }
 
 // Servidor debe retonar AuthModel
