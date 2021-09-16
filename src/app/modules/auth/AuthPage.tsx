@@ -4,6 +4,7 @@ import {Redirect, Route, Switch} from 'react-router-dom'
 import {ForgotPassword} from './components/ForgotPassword'
 import {Login} from './components/Login'
 import {toAbsoluteUrl} from '../../../_metronic/helpers'
+import { NewPassword } from './components/NewPassword'
 
 export function AuthPage() {
   useEffect(() => {
@@ -69,7 +70,8 @@ export function AuthPage() {
 
           <Switch>
             <Route path='/auth/login' component={Login} />
-            <Route path='/auth/recovery' component={ForgotPassword} />
+            <Route path='/auth/forgot-password' component={ForgotPassword} />
+            <Route path='/auth/new-password/:uid/:token' component={NewPassword} />
             <Redirect from='/auth' exact={true} to='/auth/login' />
             <Redirect to='/auth/login' />
           </Switch>

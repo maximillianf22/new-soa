@@ -5,6 +5,10 @@ import {LayoutProvider, LayoutSplashScreen} from '../_metronic/layout/core'
 import AuthInit from './modules/auth/redux/AuthInit'
 import {Routes} from './routing/Routes'
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 type Props = {
   basename: string
 }
@@ -16,6 +20,17 @@ const App: React.FC<Props> = ({basename}) => {
         <I18nProvider>
           <LayoutProvider>
             <AuthInit>
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+            />
               <Routes />
             </AuthInit>
           </LayoutProvider>

@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react'
+import React, { useState } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import * as Yup from 'yup'
 import clsx from 'clsx'
@@ -20,11 +20,12 @@ const loginSchema = Yup.object().shape({
 })
 
 const initialValues = {
-  username: 'admin',
-  password: 'admin',
+  username: '',
+  password: '',
 }
 
 export function Login() {
+  const [showPassword, setShowPassword] =useState(false)
   const dispatch = useDispatch()
   const {loading, error}: any = useSelector<RootState>(({auth}) => auth)
   const formik = useFormik({
@@ -82,7 +83,7 @@ export function Login() {
 
             <div className='input-group input-group-lg mb-3'>
               <input
-                type='password'
+                type={showPassword ? "text" : "password"}
                 aria-describedby='inputGroup-sizing-lg'
                 {...formik.getFieldProps('password')}
                 className={clsx(
@@ -94,11 +95,12 @@ export function Login() {
                     'is-valid': formik.touched.password && !formik.errors.password,
                   }
                 )}
-                id='exampleInputPassword1'
+                id='inputPassword1'
                 placeholder='Contraseña'
               />
-              <span className='input-group-text border-0' id='inputGroup-sizing-lg'>
-                <i className='fas fa-eye fa-lg text-dark border-none'></i>
+              <span onClick= {() => {setShowPassword(!showPassword)}} className='input-group-text border-0' id='inputGroup-sizing-lg'>
+                <i className={showPassword ? "fas fa-eye-slash fa-lg text-dark border-none cursor-pointer"
+                  : "fas fa-eye fa-lg text-dark border-none cursor-pointer"}></i>
               </span>
             </div>
             {formik.touched.password && formik.errors.password && (

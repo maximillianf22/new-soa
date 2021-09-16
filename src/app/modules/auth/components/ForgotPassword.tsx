@@ -3,42 +3,40 @@ import * as Yup from 'yup'
 import clsx from 'clsx'
 import {Link} from 'react-router-dom'
 import {useFormik} from 'formik'
-import {requestPassword} from '../redux/AuthCRUD'
+import {forgotPassword} from '../redux/AuthCRUD'
 
 const initialValues = {
-  email: 'admin@demo.com',
+  email: '',
 }
 
 const forgotPasswordSchema = Yup.object().shape({
   email: Yup.string()
-    .email('Wrong email format')
-    .min(3, 'Minimum 3 symbols')
-    .max(50, 'Maximum 50 symbols')
-    .required('Email is required'),
+    .email('Formato de email erróneo')
+    .min(3, 'Mínimo 3 carácteres')
+    .max(50, 'Máximo 50 carácteres')
+    .required('El Email es requerido'),
 })
 
 export function ForgotPassword() {
   const [loading, setLoading] = useState(false)
   const [hasErrors, setHasErrors] = useState<boolean | undefined>(undefined)
+  const [alertMessage, setAlertMessage] = useState('')
   const formik = useFormik({
     initialValues,
     validationSchema: forgotPasswordSchema,
-    onSubmit: (values, {setStatus, setSubmitting}) => {
+    onSubmit: (values) => {
       setLoading(true)
-      setHasErrors(undefined)
-      setTimeout(() => {
-        requestPassword(values.email)
-          .then(({data: {result}}) => {
-            setHasErrors(false)
-            setLoading(false)
-          })
-          .catch(() => {
-            setHasErrors(true)
-            setLoading(false)
-            setSubmitting(false)
-            setStatus('The login detail is incorrect')
-          })
-      }, 1000)
+      forgotPassword(values.email)
+        .then(response => {
+          setAlertMessage(response.data.success)
+          setHasErrors(false)
+          setLoading(false)
+        })
+        .catch(error => {
+          setAlertMessage(error.response.data.email)
+          setHasErrors(true)
+          setLoading(false)
+        })
     },
   })
 
@@ -57,7 +55,7 @@ export function ForgotPassword() {
           >
             <div className='text-center mb-10'>
               {/* begin::Title */}
-              <p className='fs-2x fw-bolder mb-0 lh-1'>Recuperación de contraseña</p>
+              <p className='fs-2x fw-bolder m4-2 lh-1'>Recuperación de contraseña</p>
               {/* end::Title */}
 
               {/* begin::Link */}
@@ -69,22 +67,22 @@ export function ForgotPassword() {
 
             {/* begin::Title */}
             {hasErrors === true && (
-              <div className='mb-lg-15 alert alert-danger'>
+              <div className='mb-lg-8 alert alert-danger'>
                 <div className='alert-text font-weight-bold'>
-                  Sorry, looks like there are some errors detected, please try again.
+                  { alertMessage }
                 </div>
               </div>
             )}
 
             {hasErrors === false && (
-              <div className='mb-10 bg-light-info p-8 rounded'>
-                <div className='text-info'>Sent password reset. Please check your email</div>
+              <div className='mb-8 bg-light-info p-8 rounded'>
+                <div className='text-info'>{ alertMessage }</div>
               </div>
             )}
             {/* end::Title */}
 
             {/* begin::Form group */}
-            <div className='input-group input-group-lg mb-3 mt-5'>
+            <div className='input-group input-group-lg'>
               <input
                 type='email'
                 placeholder=''
@@ -98,38 +96,39 @@ export function ForgotPassword() {
                   }
                 )}
               />
-              {formik.touched.email && formik.errors.email && (
-                <div className='fv-plugins-message-container'>
-                  <div className='fv-help-block'>
-                    <span role='alert'>{formik.errors.email}</span>
-                  </div>
-                </div>
-              )}
             </div>
+            {formik.touched.email && formik.errors.email && (
+              <div className='fv-plugins-message-container'>
+                <div className='fv-help-block'>
+                  <span role='alert'>{formik.errors.email}</span>
+                </div>
+              </div>
+            )}
             {/* end::Form group */}
 
             {/* begin::Form group */}
-            <div className='row'>
-            <div className='col-lg-8 col-md-12 d-grid gap-2'>
-              <button
-                type='submit'
-                id='kt_password_reset_submit'
-                className='btn btn-lg btn-dark h-45px px-0'
-              >
-                <span className='indicator-label'>Recuperar contraseña</span>
-                {loading && (
-                  <span className='indicator-progress'>
-                    Por favor espere...
-                    <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
-                  </span>
-                )}
-              </button>
-            </div>
-            <div className='col-lg-4 col-md-12 d-grid gap-2'>
-              <Link to='/auth/login' className='btn btn-lg btn-light-danger fw-bolder px-0'>
-                  Cancelar
-              </Link>{' '}
-            </div>
+            <div className='row mt-8'>
+              <div className='col-lg-8 col-md-12 d-grid gap-2'>
+                <button
+                  type='submit'
+                  id='kt_password_reset_submit'
+                  className='btn btn-lg btn-dark h-45px px-0'
+                  disabled={loading || !formik.isValid}
+                >
+                  {!loading && <span className='indicator-label'>Recuperar contraseña</span>}
+                  {loading && (
+                    <span className='indicator-progress' style={{display: 'block'}}>
+                      Por favor espere...
+                      <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
+                    </span>
+                  )}
+                </button>
+              </div>
+              <div className='col-lg-4 col-md-12 d-grid gap-2'>
+                <Link to='/auth/login' className='btn btn-lg btn-light-danger fw-bolder px-0'>
+                    Regresar
+                </Link>{' '}
+              </div>
             </div>
             {/* end::Form group */}
           </form>

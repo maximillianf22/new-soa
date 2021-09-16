@@ -1,29 +1,39 @@
-import axios from 'axios'
 import {AuthModel} from '../models/AuthModel'
 import { UserModel } from '../../global/models/UserModel';
 import { httpClient } from '../../../../setup/axios/setUpAxios';
 
-const API_URL = process.env.REACT_APP_API_URL 
+// import axios from 'axios';
 
-export const GET_USER_BY_ACCESSTOKEN_URL = `${API_URL}/auth/get-user`
-export const LOGIN_URL = `/soaang-users/api/token/`
-export const REGISTER_URL = `${API_URL}/auth/register`
-export const REQUEST_PASSWORD_URL = `${API_URL}/auth/forgot-password`
+const API_URL = process.env.REACT_APP_API_URL 
 
 export interface Data {
   username: string,
   password: string
 }
 
+export interface NewPasswordModel {
+  new_password1: string,
+  new_password2: string,
+  uid: string,
+  token: string
+}
+
 
 // Servidor debe retonar UserModel
+// export function login(data:Data): Promise<UserModel> {
+//   const url = API_URL+'/soaang-users/api/token/'
+//   return axios.post(url, data)
+// }
+
 export function login(data:Data): Promise<UserModel> {
-  return httpClient.post(LOGIN_URL, data)
+  const url = '/soaang-users/api/token/'
+  return httpClient.post(url, data)
 }
 
 // Servidor debe retonar AuthModel
 export function register(email: string, firstname: string, lastname: string, password: string) {
-  return axios.post<AuthModel>(REGISTER_URL, {
+  const url = '/auth/register/'
+  return httpClient.post<AuthModel>(url, {
     email,
     firstname,
     lastname,
@@ -32,6 +42,12 @@ export function register(email: string, firstname: string, lastname: string, pas
 }
 
 // Server should return object => { result: boolean } (Is Email in DB)
-export function requestPassword(email: string) {
-  return axios.post<{result: boolean}>(REQUEST_PASSWORD_URL, {email})
+export function forgotPassword(email: string) {
+  const url = '/soaang-users/api/password-reset/'
+  return httpClient.post(url, {email})
+}
+
+export function newPassword(data: NewPasswordModel) {
+  const url = `/soaang-users/api/password-reset-confirm/${data.uid}/${data.token}/`
+  return httpClient.post(url, data)
 }
