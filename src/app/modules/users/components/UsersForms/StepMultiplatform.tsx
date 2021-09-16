@@ -1,5 +1,6 @@
 import {KTSVG} from '../../../../../_metronic/helpers'
-import {InputSelect, InputProfile} from '../../../global/components/inputs'
+import {InputSelect} from '../../../global/components/inputs'
+import {InputProfile} from '../UserPermits/InputProfile'
 import {Field} from 'formik'
 
 export function StepMultiplatform() {

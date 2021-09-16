@@ -9,9 +9,6 @@ const optionsProfile = [
   {value: 'Semestral', label: 'Semestral'},
   {value: 'Trimestral', label: 'Trimestral'},
   {value: 'Bimestral', label: 'Bimestral'},
-  {value: '30 Dias', label: '30 Dias'},
-  {value: '15 Dias', label: '15 Dias'},
-  {value: '7 Dias', label: '7 Dias'},
 ]
 
 export const InputDueDate = ({isRequired = ''}) => {
@@ -24,7 +21,7 @@ export const InputDueDate = ({isRequired = ''}) => {
           <label className={`col-form-label ${isRequired} fw-bold fs-6`}>Vigencia</label>
           <Field name={'dueDate'} component={InputSelect} options={optionsProfile} />
         </div>
-        <div className='px-0 flex-fill bd-highlight mt-auto'>
+        <div className='px-0 flex-fill bd-highlight mt-13'>
           <Button
             className='btn btn-icon btn-primary btn-form'
             onClick={() => setOpen(!open)}

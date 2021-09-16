@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import {Form} from 'react-bootstrap-formik'
-import {InputDueDate, InputSelect, InputProfile} from '../../../global/components/inputs'
-import {ICreateUser, createUserSchemas, initialValues} from './Helpers'
+import {InputDueDate} from '../../../global/components/inputs'
 
 export const StepUserForm = () => {
   return (
@@ -36,8 +35,9 @@ export const StepUserForm = () => {
             <div className='col-md-4 px-5 fv-row my-3'>
               <InputDueDate isRequired='required' />
             </div>
-            <div className='col-md-3 px-5 fv-row text-end'>
-              <div className='form-check form-check-custom form-check-solid mt-8'>
+            <div className='col-md-3 px-5 fv-row text-end my-auto h-100'>
+            <label className='form-check-label'></label>
+              <div className='form-check form-check-custom form-check-solid '>
                 <input
                   className='form-check-input h-25px w-25px'
                   type='checkbox'
@@ -47,8 +47,9 @@ export const StepUserForm = () => {
                 <label className='form-check-label'>¿Permite cambio de contraseña?</label>
               </div>
             </div>
-            <div className='col-md-3 px-5 fv-row'>
-              <div className='mt-8 text-center'>
+            <div className='col-md-3 px-5 fv-row my-auto h-100'>
+            <label className='form-check-label'></label>
+              <div className=' text-center'>
                 <div className='form-check form-switch form-check-custom form-check-solid'>
                   <input
                     className='form-check-input h-25px'
