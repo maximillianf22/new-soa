@@ -1,14 +1,40 @@
 import React from 'react';
-import { shallowEqual, useSelector } from 'react-redux';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../../../../setup';
 import { UserModel } from '../../../models/UserModel';
+import Swal from 'sweetalert2'
+import { actionTypes } from '../../../../users/redux/UsersRedux';
 
 
 export const TableBody: React.FC = () => {
   const table: any = useSelector<RootState>(({table}) => table, shallowEqual)
-  
   const {tableBody: {tableHeads, tableContent}} = table;
-
+  const dispatch = useDispatch();
+  const handleView = (id: number) => {
+    
+  };
+  const handleDelete = (id: number) => {
+    Swal.fire({
+      title: '¿Está seguro que desea eliminar este usuario?',
+      text: "No es posible revertir esta acción",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch({type: actionTypes.Delete, payload: id});
+        Swal.fire(
+          '¡Eliminado!',
+          'El usuario fue eliminado correctamente.',
+          'success'
+        )
+      }
+    })
+  };
+  
     return (
         <>
              {/* begin::Body */}
@@ -98,15 +124,21 @@ export const TableBody: React.FC = () => {
                           )}
                           <td>
                             <div className='d-flex justify-content-end flex-shrink-0'>
-                              <a href='!#' className='btn btn-icon btn-info btn-sm me-1'>
+                              <button
+                               className='btn btn-icon btn-info btn-sm me-1'
+                               onClick={() => handleView(id)}
+                              >
                                 <i className='fa fa-eye'></i>
-                              </a>
+                              </button>
                               <a href='!#' className='btn btn-icon btn-success btn-sm me-1'>
                                 <i className='fa fa-edit'></i>
                               </a>
-                              <a href='!#' className='btn btn-icon btn-danger btn-sm'>
+                              <button
+                                className='btn btn-icon btn-danger btn-sm'
+                                onClick={() => handleDelete(id)}
+                              >
                                 <i className='fa fa-trash'></i>
-                              </a>
+                              </button>
                             </div>
                           </td>
                         </tr>
