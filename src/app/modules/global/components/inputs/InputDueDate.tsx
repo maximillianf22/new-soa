@@ -11,7 +11,7 @@ const optionsProfile = [
   {value: 'Bimestral', label: 'Bimestral'},
 ]
 
-export const InputDueDate = ({isRequired = ''}) => {
+export const InputDueDate = ({isRequired = '', init_date_validity = '', end_date_validity=''}: any) => {
   const [open, setOpen] = useState(false)
 
   return (
@@ -35,18 +35,18 @@ export const InputDueDate = ({isRequired = ''}) => {
       <p className='m-0 p-1 fs-help'>Si deseas personalizar la vigencia haz click en el boton</p>
       <Collapse in={open}>
         <div className='row'>
-          <div className='col-6 pe-1'>
-            <Form.Input name='initialDate' type='date' />
+          {/* <div className='col-6 pe-1'>
+            <input name='initialDate' type='date' value={init_date_validity} />
             <label className='col-form-label m-0 p-0 lh-1 fs-help text-center w-100'>
               Fecha Inicio
             </label>
           </div>
           <div className='col-6 ps-1'>
-            <Form.Input name='finalDate' type='date' />
+            <input name='finalDate' type='date' value={end_date_validity} />
             <label className='col-form-label m-0 p-0 lh-1 fs-help text-center w-100'>
               Fecha Final
             </label>
-          </div>
+          </div> */}
         </div>
       </Collapse>
     </>
