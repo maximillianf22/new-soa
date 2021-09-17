@@ -5,6 +5,7 @@ import {TableComponent} from '../../global/components/tables/TableComponent'
 import {actions, actionTypes} from '../redux/UsersRedux'
 import {RootState} from '../../../../setup/redux/RootReducer'
 import {ModalSelectType} from './UsersForms/ModalSelectType'
+import { UserViewEdit } from './UserViewEdit';
 
 export const UsersTable = () => {
   const dispatch = useDispatch()
@@ -36,7 +37,7 @@ export const UsersTable = () => {
             tableHeads: tableHeads,
           },
           tableBody: {
-            tableHeads: ['nombre', 'correo', 'usuario', 'rol'],
+            tableHeads: ['usuario', 'nombre', 'correo', 'rol'],
             tableContent: users,
           },
         },
@@ -53,6 +54,7 @@ export const UsersTable = () => {
     <>
       <TableComponent />
       <ModalSelectType />
+      <UserViewEdit />
     </>
   )
 }

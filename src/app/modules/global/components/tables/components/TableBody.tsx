@@ -1,14 +1,45 @@
 import React from 'react';
-import { shallowEqual, useSelector } from 'react-redux';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../../../../setup';
 import { UserModel } from '../../../models/UserModel';
+import Swal from 'sweetalert2'
+import { actions, actionTypes } from '../../../../users/redux/UsersRedux';
 
 
 export const TableBody: React.FC = () => {
   const table: any = useSelector<RootState>(({table}) => table, shallowEqual)
-  
   const {tableBody: {tableHeads, tableContent}} = table;
-
+  const dispatch = useDispatch();
+  const handleView = (user: any) => {
+    user.toEdit = false;
+    dispatch(actions.SelectedUser(user))
+  };
+  const handleEdit = (user: any) => {
+    user.toEdit = true;
+    dispatch(actions.SelectedUser(user))
+  };
+  const handleDelete = (id: number) => {
+    Swal.fire({
+      title: '¿Está seguro que desea eliminar este usuario?',
+      text: "No es posible revertir esta acción",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch({type: actionTypes.Delete, payload: id});
+        Swal.fire(
+          '¡Eliminado!',
+          'El usuario fue eliminado correctamente.',
+          'success'
+        )
+      }
+    })
+  };
+  
     return (
         <>
              {/* begin::Body */}
@@ -29,7 +60,7 @@ export const TableBody: React.FC = () => {
                     {/* end::Table head */}
                     {/* begin::Table body */}
                     <tbody>
-                      {tableContent && tableContent.map(({ id, username, first_name, last_name, email, is_active, date_joined, rolId} : UserModel, i: number) => (
+                      {tableContent && tableContent.map(({ id, username, first_name, last_name, email, is_active, date_joined, init_date_validity, end_date_validity, rolId, password_change} : UserModel, i: number) => (
                         <tr key={i}>
                           {tableHeads.includes('id') && (
                             <td>
@@ -98,15 +129,42 @@ export const TableBody: React.FC = () => {
                           )}
                           <td>
                             <div className='d-flex justify-content-end flex-shrink-0'>
-                              <a href='!#' className='btn btn-icon btn-info btn-sm me-1'>
+
+                            <button 
+                              type="button" 
+                              className="btn btn-icon btn-info btn-sm me-1" 
+                              data-bs-toggle="modal" 
+                              data-bs-target="#exampleModal"
+                              onClick={() => handleView({id, username, first_name, last_name, email, is_active, date_joined, password_change, init_date_validity, end_date_validity, rolId})}
+                            >
+                              <i className='fa fa-eye'></i>
+                            </button>
+                              
+                              
+                              {/* <button
+                               className='btn btn-icon btn-info btn-sm me-1'
+                               onClick={() => handleView(id)}
+                              >
                                 <i className='fa fa-eye'></i>
-                              </a>
-                              <a href='!#' className='btn btn-icon btn-success btn-sm me-1'>
+                              </button> */}
+                              <button 
+                                type="button" 
+                                className="btn btn-icon btn-success btn-sm me-1" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#exampleModal"
+                                onClick={() => handleEdit({id, username, first_name, last_name, email, is_active, date_joined, password_change, init_date_validity, end_date_validity, rolId})}
+                              >
                                 <i className='fa fa-edit'></i>
-                              </a>
-                              <a href='!#' className='btn btn-icon btn-danger btn-sm'>
+                              </button>
+                              {/* <a href='!#' className='btn btn-icon btn-success btn-sm me-1'>
+                                <i className='fa fa-edit'></i>
+                              </a> */}
+                              <button
+                                className='btn btn-icon btn-danger btn-sm'
+                                onClick={() => handleDelete(id)}
+                              >
                                 <i className='fa fa-trash'></i>
-                              </a>
+                              </button>
                             </div>
                           </td>
                         </tr>

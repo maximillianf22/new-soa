@@ -45,7 +45,7 @@ const DropdownHeads: React.FC = () => {
                             <input
                               className='form-check-input h-25px'
                               type='checkbox'
-                              id='flexSwitchChecked3'
+                              id={`flexSwitchChecked3 ${i}`}
                               {...formik.getFieldProps(th)}
                             />
                           </div>
