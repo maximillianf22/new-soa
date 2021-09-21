@@ -1,6 +1,6 @@
 export interface UserModel {
     id: number,
-    clients: [
+    clients?: [
         {
             cltId: number,
             cltName: string,
@@ -13,25 +13,25 @@ export interface UserModel {
             cltEmail: string
         }
     ],
-    notifications: [],
-    last_login: Date,
-    is_superuser: boolean,
-    username: string,
-    first_name: string,
-    last_name: string,
-    email: string,
-    is_staff: boolean,
-    is_active: boolean,
-    date_joined: Date,
-    updated_at: null,
-    usermod: null,
-    password_change: null,
-    init_date_validity: Date,
-    end_date_validity: Date,
-    groups: [],
-    user_permissions: [],
-    notfId: [],
-    couId: [],
-    permId: [],
-    rolId: []
+    notifications?: [],
+    last_login?: Date,
+    is_superuser?: boolean,
+    username?: string,
+    first_name?: string,
+    last_name?: string,
+    email?: string,
+    is_staff?: boolean,
+    is_active?: boolean,
+    date_joined?: Date,
+    updated_at?: null,
+    usermod?: null,
+    password_change?: null,
+    init_date_validity?: Date,
+    end_date_validity?: Date,
+    groups?: [],
+    user_permissions?: [],
+    notfId?: [],
+    couId?: [],
+    permId?: [],
+    rolId?: []
 }

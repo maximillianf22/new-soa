@@ -1,12 +1,10 @@
-import React, { useEffect } from 'react'
-import {createUserSchemas, initialValues} from './Helpers'
-import {InputDueDate, InputSelect} from '../../../global/components/inputs'
-import {InputProfile} from '../UserPermits/InputProfile'
-import {Field, Form, Formik, FormikProps} from 'formik'
+import { useField, Formik, Form, FormikProps, Field } from 'formik';
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../../../../setup'
-import { UserModel } from '../../../global/models/UserModel'
 import { actions } from '../../redux/UsersRedux'
+import { InputDueDate } from '../../../global/components/inputs/InputDueDate';
+import { InputSelect } from '../../../global/components/inputs/InputSelect';
+import { InputProfile } from '../UserPermits/InputProfile';
 
 const optionsPlataforms = [
   {value: 'addiuva', label: 'Addiuva'},
@@ -14,49 +12,44 @@ const optionsPlataforms = [
   {value: 'elRoble', label: 'El Roble'},
 ]
 
-interface ISelectedUser {
-  SelectedUser: UserModel | undefined
-}
-
 export const FormRegular = () => {
   const SelectedUser: any = useSelector<RootState>(({users}) => users.SelectedUser)
   const dispatch = useDispatch();
   const handleClose = () => {
     dispatch(actions.ClearSelectedUser());
   }
-  const MyInput = ({ field, form, ...props }: any) => {
-    // console.log(field.name)
-    // console.log(SelectedUser[field?.name]);
-    if (SelectedUser?.toEdit === false) {
-      field.value = SelectedUser[field?.name];
+  // MyTextField puede ir en otro archivo para reducir el tamaño de este componente
+  const MyTextField = ({ label, ...props }: any) => { 
+    const [field, meta, helpers] = useField(props);
+    if (field.value === null) {
+      field.value = '';
     }
-    // if (field.name === 'id') {
-    //   field.value = SelectedUser?.id;
-    // }
-    return <input className='form-control' {...field} {...props} />;
+    return (
+      <>
+        <label>
+          {label}
+          <input className="form-control" {...field} {...props} />
+        </label>
+        {meta.touched && meta.error ? (
+          <div className="error">{meta.error}</div>
+        ) : null}
+      </>
+    );
   };
-  
-  const initialValues = {    
-    first_name: '',
-    id: '',
-    last_name: '',
-    email: '',
-    username: '',
-    password_change: false,
-  }
 
   return (
     <>
       <div className='card' style={{minHeight: '62vh'}}>
       <Formik
-       initialValues={initialValues}
+       initialValues={{...SelectedUser}}
+       enableReinitialize={true}
        onSubmit={(values) => {
-         console.log('en submit', values, )
-         if (values.id.length > 0) {
-           dispatch(actions.updateUser(values))
-         } else {
-          dispatch(actions.createUser(values))
-         }
+        console.log('en submit', values, )
+        if (values.id.length > 0) {
+          dispatch(actions.updateUser(values))
+        } else {
+         dispatch(actions.createUser(values))
+        }
        }}
      >
        {(props: FormikProps<any>) => (
@@ -65,39 +58,31 @@ export const FormRegular = () => {
            <div className='card-body py-0 px-4'>
              <div className='row'>
                <div className='col-md-4 px-5 fv-row my-3'>
-                 <label className='col-form-label required fw-bold fs-6'>Nombre</label>
-                 <Field name='first_name' placeholder='Nombre' component={MyInput}/>
+                 {/* <label className='col-form-label required fw-bold fs-6'>Nombre</label> */}
+                 <MyTextField type="text" name='first_name' label="Nombre" />
                </div>
                {SelectedUser?.toEdit === true &&
                 <div className='col-md-4 px-5 fv-row my-3'>
-                  <label className='col-form-label required fw-bold fs-6'>ID</label>
-                  <Field name='id' placeholder='id' component={MyInput}/>
+                  <MyTextField type="text" name='id' label="id" />
                 </div>
                }
                <div className='col-md-4 px-5 fv-row my-3'>
-                 <label className='col-form-label required fw-bold fs-6'>Apellido</label>
-                 <Field name='last_name' placeholder='Apellido' component={MyInput}/>
+               <MyTextField type="text" name='last_name' label="Apellido" />
                </div>
                <div className='col-md-4 px-5 fv-row my-3'>
-                 <label className='col-form-label required fw-bold fs-6'>Correo</label>
-                 <Field name='email' type='email' placeholder='Correo' component={MyInput}/>
+                <MyTextField type="email" name='email' label="Correo" />
                </div>
                <div className='col-md-4 px-5 fv-row my-3'>
-                 <label className='col-form-label required fw-bold fs-6'>Usuario</label>
-                 <Field name='username' placeholder='Usuario' component={MyInput}/>
+               <MyTextField type="username" name='username' label="Nombre de usuario" />
                </div>
-               
-               { !SelectedUser && (
+
+               { SelectedUser.id < 1 && (
                  <>
                   <div className='col-md-4 px-5 fv-row my-3'>
-                    <label className='col-form-label required fw-bold fs-6'>Contraseña</label>
-                    <Field name='password' type='password' placeholder='Contraseña' component={MyInput}/>
+                    <MyTextField type="password" name='password' label="Contraseña" />
                   </div>
                   <div className='col-md-4 px-5 fv-row my-3'>
-                    <label className='col-form-label required fw-bold fs-6'>
-                      Confirmar contraseña
-                    </label>
-                    <Field name='confirmPassword' type='password' placeholder='Confirmar' component={MyInput}/>
+                    <MyTextField type="password" name='confirmPassword' label="Confirmar contraseña" />
                   </div>
                  </>
                ) }
@@ -124,61 +109,63 @@ export const FormRegular = () => {
                  onChange={function noRefCheck() {}}
                /> */}
 
-               {/* <div className='col-md-3 px-5 fv-row text-end'>
+               <div className='col-md-3 px-5 fv-row text-end'>
                  <div className='form-check form-check-custom form-check-solid my-auto h-100'>
-                   <Field
-                     className='form-check-input h-25px w-25px'
-                     name='password_change'
-                     type='checkbox'
-                     checked={ SelectedUser?.password_change }
-                     id='flexCheckChecked'
-                   />
-                   <label className='form-check-label'>¿Permite cambio de contraseña?</label>
-                 </div>
-               </div> */}
-
-               {/* <div className='col-md-3 px-5 fv-row'>
-                 <div className='my-auto h-100 text-center'>
-                   <div className='form-check form-switch form-check-custom form-check-solid'>
-                     <input
+                   <MyTextField
                        className='form-check-input h-25px'
                        type='checkbox'
-                       value=''
+                       name='password_change'
+                        checked={ SelectedUser?.password_change }
+                       id='flexCheckChecked'
+                     />
+                   <label className='form-check-label'>¿Permite cambio de contraseña?</label>
+                 </div>
+               </div>
+
+               <div className='col-md-3 px-5 fv-row'>
+                 <div className='my-auto h-100 text-center'>
+                   <div className='form-check form-switch form-check-custom form-check-solid'>
+                     <MyTextField
+                       className='form-check-input h-25px'
+                       type='checkbox'
+                       name='is_active'
                        id='flexSwitchChecked'
                      />
                      <label className='form-check-label'>¿Activo?</label>
                    </div>
                  </div>
-               </div> */}
+               </div>
              </div>
            </div>
            <div className='px-5 pt-5 fv-row text-end'>
-             {/* <button className='btn btn-primary' type='submit'>
-               Guardar
-             </button> */}
-
              {SelectedUser?.toEdit === false ? (
-               <button 
-                  type="button" 
-                  className="btn btn-secondary" 
+               <button
+                  type="button"
+                  className="btn btn-secondary"
                   data-bs-dismiss="modal"
                   onClick={handleClose}
                 >Cerrar</button>
-             )
-              : (
-                <button 
-                  type="submit" 
-                  className="btn btn-primary"
-                  data-bs-dismiss="modal"
-                  onClick={handleClose}
-                >Guardar cambios</button>
+             ) : (
+                <>
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                    onClick={handleClose}
+                  >Cerrar</button>
+                  <button
+                    type="submit"
+                    className="btn btn-primary"
+                    data-bs-dismiss="modal"
+                    onClick={handleClose}
+                  >Guardar cambios</button>
+                </>
              )}
            </div>
          </div>
-       </Form>
-       )}
-     </Formik>
-        
+         </Form>
+         )}
+       </Formik>
       </div>
     </>
   )
@@ -215,7 +202,7 @@ export const FormRegular = () => {
   //                   <label className='col-form-label required fw-bold fs-6'>Usuario</label>
   //                   <Form.Input name='username' placeholder='Usuario' />
   //                 </div>
-                  
+
   //                 <div className='col-md-4 px-5 fv-row my-3'>
   //                   <label className='col-form-label required fw-bold fs-6'>Contraseña</label>
   //                   <Form.Input name='password' type='password' placeholder='Contraseña' />
@@ -236,7 +223,7 @@ export const FormRegular = () => {
   //                 <div className='col-md-4 px-5 fv-row my-3'>
   //                   <InputProfile />
   //                 </div>
-  
+
   //                 {/* TODO: cambiar los checkboxes de toda la plataforma a los que trae react-bootstrap-formik
   //                 <Form.Checkbox
   //                   custom
@@ -244,7 +231,7 @@ export const FormRegular = () => {
   //                   name='checkbox1'
   //                   onChange={function noRefCheck() {}}
   //                 /> */}
-  
+
   //                 <div className='col-md-3 px-5 fv-row text-end'>
   //                   <div className='form-check form-check-custom form-check-solid my-auto h-100'>
   //                     <input
@@ -256,7 +243,7 @@ export const FormRegular = () => {
   //                     <label className='form-check-label'>¿Permite cambio de contraseña?</label>
   //                   </div>
   //                 </div>
-  
+
   //                 <div className='col-md-3 px-5 fv-row'>
   //                   <div className='my-auto h-100 text-center'>
   //                     <div className='form-check form-switch form-check-custom form-check-solid'>
