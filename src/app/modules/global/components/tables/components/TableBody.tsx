@@ -18,7 +18,7 @@ export const TableBody: React.FC = () => {
     user.toEdit = true;
     dispatch(actions.SelectedUser(user))
   };
-  const handleDelete = (id: number) => {
+  const handleDelete = (id: any) => {
     Swal.fire({
       title: '¿Está seguro que desea eliminar este usuario?',
       text: "No es posible revertir esta acción",

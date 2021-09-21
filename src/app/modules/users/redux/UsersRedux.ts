@@ -22,9 +22,16 @@ export const actionTypes = {
   ClearSelectedUser: '[usersRedux] clear selected user',
 }
 
-const initialUsersState = {
+const initialUsersState: IuserState = {
     users: [],
-    SelectedUser: undefined
+    SelectedUser: {    
+      first_name: '',
+      id: 0,
+      last_name: '',
+      email: '',
+      username: '',
+      password_change: null,
+    }
 }
 
 interface IuserState {
@@ -46,7 +53,7 @@ export const usersReducer = persistReducer(
         return {...state, SelectedUser: action.payload?.SelectedUser}
       }
       case actionTypes.ClearSelectedUser: {
-        return {...state, SelectedUser: undefined}
+        return {...state, SelectedUser: initialUsersState.SelectedUser}
       }
 
       default:
