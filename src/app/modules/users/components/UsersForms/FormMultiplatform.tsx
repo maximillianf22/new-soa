@@ -58,7 +58,7 @@ const FormMultiplatform: FC = () => {
             </div>
 
             <div className='stepper-item' data-kt-stepper-element='nav'>
-              <h3 className='stepper-title'>Configuracion de Plataformas</h3>
+              <h3 className='stepper-title'>Configuracion de Platformas</h3>
             </div>
           </div>
           <Formik validationSchema={currentSchema} initialValues={initValues} onSubmit={submitStep}>

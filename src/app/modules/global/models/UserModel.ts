@@ -2,15 +2,15 @@ export interface UserModel {
     id: number,
     clients?: [
         {
-            cltId: number,
-            cltName: string,
-            cltUrlDatabase: string,
-            cltUserMod: string,
-            cltCreatedAt: Date,
-            cltUpdatedAt: Date,
-            cltNitIdentifier: string,
-            cltIsActive: boolean,
-            cltEmail: string
+            cltId?: number,
+            cltName?: string,
+            cltUrlDatabase?: string,
+            cltUserMod?: string,
+            cltCreatedAt?: Date,
+            cltUpdatedAt?: Date,
+            cltNitIdentifier?: string,
+            cltIsActive?: boolean,
+            cltEmail?: string
         }
     ],
     notifications?: [],

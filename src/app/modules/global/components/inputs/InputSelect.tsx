@@ -16,8 +16,10 @@ export const InputSelect = ({
         {...field}
         {...props}
         options={options}
-        value={(options ? options.find((option) => option.value === field.value) : '') as any}
-        onChange={(option) => setFieldValue(field.name, (option as any).value)}
+        isMulti
+        getOptionLabel={(option) => option.cltName}
+        getOptionValue={(option) => option.cltId}
+        onChange={(option) => setFieldValue(field.name, (option as any))}
         placeholder={props.label}
       />
       {touched[field.name] && errors[field.name] && <div className="text-danger fs-help">{errors[field.name]}</div>}
