@@ -6,17 +6,32 @@ import { InputDueDate } from '../../../global/components/inputs/InputDueDate';
 import { InputSelect } from '../../../global/components/inputs/InputSelect';
 import { InputProfile } from '../UserPermits/InputProfile';
 
-const optionsPlataforms = [
+const optionsPlatforms = [
   {value: 'addiuva', label: 'Addiuva'},
   {value: 'ikatech', label: 'Ikatech'},
   {value: 'elRoble', label: 'El Roble'},
+]
+
+const optionsClients = [
+  {
+    cltId: 1,
+    cltName: 'addiuva',
+  },
+  {
+    cltId: 2,
+    cltName: 'ikatech',
+  },
+  {
+    cltId: 3,
+    cltName: 'El Roble',
+  }
 ]
 
 export const FormRegular = () => {
   const SelectedUser: any = useSelector<RootState>(({users}) => users.SelectedUser)
   const dispatch = useDispatch();
   const handleClose = () => {
-    dispatch(actions.ClearSelectedUser());
+    // dispatch(actions.ClearSelectedUser());
   }
   // MyTextField puede ir en otro archivo para reducir el tamaño de este componente
   const MyTextField = ({ label, ...props }: any) => { 
@@ -45,7 +60,7 @@ export const FormRegular = () => {
        enableReinitialize={true}
        onSubmit={(values) => {
         console.log('en submit', values, )
-        if (values.id.length > 0) {
+        if (values?.id) {
           dispatch(actions.updateUser(values))
         } else {
          dispatch(actions.createUser(values))
@@ -94,14 +109,14 @@ export const FormRegular = () => {
                 ) }
                </div>
                <div className='col-md-4 px-5 fv-row my-3'>
-                 <label className='col-form-label required fw-bold fs-6'>Plataforma</label>
-                 <Field name='plataform' component={InputSelect} options={optionsPlataforms} />
+                 <label className='col-form-label required fw-bold fs-6'>Platforma</label>
+                 <Field name='clients' component={InputSelect} options={optionsClients} />
                </div>
                <div className='col-md-4 px-5 fv-row my-3'>
                  <InputProfile />
                </div>
 
-               {/* TODO: cambiar los checkboxes de toda la plataforma a los que trae react-bootstrap-formik
+               {/* TODO: cambiar los checkboxes de toda la platforma a los que trae react-bootstrap-formik
                <Form.Checkbox
                  custom
                  label='Checkbox 1'
@@ -217,14 +232,14 @@ export const FormRegular = () => {
   //                   <InputDueDate isRequired='required' />
   //                 </div>
   //                 <div className='col-md-4 px-5 fv-row my-3'>
-  //                   <label className='col-form-label required fw-bold fs-6'>Plataforma</label>
-  //                   <Field name='plataform' component={InputSelect} options={optionsPlataforms} />
+  //                   <label className='col-form-label required fw-bold fs-6'>Platforma</label>
+  //                   <Field name='platform' component={InputSelect} options={optionsPlatforms} />
   //                 </div>
   //                 <div className='col-md-4 px-5 fv-row my-3'>
   //                   <InputProfile />
   //                 </div>
 
-  //                 {/* TODO: cambiar los checkboxes de toda la plataforma a los que trae react-bootstrap-formik
+  //                 {/* TODO: cambiar los checkboxes de toda la platforma a los que trae react-bootstrap-formik
   //                 <Form.Checkbox
   //                   custom
   //                   label='Checkbox 1'
