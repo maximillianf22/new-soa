@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {InputSelect} from './InputSelect'
 import {Form} from 'react-bootstrap-formik'
-import {Field} from 'formik'
+import {Field, useField} from 'formik'
 import {Button, Collapse} from 'react-bootstrap-v5'
 
 const optionsProfile = [
@@ -13,6 +13,24 @@ const optionsProfile = [
 
 export const InputDueDate = ({isRequired = '', init_date_validity = '', end_date_validity=''}: any) => {
   const [open, setOpen] = useState(false)
+
+  const MyTextField = ({ label, ...props }: any) => {
+    const [field, meta, helpers] = useField(props);
+    if (field.value === null) {
+      field.value = '';
+    }
+    return (
+      <>
+        <label>
+          {label}
+          <input className="form-control" {...field} {...props} />
+        </label>
+        {meta.touched && meta.error ? (
+          <div className="error">{meta.error}</div>
+        ) : null}
+      </>
+    );
+  };
 
   return (
     <>
@@ -35,18 +53,28 @@ export const InputDueDate = ({isRequired = '', init_date_validity = '', end_date
       <p className='m-0 p-1 fs-help'>Si deseas personalizar la vigencia haz click en el boton</p>
       <Collapse in={open}>
         <div className='row'>
-          {/* <div className='col-6 pe-1'>
-            <input name='initialDate' type='date' value={init_date_validity} />
+          <div className='col-6 pe-1'>
+            {/* <input name='init_date_validity' type='date' value={init_date_validity} />
             <label className='col-form-label m-0 p-0 lh-1 fs-help text-center w-100'>
               Fecha Inicio
-            </label>
+            </label> */}
+            <MyTextField
+              type="date"
+              name='init_date_validity'
+              label="Fecha Inicio"
+            />
           </div>
           <div className='col-6 ps-1'>
-            <input name='finalDate' type='date' value={end_date_validity} />
+            {/* <input name='end_date_validity' type='date' value={end_date_validity} />
             <label className='col-form-label m-0 p-0 lh-1 fs-help text-center w-100'>
               Fecha Final
-            </label>
-          </div> */}
+            </label> */}
+            <MyTextField
+              type="date"
+              name='end_date_validity'
+              label="Fecha Final"
+            />
+          </div>
         </div>
       </Collapse>
     </>
