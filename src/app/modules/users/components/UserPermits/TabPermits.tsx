@@ -9,14 +9,14 @@ export const TabPermits = () => {
           <i className='fa fa-search fs-5 svg-icon-3 position-absolute ms-3 mt-2 pt-1'></i>
           <input
             type='text'
-            id='kt_filter_search'
+            id='kt_filter_search_TabPermits'
             className='form-control form-control-white form-control-sm ps-10'
             placeholder='Search'
           />
         </div>
         <div className='flex-fill bd-highlight fv-row my-auto'>
           <div className='my-auto h-100 text-center'>
-            <div className='form-check form-switch form-check-custom form-check-solid'>
+            {/* <div className='form-check form-switch form-check-custom form-check-solid'>
               <input
                 className='form-check-input h-25px'
                 type='checkbox'
@@ -24,7 +24,7 @@ export const TabPermits = () => {
                 id='flexSwitchChecked'
                 checked
               />
-            </div>
+            </div> */}
           </div>
         </div>
         <div className='text-end w-50'>
@@ -35,7 +35,7 @@ export const TabPermits = () => {
       </div>
       <div className='card mt-7'>
         <div className='card-body'>
-          <div className='row'>
+          {/* <div className='row'>
             <TabPermitsItemAcordion keyEvent='1' label='Modulo #' />
             <TabPermitsItemAcordion keyEvent='2' label='Modulo #' />
             <TabPermitsItemAcordion keyEvent='3' label='Modulo #' />
@@ -80,7 +80,7 @@ export const TabPermits = () => {
             <TabPermitsItemAcordion keyEvent='22' label='Modulo #' />
             <TabPermitsItemAcordion keyEvent='22' label='Modulo #' />
             <TabPermitsItemAcordion keyEvent='22' label='Modulo #' />
-          </div>
+          </div> */}
         </div>
       </div>
     </>
