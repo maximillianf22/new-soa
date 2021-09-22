@@ -34,7 +34,7 @@ export const ModalSelectType = () => {
                                   Usuario Regular
                                 </span>
                                 <span className='text-gray-400 fw-bold fs-6'>
-                                  Usuario normal con acceso a un solo cliente o plataforma
+                                  Usuario normal con acceso a un solo cliente o platforma
                                 </span>
                               </span>
                             </label>
@@ -48,10 +48,10 @@ export const ModalSelectType = () => {
                               </span>
                               <span className='d-block fw-bold text-start'>
                                 <span className='text-dark fw-bolder d-block fs-4 mb-2'>
-                                  Usuario Multiplataforma
+                                  Usuario Multiplatforma
                                 </span>
                                 <span className='text-gray-400 fw-bold fs-6'>
-                                  Usuario especial que tiene acceso a varios clientes o plataformas
+                                  Usuario especial que tiene acceso a varios clientes o platformas
                                 </span>
                               </span>
                             </label>

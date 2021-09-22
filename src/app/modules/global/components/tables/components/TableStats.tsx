@@ -15,7 +15,7 @@ export const TableStats: React.FC = () => {
                 <h1 className='m-0 text-white rounded-circle bg-primary p-4'>89</h1>
               </div>
             </div>
-            <p className='text-muted fs-7 fw-light text-nowrap my-2'>Usuarios Registrados en la plataforma</p>
+            <p className='text-muted fs-7 fw-light text-nowrap my-2'>Usuarios Registrados en la platforma</p>
           </div>
         </div>
         <div className='col-3 d-none d-sm-none d-md-none d-lg-none d-xl-block'>
@@ -29,7 +29,7 @@ export const TableStats: React.FC = () => {
                   <h1 className='m-0 text-white rounded-circle bg-primary p-4'>89</h1>
               </div>
             </div>
-            <p className='text-muted fs-7 fw-light text-nowrap my-2'>Usuarios Activos en la plataforma</p>
+            <p className='text-muted fs-7 fw-light text-nowrap my-2'>Usuarios Activos en la platforma</p>
           </div>
         </div>
         <div className='col-3 d-none d-sm-none d-md-none d-lg-none d-xl-block'>
@@ -43,7 +43,7 @@ export const TableStats: React.FC = () => {
                   <h1 className='m-0 text-white rounded-circle bg-primary p-4'>89</h1>
               </div>
             </div>
-            <p className='text-muted fs-7 fw-light text-nowrap my-2'>Usuarios Inactivos en la plataforma</p>
+            <p className='text-muted fs-7 fw-light text-nowrap my-2'>Usuarios Inactivos en la platforma</p>
           </div>
         </div>
         <div className='col-3 d-none d-sm-none d-md-none d-lg-none d-xl-block'>
@@ -57,7 +57,7 @@ export const TableStats: React.FC = () => {
                   <h1 className='m-0 text-white rounded-circle bg-primary p-4'>89</h1>
               </div>
             </div>
-            <p className='text-muted fs-7 fw-light text-nowrap my-2'>Usuarios Inhabilitados en la plataforma</p>
+            <p className='text-muted fs-7 fw-light text-nowrap my-2'>Usuarios Inhabilitados en la platforma</p>
           </div>
         </div>
       </div>

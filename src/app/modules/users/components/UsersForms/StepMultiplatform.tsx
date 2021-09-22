@@ -5,7 +5,7 @@ import {Field} from 'formik'
 
 export function StepMultiplatform() {
 
-  const optionsPlataforms = [
+  const optionsPlatforms = [
     {value: 'addiuva', label: 'Addiuva'},
     {value: 'ikatech', label: 'Ikatech'},
     {value: 'elRoble', label: 'El Roble'},
@@ -19,7 +19,7 @@ export function StepMultiplatform() {
             <div className='row mb-6'>
               <h3 className='card-title align-items-start flex-column'>
                 <span className='card-label fw-bolder fs-3 mb-1'>
-                  Configuracion de usuario multi-plataforma
+                  Configuracion de usuario multi-platforma
                 </span>
                 <br />
                 <span className='text-muted mt-1 fw-bold fs-7'>
@@ -28,8 +28,8 @@ export function StepMultiplatform() {
                 </span>
               </h3>
               <div className='col-md-5 px-5 fv-row my-3'>
-                  <label className='col-form-label required fw-bold fs-6'>Plataforma</label>
-                  <Field name={'plataform'} component={InputSelect} options={optionsPlataforms} />
+                  <label className='col-form-label required fw-bold fs-6'>Platforma</label>
+                  <Field name={'platform'} component={InputSelect} options={optionsPlatforms} />
                 </div>
                 <div className='col-md-5 px-5 fv-row my-3'>
                   <InputProfile />
@@ -51,7 +51,7 @@ export function StepMultiplatform() {
                   <tr className='fw-bold fs-6 text-gray-800 border-bottom-2 border-gray-200'>
                     <th className='fw-bolder fs-5 text-uppercase text-center w-300px'>#</th>
                     <th className='fw-bolder text-center fs-5 text-uppercase'>
-                      Cliente / Plataforma
+                      Cliente / Platforma
                     </th>
                     <th className='fw-bolder text-center fs-5 text-uppercase'>Perfil</th>
                     <th className='fw-bolder text-uppercase text-end w-250px py-2'>
