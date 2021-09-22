@@ -1,10 +1,11 @@
 import React from 'react'
-import { TabHeaderDropdown } from './TabHeaderDropdown'
+import { ContentHeaderDropdown } from './ContentHeaderDropdown'
 
-interface TabHeader {
+interface ContentHeader {
     title: string
+    linkCreate: string
 }
-export const TabHeader = ({title}: TabHeader) => {
+export const ContentHeader = ({title, linkCreate}: ContentHeader) => {
   return (
     <>
       <div className='card-header border-0 p-0 ps-2 pe-4'>
@@ -13,7 +14,7 @@ export const TabHeader = ({title}: TabHeader) => {
           <span className='text-muted mt-1 fw-bold fs-7'>234 {title} registradas</span>
         </h3>
         <div className='card-toolbar'>
-          <a href='/accounts/create' className='btn btn-clean btn-sm btn-icon btn-primary me-2'>
+          <a href={linkCreate} className='btn btn-clean btn-sm btn-icon btn-primary me-2'>
             <i className='text-white fa fa-plus'></i>
           </a>
           <button
@@ -25,7 +26,7 @@ export const TabHeader = ({title}: TabHeader) => {
           >
             <i className='fa fa-filter'></i>
           </button>
-          <TabHeaderDropdown />
+          <ContentHeaderDropdown />
         </div>
       </div>
     </>

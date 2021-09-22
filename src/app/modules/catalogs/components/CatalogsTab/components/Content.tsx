@@ -1,18 +1,20 @@
 import React from 'react'
-import {TabHeader} from './TabHeader'
+import { ContentHeader } from './ContentHeader'
+import { ContentItem } from './ContentItem'
 
-interface Tab{
+interface Content{
     idRef: string
     active?: boolean
     title: string
+    linkCreate: string
     TabContent: any
 }
 
-export const Tab = ({idRef, active, title, TabContent}:Tab) => {
+export const Content = ({idRef, active, title, TabContent, linkCreate}:Content) => {
   return (
     <>
       <div className={`tab-pane fade ${active ? ('show active'): ('')}`} id={idRef}>
-        <TabHeader title={title}/>
+        <ContentHeader title={title} linkCreate={linkCreate}/>
         <ul className='nav w-100'>
           <li className='nav-item col w-100'>
             <TabContent />

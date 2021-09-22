@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 
-export function TabHeaderDropdown() {
+export function ContentHeaderDropdown() {
   return (
     <div className='menu menu-sub menu-sub-dropdown w-250px w-md-300px' data-kt-menu='true'>
       <div className='px-7 py-5'>
@@ -45,11 +45,11 @@ export function TabHeaderDropdown() {
             className='btn btn-sm btn-white btn-active-light-primary me-2'
             data-kt-menu-dismiss='true'
           >
-            Reset
+            Cerrar
           </button>
 
           <button type='submit' className='btn btn-sm btn-primary' data-kt-menu-dismiss='true'>
-            Apply
+            Aplicar
           </button>
         </div>
       </div>
