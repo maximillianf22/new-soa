@@ -1,6 +1,6 @@
 import React from 'react'
 import {AsideDefault} from './components/aside/AsideDefault'
-import {Footer} from './components/Footer'
+// import {Footer} from './components/Footer'
 import {HeaderWrapper} from './components/header/HeaderWrapper'
 import {Toolbar} from './components/toolbar/Toolbar'
 import {ScrollTop} from './components/ScrollTop'
@@ -26,7 +26,7 @@ const MasterLayout: React.FC = ({children}) => {
                     <Content>{children}</Content>
                 </div>
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </div>
     </div>
 
@@ -42,3 +42,4 @@ const MasterLayout: React.FC = ({children}) => {
 }
 
 export {MasterLayout}
+// TODO: Validar si va o no el footer
