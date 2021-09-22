@@ -2,6 +2,7 @@ import React from 'react'
 import {PageTitle} from '../../../_metronic/layout/core'
 import {Switch, Route, Redirect} from 'react-router-dom'
 import {PageLink} from '../../../_metronic/layout/core'
+import { TabComponent } from './components/global/TabComponent'
 
 const accountsBreadCrumbs: Array<PageLink> = [
   {
@@ -23,7 +24,7 @@ const AccountsPage: React.FC = () => {
     <Switch>
       <Route path='/accounts/home'>
         <PageTitle breadcrumbs={accountsBreadCrumbs}>Tabla de Cuentas</PageTitle>
-        {/* <AccountsTable /> */}
+        <TabComponent />
       </Route>
 
       <Redirect from='/accounts' exact={true} to='/accounts/home' />
