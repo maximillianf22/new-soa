@@ -1,7 +1,7 @@
 import { useField, Formik, Form, FormikProps, Field } from 'formik';
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../../../../setup'
-import { actions } from '../../redux/UsersRedux'
+import { actions } from '../../../../redux/reducers/UsersRedux'
 import { InputDueDate } from '../../../global/components/inputs/InputDueDate';
 import { InputSelect } from '../../../global/components/inputs/InputSelect';
 import { InputProfile } from '../UserPermits/InputProfile';
@@ -16,7 +16,7 @@ export const FormRegular = () => {
   const SelectedUser: any = useSelector<RootState>(({users}) => users.SelectedUser)
   const dispatch = useDispatch();
   const handleClose = () => {
-    dispatch(actions.ClearSelectedUser());
+    // dispatch(actions.ClearSelectedUser());
   }
   // MyTextField puede ir en otro archivo para reducir el tamaño de este componente
   const MyTextField = ({ label, ...props }: any) => { 
@@ -44,12 +44,12 @@ export const FormRegular = () => {
        initialValues={{...SelectedUser}}
        enableReinitialize={true}
        onSubmit={(values) => {
-        console.log('en submit', values, )
-        if (values.id.length > 0) {
-          dispatch(actions.updateUser(values))
-        } else {
-         dispatch(actions.createUser(values))
-        }
+        console.log('en submit', values )
+        // if (values.id.length > 0) {
+        //   dispatch(actions.updateUser(values))
+        // } else {
+        //  dispatch(actions.createUser(values))
+        // }
        }}
      >
        {(props: FormikProps<any>) => (
@@ -59,7 +59,7 @@ export const FormRegular = () => {
              <div className='row'>
                <div className='col-md-4 px-5 fv-row my-3'>
                  {/* <label className='col-form-label required fw-bold fs-6'>Nombre</label> */}
-                 <MyTextField type="text" name='first_name' label="Nombre" />
+                 <Field type="text" name='first_name' />
                </div>
                {SelectedUser?.toEdit === true &&
                 <div className='col-md-4 px-5 fv-row my-3'>
