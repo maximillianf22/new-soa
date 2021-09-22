@@ -31,6 +31,7 @@ const initialUsersState: IuserState = {
       email: '',
       username: '',
       password_change: null,
+      clients: [{}],
     }
 }
 

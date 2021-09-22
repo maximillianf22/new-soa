@@ -31,7 +31,7 @@ const usersBreadCrumbs: Array<PageLink> = [
         </Route>
 
         <Route path='/users/create-multiplatform'>
-          <PageTitle breadcrumbs={usersBreadCrumbs}>Registro de usuario Multiplataforma</PageTitle>
+          <PageTitle breadcrumbs={usersBreadCrumbs}>Registro de usuario Multiplatforma</PageTitle>
           <FormMultiplatform />
         </Route>
 
