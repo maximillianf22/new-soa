@@ -1,8 +1,8 @@
 import {useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import {tableActionTypes, tableActions} from '../../global/components/tables/Redux/TableRedux'
+import {tableActionTypes, tableActions} from '../../../redux/reducers/TableRedux'
 import {TableComponent} from '../../global/components/tables/TableComponent'
-import {actions, actionTypes} from '../redux/UsersRedux'
+import {actions, actionTypes} from '../../../redux/reducers/UsersRedux'
 import {RootState} from '../../../../setup/redux/RootReducer'
 import {ModalSelectType} from './UsersForms/ModalSelectType'
 import { UserViewEdit } from './UserViewEdit';
