@@ -2,8 +2,8 @@ import {all} from 'redux-saga/effects'
 import {combineReducers} from 'redux'
 
 import * as auth from '../../app/modules/auth'
-import { saga, tableReducer } from '../../app/modules/global/components/tables/Redux/TableRedux';
-import { usersReducer, sagaUsers } from '../../app/modules/users/redux/UsersRedux';
+import { saga, tableReducer } from '../../app/redux/reducers/TableRedux';
+import { usersReducer, sagaUsers } from '../../app/redux/reducers/UsersRedux';
 
 export const rootReducer = combineReducers({
   auth: auth.reducer,

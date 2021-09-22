@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../../../setup';
-import { actions } from '../redux/UsersRedux';
+import { actions } from '../../../redux/reducers/UsersRedux';
 import {FormRegular} from './UsersForms/FormRegular'
 
 export const UserViewEdit = () => {

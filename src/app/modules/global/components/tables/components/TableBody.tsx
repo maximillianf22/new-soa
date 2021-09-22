@@ -3,7 +3,7 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../../../../setup';
 import { UserModel } from '../../../models/UserModel';
 import Swal from 'sweetalert2'
-import { actions, actionTypes } from '../../../../users/redux/UsersRedux';
+import { actions, actionTypes } from '../../../../../redux/reducers/UsersRedux';
 
 
 export const TableBody: React.FC = () => {

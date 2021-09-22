@@ -2,10 +2,10 @@ import { call, put } from '@redux-saga/core/effects';
 import {Action} from '@reduxjs/toolkit'
 import {persistReducer} from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-import { createUser, deleteUser, getUsers, updateUser } from './UsersCRUD';
+import { createUser, deleteUser, getUsers, updateUser } from '../../modules/users/redux/UsersCRUD';
 import { takeLatest } from 'redux-saga/effects';
-import { response } from '../../auth/redux/AuthRedux';
-import { UserModel } from '../../global/models/UserModel';
+import { response } from '../../modules/auth/redux/AuthRedux';
+import { UserModel } from '../../modules/global/models/UserModel';
 
 export interface ActionWithPayload<T> extends Action {
   payload?: T
