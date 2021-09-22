@@ -3,7 +3,7 @@ import {useFormik} from 'formik'
 import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { RootState } from '../../../../../../setup'
-import {tableActions} from '../Redux/TableRedux'
+import {tableActions} from '../../../../../redux/reducers/TableRedux'
 
 const DropdownHeads: React.FC = () => {
   const {tableHeader: {tableHeads}}:any = useSelector<RootState>(({table}) => table)
