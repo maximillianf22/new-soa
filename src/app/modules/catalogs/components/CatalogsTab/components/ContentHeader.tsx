@@ -1,10 +1,7 @@
 import React from 'react'
 import { ContentHeaderDropdown } from './ContentHeaderDropdown'
+import { IContentHeader } from '../../../Interfaces'
 
-interface IContentHeader {
-    title: string
-    linkCreate: string
-}
 export const ContentHeader = ({title, linkCreate}: IContentHeader) => {
   return (
     <>
