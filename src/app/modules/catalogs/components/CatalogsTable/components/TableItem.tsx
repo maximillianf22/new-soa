@@ -16,12 +16,7 @@ export const TableItem = ({
         <div className='card-body pt-4'>
           <div className='container-custom'>
             <div className='card-header border-0 p-0'>
-              <TableHeader
-                name={name}
-                pilot={pilot}
-                vip
-                linkCreate={linkCreate}
-              />
+             
             </div>
             <TableComponent />
           </div>

@@ -2,8 +2,8 @@ import React from 'react'
 import { PageTitle } from '../../../_metronic/layout/core'
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { PageLink } from '../../../_metronic/layout/core';
-import { AccountsTable } from './components/AccountsTable';
 import { AccountsForm } from './components/AccountsForm';
+import { AccountsTable } from './components/AccountsTable/AccountsTable';
 
 
 const AccountsBreadCrumbs: Array<PageLink> = [
