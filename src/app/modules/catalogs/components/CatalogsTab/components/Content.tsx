@@ -1,8 +1,7 @@
 import React from 'react'
 import { ContentHeader } from './ContentHeader'
-import { ContentItem } from './ContentItem'
 
-interface Content{
+interface IContent {
     idRef: string
     active?: boolean
     title: string
@@ -10,7 +9,7 @@ interface Content{
     TabContent: any
 }
 
-export const Content = ({idRef, active, title, TabContent, linkCreate}:Content) => {
+export const Content = ({idRef, active, title, TabContent, linkCreate}:IContent ) => {
   return (
     <>
       <div className={`tab-pane fade ${active ? ('show active'): ('')}`} id={idRef}>

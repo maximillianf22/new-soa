@@ -1,7 +1,7 @@
 import React from 'react'
 import { toAbsoluteUrl } from '../../../../../../_metronic/helpers'
 
-interface ContentItem {
+interface IContentItem {
   vip?: boolean
   name: string
   pilot?: string
@@ -9,7 +9,7 @@ interface ContentItem {
   tableRef: string
 }
 
-export const ContentItem = ({vip, name, pilot, count, tableRef}: ContentItem) => {
+export const ContentItem = ({vip, name, pilot, count, tableRef}:IContentItem ) => {
   return (
     <>
       <a

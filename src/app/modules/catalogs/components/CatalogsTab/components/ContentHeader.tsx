@@ -1,11 +1,11 @@
 import React from 'react'
 import { ContentHeaderDropdown } from './ContentHeaderDropdown'
 
-interface ContentHeader {
+interface IContentHeader {
     title: string
     linkCreate: string
 }
-export const ContentHeader = ({title, linkCreate}: ContentHeader) => {
+export const ContentHeader = ({title, linkCreate}: IContentHeader) => {
   return (
     <>
       <div className='card-header border-0 p-0 ps-2 pe-4'>

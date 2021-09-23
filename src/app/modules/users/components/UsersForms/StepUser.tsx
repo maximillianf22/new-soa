@@ -1,6 +1,5 @@
-import React, {useState} from 'react'
-import {Form} from 'react-bootstrap-formik'
-import {InputDueDate} from '../../../global/components/inputs'
+import React from 'react'
+import {InputCustom, InputDueDate} from '../../../global/components/inputs'
 
 export const StepUserForm = () => {
   return (
@@ -9,28 +8,26 @@ export const StepUserForm = () => {
         <div className='card-body py-0 px-4'>
           <div className='row'>
             <div className='col-md-4 px-5 fv-row my-3'>
-              <label className='col-form-label required fw-bold fs-6'>Nombre</label>
-              <Form.Input name='name' placeholder='Nombre' />
+              <InputCustom name='first_name' type='text' label='Nombre' />
             </div>
             <div className='col-md-4 px-5 fv-row my-3'>
-              <label className='col-form-label required fw-bold fs-6'>Apellido</label>
-              <Form.Input name='lastName' placeholder='Apellido' />
+              <InputCustom name='last_name' type='text' label='Apellido' />
             </div>
             <div className='col-md-4 px-5 fv-row my-3'>
               <label className='col-form-label required fw-bold fs-6'>Correo</label>
-              <Form.Input name='email' type='email' placeholder='Correo' />
+              <InputCustom name='email' type='email' placeholder='Correo' />
             </div>
             <div className='col-md-4 px-5 fv-row my-3'>
               <label className='col-form-label required fw-bold fs-6'>Usuario</label>
-              <Form.Input name='username' placeholder='Usuario' />
+              <InputCustom name='username' placeholder='Usuario' />
             </div>
             <div className='col-md-4 px-5 fv-row my-3'>
               <label className='col-form-label required fw-bold fs-6'>Contraseña</label>
-              <Form.Input name='password' type='password' placeholder='Contraseña' />
+              <InputCustom name='password' type='password' placeholder='Contraseña' />
             </div>
             <div className='col-md-4 px-5 fv-row my-3'>
               <label className='col-form-label required fw-bold fs-6'>Confirmar contraseña</label>
-              <Form.Input name='confirmPassword' type='password' placeholder='Confirmar' />
+              <InputCustom name='confirmPassword' type='password' placeholder='Confirmar' />
             </div>
             <div className='col-md-4 px-5 fv-row my-3'>
               <InputDueDate isRequired='required' />

@@ -23,7 +23,7 @@ const CatalogsPage: React.FC = () => {
   return (
     <Switch>
       <Route path='/catalogs/home'>
-        <PageTitle breadcrumbs={catalogsBreadCrumbs}>Tabla de Cuentas</PageTitle>
+        <PageTitle breadcrumbs={catalogsBreadCrumbs}>Catalogos</PageTitle>
         <CatalogsHome />
       </Route>
 

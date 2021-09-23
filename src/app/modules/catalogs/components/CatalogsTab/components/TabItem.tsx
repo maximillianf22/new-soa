@@ -1,12 +1,12 @@
 import React from 'react'
 
-interface TabItem {
+interface ITabItem {
   tabRef: string
   name: string
   active?: boolean
 }
 
-export const TabItem = ({tabRef, name, active}: TabItem) => {
+export const TabItem = ({tabRef, name, active}:ITabItem ) => {
   return (
     <>
       <li className='nav-item col h-35px'>

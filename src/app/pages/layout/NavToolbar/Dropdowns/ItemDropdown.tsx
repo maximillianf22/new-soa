@@ -1,12 +1,12 @@
 import React from 'react'
 
-interface ItemDropdown {
+interface IItemDropdown {
     link: string
     icon?: string
     title: string
 }
 
-export const ItemDropdown = ({link, icon='caret-right', title}:ItemDropdown) => {
+export const ItemDropdown = ({link, icon='caret-right', title}:IItemDropdown ) => {
     return (
         <>
            <div className='menu-item me-lg-1'>
