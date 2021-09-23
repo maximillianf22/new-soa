@@ -1,13 +1,6 @@
 import * as Yup from 'yup'
+import { ICreateAccounts } from './Interfaces/models'
 
-export interface ICreateAccounts {
-  description: string
-  code: string
-  url: string
-  initialDate: Date
-  finalDate: Date
-  dueDate: string
-}
 
 const createAccountsSchemas = Yup.object().shape({
   description: Yup.string().required('Este campo es requerido'),

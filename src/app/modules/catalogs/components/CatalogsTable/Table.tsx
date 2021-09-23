@@ -1,5 +1,5 @@
 import React from 'react'
-import {AccountTabContent} from '../../../accounts/AccountTabContent'
+import { PlansTabContent } from '../../../plans/PlansTabContent'
 import {TableItem} from './components/TableItem'
 
 export const Table = () => {
@@ -9,7 +9,7 @@ export const Table = () => {
         <div className='tab-content'>
           <TableItem
             linkCreate=''
-            TableComponent={AccountTabContent}
+            TableComponent={PlansTabContent}
             tableRef='kt_table_1'
             name=''
             pilot=''

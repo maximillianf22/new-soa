@@ -43,13 +43,9 @@ export const TableBody: React.FC = () => {
   
     return (
         <>
-             {/* begin::Body */}
              <div className='card-body py-3'>
-                {/* begin::Table container */}
                 <div className='table-responsive'>
-                  {/* begin::Table */}
                   <table className='table table-row-dashed table-hover table-row-gray-300 align-middle gs-0 gy-3 mb-0'>
-                    {/* begin::Table head */}
                     <thead>
                       <tr className='fw-bolder text-muted'>
                         {tableHeads && tableHeads.map( (th: string, i: number) => (
@@ -58,8 +54,6 @@ export const TableBody: React.FC = () => {
                         <th className='min-w-80px text-end'>Opciones</th>
                       </tr>
                     </thead>
-                    {/* end::Table head */}
-                    {/* begin::Table body */}
                     <tbody>
                       {tableContent && tableContent.map(({ id, username, first_name, last_name, email, is_active, date_joined, init_date_validity, end_date_validity, rolId, password_change} : UserModel, i: number) => (
                         <tr key={i}>

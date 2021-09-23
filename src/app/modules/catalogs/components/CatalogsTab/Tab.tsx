@@ -1,5 +1,4 @@
 import React from 'react'
-import {AccountTabContent} from '../../../accounts/AccountTabContent'
 import {PlansTabContent} from '../../../plans/PlansTabContent'
 import {ServicesTabContent} from '../../../services/ServicesTabContent'
 import { Content } from './components/Content'
@@ -23,7 +22,7 @@ export const Tab = () => {
               active
               title='Cuentas'
               linkCreate='/soa/accounts/create'
-              TabContent={AccountTabContent}
+              TabContent={PlansTabContent}
             />
             <Content
               idRef='kt_tab_plans'
