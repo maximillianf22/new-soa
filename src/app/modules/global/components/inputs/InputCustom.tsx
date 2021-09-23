@@ -8,7 +8,7 @@ export const InputCustom = ({className,required ,label, ...props}: any) => {
     }
     return (
       <>
-        <label className={`col-form-label fw-bold fs-6 p-2 ${className} ${required? ('required') : ('')}`}>
+        <label className={`col-form-label fw-bold fs-6 py-2 ${required? ('required') : ('')}`}>
           {label}
         </label>
         <input placeholder={label} className={`form-control ${className}`} {...field} {...props} />

@@ -28,10 +28,10 @@ export const AccountsTable = () => {
       type: tableTypes.Load,
       payload: {
         tableHeader: {
-          title: 'Usuario',
+          title: 'Cuentas',
           count: 234,
-          btnLink: '',
-          btnModal: '#kt_modal',
+          btnLink: 'create',
+          btnModal: '',
           tableHeads: tableHeads,
         },
         tableBody: {

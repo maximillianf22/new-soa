@@ -41,7 +41,7 @@ const CollapseFilters = ({open}: any) => {
                       </div>
                     </div>
                     <div className='col-md-2 px-5'>
-                      <button className='btn btn-success btn-sm col-md-12 mb-4 mt-9 h-40px'>
+                      <button className='btn btn-success btn-sm col-md-12 mb-4 mt-11 h-40px'>
                         Aplicar
                       </button>
                       <button className='btn btn-danger btn-sm col-md-12 mb-4 mt-10 h-40px'>Limpiar</button>
