@@ -8,8 +8,10 @@ export const TableComponent: React.FC = () => {
     <>
       <Stats title='Cuentas' />
       <div className='card'>
-        <TableHeader />
-        <TableBody />
+        <div className='card-body'>
+          <TableHeader />
+          <TableBody />
+        </div>
       </div>
     </>
   )
