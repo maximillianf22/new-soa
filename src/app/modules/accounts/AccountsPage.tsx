@@ -6,9 +6,9 @@ import { AccountsTable } from './components/AccountsTable';
 import { AccountsForm } from './components/AccountsForm';
 
 
-const FamiliesBreadCrumbs: Array<PageLink> = [
+const AccountsBreadCrumbs: Array<PageLink> = [
     {
-      title: 'Familias',
+      title: 'Cuentas',
       path: '/accounts/home',
       isSeparator: false,
       isActive: false,
@@ -21,15 +21,15 @@ const FamiliesBreadCrumbs: Array<PageLink> = [
     },
   ]
  
-  const FamiliesPage: React.FC = () => {
+  const AccountsPage: React.FC = () => {
     return (
       <Switch>
         <Route path='/accounts/home'>
-          <PageTitle breadcrumbs={FamiliesBreadCrumbs}>Tabla de Cuentas</PageTitle>
+          <PageTitle breadcrumbs={AccountsBreadCrumbs}>Tabla de cuentas</PageTitle>
           <AccountsTable />
         </Route>
         <Route path='/accounts/create'>
-          <PageTitle breadcrumbs={FamiliesBreadCrumbs}>Registro de cuenta</PageTitle>
+          <PageTitle breadcrumbs={AccountsBreadCrumbs}>Registro de cuenta</PageTitle>
           <AccountsForm />
         </Route>
 
@@ -39,4 +39,4 @@ const FamiliesBreadCrumbs: Array<PageLink> = [
     )
   }
   
-  export default FamiliesPage
+  export default AccountsPage
