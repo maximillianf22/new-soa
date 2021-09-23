@@ -1,10 +1,5 @@
 import React from 'react'
-
-interface INavToolbarItem {
-  title: string
-  description: string
-  Dropdown: any
-}
+import {INavToolbarItem} from './Interfaces'
 
 export const NavToolbarItem = ({title, description, Dropdown}: INavToolbarItem) => {
   return (

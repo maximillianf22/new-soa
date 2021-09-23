@@ -1,7 +1,7 @@
 import React from 'react'
 import { ContentItem } from '../catalogs/components/CatalogsTab/components/ContentItem'
 
-export const ServicesNavContent = () => {
+export const ServicesTabContent = () => {
   return (
     <>
       <ContentItem vip name='Servicios' pilot='(305)260-7055' count={28} tableRef='#kt_table_1' />

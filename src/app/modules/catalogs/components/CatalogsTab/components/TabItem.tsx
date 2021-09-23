@@ -1,10 +1,5 @@
 import React from 'react'
-
-interface ITabItem {
-  tabRef: string
-  name: string
-  active?: boolean
-}
+import { ITabItem } from '../../../Interfaces'
 
 export const TabItem = ({tabRef, name, active}:ITabItem ) => {
   return (

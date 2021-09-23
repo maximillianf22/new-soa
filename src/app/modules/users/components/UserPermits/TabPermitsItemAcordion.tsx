@@ -1,12 +1,12 @@
 import React from 'react'
 import Accordion from 'react-bootstrap/Accordion'
 
-type AcordionItem = {
+type ITabPermitsItemAcordion = {
   label: string
   keyEvent: string
 }
 
-export const TabPermitsItemAcordion = ({label, keyEvent}: AcordionItem) => {
+export const TabPermitsItemAcordion = ({label, keyEvent}: ITabPermitsItemAcordion) => {
   return (
     <>
       <div className='col-md-3'>

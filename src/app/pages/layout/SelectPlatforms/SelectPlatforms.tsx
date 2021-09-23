@@ -8,7 +8,7 @@ const options = [
   {value: 'Plataforma4', label: 'Plataform Four'},
 ]
 
-export const SelectPlataforms = () => {
+export const SelectPlatforms = () => {
   return (
     <>
       <div className='col-5 ps-4 col-md-4 col-lg-3'>

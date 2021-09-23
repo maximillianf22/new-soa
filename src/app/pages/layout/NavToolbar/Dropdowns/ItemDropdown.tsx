@@ -1,10 +1,5 @@
 import React from 'react'
-
-interface IItemDropdown {
-    link: string
-    icon?: string
-    title: string
-}
+import{ IItemDropdown } from '../Interfaces'
 
 export const ItemDropdown = ({link, icon='caret-right', title}:IItemDropdown ) => {
     return (

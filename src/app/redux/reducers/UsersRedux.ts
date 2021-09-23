@@ -13,7 +13,7 @@ export interface ActionWithPayload<T> extends Action {
   payload?: T
 }
 
-const initialUsersState: IuserState = {
+const initialUsersState: IUserState = {
     users: [],
     SelectedUser: {    
       first_name: '',
@@ -26,14 +26,14 @@ const initialUsersState: IuserState = {
     }
 }
 
-interface IuserState {
+interface IUserState {
     users: UserModel[] | undefined
     SelectedUser: UserModel | undefined
 }
 
 export const usersReducer = persistReducer(
   {storage, key: 'v100-demo1-users', whitelist: ['users', 'SelectedUser']},
-  (state: IuserState = initialUsersState, action: ActionWithPayload<IuserState>) => {
+  (state: IUserState = initialUsersState, action: ActionWithPayload<IUserState>) => {
     switch (action.type) {
       case usersTypes.Load: { 
         return {...state, users: action.payload?.users}
