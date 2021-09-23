@@ -1,6 +1,6 @@
-import {AuthModel} from '../models/AuthModel'
-import { UserModel } from '../../global/models/UserModel';
-import { httpClient } from '../../../../setup/axios/setUpAxios';
+import {AuthModel} from '../modules/auth/models/AuthModel'
+import { UserModel } from '../modules/global/models/UserModel';
+import { httpClient } from '../../setup/axios/setUpAxios';
 
 // import axios from 'axios';
 

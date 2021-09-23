@@ -1,5 +1,5 @@
-import { UserModel } from '../../global/models/UserModel';
-import { httpClient } from '../../../../setup/axios/setUpAxios';
+import { UserModel } from '../modules/global/models/UserModel';
+import { httpClient } from '../../setup/axios/setUpAxios';
 
 
 export const GET_USERS_URL = `/soaang-users/api/users/`;

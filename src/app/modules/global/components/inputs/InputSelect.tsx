@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {FieldProps, useField} from 'formik'
+import {FieldProps} from 'formik'
 import Select from 'react-select'
 
 export const InputSelect = ({
@@ -26,24 +26,3 @@ export const InputSelect = ({
     </>
   )
 };
-
-
-// const MyTextField = ({ label, options, ...props }: any) => {
-//   const [field, meta, helpers] = useField(props);
-//   return (
-//     <>
-//       <Select
-//         className='form-control p-0'
-//         {...field}
-//         {...props}
-//         options={options}
-//         value={(options ? options.find((option) => option.value === field.value) : '') as any}
-//         onChange={(option) => setFieldValue(field.name, (option as any).value)}
-//         placeholder={props.label}
-//       />
-//       {meta.touched && meta.error ? (
-//         <div className="error">{meta.error}</div>
-//       ) : null}
-//     </>
-//   );
-// };

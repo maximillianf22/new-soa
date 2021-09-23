@@ -17,7 +17,7 @@ export function AuthPage() {
 
   return (
     <>
-      <div className='container-fluid px-3' style={{height: '105.2vh'}}>
+      <div className='container-fluid px-3' style={{height: '111.1vh'}}>
         <div className='row h-100'>
           <div
             className='col-4 d-none d-lg-block d-xl-block bg-dark h-100 px-10'
@@ -29,7 +29,7 @@ export function AuthPage() {
           >
             <div
               className='d-flex flex-column mb-3 justify-content-between'
-              style={{height: '100vh'}}
+              style={{height: '109vh'}}
             >
               <div className='p-2'>
                 <img

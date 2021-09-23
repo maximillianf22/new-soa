@@ -1,7 +1,7 @@
 import React from 'react'
-import {KTSVG, toAbsoluteUrl} from '../../../../../_metronic/helpers'
+import { toAbsoluteUrl } from '../../../../../../_metronic/helpers'
 
-interface TabContentItem {
+interface IContentItem {
   vip?: boolean
   name: string
   pilot?: string
@@ -9,7 +9,7 @@ interface TabContentItem {
   tableRef: string
 }
 
-export const TabContentItem = ({vip, name, pilot, count, tableRef}: TabContentItem) => {
+export const ContentItem = ({vip, name, pilot, count, tableRef}:IContentItem ) => {
   return (
     <>
       <a

@@ -3,7 +3,7 @@ import React, {FC} from 'react'
 import {Link} from 'react-router-dom'
 import {useLayout} from '../../../core/LayoutProvider'
 import {usePageData} from '../../../core/PageData'
-import { SelectPlatforms } from '../../../../../app/pages/components/SelectPlatforms';
+import { SelectPlataforms } from '../../../../../app/pages/layout/SelectPlataforms'
 
 const DefaultTitle: FC = () => {
   const {pageTitle, pageDescription, pageBreadcrumbs} = usePageData()
@@ -60,7 +60,7 @@ const DefaultTitle: FC = () => {
           </>
         )}
         </div>
-        <SelectPlatforms />
+        <SelectPlataforms />
         {/* TODO: Hacer un componente SideHeader que dentro tendrá <SelectPlatforms /> y botonera del monitor */}
     </div>
   )
