@@ -1,10 +1,10 @@
 import {useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import {tableActionTypes, tableActions} from '../../../redux/reducers/TableRedux'
 import {TableComponent} from '../../global/components/tables/TableComponent'
-import {actions, actionTypes} from '../../../redux/reducers/UsersRedux'
 import {RootState} from '../../../../setup/redux/RootReducer'
 import { ModalForm } from './ModalForm'
+import { usersTypes, tableTypes } from '../../../redux/types/types';
+import { userActions, tableActions } from '../../../redux/actions/actions';
 
 
 export const FamiliesTable = () => {
@@ -24,10 +24,10 @@ export const FamiliesTable = () => {
   ]
 
   useEffect(() => {
-    dispatch({type: actionTypes.AsyncLoad})
+    dispatch({type: usersTypes.AsyncLoad})
     if (users) {
       dispatch({
-        type: tableActionTypes.Load,
+        type: tableTypes.Load,
         payload: {
           tableHeader: {
             title: 'Familias',
@@ -45,7 +45,7 @@ export const FamiliesTable = () => {
     }
 
     return () => {
-      dispatch(actions.clear())
+      dispatch(userActions.clear())
       dispatch(tableActions.clear())
     }
   }, [dispatch]) // eslint-disable-line

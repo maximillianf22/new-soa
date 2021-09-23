@@ -50,31 +50,10 @@ export const FormRegular = () => {
        }}
      >
        {(props: FormikProps<any>) => (
-         <Form>
-         <div className='card-body'>
-           <div className='card-body py-0 px-4'>
-             <div className='row'>
-               <div className='col-md-4 px-5 fv-row my-3'>
-                 {/* <label className='col-form-label required fw-bold fs-6'>Nombre</label> */}
-                 <Field type="text" name='first_name' />
-               </div>
-               {SelectedUser?.toEdit === true &&
-                <div className='col-md-4 px-5 fv-row my-3'>
-                  <MyTextField type="text" name='id' label="id" />
-                </div>
-               }
-               <div className='col-md-4 px-5 fv-row my-3'>
-               <MyTextField type="text" name='last_name' label="Apellido" />
-               </div>
-               <div className='col-md-4 px-5 fv-row my-3'>
-                <MyTextField type="email" name='email' label="Correo" />
-               </div>
-               <div className='col-md-4 px-5 fv-row my-3'>
-               <MyTextField type="username" name='username' label="Nombre de usuario" />
-               </div>
-
-               { SelectedUser.id < 1 && (
-                 <>
+        <Form>
+            <div className='card'>
+              <div className='card-body'>
+                <div className='row'>
                   <div className='col-md-4 px-5 fv-row my-3'>
                     <InputCustom type='text' name='first_name' label='Nombre' required />
                   </div>

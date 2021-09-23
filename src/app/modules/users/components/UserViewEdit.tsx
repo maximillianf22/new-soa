@@ -1,6 +1,5 @@
 import React from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import {RootState} from '../../../../setup'
+import {useDispatch} from 'react-redux'
 import {FormRegular} from './UsersForms/FormRegular'
 import { userActions } from '../../../redux/actions/actions';
 
