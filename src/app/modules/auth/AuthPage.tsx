@@ -67,7 +67,6 @@ export function AuthPage() {
               </div>
             </div>
           </div>
-
           <Switch>
             <Route path='/auth/login' component={Login} />
             <Route path='/auth/forgot-password' component={ForgotPassword} />

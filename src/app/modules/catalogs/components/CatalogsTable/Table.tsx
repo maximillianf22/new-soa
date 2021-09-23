@@ -13,6 +13,7 @@ export const Table = () => {
             tableRef='kt_table_1'
             name=''
             pilot=''
+            active
           />
         </div>
       </div>
