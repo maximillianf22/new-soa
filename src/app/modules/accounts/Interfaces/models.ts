@@ -16,3 +16,7 @@ export interface IStatsItem {
 export interface IStats {
     title: string;
 }
+
+export interface ITableComponent {
+    title: string;
+}

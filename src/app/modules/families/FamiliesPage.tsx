@@ -2,7 +2,7 @@ import React from 'react'
 import { PageTitle } from '../../../_metronic/layout/core'
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { PageLink } from '../../../_metronic/layout/core';
-import { FamiliesTable } from './components/FamiliesTable';
+import { FamiliesTable } from './components/FamiliesTable/FamiliesTable';
 
 
 const FamiliesBreadCrumbs: Array<PageLink> = [
