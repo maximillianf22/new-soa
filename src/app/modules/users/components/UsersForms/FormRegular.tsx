@@ -69,7 +69,12 @@ export const FormRegular = () => {
                     <InputCustom type='email' name='email' label='Correo' required />
                   </div>
                   <div className='col-md-4 px-5 fv-row my-3'>
-                    <InputCustom type='username' name='username' label='Nombre de usuario' required />
+                    <InputCustom
+                      type='username'
+                      name='username'
+                      label='Nombre de usuario'
+                      required
+                    />
                   </div>
 
                   {SelectedUser.id < 1 && (
@@ -92,7 +97,6 @@ export const FormRegular = () => {
                       <InputDueDate
                         init_date_validity={SelectedUser.init_date_validity}
                         end_date_validity={SelectedUser.end_date_validity}
-                        
                       />
                     ) : (
                       <InputDueDate />
@@ -106,7 +110,8 @@ export const FormRegular = () => {
                     <InputProfile />
                   </div>
                   <div className='col-md-3 px-5 fv-row text-end'>
-                    <div className='form-check form-check-custom form-check-solid my-auto h-100'>
+                    <label></label>
+                    <div className='form-check form-check-custom form-check-solid my-auto h-75'>
                       <InputCustom
                         className='form-check-input h-25px'
                         type='checkbox'
@@ -118,31 +123,20 @@ export const FormRegular = () => {
                     </div>
                   </div>
                   <div className='col-md-3 px-5 fv-row'>
-                    <div className='my-auto h-100 text-center'>
-                      <div className='form-check form-switch form-check-custom form-check-solid'>
-                        <InputCustom
-                          className='form-check-input h-25px'
-                          type='checkbox'
-                          name='is_active'
-                          id='flexSwitchChecked'
-                        />
-                        <label className='form-check-label'>¿Activo?</label>
-                      </div>
+                    <label></label>
+                    <div className='form-check form-switch form-check-custom form-check-solid my-auto h-75'>
+                      <InputCustom
+                        className='form-check-input h-25px'
+                        type='checkbox'
+                        name='is_active'
+                        id='flexSwitchChecked'
+                      />
+                      <label className='form-check-label'>¿Activo?</label>
                     </div>
                   </div>
                 </div>
-              <div className='px-5 pt-5 fv-row text-end'>
-                {SelectedUser?.toEdit === false ? (
-                  <button
-                    type='button'
-                    className='btn btn-secondary'
-                    data-bs-dismiss='modal'
-                    onClick={handleClose}
-                  >
-                    Cerrar
-                  </button>
-                ) : (
-                  <>
+                <div className='px-5 pt-5 fv-row text-end'>
+                  {SelectedUser?.toEdit === false ? (
                     <button
                       type='button'
                       className='btn btn-secondary'
@@ -151,18 +145,28 @@ export const FormRegular = () => {
                     >
                       Cerrar
                     </button>
-                    <button
-                      type='submit'
-                      className='btn btn-primary ms-4'
-                      data-bs-dismiss='modal'
-                      onClick={handleClose}
-                    >
-                      Guardar cambios
-                    </button>
-                  </>
-                )}
+                  ) : (
+                    <>
+                      <button
+                        type='button'
+                        className='btn btn-secondary'
+                        data-bs-dismiss='modal'
+                        onClick={handleClose}
+                      >
+                        Cerrar
+                      </button>
+                      <button
+                        type='submit'
+                        className='btn btn-primary ms-4'
+                        data-bs-dismiss='modal'
+                        onClick={handleClose}
+                      >
+                        Guardar cambios
+                      </button>
+                    </>
+                  )}
+                </div>
               </div>
-            </div>
             </div>
           </Form>
         )}
