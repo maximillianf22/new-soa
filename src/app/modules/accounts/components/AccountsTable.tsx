@@ -101,17 +101,34 @@ export const AccountsTable = () => {
               <tbody>
                 <tr>
                   <td className='text-center'>
-                    <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>
-                      descripcion
-                    </p>
+                    <div
+                      className='text-start d-flex bd-highlight nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary w-75 fw-bolder px-0 my-0'
+                      data-bs-toggle='tab'
+                    >
+                      <div className='symbol symbol-45px mx-2 flex-fill bd-highlight'>
+                        <span className='symbol-label'>
+                          <img
+                            src={toAbsoluteUrl('/media/svg/brand-logos/plurk.svg')}
+                            className='h-50 align-self-center'
+                            alt=''
+                          />
+                        </span>
+                      </div>
+                      <div className='text-dark fw-bolder text-hover-primary mb-1 fs-6 flex-fill bd-highlight'>
+                        <b className='fs-5 text-start w-100'>
+                         Descripcion
+                        </b>
+                        <p className='text-start fs-help mt-1 mb-0 text-warning'>
+                          VIP
+                        </p>
+                      </div>
+                    </div>
                   </td>
                   <td className='text-center'>
                     <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>codigo</p>
                   </td>
                   <td className='text-center'>
-                    <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>
-                      SI
-                    </p>
+                    <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>SI</p>
                   </td>
                   <td className='text-center'>
                     <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>
@@ -119,8 +136,8 @@ export const AccountsTable = () => {
                     </p>
                   </td>
                   <td className='text-center'>
-                    <p className='text-info fw-bolder text-hover-primary d-block fs-6'>
-                     <i className='fa fa-circle'></i> Activo
+                    <p className='text-success fw-bolder text-hover-primary d-block fs-6'>
+                      <i className='fa fa-circle text-success'></i> Activo
                     </p>
                   </td>
                   <td>
@@ -137,7 +154,7 @@ export const AccountsTable = () => {
                     </div>
                   </td>
                 </tr>
-                </tbody>
+              </tbody>
             </table>
           </div>
         </div>
