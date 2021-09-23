@@ -8,10 +8,11 @@ export const TableItem = ({
   tableRef,
   name,
   pilot,
+  active
 }: ITableItem) => {
   return (
     <>
-      <div className='tab-pane fade' id={tableRef}>
+      <div className={`tab-pane fade ${active ? ('show active') : ('')}`} id={tableRef}>
         <div className='card-body pt-4'>
           <div className='container-custom'>
             <div className='card-header border-0 p-0'>

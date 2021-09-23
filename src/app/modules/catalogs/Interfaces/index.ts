@@ -44,4 +44,5 @@ export interface ITableItem{
   tableRef: string
   name: string
   pilot: string
+  active ?: boolean
 }

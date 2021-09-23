@@ -7,6 +7,7 @@ import {IndexPage} from '../pages/home'
 export function PrivateRoutes() {
   const UsersPage = lazy(() => import('../modules/users/UsersPage'))
   const CatalogsPage = lazy(() => import('../modules/catalogs/CatalogsPage'))
+  const AccountsPage = lazy(() => import('../modules/accounts/AccountsPage'))
   const FamiliesPage = lazy(() => import('../modules/families/FamiliesPage'))
 
   return (
@@ -15,6 +16,7 @@ export function PrivateRoutes() {
         <Route path='/home' component={IndexPage} />
         <Route path='/users' component={UsersPage} />
         <Route path='/catalogs' component={CatalogsPage} />
+        <Route path='/accounts' component={AccountsPage} />
         <Route path='/families' component={FamiliesPage} />
         <Redirect from='/auth' to='/home' />
         <Redirect exact from='/' to='/home' />

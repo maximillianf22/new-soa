@@ -3,7 +3,6 @@ import { PageTitle } from '../../../_metronic/layout/core'
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { PageLink } from '../../../_metronic/layout/core';
 import { FamiliesTable } from './components/FamiliesTable';
-import { FamiliesForm } from './components/FamiliesForm';
 
 
 const FamiliesBreadCrumbs: Array<PageLink> = [
@@ -27,11 +26,6 @@ const FamiliesBreadCrumbs: Array<PageLink> = [
         <Route path='/families/home'>
           <PageTitle breadcrumbs={FamiliesBreadCrumbs}>Tabla de Familias</PageTitle>
           <FamiliesTable />
-        </Route>
-
-        <Route path='/families/create-multiplatform'>
-          <PageTitle breadcrumbs={FamiliesBreadCrumbs}>Registro de usuario Multiplatforma</PageTitle>
-          <FamiliesForm />
         </Route>
 
         <Redirect from='/Families' exact={true} to='/families/home' />
