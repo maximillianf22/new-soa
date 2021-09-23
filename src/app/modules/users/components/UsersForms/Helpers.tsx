@@ -20,7 +20,7 @@ const wizzardSchemas = [
     email: Yup.string().required('Este campo es requerido para pasar al siguiente paso'),
     username: Yup.string().required('Este campo es requerido para pasar al siguiente paso'),
     password: Yup.string().required('Este campo es requerido para pasar al siguiente paso'),
-    dueDate: Yup.string().required('Este campo es requerido para pasar al siguiente paso'),
+    // dueDate: Yup.string().required('Este campo es requerido para pasar al siguiente paso'),
 
   }),
   Yup.object().shape({

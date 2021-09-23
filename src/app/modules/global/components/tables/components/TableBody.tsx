@@ -3,7 +3,8 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../../../../setup';
 import { UserModel } from '../../../models/UserModel';
 import Swal from 'sweetalert2'
-import { actions, actionTypes } from '../../../../../redux/reducers/UsersRedux';
+import { usersTypes } from '../../../../../redux/types/types';
+import { userActions } from '../../../../../redux/actions/actions';
 
 
 export const TableBody: React.FC = () => {
@@ -12,11 +13,11 @@ export const TableBody: React.FC = () => {
   const dispatch = useDispatch();
   const handleView = (user: any) => {
     user.toEdit = false;
-    dispatch(actions.SelectedUser(user))
+    dispatch(userActions.SelectedUser(user))
   };
   const handleEdit = (user: any) => {
     user.toEdit = true;
-    dispatch(actions.SelectedUser(user))
+    dispatch(userActions.SelectedUser(user))
   };
   const handleDelete = (id: any) => {
     Swal.fire({
@@ -30,7 +31,7 @@ export const TableBody: React.FC = () => {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch({type: actionTypes.Delete, payload: id});
+        dispatch({type: usersTypes.Delete, payload: id});
         Swal.fire(
           '¡Eliminado!',
           'El usuario fue eliminado correctamente.',

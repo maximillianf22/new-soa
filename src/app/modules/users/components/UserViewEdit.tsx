@@ -1,13 +1,13 @@
 import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {RootState} from '../../../../setup'
-import {actions} from '../../../redux/reducers/UsersRedux'
 import {FormRegular} from './UsersForms/FormRegular'
+import { userActions } from '../../../redux/actions/actions';
 
 export const UserViewEdit = () => {
   const dispatch = useDispatch()
   const handleClose = () => {
-    dispatch(actions.ClearSelectedUser())
+    dispatch(userActions.ClearSelectedUser());
   }
 
   return (

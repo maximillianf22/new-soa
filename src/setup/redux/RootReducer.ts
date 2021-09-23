@@ -2,8 +2,9 @@ import {all} from 'redux-saga/effects'
 import {combineReducers} from 'redux'
 
 import * as auth from '../../app/modules/auth'
-import { saga, tableReducer } from '../../app/redux/reducers/TableRedux';
-import { usersReducer, sagaUsers } from '../../app/redux/reducers/UsersRedux';
+import { tableReducer } from '../../app/redux/reducers/TableRedux';
+import { usersReducer } from '../../app/redux/reducers/UsersRedux';
+import { sagaUsers, authSaga, tableSaga } from '../../app/redux/sagas/sagas';
 
 export const rootReducer = combineReducers({
   auth: auth.reducer,
@@ -14,5 +15,5 @@ export const rootReducer = combineReducers({
 export type RootState = ReturnType<typeof rootReducer>
 
 export function* rootSaga() {
-  yield all([auth.saga(), saga(), sagaUsers()])
+  yield all([authSaga(), tableSaga(), sagaUsers()])
 }

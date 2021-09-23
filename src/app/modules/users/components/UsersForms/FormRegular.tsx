@@ -1,11 +1,11 @@
 import {useField, Formik, Form, FormikProps, Field} from 'formik'
 import {useDispatch, useSelector} from 'react-redux'
 import {RootState} from '../../../../../setup'
-import {actions} from '../../../../redux/reducers/UsersRedux'
 import {InputCustom} from '../../../global/components/inputs'
-import {InputDueDate} from '../../../global/components/inputs/InputDueDate'
 import {InputSelect} from '../../../global/components/inputs/InputSelect'
+import {InputDueDate} from '../../../global/components/inputs/InputDueDate'
 import {InputProfile} from '../UserPermits/InputProfile'
+import { userActions } from '../../../../redux/actions/actions';
 
 const optionsPlatforms = [
   {value: 'addiuva', label: 'Addiuva'},
@@ -32,28 +32,49 @@ export const FormRegular = () => {
   const SelectedUser: any = useSelector<RootState>(({users}) => users.SelectedUser)
   const dispatch = useDispatch()
   const handleClose = () => {
-    // dispatch(actions.ClearSelectedUser());
+    // dispatch(userActions.ClearSelectedUser());
   }
 
   return (
     <>
       <Formik
-        initialValues={{...SelectedUser}}
-        enableReinitialize={true}
-        onSubmit={(values) => {
-          console.log('en submit', values)
-          // if (values.id.length > 0) {
-          //   dispatch(actions.updateUser(values))
-          // } else {
-          //  dispatch(actions.createUser(values))
-          // }
-        }}
-      >
-        {(props: FormikProps<any>) => (
-          <Form>
-            <div className='card'>
-              <div className='card-body'>
-                <div className='row'>
+       initialValues={{...SelectedUser}}
+       enableReinitialize={true}
+       onSubmit={(values) => {
+        console.log('en submit', values )
+        // if (values.id.length > 0) {
+        //   dispatch(actions.updateUser(values))
+        // } else {
+        //  dispatch(actions.createUser(values))
+        // }
+       }}
+     >
+       {(props: FormikProps<any>) => (
+         <Form>
+         <div className='card-body'>
+           <div className='card-body py-0 px-4'>
+             <div className='row'>
+               <div className='col-md-4 px-5 fv-row my-3'>
+                 {/* <label className='col-form-label required fw-bold fs-6'>Nombre</label> */}
+                 <Field type="text" name='first_name' />
+               </div>
+               {SelectedUser?.toEdit === true &&
+                <div className='col-md-4 px-5 fv-row my-3'>
+                  <MyTextField type="text" name='id' label="id" />
+                </div>
+               }
+               <div className='col-md-4 px-5 fv-row my-3'>
+               <MyTextField type="text" name='last_name' label="Apellido" />
+               </div>
+               <div className='col-md-4 px-5 fv-row my-3'>
+                <MyTextField type="email" name='email' label="Correo" />
+               </div>
+               <div className='col-md-4 px-5 fv-row my-3'>
+               <MyTextField type="username" name='username' label="Nombre de usuario" />
+               </div>
+
+               { SelectedUser.id < 1 && (
+                 <>
                   <div className='col-md-4 px-5 fv-row my-3'>
                     <InputCustom type='text' name='first_name' label='Nombre' required />
                   </div>

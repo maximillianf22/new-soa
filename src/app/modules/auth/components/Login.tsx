@@ -5,8 +5,9 @@ import * as Yup from 'yup'
 import clsx from 'clsx'
 import {Link} from 'react-router-dom'
 import {useFormik} from 'formik'
-import * as auth from '../redux/AuthRedux'
+import * as auth from '../../../redux/reducers/AuthRedux'
 import { RootState } from '../../../../setup/redux/RootReducer';
+import { authTypes } from '../../../redux/types/types';
 
 const loginSchema = Yup.object().shape({
   username: Yup.string()
@@ -32,7 +33,7 @@ export function Login() {
     initialValues,
     validationSchema: loginSchema,
     onSubmit: (values, {setStatus, setSubmitting}) => {
-      dispatch({type: auth.actionTypes.asyncLogin, payload: values})
+      dispatch({type: authTypes.asyncLogin, payload: values})
     },
   })
 

@@ -3,7 +3,7 @@ import * as Yup from 'yup'
 import clsx from 'clsx'
 import {Link, useParams} from 'react-router-dom'
 import {useFormik} from 'formik'
-import {NewPasswordModel, newPassword} from '../redux/AuthCRUD'
+import {NewPasswordModel, newPassword} from '../../../api/AuthCRUD'
 
 const initialValues: NewPasswordModel = {
   new_password1: '',
