@@ -3,7 +3,9 @@ import {useDispatch, useSelector} from 'react-redux'
 import { RootState } from '../../../../../setup'
 import { tableActions, userActions } from '../../../../redux/actions/actions'
 import { tableTypes, usersTypes } from '../../../../redux/types/types'
+import { accountTypes } from '../../../../redux/types/accountTypes'
 import { TableComponent } from './components/TableComponent'
+import { accountsActions } from '../../../../redux/actions/accountsActions'
 
 export const AccountsTable = () => {
   const dispatch = useDispatch()
@@ -22,12 +24,13 @@ export const AccountsTable = () => {
   ]
   
   useEffect(() => {
-  dispatch({type: usersTypes.AsyncLoad})
+    dispatch({type: accountTypes.accountsLoad})
+    dispatch({type: usersTypes.AsyncLoad})
 
     dispatch({
       type: tableTypes.Load,
       payload: {
-        tableHeader: {
+        tableHeader: {  
           title: 'Cuentas',
           count: 234,
           btnLink: 'create',
@@ -43,6 +46,7 @@ export const AccountsTable = () => {
     return () => {
       dispatch(userActions.clear())
       dispatch(tableActions.clear())
+      dispatch(accountsActions.clear())
     }
   }, [dispatch]) // eslint-disable-line
 
