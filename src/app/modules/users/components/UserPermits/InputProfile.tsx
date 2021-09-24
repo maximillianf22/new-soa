@@ -14,7 +14,7 @@ export const InputProfile = () => {
     <>
         <div className='d-flex bd-highlight'>
           <div className='pe-3 flex-fill bd-highlight w-100'>
-            <label className='col-form-label required fw-bold fs-6'>Perfil</label>
+            <label className='col-form-label required fw-bold fs-6 py-2'>Perfil</label>
             <Field name={'profile'} component={InputSelect} options={optionsProfile} />
           </div>
           <div className='px-0 flex-fill bd-highlight mt-13'>

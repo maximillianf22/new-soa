@@ -5,7 +5,7 @@ import {InputCustom} from '../../../global/components/inputs'
 import {InputSelect} from '../../../global/components/inputs/InputSelect'
 import {InputDueDate} from '../../../global/components/inputs/InputDueDate'
 import {InputProfile} from '../UserPermits/InputProfile'
-import { userActions } from '../../../../redux/actions/actions';
+import {userActions} from '../../../../redux/actions/actions'
 
 const optionsPlatforms = [
   {value: 'addiuva', label: 'Addiuva'},
@@ -38,19 +38,19 @@ export const FormRegular = () => {
   return (
     <>
       <Formik
-       initialValues={{...SelectedUser}}
-       enableReinitialize={true}
-       onSubmit={(values) => {
-        console.log('en submit', values )
-        // if (values.id.length > 0) {
-        //   dispatch(actions.updateUser(values))
-        // } else {
-        //  dispatch(actions.createUser(values))
-        // }
-       }}
-     >
-       {(props: FormikProps<any>) => (
-        <Form>
+        initialValues={{...SelectedUser}}
+        enableReinitialize={true}
+        onSubmit={(values) => {
+          console.log('en submit', values)
+          // if (values.id.length > 0) {
+          //   dispatch(actions.updateUser(values))
+          // } else {
+          //  dispatch(actions.createUser(values))
+          // }
+        }}
+      >
+        {(props: FormikProps<any>) => (
+          <Form>
             <div className='card'>
               <div className='card-body'>
                 <div className='row'>
@@ -69,12 +69,7 @@ export const FormRegular = () => {
                     <InputCustom type='email' name='email' label='Correo' required />
                   </div>
                   <div className='col-md-4 px-5 fv-row my-3'>
-                    <InputCustom
-                      type='username'
-                      name='username'
-                      label='Nombre de usuario'
-                      required
-                    />
+                    <InputCustom type='text' name='username' label='Nombre de usuario' required />
                   </div>
 
                   {SelectedUser.id < 1 && (
@@ -103,7 +98,7 @@ export const FormRegular = () => {
                     )}
                   </div>
                   <div className='col-md-4 px-5 fv-row my-3'>
-                    <label className='col-form-label required fw-bold fs-6'>Platforma</label>
+                    <label className='col-form-label required fw-bold fs-6 py-2'>Platforma</label>
                     <Field name='clients' component={InputSelect} options={optionsClients} />
                   </div>
                   <div className='col-md-4 px-5 fv-row my-3'>

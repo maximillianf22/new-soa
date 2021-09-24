@@ -1,6 +1,4 @@
 import React from 'react'
-import {PlansTabContent} from '../../../plans/PlansTabContent'
-import {ServicesTabContent} from '../../../services/ServicesTabContent'
 import { Content } from './components/Content'
 import { TabItem } from './components/TabItem'
 
@@ -16,27 +14,6 @@ export const Tab = () => {
           </ul>
         </div>
         <div className='card-body p-5 pt-0'>
-          <div className='tab-content'>
-            <Content
-              idRef='kt_tab_accounts'
-              active
-              title='Cuentas'
-              linkCreate='/soa/accounts/create'
-              TabContent={PlansTabContent}
-            />
-            <Content
-              idRef='kt_tab_plans'
-              title='Planes'
-              linkCreate='/soa/plans/create'
-              TabContent={PlansTabContent}
-            />
-            <Content
-              idRef='kt_tab_services'
-              title='Servicios'
-              linkCreate='/soa/services/create'
-              TabContent={ServicesTabContent}
-            />
-          </div>
         </div>
       </div>
     </>

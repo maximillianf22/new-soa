@@ -13,7 +13,6 @@ export const DropdownSoaang = () => {
           data-kt-menu-trigger="{default:'click', lg: 'hover'}"
           data-kt-menu-placement='right-start'
         >
-          <ItemDropdown title='Catalogos' link='/catalogs/home'/>
           <ItemDropdown title='Cuentas' link='/accounts/home'/>
           <ItemDropdown title='Planes' link='/plans/home'/>
           <ItemDropdown title='Servicios' link='/services/home'/>

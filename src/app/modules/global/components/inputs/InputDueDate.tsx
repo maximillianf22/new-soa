@@ -16,10 +16,10 @@ export const InputDueDate = ({isRequired = '', init_date_validity = '', end_date
     <>
       <div className='d-flex bd-highlight'>
         <div className='pe-3 flex-fill bd-highlight w-100'>
-          <label className={`col-form-label required fw-bold fs-6`}>Vigencia</label>
+          <label className={`col-form-label required fw-bold fs-6 py-2`}>Vigencia</label>
           <Field name={'dueDate'} component={InputSelect} options={optionsProfile} />
         </div>
-        <div className='px-0 flex-fill bd-highlight mt-13'>
+        <div className='px-0 flex-fill bd-highlight mt-10'>
           <Button
             className='btn btn-icon btn-primary btn-form'
             onClick={() => setOpen(!open)}

@@ -49,7 +49,7 @@ export const AccountsForm = () => {
                     <InputCustom type='number' name='url' label='Numero de piloto proveedor' />
                   </div>
                   {/* <div className='col-md-6 px-5 fv-row my-3'>
-                    <label className='col-form-label required fw-bold fs-6'>Clientes</label>
+                    <label className='col-form-label required fw-bold fs-6 py-2'>Clientes</label>
                     <Field name='clients' component={InputSelect} options={optionsClients} />
                   </div> */}
                   <div className='col-md-4 px-5 fv-row my-3 text-center'>
