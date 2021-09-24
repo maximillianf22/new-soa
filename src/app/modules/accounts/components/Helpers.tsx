@@ -1,5 +1,5 @@
 import * as Yup from 'yup'
-import { ICreateAccounts } from './Interfaces/models'
+import { ICreateAccounts } from '../Interfaces/models'
 
 
 const createAccountsSchemas = Yup.object().shape({

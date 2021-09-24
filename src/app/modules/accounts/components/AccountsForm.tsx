@@ -63,7 +63,7 @@ export const AccountsForm = () => {
                           checked
                           id='flexSwitchChecked'
                         />
-                        <label className='form-check-label'>¿Activo?</label>
+                        <label className='form-check-label ms-5'>¿Activo?</label>
                       </div>
                     </div>
                   </div>
@@ -71,24 +71,24 @@ export const AccountsForm = () => {
                     <label></label>
                     <div className='form-check form-check-custom form-check-solid my-auto h-75'>
                       <InputCustom
-                        className='form-check-input h-25px'
+                        className='form-check-input h-30px w-30px'
                         type='checkbox'
                         name='password_change'
                         id='flexCheckChecked'
                       />
-                      <label className='form-check-label'>Beneficiacios</label>
+                      <label className='form-check-label ms-5'>Beneficiacios</label>
                     </div>
                   </div>
                   <div className='col-md-4 px-5 fv-row text-end'>
                     <label></label>
                     <div className='form-check form-check-custom form-check-solid my-auto h-75'>
                       <InputCustom
-                        className='form-check-input h-25px'
+                        className='form-check-input h-30px w-30px'
                         type='checkbox'
                         name='password_change'
                         id='flexCheckChecked'
                       />
-                      <label className='form-check-label'>VIP</label>
+                      <label className='form-check-label ms-5'>VIP</label>
                     </div>
                   </div>
                 </div>

@@ -3,9 +3,10 @@ import {useDispatch, useSelector} from 'react-redux'
 import { RootState } from '../../../../../setup'
 import { tableActions, userActions } from '../../../../redux/actions/actions'
 import { tableTypes, usersTypes } from '../../../../redux/types/types'
+import { ModalForm } from '../ModalForm'
 import { TableComponent } from './components/TableComponent'
 
-export const AccountsTable = () => {
+export const FamiliesTable = () => {
   const dispatch = useDispatch()
 
   const users: any = useSelector<RootState>(({users}) => users.users)
@@ -28,10 +29,10 @@ export const AccountsTable = () => {
       type: tableTypes.Load,
       payload: {
         tableHeader: {
-          title: 'Cuentas',
+          title: 'Familias',
           count: 234,
-          btnLink: 'create',
-          btnModal: '',
+          btnLink: '',
+          btnModal: '#kt_modal',
           tableHeads: tableHeads,
         },
         tableBody: {
@@ -48,7 +49,8 @@ export const AccountsTable = () => {
 
   return (
     <>
-      <TableComponent title='Cuentas' />
+      <TableComponent title='Familias'/>
+      <ModalForm />
     </>
   )
 }
