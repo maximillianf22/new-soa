@@ -1,6 +1,9 @@
-import { Field, Form, Formik, FormikProps } from 'formik'
-import React from 'react'
-import { InputCustom, InputSelect } from '../../global/components/inputs'
+import { Form, Formik, FormikProps } from 'formik'
+import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router'
+import { RootState } from '../../../../setup'
+import { accountTypes } from '../../../redux/types/accountTypes'
+import { InputCustom } from '../../global/components/inputs'
 import { initialValues } from './Helpers'
 
 const optionsClients = [
@@ -19,13 +22,21 @@ const optionsClients = [
   ]
 
 export const AccountsForm = () => {
+  const history = useHistory()
+
+  const loading: any = useSelector<RootState>(({ui}) => ui.loading)
+
+  const dispatch = useDispatch()
   return (
     <>
       <Formik
         initialValues={initialValues}
         enableReinitialize={true}
         onSubmit={(values) => {
-          console.log('en submit', values)
+          dispatch({
+            type: accountTypes.accountCreate,
+            payload: values
+          })
         }}
       >
         {(props: FormikProps<any>) => (
@@ -33,25 +44,15 @@ export const AccountsForm = () => {
             <div className='card'>
               <div className='card-body'>
                 <div className='row'>
-                  <div className='col-md-6 px-5 fv-row my-3'>
-                    <InputCustom type='text' name='description' label='Descripcion' required />
+                  <div className='col-md-4 px-5 fv-row my-3'>
+                    <InputCustom type='text' name='acName' label='Nombre' required />
                   </div>
-                  <div className='col-md-6 px-5 fv-row my-3'>
-                    <InputCustom type='text' name='code' label='Codigo' required />
+                  <div className='col-md-4 px-5 fv-row my-3'>
+                    <InputCustom type='text' name='acPilotNumber' label='Número de piloto' required/>
                   </div>
-                  {/* <div className='col-md-6 px-5 fv-row my-3'>
-                    <InputCustom type='text' name='url' label='Url Externa' />
-                  </div> */}
-                  <div className='col-md-6 px-5 fv-row my-3'>
-                    <InputCustom type='number' name='url' label='Numero de piloto' />
+                  <div className='col-md-4 px-5 fv-row my-3'>
+                    <InputCustom type='text' name='acPilotProviderNumber' label='Número de piloto proveedor' />
                   </div>
-                  <div className='col-md-6 px-5 fv-row my-3'>
-                    <InputCustom type='number' name='url' label='Numero de piloto proveedor' />
-                  </div>
-                  {/* <div className='col-md-6 px-5 fv-row my-3'>
-                    <label className='col-form-label required fw-bold fs-6'>Clientes</label>
-                    <Field name='clients' component={InputSelect} options={optionsClients} />
-                  </div> */}
                   <div className='col-md-4 px-5 fv-row my-3 text-center'>
                     <div className='my-auto h-100 text-center mt-4'>
                       <label></label>
@@ -59,7 +60,7 @@ export const AccountsForm = () => {
                         <InputCustom
                           className='form-check-input h-30px w-50px'
                           type='checkbox'
-                          name='is_active'
+                          name='acStatus'
                           checked
                           id='flexSwitchChecked'
                         />
@@ -73,10 +74,10 @@ export const AccountsForm = () => {
                       <InputCustom
                         className='form-check-input h-30px w-30px'
                         type='checkbox'
-                        name='password_change'
+                        name='acHasBeneficiaries'
                         id='flexCheckChecked'
                       />
-                      <label className='form-check-label ms-5'>Beneficiacios</label>
+                      <label className='form-check-label ms-5'>Beneficiarios</label>
                     </div>
                   </div>
                   <div className='col-md-4 px-5 fv-row text-end'>
@@ -85,16 +86,25 @@ export const AccountsForm = () => {
                       <InputCustom
                         className='form-check-input h-30px w-30px'
                         type='checkbox'
-                        name='password_change'
+                        name='acIsVip'
                         id='flexCheckChecked'
                       />
-                      <label className='form-check-label ms-5'>VIP</label>
+                      <label className='form-check-label ms-5'>Vip</label>
                     </div>
                   </div>
                 </div>
                 <div className='px-5 pt-5 fv-row text-end'>
-                  <button type='submit' className='btn btn-primary' data-bs-dismiss='modal'>
-                    Guardar
+                  <button className='btn btn-primary mx-10' onClick={ () => history.push('/accounts')}>
+                      Regresar
+                  </button>
+                  <button  type='submit' className='btn btn-primary' data-bs-dismiss='modal'>
+                    {!loading && <span className='indicator-label'>Guardar</span>}
+                      {loading && (
+                        <span className='indicator-progress' style={{display: 'block'}}>
+                          Guardar
+                          <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
+                        </span>
+                      )}
                   </button>
                 </div>
               </div>

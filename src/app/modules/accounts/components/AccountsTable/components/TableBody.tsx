@@ -1,7 +1,7 @@
 import React from 'react'
 import {shallowEqual, useSelector} from 'react-redux'
 import {RootState} from '../../../../../../setup'
-import {UserModel} from '../../../../global/models/UserModel'
+import { IAccountInfo } from '../../../Interfaces/models'
 import { TableBodyItem } from './TableBodyItem'
 
 export const TableBody: React.FC = () => {
@@ -29,7 +29,7 @@ export const TableBody: React.FC = () => {
             <tbody>
               {tableContent &&
                 tableContent.map(
-                  ( item: UserModel, i: number) => (
+                  ( item: IAccountInfo, i: number) => (
                       <TableBodyItem item={item} key={i} />
                   )
                 )}

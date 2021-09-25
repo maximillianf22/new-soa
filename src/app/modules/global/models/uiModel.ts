@@ -1,3 +1,4 @@
+import {Action} from '@reduxjs/toolkit'
 import { ResponseGenerator } from "../../auth";
 
 export interface IUiReduxType {
@@ -12,4 +13,8 @@ export interface IUiInitialValues {
 
 export interface response {
     data?: ResponseGenerator | undefined
+}
+
+export interface ActionWithPayload<T> extends Action {
+    payload?: T
 }

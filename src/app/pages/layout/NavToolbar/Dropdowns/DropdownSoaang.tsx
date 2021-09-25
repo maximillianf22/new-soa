@@ -1,4 +1,3 @@
-import React from 'react'
 import { ItemDropdown } from './ItemDropdown'
 
 export const DropdownSoaang = () => {
@@ -14,7 +13,7 @@ export const DropdownSoaang = () => {
           data-kt-menu-placement='right-start'
         >
           <ItemDropdown title='Catalogos' link='/catalogs/home'/>
-          <ItemDropdown title='Cuentas' link='/accounts/home'/>
+          <ItemDropdown title='Cuentas' link='/soa/accounts/home'/>
           <ItemDropdown title='Planes' link='/plans/home'/>
           <ItemDropdown title='Servicios' link='/services/home'/>
           <ItemDropdown title='Familias' link='/families/home'/>

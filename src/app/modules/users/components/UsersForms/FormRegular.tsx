@@ -1,11 +1,10 @@
-import {useField, Formik, Form, FormikProps, Field} from 'formik'
+import {Formik, Form, FormikProps, Field} from 'formik'
 import {useDispatch, useSelector} from 'react-redux'
 import {RootState} from '../../../../../setup'
 import {InputCustom} from '../../../global/components/inputs'
 import {InputSelect} from '../../../global/components/inputs/InputSelect'
 import {InputDueDate} from '../../../global/components/inputs/InputDueDate'
 import {InputProfile} from '../UserPermits/InputProfile'
-import { userActions } from '../../../../redux/actions/actions';
 
 const optionsPlatforms = [
   {value: 'addiuva', label: 'Addiuva'},

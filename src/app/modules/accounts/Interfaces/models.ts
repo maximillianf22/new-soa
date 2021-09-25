@@ -1,10 +1,10 @@
 export interface ICreateAccounts {
-    description: string
-    code: string
-    url: string
-    initialDate: Date
-    finalDate: Date
-    dueDate: string
+    acName:                  string;
+    acPilotNumber:           string;
+    acStatus:                boolean;
+    acIsVip:                 boolean;
+    acHasBeneficiaries:      boolean;
+    acPilotProviderNumber?:  string;
   }
   
 export interface IStatsItem {
@@ -22,13 +22,13 @@ export interface ITableComponent {
 }
 
 export interface IAccountsReduxType {
-    type: String;
-    payload: IAccountInfo[];
+    type:    String;
+    payload: IAccountInfo | IAccountInfo[];
 }
 
-export interface IInitialValues {
-    accounts: IAccountInfo[];
-    active: IAccountInfo | null;
+export interface IAccountInitialValues {
+    accounts?: IAccountInfo[];
+    active?:   IAccountInfo;
 }
 
 export interface IAccountResponse {
@@ -42,7 +42,7 @@ export interface IAccountInfo {
     acId?:                   number;
     plans?:                  IPlanResponse[];
     acName?:                 string;
-    acCreationDateUtc?:     string;
+    acCreationDateUtc?:      string;
     acPilotNumber?:          string;
     acStatus?:               boolean;
     acIsVip?:                boolean;

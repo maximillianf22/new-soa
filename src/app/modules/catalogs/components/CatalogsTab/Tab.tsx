@@ -1,4 +1,3 @@
-import React from 'react'
 import {PlansTabContent} from '../../../plans/PlansTabContent'
 import {ServicesTabContent} from '../../../services/ServicesTabContent'
 import { Content } from './components/Content'
