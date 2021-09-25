@@ -22,8 +22,10 @@ export function* sagaAccounts() {
   
     function* sagaDeleteAccount({payload}: IAccountsReduxType) {
       try {
+        const id = toast.loading("Eliminando...")
         yield call(deleteAccount, payload)
         yield put(accountsActions.accountDeleteRedux(payload))
+        toast.update(id, successToastOptions);
       } catch (error) {
         console.log(error)
       }
@@ -31,8 +33,10 @@ export function* sagaAccounts() {
   
     function* sagaUpdateAccount({payload}:IAccountsReduxType) {
       try {
+        const id = toast.loading("Actualizando...")
         const {data}: response = yield call(updateAccount, payload)
-        console.log(data)
+        yield put(accountsActions.accountUpdateRedux(data))
+        toast.update(id, successToastOptions);
       } catch (error) {
         console.log(error)
       }
@@ -41,7 +45,7 @@ export function* sagaAccounts() {
     function* sagaCreateAccount({payload}:IAccountsReduxType) {
       try {
         yield put(uiActions.uiStartLoading())
-        const id = toast.loading("Cargando...")
+        const id = toast.loading("Creando...")
         const resp: response = yield call(createAccount, payload)
         yield put(accountsActions.accountAddRedux(resp.data))
         toast.update(id, successToastOptions);

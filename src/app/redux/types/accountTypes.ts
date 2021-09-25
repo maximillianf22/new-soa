@@ -6,6 +6,7 @@ export const accountTypes = {
   
   accountAddRedux: '[Accounts] Load new account to redux',
   accountDeleteRedux: '[Accounts] Delete account from redux',
+  accountUpdateRedux: '[Accounts] Update account in redux',
 
   accountsLoad: '[Accounts] Load accounts',
   accountUpdate: '[Accounts] Update account',

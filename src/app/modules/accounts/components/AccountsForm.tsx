@@ -20,27 +20,23 @@ import { createAccountsSchemas, initialValues } from './Helpers'
 //     },
 //   ]
 
-export const AccountsForm = (props: any) => {
+export const AccountsForm = () => {
 
-  console.log('props', props);
-
-  const {loading, editing}: any = useSelector<RootState>(({ui}) => ui)
+  const {loading, editing: isEditing}: any = useSelector<RootState>(({ui}) => ui)
   const {active}: any = useSelector<RootState>(({accounts}) => accounts.active)
-
-  console.log('editing', editing);
 
   const dispatch = useDispatch()
 
   return (
     <>
       <Formik
-        initialValues={ (active === {} || active === undefined) ? initialValues : active}
+        initialValues={ (active === {} || active === undefined || !isEditing) ? initialValues : active}
         enableReinitialize={true}
         validationSchema={createAccountsSchemas}
         
         onSubmit={(values) => {
           dispatch({
-            type: accountTypes.accountCreate,
+            type: isEditing ? accountTypes.accountUpdate : accountTypes.accountCreate,
             payload: values
           })
         }}
@@ -67,8 +63,7 @@ export const AccountsForm = (props: any) => {
                           className='form-check-input h-30px w-50px'
                           type='checkbox'
                           name='acStatus'
-                          checked
-                          id='flexSwitchChecked'
+                          id='flexCheckChecked'
                         />
                         <label className='form-check-label ms-5'>¿Activo?</label>
                       </div>
@@ -106,10 +101,10 @@ export const AccountsForm = (props: any) => {
                     data-bs-dismiss='modal'
                     disabled={!props.dirty || !props.isValid}
                   >
-                    {!loading && <span className='indicator-label'>Guardar</span>}
+                    {!loading && <span className='indicator-label'>{isEditing? 'Actualizar': 'Guardar'}</span>}
                       {loading && (
                         <span className='indicator-progress' style={{display: 'block'}}>
-                          Guardar
+                          {isEditing? 'Actualizar': 'Guardar'}
                           <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
                         </span>
                       )}
