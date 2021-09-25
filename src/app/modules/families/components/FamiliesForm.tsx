@@ -30,7 +30,7 @@ export const FamiliesForm = () => {
                     <InputCustom type='text' name='code' label='Codigo' required />
                   </div>
                   <div className='col-md-12 px-5 fv-row my-3'>
-                    <label className='col-form-label required fw-bold fs-6'>Grupo</label>
+                    <label className='col-form-label required fw-bold fs-6 py-2'>Grupo</label>
                     <Field name='clients' component={InputSelect} options={optionsGroups} />
                   </div>
                   <div className='col-md-3 px-5 fv-row my-3'>

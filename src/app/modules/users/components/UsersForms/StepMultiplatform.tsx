@@ -28,7 +28,7 @@ export function StepMultiplatform() {
                 </span>
               </h3>
               <div className='col-md-5 px-5 fv-row my-3'>
-                  <label className='col-form-label required fw-bold fs-6'>Platforma</label>
+                  <label className='col-form-label required fw-bold fs-6 py-2'>Platforma</label>
                   <Field name={'platform'} component={InputSelect} options={optionsPlatforms} />
                 </div>
                 <div className='col-md-5 px-5 fv-row my-3'>
