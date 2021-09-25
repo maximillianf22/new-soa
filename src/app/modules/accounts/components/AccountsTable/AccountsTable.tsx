@@ -23,7 +23,7 @@ export const AccountsTable = () => {
 
 useEffect(() => {
   dispatch({type: accountTypes.accountsGet})
-}, [])
+}, [dispatch])
 
 useEffect(() => {
   dispatch({
@@ -54,7 +54,7 @@ useEffect(() => {
     dispatch(tableActions.clear())
     // dispatch(accountsActions.clear())
   }
-}, [accounts])
+}, [dispatch, accounts])
 
   return (
     <>

@@ -4,8 +4,6 @@ import { httpClient } from '../../setup/axios/setUpAxios';
 
 // import axios from 'axios';
 
-const API_URL = process.env.REACT_APP_API_URL 
-
 export interface Data {
   username: string,
   password: string

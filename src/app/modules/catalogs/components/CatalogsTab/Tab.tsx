@@ -1,7 +1,4 @@
-import {PlansTabContent} from '../../../plans/PlansTabContent'
-import {ServicesTabContent} from '../../../services/ServicesTabContent'
-import React from 'react'
-import { Content } from './components/Content'
+
 import { TabItem } from './components/TabItem'
 
 export const Tab = () => {

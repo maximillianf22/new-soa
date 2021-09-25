@@ -6,20 +6,20 @@ import { accountTypes } from '../../../redux/types/accountTypes'
 import { InputCustom } from '../../global/components/inputs'
 import { initialValues } from './Helpers'
 
-const optionsClients = [
-    {
-      cltId: 1,
-      cltName: 'addiuva',
-    },
-    {
-      cltId: 2,
-      cltName: 'ikatech',
-    },
-    {
-      cltId: 3,
-      cltName: 'El Roble',
-    },
-  ]
+// const optionsClients = [
+//     {
+//       cltId: 1,
+//       cltName: 'addiuva',
+//     },
+//     {
+//       cltId: 2,
+//       cltName: 'ikatech',
+//     },
+//     {
+//       cltId: 3,
+//       cltName: 'El Roble',
+//     },
+//   ]
 
 export const AccountsForm = () => {
   const history = useHistory()

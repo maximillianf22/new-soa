@@ -24,12 +24,10 @@ export const TableHeader = () => {
 
   const {tableHeader, tableBody} = table
 
-  const [loading, setLoading] = useState(false)
   const formik = useFormik({
     initialValues,
     validationSchema: searchSchema,
     onSubmit: (values) => {
-      setLoading(true)
       console.log('Haciendo submit', values)
     },
   })

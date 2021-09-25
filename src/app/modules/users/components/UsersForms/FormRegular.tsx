@@ -5,13 +5,12 @@ import {InputCustom} from '../../../global/components/inputs'
 import {InputSelect} from '../../../global/components/inputs/InputSelect'
 import {InputDueDate} from '../../../global/components/inputs/InputDueDate'
 import {InputProfile} from '../UserPermits/InputProfile'
-import {userActions} from '../../../../redux/actions/actions'
 
-const optionsPlatforms = [
-  {value: 'addiuva', label: 'Addiuva'},
-  {value: 'ikatech', label: 'Ikatech'},
-  {value: 'elRoble', label: 'El Roble'},
-]
+// const optionsPlatforms = [
+//   {value: 'addiuva', label: 'Addiuva'},
+//   {value: 'ikatech', label: 'Ikatech'},
+//   {value: 'elRoble', label: 'El Roble'},
+// ]
 
 const optionsClients = [
   {
