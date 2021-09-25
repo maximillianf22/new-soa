@@ -5,15 +5,20 @@ import * as auth from '../../app/modules/auth'
 import { tableReducer } from '../../app/redux/reducers/TableRedux';
 import { usersReducer } from '../../app/redux/reducers/UsersRedux';
 import { sagaUsers, authSaga, tableSaga } from '../../app/redux/sagas/sagas';
+import { uiReducer } from '../../app/redux/reducers/uiReducer';
+import { accountsReducer } from '../../app/redux/reducers/AccountsReducer';
+import { sagaAccounts } from '../../app/redux/sagas/accountsSagas';
 
 export const rootReducer = combineReducers({
   auth: auth.reducer,
   table: tableReducer,
   users: usersReducer,
+  ui: uiReducer,
+  accounts: accountsReducer,
 })
 
 export type RootState = ReturnType<typeof rootReducer>
 
 export function* rootSaga() {
-  yield all([authSaga(), tableSaga(), sagaUsers()])
+  yield all([authSaga(), tableSaga(), sagaUsers(), sagaAccounts()])
 }

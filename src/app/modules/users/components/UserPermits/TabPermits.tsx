@@ -1,5 +1,3 @@
-import React from 'react'
-import {TabPermitsItemAcordion} from './TabPermitsItemAcordion'
 
 export const TabPermits = () => {
   return (

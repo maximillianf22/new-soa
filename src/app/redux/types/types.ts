@@ -27,3 +27,10 @@ export const authTypes = {
   UserLoaded: '[Load User] Auth API',
   SetUser: '[Set User] Action',
 }
+
+export const uiTypes = {
+  uiSetError: '[UI] Set Error',
+  uiRemoveError: '[UI] Remove Error',
+  uiStartLoading: '[UI] Start loading',
+  uiFinishLoading: '[UI] Finish loading',
+}

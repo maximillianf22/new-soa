@@ -1,5 +1,4 @@
-import React from 'react'
-import { Content } from './components/Content'
+
 import { TabItem } from './components/TabItem'
 
 export const Tab = () => {

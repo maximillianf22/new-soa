@@ -12,12 +12,12 @@ const createAccountsSchemas = Yup.object().shape({
 })
 
 const initialValues: ICreateAccounts = {
-  description: '',
-  code: '',
-  url: '',
-  initialDate: new Date(),
-  finalDate: new Date(),
-  dueDate: '',
+  acName: '',
+  acPilotNumber: '',
+  acStatus: true,
+  acIsVip: false,
+  acHasBeneficiaries: false,
+  acPilotProviderNumber: '',
 }
 
 export {createAccountsSchemas, initialValues}
