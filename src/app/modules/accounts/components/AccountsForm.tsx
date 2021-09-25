@@ -1,10 +1,9 @@
 import { Form, Formik, FormikProps } from 'formik'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router'
 import { RootState } from '../../../../setup'
 import { accountTypes } from '../../../redux/types/accountTypes'
 import { InputCustom } from '../../global/components/inputs'
-import { initialValues } from './Helpers'
+import { createAccountsSchemas, initialValues } from './Helpers'
 
 // const optionsClients = [
 //     {
@@ -21,17 +20,24 @@ import { initialValues } from './Helpers'
 //     },
 //   ]
 
-export const AccountsForm = () => {
-  const history = useHistory()
+export const AccountsForm = (props: any) => {
 
-  const loading: any = useSelector<RootState>(({ui}) => ui.loading)
+  console.log('props', props);
+
+  const {loading, editing}: any = useSelector<RootState>(({ui}) => ui)
+  const {active}: any = useSelector<RootState>(({accounts}) => accounts.active)
+
+  console.log('editing', editing);
 
   const dispatch = useDispatch()
+
   return (
     <>
       <Formik
-        initialValues={initialValues}
+        initialValues={ (active === {} || active === undefined) ? initialValues : active}
         enableReinitialize={true}
+        validationSchema={createAccountsSchemas}
+        
         onSubmit={(values) => {
           dispatch({
             type: accountTypes.accountCreate,
@@ -94,10 +100,12 @@ export const AccountsForm = () => {
                   </div>
                 </div>
                 <div className='px-5 pt-5 fv-row text-end'>
-                  <button className='btn btn-primary mx-10' onClick={ () => history.push('/accounts')}>
-                      Regresar
-                  </button>
-                  <button  type='submit' className='btn btn-primary' data-bs-dismiss='modal'>
+                  <button 
+                    type='submit'
+                    className='btn btn-primary'
+                    data-bs-dismiss='modal'
+                    disabled={!props.dirty || !props.isValid}
+                  >
                     {!loading && <span className='indicator-label'>Guardar</span>}
                       {loading && (
                         <span className='indicator-progress' style={{display: 'block'}}>

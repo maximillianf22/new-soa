@@ -8,7 +8,8 @@ export interface IUiReduxType {
 
 export interface IUiInitialValues {
     loading: boolean,
-    msgError: string | null
+    msgError: string | null,
+    editing: boolean
 }
 
 export interface response {

@@ -31,8 +31,8 @@ export const accountsReducer = persistReducer(
 
             case accountTypes.accountsLoad:
                 return {
-                    ...state,
-                    accounts: action.payload?.accounts
+                    accounts: action.payload?.accounts,
+                    active: {}
                 }
         
             // case accountTypes.accountUpdate:

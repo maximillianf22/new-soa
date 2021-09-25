@@ -30,7 +30,7 @@ const AccountsBreadCrumbs: Array<PageLink> = [
         </Route>
         <Route path='/accounts/create'>
           <PageTitle breadcrumbs={AccountsBreadCrumbs}>Registro de cuenta</PageTitle>
-          <AccountsForm />
+          <AccountsForm isEditing={true} />
         </Route>
 
         <Redirect from='/accounts' exact={true} to='/accounts/home' />

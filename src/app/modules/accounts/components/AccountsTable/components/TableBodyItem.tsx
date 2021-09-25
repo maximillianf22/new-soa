@@ -2,7 +2,9 @@ import {useDispatch, useSelector} from 'react-redux'
 import Swal from 'sweetalert2'
 import {RootState} from '../../../../../../setup'
 import { accountsActions } from '../../../../../redux/actions/accountsActions'
+import { uiActions } from '../../../../../redux/actions/uiActions'
 import { accountTypes } from '../../../../../redux/types/accountTypes'
+import { IAccountInfo } from '../../../Interfaces/models'
 
 export const TableBodyItem = ({item} : any) => {
   
@@ -28,9 +30,10 @@ export const TableBodyItem = ({item} : any) => {
     account.toEdit = false
     dispatch(accountsActions.active(account))
   }
-  const handleEdit = (account: any) => {
-    account.toEdit = true
-    dispatch(accountsActions.active(account))
+  const handleEdit = () => {
+    // account.toEdit = true
+    dispatch(uiActions.uiIsEditing(true))
+    dispatch(accountsActions.active(item))
   }
   const handleDelete = (id: any) => {
     Swal.fire({
@@ -129,18 +132,9 @@ export const TableBodyItem = ({item} : any) => {
               type='button'
               className='btn btn-icon btn-success btn-sm me-1'
               data-bs-toggle='modal'
-              data-bs-target='#exampleModal'
-              onClick={() =>
-                handleEdit({
-                  acId,
-                  acName,
-                  acCreationDateUtc,
-                  acPilotNumber,
-                  acStatus,
-                  acIsVip,
-                  acHasBeneficiaries,
-                  acPilotProviderNumber
-                })
+              data-bs-target='#accountCreateUpdateModal'
+              onClick={ () =>
+                handleEdit()
               }
             >
               <i className='fa fa-edit'></i>

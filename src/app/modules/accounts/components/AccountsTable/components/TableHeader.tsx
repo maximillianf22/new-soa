@@ -1,13 +1,13 @@
 import {useFormik} from 'formik'
 import {useState} from 'react'
-import {useSelector} from 'react-redux'
+import { useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {RootState} from '../../../../../../setup'
 import {KTSVG} from '../../../../../../_metronic/helpers'
 import * as Yup from 'yup'
 import Dropdown from './Dropdown'
 import CollapseFilters from './CollapseFilters'
-
+import { uiActions } from "../../../../../redux/actions/uiActions";
 const searchSchema = Yup.object().shape({
   search: Yup.string()
     .min(3, 'Mínimo 3 carácteres')
@@ -21,8 +21,8 @@ const initialValues = {
 
 export const TableHeader = () => {
   const table: any = useSelector<RootState>(({table}) => table)
-
   const {tableHeader, tableBody} = table
+  const dispatch = useDispatch()
 
   const formik = useFormik({
     initialValues,
@@ -80,6 +80,7 @@ export const TableHeader = () => {
                 className='btn btn-sm btn-primary ms-2'
                 data-bs-toggle='modal'
                 data-bs-target={tableHeader?.btnModal}
+                onClick={() => {dispatch(uiActions.uiIsEditing(false))}}
               >
                 <i className='fas fa-plus'></i>
                 Nuevo

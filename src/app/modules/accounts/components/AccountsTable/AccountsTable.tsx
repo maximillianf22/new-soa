@@ -5,6 +5,7 @@ import { tableActions } from '../../../../redux/actions/actions'
 import { tableTypes } from '../../../../redux/types/types'
 import { accountTypes } from '../../../../redux/types/accountTypes'
 import { TableComponent } from './components/TableComponent'
+import { AccountCreateEdit } from './AccountCreateEdit'
 
 export const AccountsTable = () => {
   const dispatch = useDispatch()
@@ -32,8 +33,8 @@ useEffect(() => {
       tableHeader: {  
         title: 'Cuentas',
         count: 234,
-        btnLink: 'create',
-        btnModal: '',
+        btnLink: '',
+        btnModal: '#accountCreateUpdateModal',
         tableHeads: tableHeads,
       },
       tableBody: {
@@ -59,6 +60,7 @@ useEffect(() => {
   return (
     <>
       <TableComponent title='Cuentas' />
+      <AccountCreateEdit />
     </>
   )
 }
