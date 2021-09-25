@@ -7,7 +7,8 @@ import { ActionWithPayload } from '../../modules/global/models/uiModel';
 
 const initialState: IAccountInitialValues = {
     accounts: [],
-    active: {}
+    active: {},
+    acId: 0
 }
 
 export const accountsReducer = persistReducer(
@@ -31,21 +32,19 @@ export const accountsReducer = persistReducer(
 
             case accountTypes.accountsLoad:
                 return {
-                    ...state,
-                    accounts: action.payload?.accounts
+                    accounts: action.payload?.accounts,
+                    active: {}
                 }
         
-            // case accountTypes.accountUpdate:
-                // console.log('action', action);
-                // console.log('state', state);
-            //     return {
-            //         ...state,
-            //         accounts: state.accounts.map(
-            //             account => account.acId === action.payload[0].acId
-            //                 ? action.payload[0].acId
-            //                 : account
-            //         )
-            //     }
+            case accountTypes.accountUpdateRedux:
+                return {
+                    ...state,
+                    accounts: state.accounts.map(
+                        (account: IAccountInfo) => account.acId === action.payload?.acId        
+                            ? action.payload
+                            : account
+                    )
+                }
 
             case accountTypes.accountDeleteRedux:
                 return {
@@ -55,9 +54,7 @@ export const accountsReducer = persistReducer(
 
             case accountTypes.accountsClear:
                 return {
-                    ...state,
-                    active: null,
-                    accounts: []
+                    initialState
                 }
 
             default:

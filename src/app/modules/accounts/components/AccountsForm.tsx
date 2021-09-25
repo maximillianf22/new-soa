@@ -1,10 +1,9 @@
 import { Form, Formik, FormikProps } from 'formik'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router'
 import { RootState } from '../../../../setup'
 import { accountTypes } from '../../../redux/types/accountTypes'
 import { InputCustom } from '../../global/components/inputs'
-import { initialValues } from './Helpers'
+import { createAccountsSchemas, initialValues } from './Helpers'
 
 // const optionsClients = [
 //     {
@@ -22,19 +21,22 @@ import { initialValues } from './Helpers'
 //   ]
 
 export const AccountsForm = () => {
-  const history = useHistory()
 
-  const loading: any = useSelector<RootState>(({ui}) => ui.loading)
+  const {loading, editing: isEditing}: any = useSelector<RootState>(({ui}) => ui)
+  const {active}: any = useSelector<RootState>(({accounts}) => accounts.active)
 
   const dispatch = useDispatch()
+
   return (
     <>
       <Formik
-        initialValues={initialValues}
+        initialValues={ (active === {} || active === undefined || !isEditing) ? initialValues : active}
         enableReinitialize={true}
+        validationSchema={createAccountsSchemas}
+        
         onSubmit={(values) => {
           dispatch({
-            type: accountTypes.accountCreate,
+            type: isEditing ? accountTypes.accountUpdate : accountTypes.accountCreate,
             payload: values
           })
         }}
@@ -61,8 +63,7 @@ export const AccountsForm = () => {
                           className='form-check-input h-30px w-50px'
                           type='checkbox'
                           name='acStatus'
-                          checked
-                          id='flexSwitchChecked'
+                          id='flexCheckChecked'
                         />
                         <label className='form-check-label ms-5'>¿Activo?</label>
                       </div>
@@ -94,14 +95,16 @@ export const AccountsForm = () => {
                   </div>
                 </div>
                 <div className='px-5 pt-5 fv-row text-end'>
-                  <button className='btn btn-primary mx-10' onClick={ () => history.push('/accounts')}>
-                      Regresar
-                  </button>
-                  <button  type='submit' className='btn btn-primary' data-bs-dismiss='modal'>
-                    {!loading && <span className='indicator-label'>Guardar</span>}
+                  <button 
+                    type='submit'
+                    className='btn btn-primary'
+                    data-bs-dismiss='modal'
+                    disabled={!props.dirty || !props.isValid}
+                  >
+                    {!loading && <span className='indicator-label'>{isEditing? 'Actualizar': 'Guardar'}</span>}
                       {loading && (
                         <span className='indicator-progress' style={{display: 'block'}}>
-                          Guardar
+                          {isEditing? 'Actualizar': 'Guardar'}
                           <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
                         </span>
                       )}

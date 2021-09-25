@@ -1,17 +1,22 @@
 import { uiTypes } from "../types/types";
 
-export const uiSetError = ( err: any ) => ({
-    type: uiTypes.uiSetError,
-    payload: err
-});
 
-export const uiRemoveError = () => ({
-    type: uiTypes.uiRemoveError
-});
+export const uiActions = {
+    uiSetError: ( err: any ) => ({
+        type: uiTypes.uiSetError,
+        payload: err
+    }),
+    uiRemoveError: () => ({
+        type: uiTypes.uiRemoveError
+    }),
+    uiStartLoading: () => ({
+        type: uiTypes.uiStartLoading
+    }),
+    uiFinishLoading: () => ({
+        type: uiTypes.uiFinishLoading
+    }),
+    uiIsEditing: (payload: boolean) => ({
+        type: uiTypes.uiIsEditing, payload: payload
+    })
+}
 
-export const uiStartLoading = () => ({
-    type: uiTypes.uiStartLoading
-})
-export const uiFinishLoading = () => ({
-    type: uiTypes.uiFinishLoading
-})

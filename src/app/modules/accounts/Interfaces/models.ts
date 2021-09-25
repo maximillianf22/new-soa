@@ -27,8 +27,9 @@ export interface IAccountsReduxType {
 }
 
 export interface IAccountInitialValues {
-    accounts?: IAccountInfo[];
+    accounts?: IAccountInfo[] | IAccountInfo;
     active?:   IAccountInfo;
+    acId: number | null;
 }
 
 export interface IAccountResponse {

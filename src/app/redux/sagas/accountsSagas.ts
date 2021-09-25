@@ -5,7 +5,7 @@ import { IAccountsReduxType } from '../../modules/accounts/Interfaces/models';
 import { createAccount, deleteAccount, getAccounts, updateAccount } from '../../api/AccountsService';
 import { response } from '../../modules/global/models/uiModel';
 import { accountsActions } from '../actions/accountsActions';
-import { uiStartLoading, uiFinishLoading } from '../actions/uiActions';
+import { uiActions } from '../actions/uiActions';
 import { toast } from 'react-toastify';
 import { successToastOptions } from '../../modules/global/models/toastOptions';
 
@@ -14,7 +14,6 @@ export function* sagaAccounts() {
     function* sagaLoadAccounts() {
       try {
         const {data}: response = yield call(getAccounts)
-        console.log(data);
         yield put(accountsActions.load(data))
       } catch (error) {
         console.log(error)
@@ -23,8 +22,10 @@ export function* sagaAccounts() {
   
     function* sagaDeleteAccount({payload}: IAccountsReduxType) {
       try {
+        const id = toast.loading("Eliminando...")
         yield call(deleteAccount, payload)
         yield put(accountsActions.accountDeleteRedux(payload))
+        toast.update(id, successToastOptions);
       } catch (error) {
         console.log(error)
       }
@@ -32,8 +33,10 @@ export function* sagaAccounts() {
   
     function* sagaUpdateAccount({payload}:IAccountsReduxType) {
       try {
+        const id = toast.loading("Actualizando...")
         const {data}: response = yield call(updateAccount, payload)
-        console.log(data)
+        yield put(accountsActions.accountUpdateRedux(data))
+        toast.update(id, successToastOptions);
       } catch (error) {
         console.log(error)
       }
@@ -41,12 +44,12 @@ export function* sagaAccounts() {
   
     function* sagaCreateAccount({payload}:IAccountsReduxType) {
       try {
-        yield put(uiStartLoading())
-        const id = toast.loading("Cargando...")
+        yield put(uiActions.uiStartLoading())
+        const id = toast.loading("Creando...")
         const resp: response = yield call(createAccount, payload)
         yield put(accountsActions.accountAddRedux(resp.data))
         toast.update(id, successToastOptions);
-        yield put(uiFinishLoading())
+        yield put(uiActions.uiFinishLoading())
       } catch (error) {
         console.log(error)
       }

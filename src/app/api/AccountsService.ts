@@ -16,9 +16,9 @@ export function getAccount({acId}: IAccountInfo): Promise<IAccountInfo[]> {
   return httpClient.get(`${ACCOUNTS_URL}${acId}/`)
 };
 
-export function updateAccount({account}:any): Promise<IAccountInfo[]> {
-  const {id} = account;
-  return httpClient.patch(`${ACCOUNTS_URL}${id}/`, account)
+export function updateAccount(account:any): Promise<IAccountInfo[]> {
+  const {acId} = account;
+  return httpClient.patch(`${ACCOUNTS_URL}${acId}/`, account)
 };
 
 export function deleteAccount(id: any): Promise<IAccountInfo> {
