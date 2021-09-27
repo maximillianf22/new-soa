@@ -10,15 +10,9 @@ export const TableBody: React.FC = () => {
     tableBody: {tableHeads, tableContent},
   } = table
 
-  const sortByVip = (array: IAccountInfo[]) => {  
-    return array.sort(function(x, y) {
-      // false values first
-      return (x.acIsVip !== y.acIsVip)? 0 : x? -1 : 1;
-      // true values first
-      // return (x.acIsVip === y.acIsVip)? 0 : x? 1 : -1;
-    });
-  }
-  sortByVip(tableContent)
+  console.log('tableContent', tableContent);
+  tableContent.sort(function(a: any, b: any){return a.acIsVip - b.acIsVip})
+  tableContent.reverse()
 
   return (
     <>
