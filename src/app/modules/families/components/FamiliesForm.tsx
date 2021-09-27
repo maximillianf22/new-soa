@@ -1,6 +1,8 @@
 import {Formik, Form, FormikProps, Field} from 'formik'
+import { useDispatch, useSelector } from 'react-redux'
 import {InputCustom, InputSelect} from '../../global/components/inputs'
-import {initialValues} from './Helpers'
+import { RootState } from '../../../../setup/redux/RootReducer';
+import { familiesActions } from '../../../redux/actions/actions';
 
 const optionsGroups = [
   {value: 'vehicular', label: 'Vehicular'},
@@ -9,13 +11,21 @@ const optionsGroups = [
 ]
 
 export const FamiliesForm = () => {
+  const SelectedFamily: any = useSelector<RootState>(({families}) => families.SelectedFamily)
+  const dispatch = useDispatch()
+
   return (
     <>
       <Formik
-        initialValues={initialValues}
+        initialValues={{...SelectedFamily}}
         enableReinitialize={true}
         onSubmit={(values) => {
           console.log('en submit', values)
+          if (values.fmId > 0) {
+            dispatch(familiesActions.updateFamily(values))
+          } else {
+           dispatch(familiesActions.createFamily(values))
+          }
         }}
       >
         {(props: FormikProps<any>) => (
@@ -24,14 +34,11 @@ export const FamiliesForm = () => {
               <div className='card-body'>
                 <div className='row'>
                   <div className='col-md-12 px-5 fv-row my-3'>
-                    <InputCustom type='text' name='description' label='Descripcion' required />
-                  </div>
-                  <div className='col-md-12 px-5 fv-row my-3'>
-                    <InputCustom type='text' name='code' label='Codigo' required />
+                    <InputCustom type='text' name='fmDescription' label='Descripcion' required />
                   </div>
                   <div className='col-md-12 px-5 fv-row my-3'>
                     <label className='col-form-label required fw-bold fs-6 py-2'>Grupo</label>
-                    <Field name='clients' component={InputSelect} options={optionsGroups} />
+                    <Field name='fmGrouped' component={InputSelect} options={optionsGroups} />
                   </div>
                   <div className='col-md-3 px-5 fv-row my-3'>
                     <div className='my-auto h-100 text-center mt-4'>
@@ -40,11 +47,10 @@ export const FamiliesForm = () => {
                         <InputCustom
                           className='form-check-input h-30px w-50px'
                           type='checkbox'
-                          name='is_active'
-                          checked
+                          name='fmStatus'
                           id='flexSwitchChecked'
                         />
-                        <label className='form-check-label'>¿Activo?</label>
+                        <label className='form-check-label'>¿Habilitado?</label>
                       </div>
                     </div>
                   </div>

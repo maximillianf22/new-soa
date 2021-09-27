@@ -2,29 +2,30 @@ import {useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { RootState } from '../../../../../setup'
 import { tableActions, userActions } from '../../../../redux/actions/actions'
-import { tableTypes, usersTypes } from '../../../../redux/types/types'
+import { tableTypes, familiesTypes } from '../../../../redux/types/types'
 import { ModalForm } from '../ModalForm'
 import { TableComponent } from './components/TableComponent'
 
 export const FamiliesTable = () => {
   const dispatch = useDispatch()
 
-  const users: any = useSelector<RootState>(({users}) => users.users)
+  const families: any = useSelector<RootState>(({families}) => families.families)
 
   const tableHeads = [
     'id',
-    'usuario',
-    'nombre',
-    'apellido',
-    'correo',
+    'descripción',
+    'estado',
+    'fecha de creación',
+    'fecha actualizado',
+    'modificado por',
     'activo',
-    'fecha creación',
-    'rol',
   ]
+
+  useEffect(() => {
+    dispatch({type: familiesTypes.AsyncLoad})
+  }, [dispatch])
   
   useEffect(() => {
-  dispatch({type: usersTypes.AsyncLoad})
-
     dispatch({
       type: tableTypes.Load,
       payload: {
@@ -36,8 +37,8 @@ export const FamiliesTable = () => {
           tableHeads: tableHeads,
         },
         tableBody: {
-          tableHeads: ['usuario', 'nombre', 'correo', 'rol'],
-          tableContent: users,
+          tableHeads: ['id', 'estado', 'modificado por',],
+          tableContent: families,
         },
       },
     })
@@ -45,7 +46,7 @@ export const FamiliesTable = () => {
       dispatch(userActions.clear())
       dispatch(tableActions.clear())
     }
-  }, [dispatch]) // eslint-disable-line
+  }, [dispatch, families]) // eslint-disable-line
 
   return (
     <>

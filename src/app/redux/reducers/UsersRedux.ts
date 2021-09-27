@@ -1,13 +1,8 @@
-import { call, put } from '@redux-saga/core/effects';
 import {Action} from '@reduxjs/toolkit'
 import {persistReducer} from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-import { createUser, deleteUser, getUsers, updateUser } from '../../api/UsersCRUD';
-import { takeLatest } from 'redux-saga/effects';
-import { response } from './AuthRedux';
 import { UserModel } from '../../modules/global/models/UserModel';
 import { usersTypes } from '../types/types';
-import { userActions } from '../actions/actions';
 
 export interface ActionWithPayload<T> extends Action {
   payload?: T

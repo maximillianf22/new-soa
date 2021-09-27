@@ -1,12 +1,10 @@
 import {Action} from '@reduxjs/toolkit'
 import {persistReducer} from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-import {put, takeLatest, call} from 'redux-saga/effects'
 import { UserModel } from '../../modules/global/models/UserModel';
-import { login, Data } from '../../api/AuthCRUD';
+import { Data } from '../../api/AuthCRUD';
 import { toast } from "react-toastify";
 import { authTypes } from '../types/types';
-import { authActions } from '../actions/actions';
 
 export interface ActionWithPayload<T> extends Action {
   payload?: T

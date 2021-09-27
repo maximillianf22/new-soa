@@ -12,7 +12,7 @@ const Dropdown: React.FC = () => {
   const dispatch = useDispatch()
   const formik = useFormik({
     initialValues: {},
-    onSubmit: (values: any, {setStatus, setSubmitting}) => {
+    onSubmit: (values: any) => {
       const tableHeads = []
       for (var name in values) {
         var value = values[name]

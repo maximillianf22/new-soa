@@ -20,7 +20,6 @@ export function getUser(id: number): Promise<UserModel[]> {
 
 export function updateUser({user}:any): Promise<UserModel[]> {
   const {id} = user;
-  console.log(user)
   return httpClient.patch(`${GET_USERS_URL}${id}/`, user)
 };
 

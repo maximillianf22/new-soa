@@ -1,4 +1,4 @@
-import { usersTypes, tableTypes, authTypes } from '../types/types';
+import { usersTypes, tableTypes, authTypes, familiesTypes } from '../types/types';
 import { ResponseGenerator } from '../reducers/AuthRedux';
 import { UserModel } from '../../modules/global/models/UserModel';
 
@@ -30,3 +30,12 @@ export const authActions = {
     fulfillUser: (user: UserModel) => ({type: authTypes.UserLoaded, payload: {user}}),
     setUser: (user: UserModel) => ({type: authTypes.SetUser, payload: {user}}),
   }
+
+  export const familiesActions = {
+    load: (payload: any) => ({type: familiesTypes.Load, payload: {families:payload}}),
+    clear: () => ({type: familiesTypes.Clear,}),
+    SelectedFamily: (payload:any) => ({type: familiesTypes.SelectedFamily, payload: {SelectedFamily:payload}}),
+    ClearSelectedFamily: () => ({type: familiesTypes.ClearSelectedFamily}),
+    updateFamily: (payload:any) => ({type: familiesTypes.Update, payload: {family:payload}}),
+    createFamily: (payload:any) => ({type: familiesTypes.Create, payload: {family:payload}}),
+}

@@ -27,3 +27,16 @@ export const authTypes = {
   UserLoaded: '[Load User] Auth API',
   SetUser: '[Set User] Action',
 }
+
+export const familiesTypes = {
+  AsyncLoad: '[familyRedux] start loading data',
+  Load: '[familyRedux] load data do reducer',
+  Clear: '[familyRedux] clear reducer data',
+  Delete: '[familyRedux] delete family',
+  Update: '[familyRedux] update family',
+  Create: '[familyRedux] create family',
+  SelectedFamily: '[familyRedux] selected family',
+  ClearSelectedFamily: '[familyRedux] clear selected family',
+
+  DeleteFromReducer: '[familyRedux] delete family from reducer',
+}
