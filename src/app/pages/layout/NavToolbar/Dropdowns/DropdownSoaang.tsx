@@ -1,4 +1,3 @@
-import React from 'react'
 import { ItemDropdown } from './ItemDropdown'
 
 export const DropdownSoaang = () => {

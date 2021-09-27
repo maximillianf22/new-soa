@@ -1,31 +1,44 @@
-import { Field, Form, Formik, FormikProps } from 'formik'
-import React from 'react'
-import { InputCustom, InputSelect } from '../../global/components/inputs'
-import { initialValues } from './Helpers'
+import { Form, Formik, FormikProps } from 'formik'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../../../setup'
+import { accountTypes } from '../../../redux/types/accountTypes'
+import { InputCustom } from '../../global/components/inputs'
+import { createAccountsSchemas, initialValues } from './Helpers'
 
-const optionsClients = [
-    {
-      cltId: 1,
-      cltName: 'addiuva',
-    },
-    {
-      cltId: 2,
-      cltName: 'ikatech',
-    },
-    {
-      cltId: 3,
-      cltName: 'El Roble',
-    },
-  ]
+// const optionsClients = [
+//     {
+//       cltId: 1,
+//       cltName: 'addiuva',
+//     },
+//     {
+//       cltId: 2,
+//       cltName: 'ikatech',
+//     },
+//     {
+//       cltId: 3,
+//       cltName: 'El Roble',
+//     },
+//   ]
 
 export const AccountsForm = () => {
+
+  const {loading, editing: isEditing}: any = useSelector<RootState>(({ui}) => ui)
+  const {active}: any = useSelector<RootState>(({accounts}) => accounts.active)
+
+  const dispatch = useDispatch()
+
   return (
     <>
       <Formik
-        initialValues={initialValues}
+        initialValues={ (active === {} || active === undefined || !isEditing) ? initialValues : active}
         enableReinitialize={true}
+        validationSchema={createAccountsSchemas}
+        
         onSubmit={(values) => {
-          console.log('en submit', values)
+          dispatch({
+            type: isEditing ? accountTypes.accountUpdate : accountTypes.accountCreate,
+            payload: values
+          })
         }}
       >
         {(props: FormikProps<any>) => (
@@ -33,25 +46,15 @@ export const AccountsForm = () => {
             <div className='card'>
               <div className='card-body'>
                 <div className='row'>
-                  <div className='col-md-6 px-5 fv-row my-3'>
-                    <InputCustom type='text' name='description' label='Descripcion' required />
+                  <div className='col-md-4 px-5 fv-row my-3'>
+                    <InputCustom type='text' name='acName' label='Nombre' required />
                   </div>
-                  <div className='col-md-6 px-5 fv-row my-3'>
-                    <InputCustom type='text' name='code' label='Codigo' required />
+                  <div className='col-md-4 px-5 fv-row my-3'>
+                    <InputCustom type='text' name='acPilotNumber' label='Número de piloto' required/>
                   </div>
-                  {/* <div className='col-md-6 px-5 fv-row my-3'>
-                    <InputCustom type='text' name='url' label='Url Externa' />
-                  </div> */}
-                  <div className='col-md-6 px-5 fv-row my-3'>
-                    <InputCustom type='number' name='url' label='Numero de piloto' />
+                  <div className='col-md-4 px-5 fv-row my-3'>
+                    <InputCustom type='text' name='acPilotProviderNumber' label='Número de piloto proveedor' />
                   </div>
-                  <div className='col-md-6 px-5 fv-row my-3'>
-                    <InputCustom type='number' name='url' label='Numero de piloto proveedor' />
-                  </div>
-                  {/* <div className='col-md-6 px-5 fv-row my-3'>
-                    <label className='col-form-label required fw-bold fs-6 py-2'>Clientes</label>
-                    <Field name='clients' component={InputSelect} options={optionsClients} />
-                  </div> */}
                   <div className='col-md-4 px-5 fv-row my-3 text-center'>
                     <div className='my-auto h-100 text-center mt-4'>
                       <label></label>
@@ -59,9 +62,8 @@ export const AccountsForm = () => {
                         <InputCustom
                           className='form-check-input h-30px w-50px'
                           type='checkbox'
-                          name='is_active'
-                          checked
-                          id='flexSwitchChecked'
+                          name='acStatus'
+                          id='flexCheckChecked'
                         />
                         <label className='form-check-label ms-5'>¿Activo?</label>
                       </div>
@@ -73,10 +75,10 @@ export const AccountsForm = () => {
                       <InputCustom
                         className='form-check-input h-30px w-30px'
                         type='checkbox'
-                        name='password_change'
+                        name='acHasBeneficiaries'
                         id='flexCheckChecked'
                       />
-                      <label className='form-check-label ms-5'>Beneficiacios</label>
+                      <label className='form-check-label ms-5'>Beneficiarios</label>
                     </div>
                   </div>
                   <div className='col-md-4 px-5 fv-row text-end'>
@@ -85,16 +87,27 @@ export const AccountsForm = () => {
                       <InputCustom
                         className='form-check-input h-30px w-30px'
                         type='checkbox'
-                        name='password_change'
+                        name='acIsVip'
                         id='flexCheckChecked'
                       />
-                      <label className='form-check-label ms-5'>VIP</label>
+                      <label className='form-check-label ms-5'>Vip</label>
                     </div>
                   </div>
                 </div>
                 <div className='px-5 pt-5 fv-row text-end'>
-                  <button type='submit' className='btn btn-primary' data-bs-dismiss='modal'>
-                    Guardar
+                  <button 
+                    type='submit'
+                    className='btn btn-primary'
+                    data-bs-dismiss='modal'
+                    disabled={!props.dirty || !props.isValid}
+                  >
+                    {!loading && <span className='indicator-label'>{isEditing? 'Actualizar': 'Guardar'}</span>}
+                      {loading && (
+                        <span className='indicator-progress' style={{display: 'block'}}>
+                          {isEditing? 'Actualizar': 'Guardar'}
+                          <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
+                        </span>
+                      )}
                   </button>
                 </div>
               </div>

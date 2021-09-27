@@ -1,13 +1,13 @@
 import {useFormik} from 'formik'
 import {useState} from 'react'
-import {useSelector} from 'react-redux'
+import { useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {RootState} from '../../../../../../setup'
 import {KTSVG} from '../../../../../../_metronic/helpers'
 import * as Yup from 'yup'
 import Dropdown from './Dropdown'
 import CollapseFilters from './CollapseFilters'
-
+import { uiActions } from "../../../../../redux/actions/uiActions";
 const searchSchema = Yup.object().shape({
   search: Yup.string()
     .min(3, 'Mínimo 3 carácteres')
@@ -21,20 +21,18 @@ const initialValues = {
 
 export const TableHeader = () => {
   const table: any = useSelector<RootState>(({table}) => table)
-
   const {tableHeader, tableBody} = table
+  const dispatch = useDispatch()
 
-  const [loading, setLoading] = useState(false)
   const formik = useFormik({
     initialValues,
     validationSchema: searchSchema,
     onSubmit: (values) => {
-      setLoading(true)
       console.log('Haciendo submit', values)
     },
   })
 
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false)  
 
   return (
     <>
@@ -43,7 +41,7 @@ export const TableHeader = () => {
         <h3 className='card-title align-items-start flex-column'>
           <span className='card-label fw-bolder fs-3 mb-1'>Listado de {tableHeader?.title}</span>
           <span className='text-muted mt-1 fw-bold fs-7'>
-            {tableHeader?.count} {tableHeader?.title} registrados
+            {tableBody?.tableContent?.length} {tableHeader?.title} registradas
           </span>
         </h3>
         <div
@@ -82,6 +80,7 @@ export const TableHeader = () => {
                 className='btn btn-sm btn-primary ms-2'
                 data-bs-toggle='modal'
                 data-bs-target={tableHeader?.btnModal}
+                onClick={() => {dispatch(uiActions.uiIsEditing(false))}}
               >
                 <i className='fas fa-plus'></i>
                 Nuevo

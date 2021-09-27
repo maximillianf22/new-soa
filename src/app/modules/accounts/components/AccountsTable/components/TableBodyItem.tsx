@@ -1,24 +1,22 @@
-import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Swal from 'sweetalert2'
 import {RootState} from '../../../../../../setup'
-import {userActions} from '../../../../../redux/actions/actions'
-import {usersTypes} from '../../../../../redux/types/types'
+import { accountsActions } from '../../../../../redux/actions/accountsActions'
+import { uiActions } from '../../../../../redux/actions/uiActions'
+import { accountTypes } from '../../../../../redux/types/accountTypes'
+import { IAccountInfo } from '../../../Interfaces/models'
 
 export const TableBodyItem = ({item} : any) => {
   
   const {
-    id,
-    username,
-    first_name,
-    last_name,
-    email,
-    is_active,
-    date_joined,
-    init_date_validity,
-    end_date_validity,
-    rolId,
-    password_change,
+    acId,
+    acName,
+    acCreationDateUtc,
+    acPilotNumber,
+    acStatus,
+    acIsVip,
+    acHasBeneficiaries,
+    acPilotProviderNumber
   } = item
 
   const table: any = useSelector<RootState>(({table}) => table)
@@ -28,17 +26,18 @@ export const TableBodyItem = ({item} : any) => {
 
   const dispatch = useDispatch()
 
-  const handleView = (user: any) => {
-    user.toEdit = false
-    dispatch(userActions.SelectedUser(user))
+  const handleView = (account: any) => {
+    account.toEdit = false
+    dispatch(accountsActions.active(account))
   }
-  const handleEdit = (user: any) => {
-    user.toEdit = true
-    dispatch(userActions.SelectedUser(user))
+  const handleEdit = () => {
+    // account.toEdit = true
+    dispatch(uiActions.uiIsEditing(true))
+    dispatch(accountsActions.active(item))
   }
   const handleDelete = (id: any) => {
     Swal.fire({
-      title: '¿Está seguro que desea eliminar este usuario?',
+      title: '¿Está seguro que desea eliminar esta cuenta?',
       text: 'No es posible revertir esta acción',
       icon: 'warning',
       showCancelButton: true,
@@ -48,8 +47,7 @@ export const TableBodyItem = ({item} : any) => {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch({type: usersTypes.Delete, payload: id})
-        Swal.fire('¡Eliminado!', 'El usuario fue eliminado correctamente.', 'success')
+        dispatch({type: accountTypes.accountDelete, payload: id})
       }
     })
   }
@@ -57,50 +55,55 @@ export const TableBodyItem = ({item} : any) => {
   return (
     <>
       <tr>
-        {tableHeads.includes('id') && (
+        {tableHeads.includes('Id') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{id}</p>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{acId}</p>
           </td>
         )}
-        {tableHeads.includes('usuario') && (
-          <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{username}</p>
-          </td>
-        )}
-        {tableHeads.includes('nombre') && (
+        {tableHeads.includes('Nombre') && (
           <td>
             <div className='d-flex align-items-center'>
               <div className='d-flex justify-content-start flex-column'>
-                <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{first_name}</p>
-                <span className='text-muted fw-bold text-muted d-block fs-7'>CC: 1007345398</span>
+                <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{acName}</p>
               </div>
             </div>
           </td>
         )}
-        {tableHeads.includes('apellido') && (
+        {tableHeads.includes('Número de piloto') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{last_name}</p>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{acPilotNumber}</p>
           </td>
         )}
-        {tableHeads.includes('correo') && (
+        {tableHeads.includes('Número de proveedor piloto') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{email}</p>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{acPilotProviderNumber}</p>
           </td>
         )}
-
-        {tableHeads.includes('activo') && (
+        {tableHeads.includes('Vip') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{is_active}</p>
+            <input
+              className="form-check-input"
+              type="checkbox"
+              id="flexCheckChecked"
+              disabled
+              checked = {acIsVip}
+            />
           </td>
         )}
-        {tableHeads.includes('fecha creación') && (
+        {tableHeads.includes('Fecha de creación') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{date_joined}</p>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{acCreationDateUtc}</p>
           </td>
         )}
-        {tableHeads.includes('rol') && (
+        {tableHeads.includes('Beneficiarios') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{rolId}</p>
+            <input
+              className="form-check-input"
+              type="checkbox"
+              id="flexCheckChecked"
+              disabled
+              checked = {acHasBeneficiaries}
+            />
           </td>
         )}
         <td>
@@ -112,17 +115,14 @@ export const TableBodyItem = ({item} : any) => {
               data-bs-target='#exampleModal'
               onClick={() =>
                 handleView({
-                  id,
-                  username,
-                  first_name,
-                  last_name,
-                  email,
-                  is_active,
-                  date_joined,
-                  password_change,
-                  init_date_validity,
-                  end_date_validity,
-                  rolId,
+                  acId,
+                  acName,
+                  acCreationDateUtc,
+                  acPilotNumber,
+                  acStatus,
+                  acIsVip,
+                  acHasBeneficiaries,
+                  acPilotProviderNumber
                 })
               }
             >
@@ -132,26 +132,14 @@ export const TableBodyItem = ({item} : any) => {
               type='button'
               className='btn btn-icon btn-success btn-sm me-1'
               data-bs-toggle='modal'
-              data-bs-target='#exampleModal'
-              onClick={() =>
-                handleEdit({
-                  id,
-                  username,
-                  first_name,
-                  last_name,
-                  email,
-                  is_active,
-                  date_joined,
-                  password_change,
-                  init_date_validity,
-                  end_date_validity,
-                  rolId,
-                })
+              data-bs-target='#accountCreateUpdateModal'
+              onClick={ () =>
+                handleEdit()
               }
             >
               <i className='fa fa-edit'></i>
             </button>
-            <button className='btn btn-icon btn-danger btn-sm' onClick={() => handleDelete(id)}>
+            <button className='btn btn-icon btn-danger btn-sm' onClick={() => handleDelete(acId)}>
               <i className='fa fa-trash'></i>
             </button>
           </div>

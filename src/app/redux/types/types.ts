@@ -40,3 +40,12 @@ export const familiesTypes = {
 
   DeleteFromReducer: '[familyRedux] delete family from reducer',
 }
+
+export const uiTypes = {
+  uiSetError: '[UI] Set Error',
+  uiRemoveError: '[UI] Remove Error',
+  uiStartLoading: '[UI] Start loading',
+  uiFinishLoading: '[UI] Finish loading',
+  uiIsEditing: '[UI] Is editing',
+  uiIsCreating: '[UI] Is creating',
+}

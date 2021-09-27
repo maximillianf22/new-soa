@@ -3,21 +3,20 @@ import { ICreateAccounts } from '../Interfaces/models'
 
 
 const createAccountsSchemas = Yup.object().shape({
-  description: Yup.string().required('Este campo es requerido'),
-  code: Yup.string().required('Este campo es requerido'),
-  url: Yup.string().required('Este campo es requerido'),
-  initialDate: Yup.string().required('Este campo es requerido'),
-  finalDate: Yup.string().required('Este campo es requerido'),
-  dueDate: Yup.string().required('Este campo es requerido'),
+  acName: Yup.string().required('Este campo es requerido'),
+  acPilotNumber: Yup.string().required('Este campo es requerido'),
+  acStatus: Yup.boolean().required('Este campo es requerido'),
+  acIsVip: Yup.boolean().required('Este campo es requerido'),
+  acHasBeneficiaries: Yup.boolean().required('Este campo es requerido')
 })
 
 const initialValues: ICreateAccounts = {
-  description: '',
-  code: '',
-  url: '',
-  initialDate: new Date(),
-  finalDate: new Date(),
-  dueDate: '',
+  acName: '',
+  acPilotNumber: '',
+  acStatus: true,
+  acIsVip: false,
+  acHasBeneficiaries: false,
+  acPilotProviderNumber: '',
 }
 
 export {createAccountsSchemas, initialValues}
