@@ -3,9 +3,10 @@ import {useDispatch, useSelector} from 'react-redux'
 import { RootState } from '../../../../../setup'
 import { tableActions, userActions } from '../../../../redux/actions/actions'
 import { tableTypes, usersTypes } from '../../../../redux/types/types'
+import { IPlansTable } from '../../Interfaces/models'
 import { TableComponent } from './components/TableComponent'
 
-export const PlansTable = () => {
+export const PlansTable = ({stats}: IPlansTable) => {
   const dispatch = useDispatch()
 
   const users: any = useSelector<RootState>(({users}) => users.users)
@@ -48,7 +49,7 @@ export const PlansTable = () => {
 
   return (
     <>
-      <TableComponent title='Planes' />
+      <TableComponent title='Planes' stats={stats}/>
     </>
   )
 }
