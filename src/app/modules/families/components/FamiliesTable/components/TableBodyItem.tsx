@@ -4,6 +4,7 @@ import Swal from 'sweetalert2'
 import {RootState} from '../../../../../../setup'
 import { userActions, familiesActions } from '../../../../../redux/actions/actions';
 import { familiesTypes } from '../../../../../redux/types/types';
+import { uiActions } from '../../../../../redux/actions/uiActions';
 
 export const TableBodyItem = ({item} : any) => {
   
@@ -26,10 +27,14 @@ export const TableBodyItem = ({item} : any) => {
 
   const handleView = (family: any) => {
     family.toEdit = false
+    dispatch(uiActions.uiIsEditing(false))
+    dispatch(uiActions.uiIsViewing(true))
     dispatch(familiesActions.SelectedFamily(family))
   }
   const handleEdit = (family: any) => {
     family.toEdit = true;
+    dispatch(uiActions.uiIsViewing(false))
+    dispatch(uiActions.uiIsEditing(true))
     dispatch(familiesActions.SelectedFamily(family))
   }
   const handleDelete = (id: any) => {
