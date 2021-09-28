@@ -1,8 +1,8 @@
 import {Formik, Form, FormikProps, Field} from 'formik'
 import { useDispatch, useSelector } from 'react-redux'
-import {InputCustom, InputSelect} from '../../global/components/inputs'
-import { RootState } from '../../../../setup/redux/RootReducer';
-import { familiesActions } from '../../../redux/actions/actions';
+import {InputCustom, InputSelect} from '../../../global/components/inputs'
+import { RootState } from '../../../../../setup/redux/RootReducer';
+import { familiesActions } from '../../../../redux/actions/actions';
 
 const optionsGroups = [
   {value: 'vehicular', label: 'Vehicular'},
