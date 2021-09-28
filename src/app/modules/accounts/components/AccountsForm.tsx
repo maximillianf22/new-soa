@@ -22,7 +22,7 @@ import { createAccountsSchemas, initialValues } from './Helpers'
 
 export const AccountsForm = () => {
 
-  const {loading, editing: isEditing}: any = useSelector<RootState>(({ui}) => ui)
+  const {loading, editing: isEditing, viewing: isViewing}: any = useSelector<RootState>(({ui}) => ui)
   const {active}: any = useSelector<RootState>(({accounts}) => accounts.active)
 
   const dispatch = useDispatch()
@@ -30,7 +30,7 @@ export const AccountsForm = () => {
   return (
     <>
       <Formik
-        initialValues={ (active === {} || active === undefined || !isEditing) ? initialValues : active}
+        initialValues={ (active === {} || active === undefined || (!isEditing && !isViewing)) ? initialValues : active}
         enableReinitialize={true}
         validationSchema={createAccountsSchemas}
         
@@ -47,13 +47,30 @@ export const AccountsForm = () => {
               <div className='card-body'>
                 <div className='row'>
                   <div className='col-md-4 px-5 fv-row my-3'>
-                    <InputCustom type='text' name='acName' label='Nombre' required />
+                    <InputCustom
+                      type='text'
+                      name='acName'
+                      label='Nombre'
+                      required
+                      disabled={isViewing}
+                    />
                   </div>
                   <div className='col-md-4 px-5 fv-row my-3'>
-                    <InputCustom type='text' name='acPilotNumber' label='Número de piloto' required/>
+                    <InputCustom
+                      type='text'
+                      name='acPilotNumber'
+                      label='Número de piloto'
+                      required
+                      disabled={isViewing}
+                    />
                   </div>
                   <div className='col-md-4 px-5 fv-row my-3'>
-                    <InputCustom type='text' name='acPilotProviderNumber' label='Número de piloto proveedor' />
+                    <InputCustom
+                      type='text'
+                      name='acPilotProviderNumber'
+                      label='Número de piloto proveedor'
+                      disabled={isViewing}
+                    />
                   </div>
                   <div className='col-md-4 px-5 fv-row my-3 text-center'>
                     <div className='my-auto h-100 text-center mt-4'>
@@ -64,6 +81,7 @@ export const AccountsForm = () => {
                           type='checkbox'
                           name='acStatus'
                           id='flexCheckChecked'
+                          disabled={isViewing}
                         />
                         <label className='form-check-label ms-5'>¿Activo?</label>
                       </div>
@@ -77,6 +95,7 @@ export const AccountsForm = () => {
                         type='checkbox'
                         name='acHasBeneficiaries'
                         id='flexCheckChecked'
+                        disabled={isViewing}
                       />
                       <label className='form-check-label ms-5'>Beneficiarios</label>
                     </div>
@@ -89,25 +108,36 @@ export const AccountsForm = () => {
                         type='checkbox'
                         name='acIsVip'
                         id='flexCheckChecked'
+                        disabled={isViewing}
                       />
                       <label className='form-check-label ms-5'>Vip</label>
                     </div>
                   </div>
                 </div>
                 <div className='px-5 pt-5 fv-row text-end'>
-                  <button 
-                    type='submit'
-                    className='btn btn-primary'
-                    data-bs-dismiss='modal'
-                    disabled={!props.dirty || !props.isValid}
-                  >
-                    {!loading && <span className='indicator-label'>{isEditing? 'Actualizar': 'Guardar'}</span>}
-                      {loading && (
-                        <span className='indicator-progress' style={{display: 'block'}}>
-                          {isEditing? 'Actualizar': 'Guardar'}
-                          <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
-                        </span>
-                      )}
+                  {!isViewing 
+                  ?
+                    <button 
+                      type='submit'
+                      className='btn btn-primary'
+                      data-bs-dismiss='modal'
+                      disabled={!props.dirty || !props.isValid}
+                    >
+                      {!loading && <span className='indicator-label'>{isEditing? 'Actualizar': 'Guardar'}</span>}
+                        {loading && (
+                          <span className='indicator-progress' style={{display: 'block'}}>
+                            {isEditing? 'Actualizar': 'Guardar'}
+                            <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
+                          </span>
+                        )}
+                      </button>
+                    :
+                    <button type='button' className='btn btn-info mx-8'>
+                      Ver planes
+                    </button>
+                    }
+                  <button type='button' className='btn btn-primary mx-8' data-bs-dismiss='modal'>
+                    Cerrar
                   </button>
                 </div>
               </div>

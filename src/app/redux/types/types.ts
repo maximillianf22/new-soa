@@ -47,5 +47,5 @@ export const uiTypes = {
   uiStartLoading: '[UI] Start loading',
   uiFinishLoading: '[UI] Finish loading',
   uiIsEditing: '[UI] Is editing',
-  uiIsCreating: '[UI] Is creating',
+  uiIsViewing: '[UI] Is viewing',
 }
