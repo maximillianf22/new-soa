@@ -1,5 +1,13 @@
 import React from 'react'
+import {Field, Form, Formik, FormikProps} from 'formik'
+import {InputSelect} from '../../../global/components/inputs'
 import {IAccountsDetails} from '../../Interfaces/models'
+
+const optionsAccounts = [
+  {value: 'id1', label: 'Semanal'},
+  {value: 'id2', label: 'Mensual'},
+  {value: 'id3', label: 'Anual'},
+]
 
 export const AccountsDetails = ({
   vip,
@@ -23,11 +31,28 @@ export const AccountsDetails = ({
             <div className={`ribbon-label fw-bolder ${active ? 'bg-success' : 'bg-danger'}`}>
               {active ? 'Activo' : 'Inactivo'}
             </div>
-            <div className='card-title text-white fw-bolder fs-4'>Detalle de la cuenta</div>
+            <Formik
+              initialValues={{name: ''}}
+              enableReinitialize={true}
+              onSubmit={(values) => {
+                //   console.log('en submit', values)
+              }}
+            >
+              {(props: FormikProps<any>) => (
+                <Form className='w-75 mt-10'>
+                  <Field name='accounts' component={InputSelect} options={optionsAccounts} />
+                </Form>
+              )}
+            </Formik>
           </div>
-          <div className={`px-9 pt-1 h-200px w-100  ${vip ? 'bg-warning' : 'bg-primary'}`}>
+          <div className={`px-9 pt-4 h-200px w-100  ${vip ? 'bg-warning' : 'bg-primary'}`}>
             <div className='d-flex text-center flex-column text-white pt-0'>
-              <span className='fw-bolder fs-1 pt-1 text-nowrap'>{description}</span>
+              <span className='fw-bolder fs-1 pt-1 text-nowrap'>
+                {description}
+                <a href='' className='ms-3'>
+                  <i className='fa fa-edit fs-3 text-white'></i>
+                </a>
+              </span>
               <div className='row mt-4'>
                 <div className='col-md-6 text-start'>
                   <span className='fs-9 fw-bold text-uppercase'>Piloto</span>

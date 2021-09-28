@@ -1,5 +1,13 @@
 import React from 'react'
+import {Field, Form, Formik, FormikProps} from 'formik'
+import {InputSelect} from '../../../global/components/inputs'
 import {IFamiliesDetails} from '../../Interfaces/models'
+
+const optionsFamilies = [
+  {value: 'id1', label: 'Semanal'},
+  {value: 'id2', label: 'Mensual'},
+  {value: 'id3', label: 'Anual'},
+]
 
 export const FamiliesDetails = ({
   active,
@@ -19,11 +27,28 @@ export const FamiliesDetails = ({
             <div className={`ribbon-label fw-bolder ${active ? 'bg-success' : 'bg-danger'}`}>
               {active ? 'Activo' : 'Inactivo'}
             </div>
-            <div className='card-title text-white fw-bolder fs-4'>Detalle de la Familia</div>
+            <Formik
+              initialValues={{name: ''}}
+              enableReinitialize={true}
+              onSubmit={(values) => {
+                //   console.log('en submit', values)
+              }}
+            >
+              {(props: FormikProps<any>) => (
+                <Form className='w-75 mt-10'>
+                  <Field name='accounts' component={InputSelect} options={optionsFamilies} />
+                </Form>
+              )}
+            </Formik>
           </div>
           <div className='px-9 pt-1 h-200px w-100 bg-primary '>
             <div className='d-flex text-center flex-column text-white pt-0'>
-              <span className='fw-bolder fs-1 pt-1 text-nowrap'>{description}</span>
+              <span className='fw-bolder fs-1 pt-1 text-nowrap'>
+                {description}
+                <a href='' className='ms-3'>
+                  <i className='fa fa-edit fs-3 text-white'></i>
+                </a>
+              </span>
               <div className='row mt-4'>
                 <div className='col-md-6 text-start'>
                   <span className='fs-9 fw-bold text-uppercase'>Creado</span>
