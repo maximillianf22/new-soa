@@ -1,11 +1,13 @@
 import { response } from '../reducers/AuthRedux';
 import { getUsers } from '../../api/TableCRUD';
 import { call, put } from '@redux-saga/core/effects';
-import { userActions, authActions } from '../actions/actions';
+import { userActions, authActions, familiesActions } from '../actions/actions';
 import { deleteUser, updateUser, createUser } from '../../api/UsersCRUD';
-import { usersTypes, authTypes } from '../types/types';
+import { usersTypes, authTypes, familiesTypes } from '../types/types';
 import { takeLatest } from 'redux-saga/effects';
 import { login, Data } from '../../api/AuthCRUD';
+import { IfamilyResponse, IfamilyResponseRR } from '../../modules/families/Interfaces/models';
+import { getFamilies, deleteFamily, updateFamily, createFamily } from '../../api/FamilyService';
 
 
 interface ActionTypePayload {
@@ -121,3 +123,46 @@ export function* sagaUsers() {
     //   // yield put(authActions.fulfillUser(user))
     // })
   }
+
+
+export function* sagaFamilies() {
+  // Worker Sagas
+  function* asyncLoad() {
+    try {
+      const {data: {results}}: IfamilyResponseRR = yield call(getFamilies)
+      yield put(familiesActions.load(results))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  function* sagaDeleteFamily({payload}:ActionTypePayload) {
+    try {
+      const resp: IfamilyResponse = yield call(deleteFamily, payload)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  function* sagaUpdateFamily({payload}:ActionTypePayload) {
+    try {
+      const resp: IfamilyResponse = yield call(updateFamily, payload)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  function* sagaCreateFamily({payload}:ActionTypePayload) {
+    try {
+      const resp: IfamilyResponse = yield call(createFamily, payload)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  // Watcher Sagas
+  yield takeLatest(familiesTypes.AsyncLoad, asyncLoad)
+  yield takeLatest(familiesTypes.Delete, sagaDeleteFamily)
+  yield takeLatest(familiesTypes.Update, sagaUpdateFamily)
+  yield takeLatest(familiesTypes.Create, sagaCreateFamily)
+}

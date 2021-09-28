@@ -2,23 +2,19 @@ import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Swal from 'sweetalert2'
 import {RootState} from '../../../../../../setup'
-import {userActions} from '../../../../../redux/actions/actions'
-import {usersTypes} from '../../../../../redux/types/types'
+import { userActions, familiesActions } from '../../../../../redux/actions/actions';
+import { familiesTypes } from '../../../../../redux/types/types';
 
 export const TableBodyItem = ({item} : any) => {
   
   const {
-    id,
-    username,
-    first_name,
-    last_name,
-    email,
-    is_active,
-    date_joined,
-    init_date_validity,
-    end_date_validity,
-    rolId,
-    password_change,
+    fmId,
+    fmDescription,
+    fmStatus,
+    fmCreatedAt,
+    fmUpdatedAt,
+    fmUsermod,
+    fmIsActive,
   } = item
 
   const table: any = useSelector<RootState>(({table}) => table)
@@ -28,9 +24,9 @@ export const TableBodyItem = ({item} : any) => {
 
   const dispatch = useDispatch()
 
-  const handleView = (user: any) => {
-    user.toEdit = false
-    dispatch(userActions.SelectedUser(user))
+  const handleView = (family: any) => {
+    family.toEdit = false
+    dispatch(familiesActions.SelectedFamily(family))
   }
   const handleEdit = (user: any) => {
     user.toEdit = true
@@ -48,8 +44,9 @@ export const TableBodyItem = ({item} : any) => {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch({type: usersTypes.Delete, payload: id})
-        Swal.fire('¡Eliminado!', 'El usuario fue eliminado correctamente.', 'success')
+        // dispatch({type: familiesTypes.Delete, payload: id})
+        dispatch({type: familiesTypes.DeleteFromReducer, payload: {SelectedFamily: {fmId: id}}})
+        Swal.fire('¡Eliminado!', 'La familia fue eliminada correctamente.', 'success')
       }
     })
   }
@@ -59,48 +56,43 @@ export const TableBodyItem = ({item} : any) => {
       <tr>
         {tableHeads.includes('id') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{id}</p>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{fmId}</p>
           </td>
         )}
-        {tableHeads.includes('usuario') && (
+        {tableHeads.includes('descripción') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{username}</p>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{fmDescription}</p>
           </td>
         )}
-        {tableHeads.includes('nombre') && (
+        {tableHeads.includes('estado') && (
           <td>
             <div className='d-flex align-items-center'>
               <div className='d-flex justify-content-start flex-column'>
-                <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{first_name}</p>
+                <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{fmStatus}</p>
                 <span className='text-muted fw-bold text-muted d-block fs-7'>CC: 1007345398</span>
               </div>
             </div>
           </td>
         )}
-        {tableHeads.includes('apellido') && (
+        {tableHeads.includes('fecha de creación') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{last_name}</p>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{fmCreatedAt}</p>
           </td>
         )}
-        {tableHeads.includes('correo') && (
+        {tableHeads.includes('fecha actualizado') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{email}</p>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{fmUpdatedAt}</p>
           </td>
         )}
 
+        {tableHeads.includes('modificado por') && (
+          <td>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{fmUsermod}</p>
+          </td>
+        )}
         {tableHeads.includes('activo') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{is_active}</p>
-          </td>
-        )}
-        {tableHeads.includes('fecha creación') && (
-          <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{date_joined}</p>
-          </td>
-        )}
-        {tableHeads.includes('rol') && (
-          <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{rolId}</p>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{fmIsActive}</p>
           </td>
         )}
         <td>
@@ -109,20 +101,16 @@ export const TableBodyItem = ({item} : any) => {
               type='button'
               className='btn btn-icon btn-info btn-sm me-1'
               data-bs-toggle='modal'
-              data-bs-target='#exampleModal'
+              data-bs-target='#kt_modal'
               onClick={() =>
                 handleView({
-                  id,
-                  username,
-                  first_name,
-                  last_name,
-                  email,
-                  is_active,
-                  date_joined,
-                  password_change,
-                  init_date_validity,
-                  end_date_validity,
-                  rolId,
+                  fmId,
+                  fmDescription,
+                  fmStatus,
+                  fmCreatedAt,
+                  fmUpdatedAt,
+                  fmUsermod,
+                  fmIsActive,
                 })
               }
             >
@@ -132,26 +120,22 @@ export const TableBodyItem = ({item} : any) => {
               type='button'
               className='btn btn-icon btn-success btn-sm me-1'
               data-bs-toggle='modal'
-              data-bs-target='#exampleModal'
+              data-bs-target='#kt_modal'
               onClick={() =>
                 handleEdit({
-                  id,
-                  username,
-                  first_name,
-                  last_name,
-                  email,
-                  is_active,
-                  date_joined,
-                  password_change,
-                  init_date_validity,
-                  end_date_validity,
-                  rolId,
+                  fmId,
+                  fmDescription,
+                  fmStatus,
+                  fmCreatedAt,
+                  fmUpdatedAt,
+                  fmUsermod,
+                  fmIsActive,
                 })
               }
             >
               <i className='fa fa-edit'></i>
             </button>
-            <button className='btn btn-icon btn-danger btn-sm' onClick={() => handleDelete(id)}>
+            <button className='btn btn-icon btn-danger btn-sm' onClick={() => handleDelete(fmId)}>
               <i className='fa fa-trash'></i>
             </button>
           </div>

@@ -1,8 +1,8 @@
 import React from 'react'
 import {shallowEqual, useSelector} from 'react-redux'
 import {RootState} from '../../../../../../setup'
-import {UserModel} from '../../../../global/models/UserModel'
 import { TableBodyItem } from './TableBodyItem'
+import { FamilyModel } from '../../../Interfaces/models';
 
 export const TableBody: React.FC = () => {
   const table: any = useSelector<RootState>(({table}) => table, shallowEqual)
@@ -29,7 +29,7 @@ export const TableBody: React.FC = () => {
             <tbody>
               {tableContent &&
                 tableContent.map(
-                  ( item: UserModel, i: number) => (
+                  ( item: FamilyModel, i: number) => (
                       <TableBodyItem item={item} key={i} />
                   )
                 )}
