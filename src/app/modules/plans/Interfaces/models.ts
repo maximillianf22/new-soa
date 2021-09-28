@@ -15,8 +15,14 @@ export interface IStatsItem {
 
 export interface IStats {
     title: string;
+    stats?: string;
 }
 
 export interface ITableComponent {
     title: string;
+    stats?: string;
+}
+
+export interface IPlansTable {
+    stats?: string;
 }
