@@ -14,12 +14,12 @@ export const AccountsDetails = () => {
               <span className='fw-bolder fs-1 pt-1 text-nowrap'>Descripcion de la cuenta</span>
               <div className='row mt-4'>
                 <div className='col-md-6 text-start'>
-                  <span className='fs-help text-uppercase'>Piloto</span>
+                  <span className='fs-9 fw-bold text-uppercase'>Piloto</span>
                   <br />
                   <span className='fw-bold fs-4'>308567098</span>
                 </div>
                 <div className='col-md-6 text-end'>
-                  <span className='fs-help text-uppercase'>Piloto Proveedor</span>
+                  <span className='fs-8 fw-bold text-uppercase'>Proveedor</span>
                   <br />
                   <span className='fw-bold fs-4'>308567098</span>
                 </div>
