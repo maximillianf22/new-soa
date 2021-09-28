@@ -4,7 +4,8 @@ import { uiTypes } from '../types/types';
 const initialState: IUiInitialValues = {
     loading: false,
     msgError: '',
-    editing: false
+    editing: false,
+    viewing: false,
 }
 
 
@@ -40,6 +41,13 @@ export const uiReducer = ( state = initialState, action: IUiReduxType ) => {
                 ...state,
                 editing: action.payload,
             }
+
+        case uiTypes.uiIsViewing:
+            return {
+                ...state,
+                viewing: action.payload,
+                }
+
         default:
             return state;
     }

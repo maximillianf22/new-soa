@@ -9,7 +9,8 @@ export interface IUiReduxType {
 export interface IUiInitialValues {
     loading: boolean,
     msgError: string | null,
-    editing: boolean
+    editing: boolean,
+    viewing: boolean,
 }
 
 export interface response {

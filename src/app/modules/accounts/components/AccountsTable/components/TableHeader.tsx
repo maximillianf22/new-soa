@@ -80,7 +80,10 @@ export const TableHeader = () => {
                 className='btn btn-sm btn-primary ms-2'
                 data-bs-toggle='modal'
                 data-bs-target={tableHeader?.btnModal}
-                onClick={() => {dispatch(uiActions.uiIsEditing(false))}}
+                onClick={() => {
+                  dispatch(uiActions.uiIsEditing(false))
+                  dispatch(uiActions.uiIsViewing(false))
+                }}
               >
                 <i className='fas fa-plus'></i>
                 Nuevo

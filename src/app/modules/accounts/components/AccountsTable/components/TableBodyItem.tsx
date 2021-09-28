@@ -4,7 +4,6 @@ import {RootState} from '../../../../../../setup'
 import { accountsActions } from '../../../../../redux/actions/accountsActions'
 import { uiActions } from '../../../../../redux/actions/uiActions'
 import { accountTypes } from '../../../../../redux/types/accountTypes'
-import { IAccountInfo } from '../../../Interfaces/models'
 
 export const TableBodyItem = ({item} : any) => {
   
@@ -26,12 +25,13 @@ export const TableBodyItem = ({item} : any) => {
 
   const dispatch = useDispatch()
 
-  const handleView = (account: any) => {
-    account.toEdit = false
-    dispatch(accountsActions.active(account))
+  const handleView = () => {
+    dispatch(uiActions.uiIsEditing(false))
+    dispatch(uiActions.uiIsViewing(true))
+    dispatch(accountsActions.active(item))
   }
   const handleEdit = () => {
-    // account.toEdit = true
+    dispatch(uiActions.uiIsViewing(false))
     dispatch(uiActions.uiIsEditing(true))
     dispatch(accountsActions.active(item))
   }
@@ -112,18 +112,9 @@ export const TableBodyItem = ({item} : any) => {
               type='button'
               className='btn btn-icon btn-info btn-sm me-1'
               data-bs-toggle='modal'
-              data-bs-target='#exampleModal'
+              data-bs-target='#accountCreateUpdateModal'
               onClick={() =>
-                handleView({
-                  acId,
-                  acName,
-                  acCreationDateUtc,
-                  acPilotNumber,
-                  acStatus,
-                  acIsVip,
-                  acHasBeneficiaries,
-                  acPilotProviderNumber
-                })
+                handleView()
               }
             >
               <i className='fa fa-eye'></i>

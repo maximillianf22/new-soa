@@ -17,6 +17,9 @@ export const uiActions = {
     }),
     uiIsEditing: (payload: boolean) => ({
         type: uiTypes.uiIsEditing, payload: payload
+    }),
+    uiIsViewing: (payload: boolean) => ({
+        type: uiTypes.uiIsViewing, payload: payload
     })
 }
 
