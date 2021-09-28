@@ -43,7 +43,7 @@ export const FamiliesTable = () => {
       },
     })
     return () => {
-      dispatch(userActions.clear())
+      // dispatch(userActions.clear())
       dispatch(tableActions.clear())
     }
   }, [dispatch, families]) // eslint-disable-line

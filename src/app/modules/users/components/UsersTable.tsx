@@ -25,6 +25,9 @@ export const UsersTable = () => {
   
   useEffect(() => {
     dispatch({type: usersTypes.AsyncLoad})
+  }, [dispatch])
+
+  useEffect(() => {
     dispatch({
       type: tableTypes.Load,
       payload: {
@@ -42,10 +45,10 @@ export const UsersTable = () => {
       },
     })
     return () => {
-      dispatch(userActions.clear())
+      // dispatch(userActions.clear())
       dispatch(tableActions.clear())
     }
-  }, [dispatch]) // eslint-disable-line
+  }, [dispatch, users]) // eslint-disable-line
 
   return (
     <>

@@ -28,9 +28,9 @@ export const TableBodyItem = ({item} : any) => {
     family.toEdit = false
     dispatch(familiesActions.SelectedFamily(family))
   }
-  const handleEdit = (user: any) => {
-    user.toEdit = true
-    dispatch(userActions.SelectedUser(user))
+  const handleEdit = (family: any) => {
+    family.toEdit = true;
+    dispatch(familiesActions.SelectedFamily(family))
   }
   const handleDelete = (id: any) => {
     Swal.fire({
