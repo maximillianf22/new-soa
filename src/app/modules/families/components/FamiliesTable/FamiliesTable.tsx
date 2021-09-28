@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import { RootState } from '../../../../../setup'
 import { tableActions, userActions } from '../../../../redux/actions/actions'
 import { tableTypes, familiesTypes } from '../../../../redux/types/types'
-import { ModalForm } from '../ModalForm'
+import { ModalForm } from '../FamiliesForm/ModalForm'
 import { TableComponent } from './components/TableComponent'
 
 export const FamiliesTable = () => {
