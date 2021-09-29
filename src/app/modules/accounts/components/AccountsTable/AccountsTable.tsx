@@ -23,7 +23,7 @@ export const AccountsTable = () => {
   ]
 
 useEffect(() => {
-  dispatch({type: accountTypes.accountsGet})
+  dispatch({type: accountTypes.get})
 }, [dispatch])
 
 useEffect(() => {

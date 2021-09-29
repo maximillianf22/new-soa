@@ -1,0 +1,23 @@
+
+import { planTypes } from '../types/planTypes';
+
+export const plansAction = {
+    load: (payload: any) => ({
+        type: planTypes.load,
+        payload: {plans: payload.results}
+    }),
+    selectedPlan: (payload:any) => ({
+      type: planTypes.selectedPlan, payload: {selectedPlan: payload}
+    }),
+    addRedux: (payload:any) => ({
+      type: planTypes.addRedux, payload: {plans: payload}
+    }),
+    deleteRedux: (payload:any) => ({
+      type: planTypes.deleteRedux, payload: payload
+    }),
+    updateRedux: (payload:any) => ({
+      type: planTypes.updateRedux, payload: payload
+    }),
+    clear: () => ({type: planTypes.clear,}),
+//     updateTableHeads: (payload: any) => ({type: planTypes.LoadTableHeads, payload: payload}),
+  }

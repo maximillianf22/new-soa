@@ -1,15 +1,15 @@
 
 export const accountTypes = {
-  accountsGet: '[Accounts] Get API accounts',
-  accountCreate: '[Accounts] Post API new account',
-  accountDelete: '[Accounts] Delete API account',
+  get: '[Accounts] Get API accounts',
+  create: '[Accounts] Post API new account',
+  delete: '[Accounts] Delete API account',
   
-  accountAddRedux: '[Accounts] Load new account to redux',
-  accountDeleteRedux: '[Accounts] Delete account from redux',
-  accountUpdateRedux: '[Accounts] Update account in redux',
+  addRedux: '[Accounts] Load new account to redux',
+  deleteRedux: '[Accounts] Delete account from redux',
+  updateRedux: '[Accounts] Update account in redux',
 
-  accountsLoad: '[Accounts] Load accounts',
-  accountUpdate: '[Accounts] Update account',
-  accountActive: '[Accounts] Set active account',
-  accountsClear: '[Accounts] Clear data of reducer',
+  load: '[Accounts] Load accounts',
+  update: '[Accounts] Update account',
+  selectedAccount: '[Accounts] Set selected account',
+  clear: '[Accounts] Clear data of reducer',
 }

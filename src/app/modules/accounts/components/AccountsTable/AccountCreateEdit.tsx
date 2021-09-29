@@ -31,7 +31,7 @@ export const AccountCreateEdit = () => {
                     className='btn-close'
                     data-bs-dismiss='modal'
                     aria-label='Close'
-                    // onClick={() => dispatch(accountsActions.active({}))}
+                    // onClick={() => dispatch(accountsActions.selectedAccount({}))}
                   ></button>
                 </div>
               </div>
