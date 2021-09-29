@@ -47,7 +47,7 @@ export const TableBodyItem = ({item} : any) => {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch({type: accountTypes.delete, payload: id})
+        dispatch({type: accountTypes.delete, payload: item})
       }
     })
   }

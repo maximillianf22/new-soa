@@ -7,7 +7,10 @@ import { ActionWithPayload } from '../../modules/global/models/uiModel';
 
 const initialState: IAccountInitialValues = {
     accounts: [],
-    selectedAccount: {},
+    selectedAccount: {
+        acId: 0,
+        acName: ''
+    },
     acId: 0
 }
 
@@ -47,7 +50,7 @@ export const accountsReducer = persistReducer(
             case accountTypes.deleteRedux:
                 return {
                     ...state,
-                    accounts: state.accounts.filter( (account: IAccountInfo) => account.acId !== action.payload)
+                    accounts: state.accounts.filter( (account: IAccountInfo) => account.acId !== action.payload?.acId )
                 } 
 
             case accountTypes.clear:

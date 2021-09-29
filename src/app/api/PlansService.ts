@@ -21,6 +21,6 @@ export function updatePlan(plan:any): Promise<IPlanResponse[]> {
   return httpClient.patch(`${PLANS_URL}${plId}/`, plan)
 };
 
-export function deletePlan(id: any): Promise<IPlanResponse> {
-  return httpClient.delete(`${PLANS_URL}${id}/`)
+export function deletePlan(plan: any): Promise<IPlanResponse> {
+  return httpClient.delete(`${PLANS_URL}${plan.plId}/`)
 };

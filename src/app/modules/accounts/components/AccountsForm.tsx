@@ -132,9 +132,11 @@ export const AccountsForm = () => {
                         )}
                       </button>
                     :
-                    <button type='button' className='btn btn-info mx-8'>
-                      Ver planes
-                    </button>
+                    <a href='/accounts/detail'>
+                      <button type='button' className='btn btn-info mx-8'>
+                        Ver planes
+                      </button>
+                    </a>
                     }
                   <button type='button' className='btn btn-primary mx-8' data-bs-dismiss='modal'>
                     Cerrar

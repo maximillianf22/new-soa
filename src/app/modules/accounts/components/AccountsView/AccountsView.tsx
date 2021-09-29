@@ -1,20 +1,27 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../../../../setup'
 import {PlansTable} from '../../../plans/components/PlansTable/PlansTable'
-import {AccountsDetails} from './AccountsDetails'
+import {AccountsDetail} from './AccountsDetail'
 
 export const AccountsView = () => {
+
+  const {accounts, selectedAccount}: any = useSelector<RootState>(({accounts}) => accounts)
+
+  const {plans} = selectedAccount
+
+  console.log('plans: ', plans);
+
   return (
     <>
       <div className='row'>
         <div className='col-3'>
-          <AccountsDetails
+          <AccountsDetail
+            selectedAccount={selectedAccount}
+            accounts={accounts}
             count_vip={78}
             count_active={78}
             count_inactive={78}
-            description='Detalle de la cuenta'
-            pilot='39763876'
-            pilot_provider='39763876'
-            active
           />
         </div>
         <div className='col-9'>

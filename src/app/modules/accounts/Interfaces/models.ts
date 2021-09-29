@@ -42,9 +42,9 @@ export interface IAccountResponse {
 }
 
 export interface IAccountInfo {
-  acId?: number
+  acId: number
   plans?: IPlanResponse[]
-  acName?: string
+  acName: string
   acCreationDateUtc?: string
   acPilotNumber?: string
   acStatus?: boolean
@@ -61,12 +61,9 @@ export interface IAccountsDetailsHeader {
   vip?: boolean
 }
 
-export interface IAccountsDetails {
-  description: string
-  pilot?: string
-  pilot_provider?: string
-  active?: boolean
-  vip?: boolean
+export interface IAccountsDetail {
+  selectedAccount: IAccountInfo,
+  accounts: IAccountInfo[],
   count_vip: number
   count_active: number
   count_inactive: number

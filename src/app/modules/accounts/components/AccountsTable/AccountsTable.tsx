@@ -32,7 +32,7 @@ useEffect(() => {
     payload: {
       tableHeader: {  
         title: 'Cuentas',
-        count: 234,
+        count: accounts.length,
         btnLink: '',
         btnModal: '#accountCreateUpdateModal',
         tableHeads: tableHeads,

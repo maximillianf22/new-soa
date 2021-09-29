@@ -8,17 +8,11 @@ import {usersTypes} from '../../../../../redux/types/types'
 export const TableBodyItem = ({item} : any) => {
   
   const {
-    id,
-    username,
-    first_name,
-    last_name,
-    email,
-    is_active,
-    date_joined,
-    init_date_validity,
-    end_date_validity,
-    rolId,
-    password_change,
+    plId,
+    plName,
+    plEventsShared,
+    plIsVip,
+    plDueDate,
   } = item
 
   const table: any = useSelector<RootState>(({table}) => table)
@@ -59,36 +53,35 @@ export const TableBodyItem = ({item} : any) => {
       <tr>
         {tableHeads.includes('id') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{id}</p>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{plId}</p>
           </td>
         )}
-        {tableHeads.includes('usuario') && (
+        {tableHeads.includes('Nombre') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{username}</p>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{plName}</p>
           </td>
         )}
-        {tableHeads.includes('nombre') && (
+        {tableHeads.includes('Eventos compartidos') && (
           <td>
             <div className='d-flex align-items-center'>
               <div className='d-flex justify-content-start flex-column'>
-                <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{first_name}</p>
-                <span className='text-muted fw-bold text-muted d-block fs-7'>CC: 1007345398</span>
+                <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{plEventsShared}</p>
               </div>
             </div>
           </td>
         )}
-        {tableHeads.includes('apellido') && (
+        {tableHeads.includes('Vip') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{last_name}</p>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{plIsVip}</p>
           </td>
         )}
-        {tableHeads.includes('correo') && (
+        {tableHeads.includes('Due date') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{email}</p>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{plDueDate}</p>
           </td>
         )}
 
-        {tableHeads.includes('activo') && (
+        {/* {tableHeads.includes('activo') && (
           <td>
             <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{is_active}</p>
           </td>
@@ -102,7 +95,7 @@ export const TableBodyItem = ({item} : any) => {
           <td>
             <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{rolId}</p>
           </td>
-        )}
+        )} */}
         <td>
           <div className='d-flex justify-content-end flex-shrink-0'>
             <button
@@ -112,17 +105,11 @@ export const TableBodyItem = ({item} : any) => {
               data-bs-target='#exampleModal'
               onClick={() =>
                 handleView({
-                  id,
-                  username,
-                  first_name,
-                  last_name,
-                  email,
-                  is_active,
-                  date_joined,
-                  password_change,
-                  init_date_validity,
-                  end_date_validity,
-                  rolId,
+                  plId,
+                  plName,
+                  plEventsShared,
+                  plIsVip,
+                  plDueDate,
                 })
               }
             >
@@ -135,23 +122,17 @@ export const TableBodyItem = ({item} : any) => {
               data-bs-target='#exampleModal'
               onClick={() =>
                 handleEdit({
-                  id,
-                  username,
-                  first_name,
-                  last_name,
-                  email,
-                  is_active,
-                  date_joined,
-                  password_change,
-                  init_date_validity,
-                  end_date_validity,
-                  rolId,
+                  plId,
+                  plName,
+                  plEventsShared,
+                  plIsVip,
+                  plDueDate,
                 })
               }
             >
               <i className='fa fa-edit'></i>
             </button>
-            <button className='btn btn-icon btn-danger btn-sm' onClick={() => handleDelete(id)}>
+            <button className='btn btn-icon btn-danger btn-sm' onClick={() => handleDelete(plId)}>
               <i className='fa fa-trash'></i>
             </button>
           </div>

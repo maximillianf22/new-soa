@@ -33,7 +33,7 @@ const AccountsBreadCrumbs: Array<PageLink> = [
           <PageTitle breadcrumbs={AccountsBreadCrumbs}>Registro de cuenta</PageTitle>
           <AccountsForm />
         </Route>
-        <Route path='/accounts/view'>
+        <Route path='/accounts/detail'>
           <PageTitle breadcrumbs={AccountsBreadCrumbs}>Registro de cuenta</PageTitle>
           <AccountsView />
         </Route>
