@@ -1,3 +1,5 @@
+import { IPlanResponse } from "../../plans/Interfaces/models";
+
 export interface ICreateAccounts {
   acName: string
   acPilotNumber: string
@@ -28,7 +30,7 @@ export interface IAccountsReduxType {
 
 export interface IAccountInitialValues {
   accounts?: IAccountInfo[] | IAccountInfo
-  active?: IAccountInfo
+  selectedAccount?: IAccountInfo
   acId: number | null
 }
 
@@ -40,31 +42,15 @@ export interface IAccountResponse {
 }
 
 export interface IAccountInfo {
-  acId?: number
+  acId: number
   plans?: IPlanResponse[]
-  acName?: string
+  acName: string
   acCreationDateUtc?: string
   acPilotNumber?: string
   acStatus?: boolean
   acIsVip?: boolean
   acHasBeneficiaries?: boolean
   acPilotProviderNumber?: string
-}
-
-export interface IPlanResponse {
-  plId: number
-  plName: string
-  plIsVip: boolean
-  plStatus: boolean
-  plStartDate: string
-  plDueDate: string
-  plDaysToDue: number
-  plCreationDate: string
-  plUpdatedAt: string
-  plEventsShared: boolean
-  plnumEventsShared: number
-  plFileUploadPath: string
-  acId: number
 }
 
 export interface IAccountsDetailsHeader {
@@ -75,12 +61,9 @@ export interface IAccountsDetailsHeader {
   vip?: boolean
 }
 
-export interface IAccountsDetails {
-  description: string
-  pilot?: string
-  pilot_provider?: string
-  active?: boolean
-  vip?: boolean
+export interface IAccountsDetail {
+  selectedAccount: IAccountInfo,
+  accounts: IAccountInfo[],
   count_vip: number
   count_active: number
   count_inactive: number

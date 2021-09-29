@@ -23,20 +23,20 @@ import { createAccountsSchemas, initialValues } from './Helpers'
 export const AccountsForm = () => {
 
   const {loading, editing: isEditing, viewing: isViewing}: any = useSelector<RootState>(({ui}) => ui)
-  const {active}: any = useSelector<RootState>(({accounts}) => accounts.active)
+  const selectedAccount: any = useSelector<RootState>(({accounts}) => accounts.selectedAccount)
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch()  
 
   return (
     <>
       <Formik
-        initialValues={ (active === {} || active === undefined || (!isEditing && !isViewing)) ? initialValues : active}
+        initialValues={ (selectedAccount === {} || selectedAccount === undefined || (!isEditing && !isViewing)) ? initialValues : selectedAccount}
         enableReinitialize={true}
         validationSchema={createAccountsSchemas}
         
         onSubmit={(values) => {
           dispatch({
-            type: isEditing ? accountTypes.accountUpdate : accountTypes.accountCreate,
+            type: isEditing ? accountTypes.update : accountTypes.create,
             payload: values
           })
         }}
@@ -132,9 +132,11 @@ export const AccountsForm = () => {
                         )}
                       </button>
                     :
-                    <button type='button' className='btn btn-info mx-8'>
-                      Ver planes
-                    </button>
+                    <a href='/accounts/detail'>
+                      <button type='button' className='btn btn-info mx-8'>
+                        Ver planes
+                      </button>
+                    </a>
                     }
                   <button type='button' className='btn btn-primary mx-8' data-bs-dismiss='modal'>
                     Cerrar

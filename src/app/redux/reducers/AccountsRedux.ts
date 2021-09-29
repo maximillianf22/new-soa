@@ -7,36 +7,37 @@ import { ActionWithPayload } from '../../modules/global/models/uiModel';
 
 const initialState: IAccountInitialValues = {
     accounts: [],
-    active: {},
+    selectedAccount: {
+        acId: 0,
+        acName: ''
+    },
     acId: 0
 }
 
 export const accountsReducer = persistReducer(
-    {storage, key: 'accounts', whitelist: ['accounts', 'active']},
+    {storage, key: 'accounts', whitelist: ['accounts', 'selectedAccount']},
     (state: any = initialState, action: ActionWithPayload<IAccountInitialValues>) => {
         switch (action.type) {
         
-            case accountTypes.accountActive:
+            case accountTypes.selectedAccount:
                 return {
                     ...state,
-                    active: {
-                        ...action.payload
-                    }
+                    selectedAccount: action.payload
                 }
 
-            case  accountTypes.accountAddRedux:
+            case  accountTypes.addRedux:
                 return {
                     ...state,
                     accounts: [...state.accounts, action.payload?.accounts]
                 }
 
-            case accountTypes.accountsLoad:
+            case accountTypes.load:
                 return {
                     accounts: action.payload?.accounts,
-                    active: {}
+                    selectedAccount: {}
                 }
         
-            case accountTypes.accountUpdateRedux:
+            case accountTypes.updateRedux:
                 return {
                     ...state,
                     accounts: state.accounts.map(
@@ -46,13 +47,13 @@ export const accountsReducer = persistReducer(
                     )
                 }
 
-            case accountTypes.accountDeleteRedux:
+            case accountTypes.deleteRedux:
                 return {
                     ...state,
-                    accounts: state.accounts.filter( (account: IAccountInfo) => account.acId !== action.payload)
+                    accounts: state.accounts.filter( (account: IAccountInfo) => account.acId !== action.payload?.acId )
                 } 
 
-            case accountTypes.accountsClear:
+            case accountTypes.clear:
                 return {
                     initialState
                 }

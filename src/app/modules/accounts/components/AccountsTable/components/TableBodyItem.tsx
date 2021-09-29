@@ -28,12 +28,12 @@ export const TableBodyItem = ({item} : any) => {
   const handleView = () => {
     dispatch(uiActions.uiIsEditing(false))
     dispatch(uiActions.uiIsViewing(true))
-    dispatch(accountsActions.active(item))
+    dispatch(accountsActions.selectedAccount(item))
   }
   const handleEdit = () => {
     dispatch(uiActions.uiIsViewing(false))
     dispatch(uiActions.uiIsEditing(true))
-    dispatch(accountsActions.active(item))
+    dispatch(accountsActions.selectedAccount(item))
   }
   const handleDelete = (id: any) => {
     Swal.fire({
@@ -47,9 +47,16 @@ export const TableBodyItem = ({item} : any) => {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch({type: accountTypes.accountDelete, payload: id})
+        dispatch({type: accountTypes.delete, payload: item})
       }
     })
+  }
+
+  const handleVipClassName = () => {
+    return acIsVip ?
+    'text-warning fw-bolder text-hover-primary d-block fs-6'
+    :
+    'text-dark fw-bolder text-hover-primary d-block fs-6'
   }
 
   return (
@@ -57,26 +64,26 @@ export const TableBodyItem = ({item} : any) => {
       <tr>
         {tableHeads.includes('Id') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{acId}</p>
+            <p className={handleVipClassName()}>{acId}</p>
           </td>
         )}
         {tableHeads.includes('Nombre') && (
           <td>
             <div className='d-flex align-items-center'>
               <div className='d-flex justify-content-start flex-column'>
-                <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{acName}</p>
+                <p className={handleVipClassName()}>{acName}</p>
               </div>
             </div>
           </td>
         )}
         {tableHeads.includes('Número de piloto') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{acPilotNumber}</p>
+            <p className={handleVipClassName()}>{acPilotNumber}</p>
           </td>
         )}
         {tableHeads.includes('Número de proveedor piloto') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{acPilotProviderNumber}</p>
+            <p className={handleVipClassName()}>{acPilotProviderNumber}</p>
           </td>
         )}
         {tableHeads.includes('Vip') && (
@@ -92,7 +99,7 @@ export const TableBodyItem = ({item} : any) => {
         )}
         {tableHeads.includes('Fecha de creación') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{acCreationDateUtc}</p>
+            <p className={handleVipClassName()}>{acCreationDateUtc}</p>
           </td>
         )}
         {tableHeads.includes('Beneficiarios') && (

@@ -1,29 +1,29 @@
 import { call, put } from '@redux-saga/core/effects';
 import { accountTypes } from '../types/accountTypes';
 import { takeLatest } from 'redux-saga/effects';
-import { IAccountsReduxType } from '../../modules/accounts/Interfaces/models';
-import { createAccount, deleteAccount, getAccounts, updateAccount } from '../../api/AccountsService';
+import { IPlansReduxType } from '../../modules/plans/Interfaces/models';
 import { response } from '../../modules/global/models/uiModel';
 import { accountsActions } from '../actions/accountsActions';
 import { uiActions } from '../actions/uiActions';
 import { toast } from 'react-toastify';
 import { successToastOptions } from '../../modules/global/models/toastOptions';
+import { createPlan, deletePlan, getPlans, updatePlan } from '../../api/PlansService';
 
-export function* sagaAccounts() {
+export function* sagaPlans() {
     // Worker Sagas
-    function* sagaLoadAccounts() {
+    function* sagaLoadPlans() {
       try {
-        const {data}: response = yield call(getAccounts)
+        const {data}: response = yield call(getPlans)
         yield put(accountsActions.load(data))
       } catch (error) {
         console.log(error)
       }
     }
   
-    function* sagaDeleteAccount({payload}: IAccountsReduxType) {
+    function* sagaDeletePlan({payload}: IPlansReduxType) {
       try {
         const id = toast.loading("Eliminando...")
-        yield call(deleteAccount, payload)
+        yield call(deletePlan, payload)
         yield put(accountsActions.deleteRedux(payload))
         toast.update(id, successToastOptions);
       } catch (error) {
@@ -31,10 +31,10 @@ export function* sagaAccounts() {
       }
     }
   
-    function* sagaUpdateAccount({payload}:IAccountsReduxType) {
+    function* sagaUpdatePlan({payload}:IPlansReduxType) {
       try {
         const id = toast.loading("Actualizando...")
-        const {data}: response = yield call(updateAccount, payload)
+        const {data}: response = yield call(updatePlan, payload)
         yield put(accountsActions.updateRedux(data))
         toast.update(id, successToastOptions);
       } catch (error) {
@@ -42,11 +42,11 @@ export function* sagaAccounts() {
       }
     }
   
-    function* sagaCreateAccount({payload}:IAccountsReduxType) {
+    function* sagaCreatePlan({payload}:IPlansReduxType) {
       try {
         yield put(uiActions.uiStartLoading())
         const id = toast.loading("Creando...")
-        const resp: response = yield call(createAccount, payload)
+        const resp: response = yield call(createPlan, payload)
         yield put(accountsActions.addRedux(resp.data))
         toast.update(id, successToastOptions);
         yield put(uiActions.uiFinishLoading())
@@ -56,8 +56,8 @@ export function* sagaAccounts() {
     }
   
     // Watcher Sagas
-    yield takeLatest(accountTypes.get, sagaLoadAccounts)
-    yield takeLatest(accountTypes.create, sagaCreateAccount)
-    yield takeLatest(accountTypes.update, sagaUpdateAccount)
-    yield takeLatest(accountTypes.delete, sagaDeleteAccount)
+    yield takeLatest(accountTypes.get, sagaLoadPlans)
+    yield takeLatest(accountTypes.create, sagaCreatePlan)
+    yield takeLatest(accountTypes.update, sagaUpdatePlan)
+    yield takeLatest(accountTypes.delete, sagaDeletePlan)
 }
