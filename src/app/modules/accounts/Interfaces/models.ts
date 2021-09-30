@@ -28,6 +28,11 @@ export interface IAccountsReduxType {
   payload: IAccountInfo | IAccountInfo[]
 }
 
+export interface IAccountsReduxType2 {
+  type: String
+  payload: IAccountInfo
+}
+
 export interface IAccountInitialValues {
   accounts?: IAccountInfo[] | IAccountInfo
   selectedAccount?: IAccountInfo

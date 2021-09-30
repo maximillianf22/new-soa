@@ -7,6 +7,7 @@ export const planTypes = {
     addRedux: '[plans] Load new plan to redux',
     deleteRedux: '[plans] Delete plan from redux',
     updateRedux: '[plans] Update plan in redux',
+    setAllReduxPlans: '[plans] Set all plans in redux from account',
   
     load: '[plans] Load plans',
     update: '[plans] Update plan',

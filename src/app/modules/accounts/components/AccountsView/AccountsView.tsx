@@ -1,6 +1,7 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../../../../setup'
+import { plansActions } from '../../../../redux/actions/plansActions'
 import {PlansTable} from '../../../plans/components/PlansTable/PlansTable'
 import {AccountsDetail} from './AccountsDetail'
 
@@ -10,7 +11,9 @@ export const AccountsView = () => {
 
   const {plans} = selectedAccount
 
-  console.log('plans: ', plans);
+  const dispatch = useDispatch()
+
+  dispatch(plansActions.setAllReduxPlans(plans))
 
   return (
     <>

@@ -10,6 +10,9 @@ export const TableBody: React.FC = () => {
     tableBody: {tableHeads, tableContent},
   } = table
 
+  console.log('tableContent', tableContent);
+  
+
   return (
     <>
       <div className='card-body py-3'>

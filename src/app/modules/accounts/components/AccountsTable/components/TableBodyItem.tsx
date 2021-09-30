@@ -35,7 +35,7 @@ export const TableBodyItem = ({item} : any) => {
     dispatch(uiActions.uiIsEditing(true))
     dispatch(accountsActions.selectedAccount(item))
   }
-  const handleDelete = (id: any) => {
+  const handleDelete = () => {
     Swal.fire({
       title: '¿Está seguro que desea eliminar esta cuenta?',
       text: 'No es posible revertir esta acción',
@@ -137,7 +137,7 @@ export const TableBodyItem = ({item} : any) => {
             >
               <i className='fa fa-edit'></i>
             </button>
-            <button className='btn btn-icon btn-danger btn-sm' onClick={() => handleDelete(acId)}>
+            <button className='btn btn-icon btn-danger btn-sm' onClick={() => handleDelete()}>
               <i className='fa fa-trash'></i>
             </button>
           </div>

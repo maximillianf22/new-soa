@@ -2,6 +2,7 @@ import {Form, Formik, FormikProps} from 'formik'
 import { useDispatch } from 'react-redux';
 import Select from 'react-select';
 import { accountsActions } from '../../../../redux/actions/accountsActions';
+import { plansActions } from '../../../../redux/actions/plansActions';
 import {IAccountInfo, IAccountsDetail} from '../../Interfaces/models'
 
 export const AccountsDetail = ({
@@ -17,6 +18,7 @@ export const AccountsDetail = ({
   const selectAccountChange = (account: any) => {
 
     dispatch(accountsActions.selectedAccount(account))
+    // dispatch(plansActions.setAllReduxPlans(account.plans))
 
   }
 
@@ -49,7 +51,6 @@ export const AccountsDetail = ({
                     // isLoading={isLoading}
                     getOptionLabel={(option) => option.acName}
                     getOptionValue={(option) => option.acId.toString()}
-                    isClearable
                     isSearchable
                     onChange={(account) => selectAccountChange(account)}
                     name="accountSelect"

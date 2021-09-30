@@ -3,6 +3,8 @@ import {useDispatch, useSelector} from 'react-redux'
 import Swal from 'sweetalert2'
 import {RootState} from '../../../../../../setup'
 import {userActions} from '../../../../../redux/actions/actions'
+import { plansActions } from '../../../../../redux/actions/plansActions'
+import { uiActions } from '../../../../../redux/actions/uiActions'
 import {usersTypes} from '../../../../../redux/types/types'
 
 export const TableBodyItem = ({item} : any) => {
@@ -22,13 +24,15 @@ export const TableBodyItem = ({item} : any) => {
 
   const dispatch = useDispatch()
 
-  const handleView = (user: any) => {
-    user.toEdit = false
-    dispatch(userActions.SelectedUser(user))
+  const handleView = () => {
+    dispatch(uiActions.uiIsEditing(false))
+    dispatch(uiActions.uiIsViewing(true))
+    dispatch(plansActions.selectedPlan(item))
   }
-  const handleEdit = (user: any) => {
-    user.toEdit = true
-    dispatch(userActions.SelectedUser(user))
+  const handleEdit = () => {
+    dispatch(uiActions.uiIsViewing(false))
+    dispatch(uiActions.uiIsEditing(true))
+    dispatch(plansActions.selectedPlan(item))
   }
   const handleDelete = (id: any) => {
     Swal.fire({
@@ -102,15 +106,9 @@ export const TableBodyItem = ({item} : any) => {
               type='button'
               className='btn btn-icon btn-info btn-sm me-1'
               data-bs-toggle='modal'
-              data-bs-target='#exampleModal'
+              data-bs-target='#planCreateUpdateModal'
               onClick={() =>
-                handleView({
-                  plId,
-                  plName,
-                  plEventsShared,
-                  plIsVip,
-                  plDueDate,
-                })
+                handleView()
               }
             >
               <i className='fa fa-eye'></i>
@@ -119,15 +117,9 @@ export const TableBodyItem = ({item} : any) => {
               type='button'
               className='btn btn-icon btn-success btn-sm me-1'
               data-bs-toggle='modal'
-              data-bs-target='#exampleModal'
+              data-bs-target='#planCreateUpdateModal'
               onClick={() =>
-                handleEdit({
-                  plId,
-                  plName,
-                  plEventsShared,
-                  plIsVip,
-                  plDueDate,
-                })
+                handleEdit()
               }
             >
               <i className='fa fa-edit'></i>

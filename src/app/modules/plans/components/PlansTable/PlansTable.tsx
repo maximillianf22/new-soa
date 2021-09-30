@@ -6,11 +6,13 @@ import { planTypes } from '../../../../redux/types/planTypes'
 import { tableTypes, usersTypes } from '../../../../redux/types/types'
 import { IPlansTable } from '../../Interfaces/models'
 import { TableComponent } from './components/TableComponent'
+import { PlanCreateEdit } from './PlanCreateEdit'
 
 export const PlansTable = ({stats}: IPlansTable) => {
   const dispatch = useDispatch()
 
-  const plans: any = useSelector<RootState>(({accounts}) => accounts.selectedAccount)
+  // const {plans}: any = useSelector<RootState>(({accounts}) => accounts.selectedAccount)
+  const {plans}: any = useSelector<RootState>(({plans}) => plans)
 
   const tableHeads = [
     'Id',
@@ -29,9 +31,9 @@ export const PlansTable = ({stats}: IPlansTable) => {
       payload: {
         tableHeader: {
           title: 'Planes',
-          count: plans.length,
-          btnLink: 'create',
-          btnModal: '',
+          count: plans?.length,
+          btnLink: '',
+          btnModal: '#planCreateUpdateModal',
           tableHeads: tableHeads,
         },
         tableBody: {
@@ -47,7 +49,8 @@ export const PlansTable = ({stats}: IPlansTable) => {
 
   return (
     <>
-      {/* <TableComponent title='Planes' stats={stats}/> */}
+      <TableComponent title='Planes' stats={stats}/>
+      <PlanCreateEdit />
     </>
   )
 }

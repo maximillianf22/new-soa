@@ -48,7 +48,13 @@ export const plansReducer = persistReducer(
                 return {
                     ...state,
                     plans: state.plans.filter( (plan: IPlanResponse) => plan.plId !== action.payload)
-                } 
+                }
+
+            case planTypes.setAllReduxPlans:
+                return {
+                    ...state,
+                    plans: action.payload
+                }
 
             case planTypes.clear:
                 return {

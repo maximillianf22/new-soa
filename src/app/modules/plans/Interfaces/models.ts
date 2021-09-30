@@ -1,11 +1,18 @@
 export interface ICreatePlans {
-    description: string
-    code: string
-    url: string
-    initialDate: Date
-    finalDate: Date
-    dueDate: string
-  }
+  plId:              number;
+  plName:            string;
+  plIsVip:           boolean;
+  plStatus:          boolean;
+  plStartDate:       string;
+  plDueDate:         string;
+  plDaysToDue:       number;
+  plCreationDate:    string;
+  plUpdatedAt:       string;
+  plEventsShared:    boolean;
+  plnumEventsShared: number;
+  plFileUploadPath:  File;
+  acId:              number;
+}
   
 export interface IStatsItem {
     title: string;
