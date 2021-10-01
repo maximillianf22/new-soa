@@ -3,21 +3,21 @@ import { accountTypes } from '../types/accountTypes';
 
 export const accountsActions = {
     load: (payload: any) => ({
-        type: accountTypes.accountsLoad,
+        type: accountTypes.load,
         payload: {accounts: payload.results}
     }),
-    active: (payload:any) => ({
-      type: accountTypes.accountActive, payload: {active: payload}
+    selectedAccount: (payload:any) => ({
+      type: accountTypes.selectedAccount, payload
     }),
-    accountAddRedux: (payload:any) => ({
-      type: accountTypes.accountAddRedux, payload: {accounts: payload}
+    addRedux: (payload:any) => ({
+      type: accountTypes.addRedux, payload: {accounts: payload}
     }),
-    accountDeleteRedux: (payload:any) => ({
-      type: accountTypes.accountDeleteRedux, payload: payload
+    deleteRedux: (payload:any) => ({
+      type: accountTypes.deleteRedux, payload: payload
     }),
-    accountUpdateRedux: (payload:any) => ({
-      type: accountTypes.accountUpdateRedux, payload: payload
+    updateRedux: (payload:any) => ({
+      type: accountTypes.updateRedux, payload: payload
     }),
-    clear: () => ({type: accountTypes.accountsClear,}),
+    clear: () => ({type: accountTypes.clear,}),
 //     updateTableHeads: (payload: any) => ({type: accountTypes.LoadTableHeads, payload: payload}),
   }

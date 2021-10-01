@@ -23,7 +23,7 @@ export const AccountsTable = () => {
   ]
 
 useEffect(() => {
-  dispatch({type: accountTypes.accountsGet})
+  dispatch({type: accountTypes.get})
 }, [dispatch])
 
 useEffect(() => {
@@ -32,7 +32,7 @@ useEffect(() => {
     payload: {
       tableHeader: {  
         title: 'Cuentas',
-        count: 234,
+        count: accounts.length,
         btnLink: '',
         btnModal: '#accountCreateUpdateModal',
         tableHeads: tableHeads,
