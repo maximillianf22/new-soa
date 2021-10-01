@@ -27,3 +27,19 @@ export interface IServicesTable {
     stats?: string;
 }
 
+
+export interface ServiceModel {
+    servId:          number;
+    servDescription: string;
+    servStartDate:   null;
+    servDueDate:     null;
+    servStatus:      boolean;
+    fmId:            number;
+}
+
+export interface IServicesResponse {
+    count: number
+    next: null
+    previous: null
+    results: ServiceModel[]
+}

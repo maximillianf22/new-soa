@@ -11,9 +11,9 @@ import { getFamilies, deleteFamily, updateFamily, createFamily } from '../../api
 
 
 interface ActionTypePayload {
-    type: string, 
-    payload: number
-  }
+  type: string, 
+  payload: number
+}
 
 
 

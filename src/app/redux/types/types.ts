@@ -41,6 +41,19 @@ export const familiesTypes = {
   DeleteFromReducer: '[familyRedux] delete family from reducer',
 }
 
+export const servicesTypes = {
+  AsyncLoad: '[servicesRedux] start loading data',
+  Load: '[servicesRedux] load data do reducer',
+  Clear: '[servicesRedux] clear reducer data',
+  Delete: '[servicesRedux] delete service',
+  Update: '[servicesRedux] update service',
+  Create: '[servicesRedux] create service',
+  selectedService: '[servicesRedux] selected service',
+  ClearSelectedService: '[servicesRedux] clear selected service',
+
+  DeleteFromReducer: '[servicesRedux] delete service from reducer',
+}
+
 export const uiTypes = {
   uiSetError: '[UI] Set Error',
   uiRemoveError: '[UI] Remove Error',

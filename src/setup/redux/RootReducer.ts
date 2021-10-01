@@ -9,6 +9,8 @@ import { sagaUsers, authSaga, tableSaga, sagaFamilies } from '../../app/redux/sa
 import { uiReducer } from '../../app/redux/reducers/uiReducer';
 import { accountsReducer } from '../../app/redux/reducers/AccountsReducer';
 import { sagaAccounts } from '../../app/redux/sagas/accountsSagas';
+import { servicesReducer } from '../../app/redux/reducers/ServicesReducer';
+import { sagaServices } from '../../app/redux/sagas/servicesSagas';
 
 export const rootReducer = combineReducers({
   auth: auth.reducer,
@@ -17,10 +19,18 @@ export const rootReducer = combineReducers({
   families: familiesReducer,
   ui: uiReducer,
   accounts: accountsReducer,
-})
+  services: servicesReducer,
+});
 
 export type RootState = ReturnType<typeof rootReducer>
 
 export function* rootSaga() {
-  yield all([authSaga(), tableSaga(), sagaUsers(), sagaAccounts(), sagaFamilies()])
-}
+  yield all([
+    authSaga(),
+    tableSaga(),
+    sagaUsers(),
+    sagaAccounts(),
+    sagaFamilies(),
+    sagaServices(),
+  ])
+};

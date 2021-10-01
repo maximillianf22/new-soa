@@ -78,9 +78,9 @@ export const FamiliesDetails = ({
               <a href='' className='w-100'>
                 <div className='d-flex align-items-center flex-wrap w-100'>
                   <div className='mb-1 pe-3 flex-grow-1'>
-                    <a href='#' className='fs-5 text-hover-primary text-warning fw-bolder'>
+                    <span className='fs-5 text-hover-primary text-warning fw-bolder'>
                       Servicios VIP
-                    </a>
+                    </span>
                     <div className='text-gray-400 fw-bold fs-7'>Listado</div>
                   </div>
                   <div className='d-flex align-items-center'>
@@ -98,9 +98,9 @@ export const FamiliesDetails = ({
               <a href='' className='w-100'>
                 <div className='d-flex align-items-center flex-wrap w-100'>
                   <div className='mb-1 pe-3 flex-grow-1'>
-                    <a href='#' className='fs-5 text-gray-800 text-hover-primary fw-bolder'>
+                    <span className='fs-5 text-gray-800 text-hover-primary fw-bolder'>
                       Servicios Activos
-                    </a>
+                    </span>
                     <div className='text-gray-400 fw-bold fs-7'>Listado</div>
                   </div>
                   <div className='d-flex align-items-center'>
@@ -118,9 +118,9 @@ export const FamiliesDetails = ({
               <a href='' className='w-100'>
                 <div className='d-flex align-items-center flex-wrap w-100'>
                   <div className='mb-1 pe-3 flex-grow-1'>
-                    <a href='#' className='fs-5 text-gray-800 text-hover-primary fw-bolder'>
+                    <span className='fs-5 text-gray-800 text-hover-primary fw-bolder'>
                       Servicios Inactivos
-                    </a>
+                    </span>
                     <div className='text-gray-400 fw-bold fs-7'>Listado</div>
                   </div>
                   <div className='d-flex align-items-center'>

@@ -2,23 +2,17 @@ import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Swal from 'sweetalert2'
 import {RootState} from '../../../../../../setup'
-import {userActions} from '../../../../../redux/actions/actions'
+import { servicesActions } from '../../../../../redux/actions/actions';
 import {usersTypes} from '../../../../../redux/types/types'
 
 export const TableBodyItem = ({item} : any) => {
   
   const {
-    id,
-    username,
-    first_name,
-    last_name,
-    email,
-    is_active,
-    date_joined,
-    init_date_validity,
-    end_date_validity,
-    rolId,
-    password_change,
+    servId,
+    servDescription,
+    servStartDate,
+    servDueDate,
+    servStatus,
   } = item
 
   const table: any = useSelector<RootState>(({table}) => table)
@@ -28,14 +22,13 @@ export const TableBodyItem = ({item} : any) => {
 
   const dispatch = useDispatch()
 
-  const handleView = (user: any) => {
-    user.toEdit = false
-    dispatch(userActions.SelectedUser(user))
+  const handleView = (service: any) => {
+    dispatch(servicesActions.SelectedService(service))
   }
-  const handleEdit = (user: any) => {
-    user.toEdit = true
-    dispatch(userActions.SelectedUser(user))
+  const handleEdit = (service: any) => {
+    dispatch(servicesActions.SelectedService(service))
   }
+
   const handleDelete = (id: any) => {
     Swal.fire({
       title: '¿Está seguro que desea eliminar este usuario?',
@@ -59,48 +52,30 @@ export const TableBodyItem = ({item} : any) => {
       <tr>
         {tableHeads.includes('id') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{id}</p>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{servId}</p>
           </td>
         )}
-        {tableHeads.includes('usuario') && (
+        {tableHeads.includes('descripción') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{username}</p>
-          </td>
-        )}
-        {tableHeads.includes('nombre') && (
-          <td>
-            <div className='d-flex align-items-center'>
-              <div className='d-flex justify-content-start flex-column'>
-                <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{first_name}</p>
-                <span className='text-muted fw-bold text-muted d-block fs-7'>CC: 1007345398</span>
-              </div>
-            </div>
-          </td>
-        )}
-        {tableHeads.includes('apellido') && (
-          <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{last_name}</p>
-          </td>
-        )}
-        {tableHeads.includes('correo') && (
-          <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{email}</p>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{servDescription}</p>
           </td>
         )}
 
-        {tableHeads.includes('activo') && (
+        {tableHeads.includes('fecha de creación') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{is_active}</p>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{servStartDate}</p>
           </td>
         )}
-        {tableHeads.includes('fecha creación') && (
+
+        {tableHeads.includes('fecha vencimiento') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{date_joined}</p>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{servDueDate}</p>
           </td>
         )}
-        {tableHeads.includes('rol') && (
+
+        {tableHeads.includes('estado') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{rolId}</p>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{servStatus}</p>
           </td>
         )}
         <td>
@@ -109,20 +84,14 @@ export const TableBodyItem = ({item} : any) => {
               type='button'
               className='btn btn-icon btn-info btn-sm me-1'
               data-bs-toggle='modal'
-              data-bs-target='#exampleModal'
+              data-bs-target='#kt_modal_services'
               onClick={() =>
                 handleView({
-                  id,
-                  username,
-                  first_name,
-                  last_name,
-                  email,
-                  is_active,
-                  date_joined,
-                  password_change,
-                  init_date_validity,
-                  end_date_validity,
-                  rolId,
+                  servId,
+                  servDescription,
+                  servStartDate,
+                  servDueDate,
+                  servStatus,
                 })
               }
             >
@@ -132,26 +101,20 @@ export const TableBodyItem = ({item} : any) => {
               type='button'
               className='btn btn-icon btn-success btn-sm me-1'
               data-bs-toggle='modal'
-              data-bs-target='#exampleModal'
+              data-bs-target='#kt_modal_services'
               onClick={() =>
                 handleEdit({
-                  id,
-                  username,
-                  first_name,
-                  last_name,
-                  email,
-                  is_active,
-                  date_joined,
-                  password_change,
-                  init_date_validity,
-                  end_date_validity,
-                  rolId,
+                  servId,
+                  servDescription,
+                  servStartDate,
+                  servDueDate,
+                  servStatus,
                 })
               }
             >
               <i className='fa fa-edit'></i>
             </button>
-            <button className='btn btn-icon btn-danger btn-sm' onClick={() => handleDelete(id)}>
+            <button className='btn btn-icon btn-danger btn-sm' onClick={() => handleDelete(servId)}>
               <i className='fa fa-trash'></i>
             </button>
           </div>

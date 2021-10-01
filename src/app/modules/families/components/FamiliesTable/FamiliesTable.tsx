@@ -1,7 +1,7 @@
 import {useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { RootState } from '../../../../../setup'
-import { tableActions, userActions } from '../../../../redux/actions/actions'
+import { tableActions } from '../../../../redux/actions/actions'
 import { tableTypes, familiesTypes } from '../../../../redux/types/types'
 import { ModalForm } from '../FamiliesForm/ModalForm'
 import { TableComponent } from './components/TableComponent'
