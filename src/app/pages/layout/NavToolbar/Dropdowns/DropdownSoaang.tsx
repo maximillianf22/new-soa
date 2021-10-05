@@ -14,7 +14,7 @@ export const DropdownSoaang = () => {
         >
           <ItemDropdown title='Cuentas' link='/accounts/home'/>
           <ItemDropdown title='Planes' link='/plans/home'/>
-          <ItemDropdown title='Servicios' link='/services/home'/>
+          <ItemDropdown title='Servicios' link='/plan-service/home'/>
           <ItemDropdown title='Familias' link='/families/home'/>
           <ItemDropdown title='Proveedores' link='/providers/home'/>
         </div>

@@ -2,7 +2,7 @@ import React from 'react'
 import {Form, Formik, FormikProps} from 'formik'
 import {Collapse} from 'react-bootstrap-v5'
 import {InputCustom} from '../../../../global/components/inputs'
-import { initialValues } from '../../Helpers'
+import { initialValues } from '../../ProvidersForm/Helpers'
 
 const CollapseFilters = ({open}: any) => {
   return (
