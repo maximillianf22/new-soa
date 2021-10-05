@@ -15,6 +15,7 @@ export const tableActions = {
   updateTableHeads: (payload: any) => ({type: tableTypes.LoadTableHeads, payload: payload}),
   clear: () => ({type: tableTypes.clearTable,}),
 }
+
 export const authActions = {
   login: (loginResponse: ResponseGenerator | undefined) => ({type: authTypes.Login, payload: loginResponse}),
   loading: () => ({type: authTypes.Loading}),
@@ -37,6 +38,7 @@ export const familiesActions = {
   SelectedFamily: (payload:any) => ({type: familiesTypes.SelectedFamily, payload: {SelectedFamily:payload}}),
   ClearSelectedFamily: () => ({type: familiesTypes.ClearSelectedFamily}),
   updateFamily: (payload:any) => ({type: familiesTypes.Update, payload: {family:payload}}),
+  updateFromReducer: (payload:any) => ({type: familiesTypes.UpdateFromReducer, payload: {SelectedFamily:payload}}),
   createFamily: (payload:any) => ({type: familiesTypes.Create, payload: {family:payload}}),
 }
 

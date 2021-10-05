@@ -37,7 +37,7 @@ export const FamiliesTable = () => {
           tableHeads: tableHeads,
         },
         tableBody: {
-          tableHeads: ['id', 'estado', 'modificado por',],
+          tableHeads: ['id', 'descripción', 'estado', 'modificado por',],
           tableContent: families,
         },
       },

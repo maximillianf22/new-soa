@@ -35,7 +35,6 @@ export function* sagaServices() {
       try {
         yield call(updateService, payload);
         const {data}: IResponseServiceService = yield call(getService, payload)
-        console.log(data);
         yield put(servicesActions.updateFromReducer(data))
       } catch (error) {
         console.log(error)

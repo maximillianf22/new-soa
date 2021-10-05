@@ -39,6 +39,8 @@ export const familiesTypes = {
   ClearSelectedFamily: '[familyRedux] clear selected family',
 
   DeleteFromReducer: '[familyRedux] delete family from reducer',
+  UpdateFromReducer: '[familyRedux] update family from reducer',
+
 }
 
 export const servicesTypes = {

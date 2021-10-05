@@ -45,7 +45,6 @@ export const servicesReducer = persistReducer(
         return {...state, services: state.services?.filter( s => s.servId !== action.payload?.selectedService?.servId )};
       }
       case servicesTypes.UpdateFromReducer: {
-        console.log('En el updateFromReducer', action.payload?.selectedService )
         return {...state, services: state.services?.map( s => s.servId === action.payload?.selectedService?.servId ? action.payload?.selectedService : s )};
       }
       default:

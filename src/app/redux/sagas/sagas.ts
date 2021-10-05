@@ -146,7 +146,8 @@ export function* sagaFamilies() {
 
   function* sagaUpdateFamily({payload}:ActionTypePayload) {
     try {
-      const resp: IfamilyResponse = yield call(updateFamily, payload)
+      const {data}: IfamilyResponseRR = yield call(updateFamily, payload)
+      yield put(familiesActions.updateFromReducer(data))
     } catch (error) {
       console.log(error)
     }
