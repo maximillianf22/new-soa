@@ -52,6 +52,7 @@ export const servicesTypes = {
   ClearSelectedService: '[servicesRedux] clear selected service',
 
   DeleteFromReducer: '[servicesRedux] delete service from reducer',
+  UpdateFromReducer: '[servicesRedux] update service from reducer',
 }
 
 export const uiTypes = {

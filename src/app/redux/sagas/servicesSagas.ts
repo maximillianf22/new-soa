@@ -1,7 +1,7 @@
 import { IfamilyResponseRR } from '../../modules/families/Interfaces/models';
 import { call, takeLatest, put } from 'redux-saga/effects';
-import { getServices, deleteService, updateService, createService } from '../../api/ServicesService';
-import { IServicesResponse } from '../../modules/services/Interfaces/models';
+import { getServices, deleteService, updateService, createService, getService } from '../../api/ServicesService';
+import { IServicesResponse, IResponseServiceService } from '../../modules/services/Interfaces/models';
 import { servicesActions } from '../actions/actions';
 import { servicesTypes } from '../types/types';
 
@@ -24,14 +24,19 @@ export function* sagaServices() {
     function* sagaDeleteService({payload}:ActionTypePayload) {
       try {
         const resp: IServicesResponse = yield call(deleteService, payload)
+        console.log(resp)
       } catch (error) {
         console.log(error)
       }
     }
   
     function* sagaUpdateService({payload}:ActionTypePayload) {
+
       try {
-        const resp: IServicesResponse = yield call(updateService, payload)
+        yield call(updateService, payload);
+        const {data}: IResponseServiceService = yield call(getService, payload)
+        console.log(data);
+        yield put(servicesActions.updateFromReducer(data))
       } catch (error) {
         console.log(error)
       }

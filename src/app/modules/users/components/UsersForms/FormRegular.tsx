@@ -89,8 +89,8 @@ export const FormRegular = () => {
                   <div className='col-md-4 px-5 fv-row my-3'>
                     {SelectedUser ? (
                       <InputDueDate
-                        init_date_validity={SelectedUser.init_date_validity}
-                        end_date_validity={SelectedUser.end_date_validity}
+                        init_name="init_date_validity"
+                        end_name="end_date_validity"
                       />
                     ) : (
                       <InputDueDate />

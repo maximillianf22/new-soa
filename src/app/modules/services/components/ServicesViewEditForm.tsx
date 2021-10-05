@@ -17,7 +17,6 @@ export const ServicesViewEditForm = () => {
   const {loading, editing: isEditing, viewing: isViewing}: any = useSelector<RootState>(({ui}) => ui)
 
   const dispatch = useDispatch()
-
   return (
     <>
       <Formik
@@ -25,9 +24,7 @@ export const ServicesViewEditForm = () => {
         enableReinitialize={true}
         onSubmit={(values) => {
           console.log('en submit', values)
-          if (values.fmId > 0) {
-            dispatch(servicesActions.updateService(values))
-          }
+          dispatch(servicesActions.updateService(values))
         }}
       >
         {(props: FormikProps<any>) => (
@@ -41,31 +38,12 @@ export const ServicesViewEditForm = () => {
                   <div className='col-md-4 px-5 fv-row my-3'>
                     {selectedService ? (
                       <InputDueDate
-                        init_date_validity={selectedService.servStartDate}
-                        end_date_validity={selectedService.servDueDate}
+                        init_name="servStartDate"
+                        end_name="servDueDate"
                       />
                     ) : (
                       <InputDueDate />
                     )}
-                  </div>
-                  <div className='col-md-12 px-5 fv-row my-3'>
-                    <label className='col-form-label required fw-bold fs-6 py-2'>Grupo</label>
-                    <Field name='fmGrouped' component={InputSelect} options={optionsGroups} />
-                  </div>
-                  <div className='col-md-3 px-5 fv-row my-3'>
-                    <div className='my-auto h-100 text-center mt-4'>
-                      <label></label>
-                      <div className='form-check form-switch form-check-custom form-check-solid'>
-                        <InputCustom
-                          className='form-check-input h-30px w-50px'
-                          type='checkbox'
-                          name='servStatus'
-                          id='flexSwitchChecked'
-                          disabled={isViewing}
-                        />
-                        <label className='form-check-label'>¿Habilitado?</label>
-                      </div>
-                    </div>
                   </div>
                 </div>
                 <div className='px-5 pt-5 fv-row text-end'>

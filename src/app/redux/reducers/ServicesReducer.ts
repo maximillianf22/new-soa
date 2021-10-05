@@ -30,22 +30,26 @@ export const servicesReducer = persistReducer(
   (state: IServicesState = initialServicesState, action: ActionWithPayload<IServicesState>) => {
     switch (action.type) {
       case servicesTypes.Load: { 
-        return {...state, services: action.payload?.services}
+        return {...state, services: action.payload?.services};
       }
       case servicesTypes.Clear: {
-        return {...initialServicesState}
+        return {...initialServicesState};
       }
       case servicesTypes.selectedService: {
-        return {...state, selectedService: action.payload?.selectedService}
+        return {...state, selectedService: action.payload?.selectedService};
       }
       case servicesTypes.ClearSelectedService: {
-        return {...state, selectedService: initialServicesState.selectedService}
+        return {...state, selectedService: initialServicesState.selectedService};
       }
       case servicesTypes.DeleteFromReducer: {
-        return {...state, services: state.services?.filter( f => f.fmId !== action.payload?.selectedService?.fmId )}
+        return {...state, services: state.services?.filter( s => s.servId !== action.payload?.selectedService?.servId )};
+      }
+      case servicesTypes.UpdateFromReducer: {
+        console.log('En el updateFromReducer', action.payload?.selectedService )
+        return {...state, services: state.services?.map( s => s.servId === action.payload?.selectedService?.servId ? action.payload?.selectedService : s )};
       }
       default:
-        return state
+        return state  
     }
   }
-)
+);
