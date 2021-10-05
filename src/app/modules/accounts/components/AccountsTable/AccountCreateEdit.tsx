@@ -5,7 +5,6 @@ import { AccountsForm } from '../AccountsForm'
 export const AccountCreateEdit = () => {
   const dispatch = useDispatch()
   const handleClose = () => {
-    console.log('entro');
     // dispatch(userActions.ClearSelectedUser());
   }
   return (

@@ -6,11 +6,9 @@ export interface ICreatePlans {
   plStartDate:       string;
   plDueDate:         string;
   plDaysToDue:       number;
-  plCreationDate:    string;
-  plUpdatedAt:       string;
   plEventsShared:    boolean;
   plnumEventsShared: number;
-  plFileUploadPath:  File;
+  plFileUploadPath?: File;
   acId:              number;
 }
   
@@ -38,6 +36,7 @@ export interface IPlanInitialValues {
   plans?: IPlanResponse[] | IPlanResponse
   selectedPlan?: IPlanResponse
   plId: number | null
+  acId: number | null
 }
 
 export interface IPlansReduxType {

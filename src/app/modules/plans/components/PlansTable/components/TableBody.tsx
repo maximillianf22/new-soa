@@ -8,10 +8,7 @@ export const TableBody: React.FC = () => {
   const table: any = useSelector<RootState>(({table}) => table, shallowEqual)
   const {
     tableBody: {tableHeads, tableContent},
-  } = table
-
-  console.log('tableContent', tableContent);
-  
+  } = table  
 
   return (
     <>

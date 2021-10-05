@@ -67,8 +67,6 @@ export interface IAccountsDetailsHeader {
 }
 
 export interface IAccountsDetail {
-  selectedAccount: IAccountInfo,
-  accounts: IAccountInfo[],
   count_vip: number
   count_active: number
   count_inactive: number

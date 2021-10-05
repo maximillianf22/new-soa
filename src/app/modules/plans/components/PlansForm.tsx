@@ -5,6 +5,7 @@ import {createPlansSchemas, initialValues} from './Helpers'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../../../setup'
 import Select from 'react-select'
+import { planTypes } from '../../../redux/types/planTypes'
 
 export const PlansForm = () => {
 
@@ -22,7 +23,14 @@ export const PlansForm = () => {
         validationSchema={createPlansSchemas}
         enableReinitialize={true}
         onSubmit={(values) => {
+          if (values.acId === 0) {
+            values.acId = selectedAccount.acId
+          }
           console.log('en submit', values)
+          dispatch({
+            type: isEditing ? planTypes.update : planTypes.create,
+            payload: values
+          })
         }}
       >
         {(props: FormikProps<any>) => (
@@ -46,6 +54,7 @@ export const PlansForm = () => {
                           type='number'
                           name='plDaysToDue'
                           label='Días de due'
+                          // required
                           disabled={isViewing}
                         />
                       </div>
@@ -56,6 +65,7 @@ export const PlansForm = () => {
                               type="date"
                               name='plStartDate'
                               label="Fecha Inicio"
+                              required
                               disabled={isViewing}
                             />
                           </div>
@@ -64,6 +74,7 @@ export const PlansForm = () => {
                               type="date"
                               name='plDueDate'
                               label="Fecha Final"
+                              required
                               disabled={isViewing}
                             />
                           </div>
@@ -80,16 +91,28 @@ export const PlansForm = () => {
                           name="acId"
                           options={accounts}
                           isDisabled={isViewing}
+                          onChange={(account) => {
+                            props.setFieldValue("acId", account.acId);
+                          }}
                         />
                       </div>
-                      {/* <div className='col-md-6 px-5 fv-row my-3'>
-                        <InputCustom
-                          type='file'
-                          name='plFileUploadPath'
-                          label='Archivo'
+                      <div className='col-md-6 px-5 fv-row my-3'>
+                        <label htmlFor="planFilePicker" className='col-form-label fw-bold fs-6 py-2'>
+                          Archivo (pdf)
+                        </label>
+                        <input
+                          id="planFilePicker"
+                          name="plFileUploadPath"
+                          type="file"
+                          accept="application/pdf"
+                          className="form-control"
                           disabled={isViewing}
+                          data-buttontext="Seleccione el archivo"
+                          onChange={(event) => {
+                            props.setFieldValue("plFileUploadPath", event.currentTarget.files![0]);
+                          }}
                         />
-                      </div> */}
+                      </div>
 
                       {/* Este input se muestra cuando se checkea envio automatico de notificacion de vencimiento */}
                       {/* <div className='col-md-6 px-5 fv-row mt-7'>
@@ -164,7 +187,7 @@ export const PlansForm = () => {
                       type='submit'
                       className='btn btn-primary'
                       // data-bs-dismiss='modal'
-                      // disabled={!props.dirty || !props.isValid}
+                      disabled={!props.dirty || !props.isValid}
                     >
                       {!loading && <span className='indicator-label'>{isEditing? 'Actualizar': 'Guardar'}</span>}
                         {loading && (

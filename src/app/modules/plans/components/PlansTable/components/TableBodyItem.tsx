@@ -1,11 +1,9 @@
-import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Swal from 'sweetalert2'
 import {RootState} from '../../../../../../setup'
-import {userActions} from '../../../../../redux/actions/actions'
 import { plansActions } from '../../../../../redux/actions/plansActions'
 import { uiActions } from '../../../../../redux/actions/uiActions'
-import {usersTypes} from '../../../../../redux/types/types'
+import { planTypes } from '../../../../../redux/types/planTypes'
 
 export const TableBodyItem = ({item} : any) => {
   
@@ -46,7 +44,7 @@ export const TableBodyItem = ({item} : any) => {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch({type: usersTypes.Delete, payload: id})
+        dispatch({type: planTypes.delete, payload: id})
         Swal.fire('¡Eliminado!', 'El usuario fue eliminado correctamente.', 'success')
       }
     })

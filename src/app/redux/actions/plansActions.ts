@@ -6,6 +6,10 @@ export const plansActions = {
         type: planTypes.load,
         payload: {plans: payload.results}
     }),
+    loadPlansByAcId: (payload: any) => ({
+        type: planTypes.loadPlansByAcId,
+        payload: {plans: payload.results}
+    }),
     selectedPlan: (payload:any) => ({
       type: planTypes.selectedPlan, payload
     }),

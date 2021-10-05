@@ -22,11 +22,9 @@ const initialValues: ICreatePlans = {
     plStartDate: '',
     plDueDate: '',
     plDaysToDue: 0,
-    plCreationDate: '',
-    plUpdatedAt: '',
     plEventsShared: false,
     plnumEventsShared: 0,
-    plFileUploadPath: new File([''], ''),
+    // plFileUploadPath: null,
     acId: 0
 }
 

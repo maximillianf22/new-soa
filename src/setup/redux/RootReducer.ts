@@ -10,6 +10,7 @@ import { uiReducer } from '../../app/redux/reducers/uiRedux';
 import { accountsReducer } from '../../app/redux/reducers/AccountsRedux';
 import { sagaAccounts } from '../../app/redux/sagas/accountsSagas';
 import { plansReducer } from '../../app/redux/reducers/PlansRedux';
+import { sagaPlans } from '../../app/redux/sagas/plansSagas';
 
 export const rootReducer = combineReducers({
   accounts: accountsReducer,
@@ -24,5 +25,12 @@ export const rootReducer = combineReducers({
 export type RootState = ReturnType<typeof rootReducer>
 
 export function* rootSaga() {
-  yield all([authSaga(), tableSaga(), sagaUsers(), sagaAccounts(), sagaFamilies()])
+  yield all([
+    authSaga(),
+    tableSaga(),
+    sagaUsers(),
+    sagaAccounts(),
+    sagaPlans(),
+    sagaFamilies(),
+  ])
 }
