@@ -18,7 +18,6 @@ export const FamiliesTable = () => {
     'fecha de creación',
     'fecha actualizado',
     'modificado por',
-    'activo',
   ]
 
   useEffect(() => {
