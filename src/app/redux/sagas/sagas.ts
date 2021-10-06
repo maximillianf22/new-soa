@@ -156,6 +156,7 @@ export function* sagaFamilies() {
   function* sagaCreateFamily({payload}:ActionTypePayload) {
     try {
       const resp: IfamilyResponse = yield call(createFamily, payload)
+      yield put({type: familiesTypes.AsyncLoad})
     } catch (error) {
       console.log(error)
     }

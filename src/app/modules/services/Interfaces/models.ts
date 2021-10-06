@@ -34,7 +34,7 @@ export interface ServiceModel {
     servStartDate:   null;
     servDueDate:     null;
     servStatus:      boolean;
-    fmId:            number;
+    fmId:            any;
 }
 
 export interface IServicesResponse {
