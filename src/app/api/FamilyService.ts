@@ -6,7 +6,7 @@ export const FAMILIES_URL = `soaang-catalogs/api/families/family/`;
 
 // Servidor debe retonar IfamilyResponse
 
-export function createFamily({family}:any): Promise<IfamilyResponse> {
+export function createFamily(family:any): Promise<IfamilyResponse> {
   return httpClient.post(`${FAMILIES_URL}`, family)
 };
 
@@ -18,8 +18,7 @@ export function getFamily(id: number): Promise<IfamilyResponse> {
   return httpClient.get(`${FAMILIES_URL}id`)
 };
 
-export function updateFamily({family}:any): Promise<IfamilyResponse> {
-  console.log("ESTOY EN SERVICE",family)
+export function updateFamily(family:any): Promise<IfamilyResponse> {
   const {fmId} = family;
   return httpClient.patch(`${FAMILIES_URL}${fmId}/`, family)
 };

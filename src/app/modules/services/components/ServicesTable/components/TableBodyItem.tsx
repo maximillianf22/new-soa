@@ -4,6 +4,7 @@ import Swal from 'sweetalert2'
 import {RootState} from '../../../../../../setup'
 import { servicesActions } from '../../../../../redux/actions/actions';
 import {servicesTypes, usersTypes} from '../../../../../redux/types/types'
+import { uiActions } from '../../../../../redux/actions/uiActions';
 
 export const TableBodyItem = ({item} : any) => {
   
@@ -13,6 +14,7 @@ export const TableBodyItem = ({item} : any) => {
     servStartDate,
     servDueDate,
     servStatus,
+    fmId,
   } = item
 
   const table: any = useSelector<RootState>(({table}) => table)
@@ -23,9 +25,13 @@ export const TableBodyItem = ({item} : any) => {
   const dispatch = useDispatch()
 
   const handleView = (service: any) => {
+    dispatch(uiActions.uiIsEditing(false))
+    dispatch(uiActions.uiIsViewing(true))
     dispatch(servicesActions.SelectedService(service))
   }
   const handleEdit = (service: any) => {
+    dispatch(uiActions.uiIsViewing(false))
+    dispatch(uiActions.uiIsEditing(true))
     dispatch(servicesActions.SelectedService(service))
   }
 
@@ -93,6 +99,7 @@ export const TableBodyItem = ({item} : any) => {
                   servStartDate,
                   servDueDate,
                   servStatus,
+                  fmId,
                 })
               }
             >
@@ -110,6 +117,7 @@ export const TableBodyItem = ({item} : any) => {
                   servStartDate,
                   servDueDate,
                   servStatus,
+                  fmId,
                 })
               }
             >

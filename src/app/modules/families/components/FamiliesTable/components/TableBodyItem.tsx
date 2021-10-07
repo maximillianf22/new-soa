@@ -71,12 +71,7 @@ export const TableBodyItem = ({item} : any) => {
         )}
         {tableHeads.includes('estado') && (
           <td>
-            <div className='d-flex align-items-center'>
-              <div className='d-flex justify-content-start flex-column'>
-                <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{fmStatus}</p>
-                <span className='text-muted fw-bold text-muted d-block fs-7'>CC: 1007345398</span>
-              </div>
-            </div>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{ fmStatus ? 'Activo' : 'Inactivo'}</p>
           </td>
         )}
         {tableHeads.includes('fecha de creación') && (

@@ -12,6 +12,8 @@ import { sagaAccounts } from '../../app/redux/sagas/accountsSagas';
 import { servicesReducer } from '../../app/redux/reducers/ServicesReducer';
 import { sagaServices } from '../../app/redux/sagas/servicesSagas';
 import { plansReducer } from '../../app/redux/reducers/PlansRedux';
+import { sagaPlanServices } from '../../app/redux/sagas/planServicesSagas';
+import { planServicesReducer } from '../../app/redux/reducers/PlanServicesReducer';
 
 export const rootReducer = combineReducers({
   accounts: accountsReducer,
@@ -21,6 +23,7 @@ export const rootReducer = combineReducers({
   table: tableReducer,
   ui: uiReducer,
   services: servicesReducer,
+  planServices: planServicesReducer,
   users: usersReducer,
 });
 
@@ -34,5 +37,6 @@ export function* rootSaga() {
     sagaAccounts(),
     sagaFamilies(),
     sagaServices(),
+    sagaPlanServices(),
   ])
 };

@@ -24,7 +24,6 @@ export function* sagaServices() {
     function* sagaDeleteService({payload}:ActionTypePayload) {
       try {
         const resp: IServicesResponse = yield call(deleteService, payload)
-        console.log(resp)
       } catch (error) {
         console.log(error)
       }
@@ -44,6 +43,7 @@ export function* sagaServices() {
     function* sagaCreateService({payload}:ActionTypePayload) {
       try {
         const resp: IServicesResponse = yield call(createService, payload)
+        yield put({type: servicesTypes.AsyncLoad})
       } catch (error) {
         console.log(error)
       }

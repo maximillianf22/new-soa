@@ -2,7 +2,7 @@ import {useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { RootState } from '../../../../../setup'
 import { tableActions } from '../../../../redux/actions/actions';
-import { tableTypes, servicesTypes } from '../../../../redux/types/types'
+import { tableTypes, servicesTypes, familiesTypes } from '../../../../redux/types/types';
 import { IServicesTable } from '../../Interfaces/models'
 import { TableComponent } from './components/TableComponent'
 import { ModalForm } from '../ModalForm';
@@ -17,10 +17,11 @@ export const ServicesTable = ({stats}: IServicesTable) => {
     'descripción',
     'fecha de creación',
     'fecha vencimiento',
-  ]
+  ];
 
   useEffect(() => {
     dispatch({type: servicesTypes.AsyncLoad})
+    dispatch({type: familiesTypes.AsyncLoad})
   }, [dispatch])
   
   useEffect(() => {
@@ -30,8 +31,8 @@ export const ServicesTable = ({stats}: IServicesTable) => {
         tableHeader: {
           title: 'Servicios',
           count: 234,
-          btnLink: 'create',
-          btnModal: '',
+          btnLink: '',
+          btnModal: '#kt_modal_services',
           tableHeads: tableHeads,
         },
         tableBody: {
