@@ -78,7 +78,7 @@ const MenuInnerLeft: FC = () => {
           className='btn btn-active-white btn-color-white btn-active-color-primary d-flex align-items-center bg-hover-light py-1 px-1 px-md-3'
           data-kt-menu-trigger='click'
           data-kt-menu-attach='parent'
-          data-kt-menu-placement='bottom-end'
+          data-kt-menu-placement='bottom-start'
           data-kt-menu-flip='bottom'
         >
           <div className='d-none d-md-flex flex-column align-items-end justify-content-center me-2'>

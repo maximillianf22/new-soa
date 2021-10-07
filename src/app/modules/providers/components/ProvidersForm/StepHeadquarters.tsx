@@ -18,7 +18,7 @@ export const StepHeadquarters = () => {
         <div className='container'>
           <div className='row'>
             <div className='col-12'>
-              <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+              <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false} >
                 <TileLayer
                   attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                   url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'

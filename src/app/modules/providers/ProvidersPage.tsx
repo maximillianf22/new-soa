@@ -7,7 +7,7 @@ import { FormWizzard } from './components/ProvidersForm/FormWizzard'
 
 const ProvidersBreadCrumbs: Array<PageLink> = [
   {
-    title: 'Servicios',
+    title: 'Proveedores',
     path: '/providers/home',
     isSeparator: false,
     isActive: false,
@@ -24,12 +24,12 @@ const ProvidersPage: React.FC = () => {
   return (
     <Switch>
       <Route path='/providers/home'>
-        <PageTitle breadcrumbs={ProvidersBreadCrumbs}>Tabla de Servicios</PageTitle>
+        <PageTitle breadcrumbs={ProvidersBreadCrumbs}>Tabla de Proveedor</PageTitle>
         <ProvidersTable />
       </Route>
 
       <Route path='/providers/create'>
-        <PageTitle breadcrumbs={ProvidersBreadCrumbs}>Registro de Servicios</PageTitle>
+        <PageTitle breadcrumbs={ProvidersBreadCrumbs}>Registro de Proveedor</PageTitle>
         <FormWizzard />
       </Route>
 
