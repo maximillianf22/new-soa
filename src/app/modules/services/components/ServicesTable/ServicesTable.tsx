@@ -17,7 +17,7 @@ export const ServicesTable = ({stats}: IServicesTable) => {
     'descripción',
     'fecha de creación',
     'fecha vencimiento',
-  ]
+  ];
 
   useEffect(() => {
     dispatch({type: servicesTypes.AsyncLoad})

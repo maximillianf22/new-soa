@@ -29,3 +29,31 @@ export interface ITableComponent {
 export interface IPlanServiceTable {
   stats?: string
 }
+
+export interface IPlanServicesResponse {
+  count: number
+  next: null
+  previous: null
+  results: PlanServiceModel[]
+}
+
+export interface PlanServiceModel {
+  spId:                    number;
+  spNumberOfEvents:        null;
+  spCost:                  null;
+  spVehicle:               null;
+  spDataVehicular:         null;
+  spServApp:               null;
+  spThreePoints:           null;
+  spVideocall:             null;
+  spGroupService:          null;
+  spGroupEqualService:     null;
+  spReAsignProvider:       null;
+  spLogoUploadPath:        string;
+  spLabelForUser:          string;
+  spFrecuency:             null;
+  spConditionsDescription: null;
+  servId:                  number;
+  plId:                    number;
+  pId:                     null;
+}

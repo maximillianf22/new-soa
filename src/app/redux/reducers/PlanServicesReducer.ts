@@ -1,51 +1,63 @@
 import {Action} from '@reduxjs/toolkit'
 import {persistReducer} from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-import { servicesTypes } from '../types/types';
-import { ServiceModel } from '../../modules/services/Interfaces/models';
+import { PlanServiceModel } from '../../modules/plan_services/Interfaces/models';
+import { planServicesTypes } from '../types/planServicesTypes';
 
 export interface ActionWithPayload<T> extends Action {
   payload?: T
 }
 
-const initialServicesState: IServicesState = {
+const initialServicesState: IPlanServicesState = {
     services: [],
-    selectedService: {
-        "servId": 0,
-        "servDescription": "",
-        "servStartDate": null,
-        "servDueDate": null,
-        "servStatus": true,
-        "fmId": 0
+    selectedPlanService: {
+      "spId": 1,
+      "spNumberOfEvents": null,
+      "spCost": null,
+      "spVehicle": null,
+      "spDataVehicular": null,
+      "spServApp": null,
+      "spThreePoints": null,
+      "spVideocall": null,
+      "spGroupService": null,
+      "spGroupEqualService": null,
+      "spReAsignProvider": null,
+      "spLogoUploadPath": "",
+      "spLabelForUser": "DidiTest",
+      "spFrecuency": null,
+      "spConditionsDescription": null,
+      "servId": 2,
+      "plId": 1,
+      "pId": null
     }
 }
 
-interface IServicesState {
-    services: ServiceModel[] | undefined
-    selectedService: ServiceModel | undefined
+interface IPlanServicesState {
+    services: PlanServiceModel[] | undefined
+    selectedPlanService: PlanServiceModel | undefined
 }
 
 export const planServicesReducer = persistReducer(
-  {storage, key: 'v100-demo1-services', whitelist: ['servicesTypes', 'selectedService']},
-  (state: IServicesState = initialServicesState, action: ActionWithPayload<IServicesState>) => {
+  {storage, key: 'plan-services', whitelist: ['services', 'selectedPlanService']},
+  (state: IPlanServicesState = initialServicesState, action: ActionWithPayload<IPlanServicesState>) => {
     switch (action.type) {
-      case servicesTypes.Load: { 
+      case planServicesTypes.Load: { 
         return {...state, services: action.payload?.services};
       }
-      case servicesTypes.Clear: {
+      case planServicesTypes.Clear: {
         return {...initialServicesState};
       }
-      case servicesTypes.selectedService: {
-        return {...state, selectedService: action.payload?.selectedService};
+      case planServicesTypes.SelectedPlanService: {
+        return {...state, selectedPlanService: action.payload?.selectedPlanService};
       }
-      case servicesTypes.ClearSelectedService: {
-        return {...state, selectedService: initialServicesState.selectedService};
+      case planServicesTypes.ClearSelectedPlanService: {
+        return {...state, selectedPlanService: initialServicesState.selectedPlanService};
       }
-      case servicesTypes.DeleteFromReducer: {
-        return {...state, services: state.services?.filter( s => s.servId !== action.payload?.selectedService?.servId )};
+      case planServicesTypes.DeleteFromReducer: {
+        return {...state, services: state.services?.filter( s => s.servId !== action.payload?.selectedPlanService?.servId )};
       }
-      case servicesTypes.UpdateFromReducer: {
-        return {...state, services: state.services?.map( s => s.servId === action.payload?.selectedService?.servId ? action.payload?.selectedService : s )};
+      case planServicesTypes.UpdateFromReducer: {
+        return {...state, services: state.services?.map( s => s.servId === action.payload?.selectedPlanService?.servId ? action.payload?.selectedPlanService : s )};
       }
       default:
         return state  

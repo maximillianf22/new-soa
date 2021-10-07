@@ -44,8 +44,6 @@ export interface IServicesResponse {
     results: ServiceModel[]
 }
 
-
-
 export interface IResponseServiceService {
     data:       Data;
     status:     number;
