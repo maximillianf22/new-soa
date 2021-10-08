@@ -4,6 +4,7 @@ import {Switch, Route, Redirect} from 'react-router-dom'
 import {PageLink} from '../../../_metronic/layout/core'
 import { ProvidersTable } from './components/ProvidersTable/ProvidersTable'
 import { FormWizzard } from './components/ProvidersForm/FormWizzard'
+import { FormTab } from './components/ProvidersForm/FormTab'
 
 const ProvidersBreadCrumbs: Array<PageLink> = [
   {
@@ -30,7 +31,7 @@ const ProvidersPage: React.FC = () => {
 
       <Route path='/providers/create'>
         <PageTitle breadcrumbs={ProvidersBreadCrumbs}>Registro de Proveedor</PageTitle>
-        <FormWizzard />
+        <FormTab />
       </Route>
 
       <Redirect from='/providers/' exact={true} to='/providers/home' />
