@@ -1,24 +1,14 @@
-import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Swal from 'sweetalert2'
 import {RootState} from '../../../../../../setup'
-import {userActions} from '../../../../../redux/actions/actions'
-import {usersTypes} from '../../../../../redux/types/types'
+import { uiActions } from '../../../../../redux/actions/uiActions';
+import { planServicesActions } from '../../../../../redux/actions/planServicesActions';
+import { planServicesTypes } from '../../../../../redux/types/planServicesTypes';
+import { Link } from 'react-router-dom';
 
 export const TableBodyItem = ({item} : any) => {
   
-  const {
-    id,
-    username,
-    first_name,
-    last_name,
-    email,
-    is_active,
-    date_joined,
-    init_date_validity,
-    end_date_validity,
-    rolId,
-    password_change,
+  const {spId,spNumberOfEvents,spCost,spVehicle,spDataVehicular,spServApp,spThreePoints,spVideocall,spGroupService,spGroupEqualService,spReAsignProvider,spLogoUploadPath,spLabelForUser,spFrecuency,spConditionsDescription,servId,plId,pId,
   } = item
 
   const table: any = useSelector<RootState>(({table}) => table)
@@ -28,17 +18,20 @@ export const TableBodyItem = ({item} : any) => {
 
   const dispatch = useDispatch()
 
-  const handleView = (user: any) => {
-    user.toEdit = false
-    dispatch(userActions.SelectedUser(user))
+  const handleView = (planService: any) => {
+    dispatch(uiActions.uiIsEditing(false))
+    dispatch(uiActions.uiIsViewing(true))
+    dispatch(planServicesActions.SelectedPlanService(planService))
   }
-  const handleEdit = (user: any) => {
-    user.toEdit = true
-    dispatch(userActions.SelectedUser(user))
+  const handleEdit = (planService: any) => {
+    dispatch(uiActions.uiIsViewing(false))
+    dispatch(uiActions.uiIsEditing(true))
+    dispatch(planServicesActions.SelectedPlanService(planService))
   }
+
   const handleDelete = (id: any) => {
     Swal.fire({
-      title: '¿Está seguro que desea eliminar este usuario?',
+      title: '¿Está seguro que desea eliminar este plan servicio?',
       text: 'No es posible revertir esta acción',
       icon: 'warning',
       showCancelButton: true,
@@ -48,115 +41,137 @@ export const TableBodyItem = ({item} : any) => {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch({type: usersTypes.Delete, payload: id})
-        Swal.fire('¡Eliminado!', 'El usuario fue eliminado correctamente.', 'success')
+        dispatch({type: planServicesTypes.Delete, payload: id})
+        dispatch({type: planServicesTypes.DeleteFromReducer, payload: {selectedPlanService: {spId: id}}})
+        Swal.fire('¡Eliminado!', 'El plan servicio fue eliminado correctamente.', 'success')
       }
     })
   }
 
+  
   return (
     <>
       <tr>
         {tableHeads.includes('id') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{id}</p>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{spId}</p>
           </td>
         )}
-        {tableHeads.includes('usuario') && (
+        {tableHeads.includes('Número de eventos') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{username}</p>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{spNumberOfEvents}</p>
           </td>
         )}
-        {tableHeads.includes('nombre') && (
+        {tableHeads.includes('Costo') && (
           <td>
-            <div className='d-flex align-items-center'>
-              <div className='d-flex justify-content-start flex-column'>
-                <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{first_name}</p>
-                <span className='text-muted fw-bold text-muted d-block fs-7'>CC: 1007345398</span>
-              </div>
-            </div>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{spCost}</p>
           </td>
         )}
-        {tableHeads.includes('apellido') && (
+        {tableHeads.includes('Vehículo') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{last_name}</p>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{spVehicle}</p>
           </td>
         )}
-        {tableHeads.includes('correo') && (
+        {tableHeads.includes('Data vehicular') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{email}</p>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{spDataVehicular}</p>
           </td>
         )}
-
-        {tableHeads.includes('activo') && (
+        {tableHeads.includes('Venta por app') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{is_active}</p>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{spServApp}</p>
           </td>
         )}
-        {tableHeads.includes('fecha creación') && (
+        {tableHeads.includes('Ruta de tres puntos') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{date_joined}</p>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{spThreePoints}</p>
           </td>
         )}
-        {tableHeads.includes('rol') && (
+        {tableHeads.includes('Video llamada') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{rolId}</p>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{spVideocall}</p>
+          </td>
+        )}
+        {tableHeads.includes('Permite encoladas') && (
+          <td>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{spGroupService}</p>
+          </td>
+        )}
+        {tableHeads.includes('Asistencia simultanea') && (
+          <td>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{spGroupEqualService}</p>
+          </td>
+        )}
+        {tableHeads.includes('Reasignacion de proveedor') && (
+          <td>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{spReAsignProvider}</p>
+          </td>
+        )}
+        {tableHeads.includes('Logo') && (
+          <td>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{spLogoUploadPath}</p>
+          </td>
+        )}
+        {tableHeads.includes('Etiqueta') && (
+          <td>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{spLabelForUser}</p>
+          </td>
+        )}
+        {tableHeads.includes('Frecuencia') && (
+          <td>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{spFrecuency}</p>
+          </td>
+        )}
+        {tableHeads.includes('Descripcion del servicio') && (
+          <td>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{spConditionsDescription}</p>
+          </td>
+        )}
+        {tableHeads.includes('Servicio') && (
+          <td>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{servId}</p>
+          </td>
+        )}
+        {tableHeads.includes('Plan') && (
+          <td>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{plId}</p>
+          </td>
+        )}
+        {tableHeads.includes('Moneda') && (
+          <td>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{pId}</p>
           </td>
         )}
         <td>
           <div className='d-flex justify-content-end flex-shrink-0'>
-            <button
+            <Link
+              to='/plan-service/view'
               type='button'
               className='btn btn-icon btn-info btn-sm me-1'
-              data-bs-toggle='modal'
-              data-bs-target='#exampleModal'
               onClick={() =>
-                handleView({
-                  id,
-                  username,
-                  first_name,
-                  last_name,
-                  email,
-                  is_active,
-                  date_joined,
-                  password_change,
-                  init_date_validity,
-                  end_date_validity,
-                  rolId,
+                handleView({spId,spNumberOfEvents,spCost,spVehicle,spDataVehicular,spServApp,spThreePoints,spVideocall,spGroupService,spGroupEqualService,spReAsignProvider,spLogoUploadPath,spLabelForUser,spFrecuency,spConditionsDescription,servId,plId,pId,
                 })
               }
             >
               <i className='fa fa-eye'></i>
-            </button>
-            <button
+            </Link>
+            <Link
+              to='/plan-service/edit'
               type='button'
               className='btn btn-icon btn-success btn-sm me-1'
-              data-bs-toggle='modal'
-              data-bs-target='#exampleModal'
               onClick={() =>
-                handleEdit({
-                  id,
-                  username,
-                  first_name,
-                  last_name,
-                  email,
-                  is_active,
-                  date_joined,
-                  password_change,
-                  init_date_validity,
-                  end_date_validity,
-                  rolId,
+                handleEdit({spId,spNumberOfEvents,spCost,spVehicle,spDataVehicular,spServApp,spThreePoints,spVideocall,spGroupService,spGroupEqualService,spReAsignProvider,spLogoUploadPath,spLabelForUser,spFrecuency,spConditionsDescription,servId,plId,pId,
                 })
               }
             >
               <i className='fa fa-edit'></i>
-            </button>
-            <button className='btn btn-icon btn-danger btn-sm' onClick={() => handleDelete(id)}>
+            </Link>
+            <button className='btn btn-icon btn-danger btn-sm' onClick={() => handleDelete(servId)}>
               <i className='fa fa-trash'></i>
             </button>
           </div>
         </td>
       </tr>
-    </>
+    </> 
   )
 }

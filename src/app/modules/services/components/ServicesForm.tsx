@@ -1,9 +1,7 @@
-import React from 'react'
 import {Field, Form, Formik, FormikProps} from 'formik'
 import {InputCustom, InputSelect} from '../../global/components/inputs'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../../../setup/redux/RootReducer';
-import { servicesActions } from '../../../redux/actions/actions';
 import { servicesTypes } from '../../../redux/types/types';
 
 const optionsServices = [

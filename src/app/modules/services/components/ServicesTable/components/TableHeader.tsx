@@ -24,7 +24,7 @@ const initialValues = {
 export const TableHeader = () => {
   const table: any = useSelector<RootState>(({table}) => table)
   const dispatch = useDispatch();
-  const {tableHeader, tableBody} = table;
+  const {tableHeader} = table;
 
   const handleNew = () => {
     dispatch(uiActions.uiIsViewing(false));

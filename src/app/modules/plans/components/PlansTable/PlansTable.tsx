@@ -1,11 +1,8 @@
 import {useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { RootState } from '../../../../../setup'
-import { tableActions } from '../../../../redux/actions/actions'
-import { planTypes } from '../../../../redux/types/planTypes'
-import { tableTypes, usersTypes } from '../../../../redux/types/types'
+import { tableTypes } from '../../../../redux/types/types'
 import { IPlansTable } from '../../Interfaces/models'
-import { TableComponent } from './components/TableComponent'
 
 export const PlansTable = ({stats}: IPlansTable) => {
   const dispatch = useDispatch()

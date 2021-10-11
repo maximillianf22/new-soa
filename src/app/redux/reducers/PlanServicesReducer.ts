@@ -9,7 +9,7 @@ export interface ActionWithPayload<T> extends Action {
 }
 
 const initialServicesState: IPlanServicesState = {
-    services: [],
+    planServices: [],
     selectedPlanService: {
       "spId": 1,
       "spNumberOfEvents": null,
@@ -33,16 +33,16 @@ const initialServicesState: IPlanServicesState = {
 }
 
 interface IPlanServicesState {
-    services: PlanServiceModel[] | undefined
+    planServices: PlanServiceModel[] | undefined
     selectedPlanService: PlanServiceModel | undefined
 }
 
 export const planServicesReducer = persistReducer(
-  {storage, key: 'plan-services', whitelist: ['services', 'selectedPlanService']},
+  {storage, key: 'plan-services', whitelist: ['planServices', 'selectedPlanService']},
   (state: IPlanServicesState = initialServicesState, action: ActionWithPayload<IPlanServicesState>) => {
     switch (action.type) {
       case planServicesTypes.Load: { 
-        return {...state, services: action.payload?.services};
+        return {...state, planServices: action.payload?.planServices};
       }
       case planServicesTypes.Clear: {
         return {...initialServicesState};
@@ -54,10 +54,10 @@ export const planServicesReducer = persistReducer(
         return {...state, selectedPlanService: initialServicesState.selectedPlanService};
       }
       case planServicesTypes.DeleteFromReducer: {
-        return {...state, services: state.services?.filter( s => s.servId !== action.payload?.selectedPlanService?.servId )};
+        return {...state, planServices: state.planServices?.filter( s => s.servId !== action.payload?.selectedPlanService?.servId )};
       }
       case planServicesTypes.UpdateFromReducer: {
-        return {...state, services: state.services?.map( s => s.servId === action.payload?.selectedPlanService?.servId ? action.payload?.selectedPlanService : s )};
+        return {...state, planServices: state.planServices?.map( s => s.servId === action.payload?.selectedPlanService?.servId ? action.payload?.selectedPlanService : s )};
       }
       default:
         return state  
