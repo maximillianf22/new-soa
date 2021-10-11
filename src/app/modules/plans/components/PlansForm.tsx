@@ -1,65 +1,120 @@
 import React from 'react'
 import {Field, Form, Formik, FormikProps} from 'formik'
 import {InputCustom, InputDueDate, InputSelect} from '../../global/components/inputs'
-import {initialValues} from './Helpers'
-
-const optionsShared = [
-  {value: 'id1', label: 'Al concluir'},
-]
-
-const optionsAccounts = [
-  {value: 'id1', label: 'Claro'},
-  {value: 'id2', label: 'Movistar'},
-  {value: 'id3', label: 'WOM'},
-]
-
-const optionsClients = [
-  {
-    cltId: 1,
-    cltName: 'addiuva',
-  },
-  {
-    cltId: 2,
-    cltName: 'ikatech',
-  },
-  {
-    cltId: 3,
-    cltName: 'El Roble',
-  },
-]
+import {createPlansSchemas, initialValues} from './Helpers'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../../../setup'
+import Select from 'react-select'
+import { planTypes } from '../../../redux/types/planTypes'
+import { IAccountInfo } from '../../accounts/Interfaces/models'
 
 export const PlansForm = () => {
+
+  const {loading, editing: isEditing, viewing: isViewing}: any = useSelector<RootState>(({ui}) => ui)
+  const selectedPlan: any = useSelector<RootState>(({plans}) => plans.selectedPlan)
+  const {accounts, selectedAccount}: any = useSelector<RootState>(({accounts}) => accounts)
+
+  console.log(selectedPlan)
+
+  const dispatch = useDispatch()
+
   return (
     <>
       <Formik
-        initialValues={initialValues}
+        initialValues={ (selectedPlan === {} || selectedPlan === undefined || (!isEditing && !isViewing)) ? initialValues : selectedPlan}
+
+        validationSchema={createPlansSchemas}
         enableReinitialize={true}
         onSubmit={(values) => {
+          if (values.acId === 0) {
+            values.acId = selectedAccount.acId
+          }
           console.log('en submit', values)
+          dispatch({
+            type: isEditing ? planTypes.update : planTypes.create,
+            payload: values
+          })
         }}
       >
         {(props: FormikProps<any>) => (
           <Form>
             <div className='row'>
-              <div className='col-md-9'>
+              <div className='col-md-12'>
                 <div className='card' style={{minHeight: '60vh'}}>
                   <div className='card-body'>
                     <div className='row'>
                       <div className='col-md-6 px-5 fv-row my-3'>
-                        <InputCustom type='text' name='description' label='Descripcion' required />
+                        <InputCustom
+                          type='text'
+                          name='plName'
+                          label='Nombre'
+                          required
+                          disabled={isViewing}
+                        />
                       </div>
                       <div className='col-md-6 px-5 fv-row my-3'>
-                        <InputCustom type='number' name='url' label='Numero de piloto' />
+                        <InputCustom
+                          type='number'
+                          name='plDaysToDue'
+                          label='Días de due'
+                          // required
+                          disabled={isViewing}
+                        />
                       </div>
                       <div className='col-md-6 px-5 fv-row my-3'>
-                        <InputDueDate />
-                      </div>
-                      <div className='col-md-6 px-5 fv-row my-3'>
-                        <InputCustom type='file' name='Contrato' label='Contrato' />
+                        <div className='row'>
+                          <div className='col-6 pe-1'>
+                            <InputCustom
+                              type="date"
+                              name='plStartDate'
+                              label="Fecha Inicio"
+                              required
+                              disabled={isViewing}
+                            />
+                          </div>
+                          <div className='col-6 ps-1'>
+                            <InputCustom
+                              type="date"
+                              name='plDueDate'
+                              label="Fecha Final"
+                              required
+                              disabled={isViewing}
+                            />
+                          </div>
+                        </div>
                       </div>
                       <div className='col-md-6 px-5 fv-row my-3'>
                         <label className='col-form-label required fw-bold fs-6  py-2'>Cuentas</label>
-                        <Field name='clients' component={InputSelect} options={optionsAccounts} />
+                        <Select
+                          className='form-control p-0'
+                          value={accounts.find((account: IAccountInfo) => account.acId === selectedPlan.acId)}
+                          getOptionLabel={(option) => option.acName}
+                          getOptionValue={(option) => option.acId.toString()}
+                          isSearchable
+                          name="acId"
+                          options={accounts}
+                          isDisabled={isViewing}
+                          onChange={(account) => {
+                            props.setFieldValue("acId", account.acId);
+                          }}
+                        />
+                      </div>
+                      <div className='col-md-6 px-5 fv-row my-3'>
+                        <label htmlFor="planFilePicker" className='col-form-label fw-bold fs-6 py-2'>
+                          Archivo (pdf)
+                        </label>
+                        <input
+                          id="planFilePicker"
+                          name="plFileUploadPath"
+                          type="file"
+                          accept="application/pdf"
+                          className="form-control"
+                          disabled={isViewing}
+                          data-buttontext="Seleccione el archivo"
+                          onChange={(event) => {
+                            props.setFieldValue("plFileUploadPath", event.currentTarget.files![0]);
+                          }}
+                        />
                       </div>
 
                       {/* Este input se muestra cuando se checkea envio automatico de notificacion de vencimiento */}
@@ -68,71 +123,60 @@ export const PlansForm = () => {
                       </div> */}
 
                       {/* Estos inputs se muestra cuando se checkea poliza compartida */}
-                      {/* <div className='col-md-6 px-5 fv-row mt-7'>
-                        <InputCustom type='text' name='daystoDue' label='Cuantos eventos compartidos' />
-                      </div>
-                      <div className='col-md-6 px-5 fv-row my-3'>
+                      { props.values.plEventsShared &&
+                        <div className='col-md-6 px-5 fv-row my-3'>
+                        <InputCustom
+                          type='number'
+                          name='plnumEventsShared'
+                          label='Número de eventos'
+                          disabled={isViewing}
+                        />
+                      </div>}
+                      {/* <div className='col-md-6 px-5 fv-row my-3'>
                         <label className='col-form-label required fw-bold fs-6  py-2'>Metodo de consumo</label>
                         <Field name='clients' component={InputSelect} options={optionsShared} />
                       </div> */}
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className='col-md-3'>
-                <div className='card' style={{minHeight: '60vh'}}>
-                  <div className='card-body'>
-                    <div className='col-md-12 px-5 fv-row my-4 text-start'>
-                      <label></label>
-                      <div className='form-check form-check-custom form-check-solid my-auto h-75'>
-                        <InputCustom
-                          className='form-check-input h-30px w-30px'
-                          type='checkbox'
-                          name='password_change'
-                          id='flexCheckChecked'
-                        />
-                        <label className='form-check-label ms-5'>
-                          Envio automatico de notificacion de vencimiento
-                        </label>
-                      </div>
-                    </div>
-                    <div className='col-md-12 px-5 fv-row my-4 text-start'>
-                      <label></label>
-                      <div className='form-check form-check-custom form-check-solid my-auto h-75'>
-                        <InputCustom
-                          className='form-check-input h-30px w-30px'
-                          type='checkbox'
-                          name='password_change'
-                          id='flexCheckChecked'
-                        />
-                        <label className='form-check-label ms-5'>Poliza Compartida</label>
-                      </div>
-                    </div>
-                    <div className='col-md-12 px-5 fv-row my-4 text-start'>
-                      <label></label>
-                      <div className='form-check form-check-custom form-check-solid my-auto h-75'>
-                        <InputCustom
-                          className='form-check-input h-30px w-30px'
-                          type='checkbox'
-                          name='password_change'
-                          id='flexCheckChecked'
-                        />
-                        <label className='form-check-label ms-5'>VIP</label>
-                      </div>
-                    </div>
-                    <div className='col-md-12 px-5 fv-row my-4 text-start'>
-                      <div className='my-auto h-100 text-center mt-4'>
-                        <label></label>
-                        <div className='form-check form-switch form-check-custom form-check-solid'>
-                          <InputCustom
-                            className='form-check-input h-30px w-50px'
-                            type='checkbox'
-                            name='is_active'
-                            checked
-                            id='flexSwitchChecked'
-                          />
-                          <label className='form-check-label ms-5'>¿Activo?</label>
+                      <div className='row'>
+                        <div className='col-md-4 px-5 fv-row my-4 text-start'>
+                          <div className='my-auto h-100 text-center mt-4'>
+                            <label></label>
+                            <div className='form-check form-switch form-check-custom form-check-solid'>
+                              <InputCustom
+                                className='form-check-input h-30px w-50px'
+                                type='checkbox'
+                                name='plStatus'
+                                id='flexSwitchChecked'
+                                disabled={isViewing}
+                              />
+                              <label className='form-check-label ms-5'>¿Activo?</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div className='col-md-4 px-5 fv-row my-4 text-start'>
+                          <label></label>
+                          <div className='form-check form-check-custom form-check-solid my-auto h-75'>
+                            <InputCustom
+                              className='form-check-input h-30px w-30px'
+                              type='checkbox'
+                              name='plEventsShared'
+                              id='flexCheckChecked'
+                              disabled={isViewing}
+                            />
+                            <label className='form-check-label ms-5'>Poliza Compartida</label>
+                          </div>
+                        </div>
+                        <div className='col-md-4 px-5 fv-row my-4 text-start'>
+                          <label></label>
+                          <div className='form-check form-check-custom form-check-solid my-auto h-75'>
+                            <InputCustom
+                              className='form-check-input h-30px w-30px'
+                              type='checkbox'
+                              name='plIsVip'
+                              id='flexCheckChecked'
+                              disabled={isViewing}
+                            />
+                            <label className='form-check-label ms-5'>VIP</label>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -140,10 +184,33 @@ export const PlansForm = () => {
                 </div>
               </div>
               <div className='px-5 pt-5 fv-row text-end'>
-                <button type='submit' className='btn btn-primary px-20' data-bs-dismiss='modal'>
-                  Guardar
-                </button>
-              </div>
+                  {!isViewing 
+                  ?
+                    <button 
+                      type='submit'
+                      className='btn btn-primary'
+                      // data-bs-dismiss='modal'
+                      disabled={!props.dirty || !props.isValid}
+                    >
+                      {!loading && <span className='indicator-label'>{isEditing? 'Actualizar': 'Guardar'}</span>}
+                        {loading && (
+                          <span className='indicator-progress' style={{display: 'block'}}>
+                            {isEditing? 'Actualizar': 'Guardar'}
+                            <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
+                          </span>
+                        )}
+                      </button>
+                    :
+                    <a href='/accounts/detail'>
+                      <button type='button' className='btn btn-info mx-8'>
+                        Ver servicios
+                      </button>
+                    </a>
+                    }
+                  <button type='button' className='btn btn-primary mx-8' data-bs-dismiss='modal'>
+                    Cerrar
+                  </button>
+                </div>
             </div>
           </Form>
         )}

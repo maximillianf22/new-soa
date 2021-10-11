@@ -47,7 +47,7 @@ export const accountsReducer = persistReducer(
                     )
                 }
 
-            case accountTypes.deleteRedux:
+            case accountTypes.deleteRedux:                
                 return {
                     ...state,
                     accounts: state.accounts.filter( (account: IAccountInfo) => account.acId !== action.payload?.acId )
@@ -55,8 +55,14 @@ export const accountsReducer = persistReducer(
 
             case accountTypes.clear:
                 return {
-                    initialState
+                    ...initialState
                 }
+
+            case accountTypes.resetSelectedAccount:
+            return {
+                ...state,
+                selectedAccount: initialState.selectedAccount
+            }
 
             default:
                 return state

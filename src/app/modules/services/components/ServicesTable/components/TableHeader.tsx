@@ -113,7 +113,7 @@ export const TableHeader = () => {
             <button
               className='btn btn-sm btn-icon btn-gray btn-active-dark btn-active-color-white btn-color-dark'
               data-kt-menu-trigger='click'
-              data-kt-menu-placement='bottom-end'
+              data-kt-menu-placement='bottom-start'
               data-kt-menu-flip='top-end'
             >
               <i className='fas fa-cog'></i>
