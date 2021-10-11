@@ -1,8 +1,7 @@
 import {useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { RootState } from '../../../../../setup'
-import { tableActions } from '../../../../redux/actions/actions'
-import { plansActions } from '../../../../redux/actions/plansActions'
+import { accountTypes } from '../../../../redux/types/accountTypes'
 import { planTypes } from '../../../../redux/types/planTypes'
 import { tableTypes, usersTypes } from '../../../../redux/types/types'
 import { IPlansTable } from '../../Interfaces/models'
@@ -13,6 +12,7 @@ export const PlansTable = ({stats}: IPlansTable) => {
   const dispatch = useDispatch()
 
   const {plans}: any = useSelector<RootState>(({plans}) => plans)
+  const {selectedAccount}: any = useSelector<RootState>(({accounts}) => accounts)
 
   const tableHeads = [
     'Id',
@@ -21,9 +21,13 @@ export const PlansTable = ({stats}: IPlansTable) => {
     'Vip',
     'Due date',
   ]
+
   useEffect(() => {
+    if (selectedAccount?.acId === 0 || selectedAccount === {}) {
       dispatch({type: planTypes.get})
-  }, [dispatch])
+      // dispatch({type: accountTypes.get})
+    }
+  }, [dispatch, selectedAccount])
 
   useEffect(() => {
     dispatch({

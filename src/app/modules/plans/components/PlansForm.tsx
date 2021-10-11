@@ -6,12 +6,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../../../setup'
 import Select from 'react-select'
 import { planTypes } from '../../../redux/types/planTypes'
+import { IAccountInfo } from '../../accounts/Interfaces/models'
 
 export const PlansForm = () => {
 
   const {loading, editing: isEditing, viewing: isViewing}: any = useSelector<RootState>(({ui}) => ui)
   const selectedPlan: any = useSelector<RootState>(({plans}) => plans.selectedPlan)
   const {accounts, selectedAccount}: any = useSelector<RootState>(({accounts}) => accounts)
+
+  console.log(selectedPlan)
 
   const dispatch = useDispatch()
 
@@ -84,7 +87,7 @@ export const PlansForm = () => {
                         <label className='col-form-label required fw-bold fs-6  py-2'>Cuentas</label>
                         <Select
                           className='form-control p-0'
-                          defaultValue={selectedAccount}
+                          value={accounts.find((account: IAccountInfo) => account.acId === selectedPlan.acId)}
                           getOptionLabel={(option) => option.acName}
                           getOptionValue={(option) => option.acId.toString()}
                           isSearchable

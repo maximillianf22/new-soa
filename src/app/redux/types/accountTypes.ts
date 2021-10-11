@@ -12,4 +12,5 @@ export const accountTypes = {
   update: '[Accounts] Update account',
   selectedAccount: '[Accounts] Set selected account',
   clear: '[Accounts] Clear data of reducer',
+  resetSelectedAccount: '[Accounts] Reset selected account'
 }

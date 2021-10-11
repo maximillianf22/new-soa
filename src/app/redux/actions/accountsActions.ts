@@ -18,6 +18,7 @@ export const accountsActions = {
     updateRedux: (payload:any) => ({
       type: accountTypes.updateRedux, payload: payload
     }),
-    clear: () => ({type: accountTypes.clear,}),
+    clear: () => ({type: accountTypes.clear}),
+    resetSelectedAccount: () => ({type: accountTypes.resetSelectedAccount})
 //     updateTableHeads: (payload: any) => ({type: accountTypes.LoadTableHeads, payload: payload}),
   }

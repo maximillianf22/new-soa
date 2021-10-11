@@ -55,8 +55,14 @@ export const accountsReducer = persistReducer(
 
             case accountTypes.clear:
                 return {
-                    initialState
+                    ...initialState
                 }
+
+            case accountTypes.resetSelectedAccount:
+            return {
+                ...state,
+                selectedAccount: initialState.selectedAccount
+            }
 
             default:
                 return state
