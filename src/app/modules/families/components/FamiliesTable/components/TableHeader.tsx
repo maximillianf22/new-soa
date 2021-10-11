@@ -1,12 +1,14 @@
 import {useFormik} from 'formik'
 import {useState} from 'react'
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {RootState} from '../../../../../../setup'
 import {KTSVG} from '../../../../../../_metronic/helpers'
 import * as Yup from 'yup'
 import Dropdown from './Dropdown'
 import CollapseFilters from './CollapseFilters'
+import { uiActions } from '../../../../../redux/actions/uiActions';
+import { familiesTypes } from '../../../../../redux/types/types';
 
 const searchSchema = Yup.object().shape({
   search: Yup.string()
@@ -22,7 +24,14 @@ const initialValues = {
 export const TableHeader = () => {
   const table: any = useSelector<RootState>(({table}) => table)
 
-  const {tableHeader, tableBody} = table
+  const {tableHeader, tableBody} = table;
+  const dispatch = useDispatch();
+
+  const handleNew = () => {
+    dispatch(uiActions.uiIsViewing(false));
+    dispatch(uiActions.uiIsEditing(false));
+    dispatch({type: familiesTypes.ClearSelectedFamily})
+  }
 
   const [loading, setLoading] = useState(false)
   const formik = useFormik({
@@ -82,6 +91,7 @@ export const TableHeader = () => {
                 className='btn btn-sm btn-primary ms-2'
                 data-bs-toggle='modal'
                 data-bs-target={tableHeader?.btnModal}
+                onClick={handleNew}
               >
                 <i className='fas fa-plus'></i>
                 Nuevo
@@ -104,7 +114,7 @@ export const TableHeader = () => {
             <button
               className='btn btn-sm btn-icon btn-gray btn-active-dark btn-active-color-white btn-color-dark'
               data-kt-menu-trigger='click'
-              data-kt-menu-placement='bottom-end'
+              data-kt-menu-placement='bottom-start'
               data-kt-menu-flip='top-end'
             >
               <i className='fas fa-cog'></i>

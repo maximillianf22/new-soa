@@ -1,12 +1,24 @@
 import React from 'react'
 import {Field, Form, Formik, FormikProps} from 'formik'
-import {InputCustom, InputDueDate, InputSelect} from '../../global/components/inputs'
-import {initialValues} from './Helpers'
+import {InputCustom, InputSelect} from '../../global/components/inputs'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../../../setup/redux/RootReducer';
+import { servicesActions } from '../../../redux/actions/actions';
+import { servicesTypes } from '../../../redux/types/types';
 
 const optionsServices = [
-  {value: 'id1', label: 'Servicio Técnico'},
-  {value: 'id2', label: 'Plomeria'},
-  {value: 'id3', label: 'Cerrajeria'},
+  {
+    cltId: 1,
+    cltName: 'Servicio Técnico',
+  },
+  {
+    cltId: 2,
+    cltName: 'Plomeria',
+  },
+  {
+    cltId: 3,
+    cltName: 'Cerrajeria',
+  }
 ]
 
 const optionsFrecuencies= [
@@ -21,13 +33,21 @@ const optionsCoins= [
 ]
 
 export const ServicesForm = () => {
+  const selectedServices: any = useSelector<RootState>(({services}) => services.selectedService)
+  const {loading, editing: isEditing, viewing: isViewing}: any = useSelector<RootState>(({ui}) => ui)
+  const dispatch = useDispatch()
+  
   return (
     <>
       <Formik
-        initialValues={initialValues}
+        initialValues={{...selectedServices}}
         enableReinitialize={true}
         onSubmit={(values) => {
           console.log('en submit', values)
+          dispatch({
+            type: isEditing ? servicesTypes.Update : servicesTypes.Create,
+            payload: values
+          });
         }}
       >
         {(props: FormikProps<any>) => (

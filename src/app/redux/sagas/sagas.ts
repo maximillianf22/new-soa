@@ -11,9 +11,9 @@ import { getFamilies, deleteFamily, updateFamily, createFamily } from '../../api
 
 
 interface ActionTypePayload {
-    type: string, 
-    payload: number
-  }
+  type: string, 
+  payload: number
+}
 
 
 
@@ -146,7 +146,8 @@ export function* sagaFamilies() {
 
   function* sagaUpdateFamily({payload}:ActionTypePayload) {
     try {
-      const resp: IfamilyResponse = yield call(updateFamily, payload)
+      const {data}: IfamilyResponseRR = yield call(updateFamily, payload)
+      yield put(familiesActions.updateFromReducer(data))
     } catch (error) {
       console.log(error)
     }
@@ -155,6 +156,7 @@ export function* sagaFamilies() {
   function* sagaCreateFamily({payload}:ActionTypePayload) {
     try {
       const resp: IfamilyResponse = yield call(createFamily, payload)
+      yield put({type: familiesTypes.AsyncLoad})
     } catch (error) {
       console.log(error)
     }

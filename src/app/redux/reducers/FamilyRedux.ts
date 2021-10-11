@@ -42,8 +42,10 @@ export const familiesReducer = persistReducer(
         return {...state, SelectedFamily: initialFamilyState.SelectedFamily}
       }
       case familiesTypes.DeleteFromReducer: {
-        console.log("EN EL REDUUUCER", state.families?.filter( f => f.fmId !== action.payload?.SelectedFamily?.fmId ))
         return {...state, families: state.families?.filter( f => f.fmId !== action.payload?.SelectedFamily?.fmId )}
+      }
+      case familiesTypes.UpdateFromReducer: {
+        return {...state, families: state.families?.map( f => f.fmId === action.payload?.SelectedFamily?.fmId ? action.payload?.SelectedFamily : f )};
       }
       default:
         return state

@@ -1,4 +1,4 @@
-import { usersTypes, tableTypes, authTypes, familiesTypes } from '../types/types';
+import { usersTypes, tableTypes, authTypes, familiesTypes, servicesTypes } from '../types/types';
 import { ResponseGenerator } from '../reducers/AuthRedux';
 import { UserModel } from '../../modules/global/models/UserModel';
 
@@ -15,27 +15,39 @@ export const tableActions = {
   updateTableHeads: (payload: any) => ({type: tableTypes.LoadTableHeads, payload: payload}),
   clear: () => ({type: tableTypes.clearTable,}),
 }
-export const authActions = {
-    login: (loginResponse: ResponseGenerator | undefined) => ({type: authTypes.Login, payload: loginResponse}),
-    loading: () => ({type: authTypes.Loading}),
-    loginError: (error: ResponseGenerator) => ({type: authTypes.LoginError, payload: error}),
-    register: (accessToken: string) => ({
-      type: authTypes.Register,
-      payload: {accessToken},
-    }),
-    logout: () => ({type: authTypes.Logout}),
-    requestUser: () => ({
-      type: authTypes.UserRequested,
-    }),
-    fulfillUser: (user: UserModel) => ({type: authTypes.UserLoaded, payload: {user}}),
-    setUser: (user: UserModel) => ({type: authTypes.SetUser, payload: {user}}),
-  }
 
-  export const familiesActions = {
-    load: (payload: any) => ({type: familiesTypes.Load, payload: {families:payload}}),
-    clear: () => ({type: familiesTypes.Clear,}),
-    SelectedFamily: (payload:any) => ({type: familiesTypes.SelectedFamily, payload: {SelectedFamily:payload}}),
-    ClearSelectedFamily: () => ({type: familiesTypes.ClearSelectedFamily}),
-    updateFamily: (payload:any) => ({type: familiesTypes.Update, payload: {family:payload}}),
-    createFamily: (payload:any) => ({type: familiesTypes.Create, payload: {family:payload}}),
+export const authActions = {
+  login: (loginResponse: ResponseGenerator | undefined) => ({type: authTypes.Login, payload: loginResponse}),
+  loading: () => ({type: authTypes.Loading}),
+  loginError: (error: ResponseGenerator) => ({type: authTypes.LoginError, payload: error}),
+  register: (accessToken: string) => ({
+    type: authTypes.Register,
+    payload: {accessToken},
+  }),
+  logout: () => ({type: authTypes.Logout}),
+  requestUser: () => ({
+    type: authTypes.UserRequested,
+  }),
+  fulfillUser: (user: UserModel) => ({type: authTypes.UserLoaded, payload: {user}}),
+  setUser: (user: UserModel) => ({type: authTypes.SetUser, payload: {user}}),
+}
+
+export const familiesActions = {
+  load: (payload: any) => ({type: familiesTypes.Load, payload: {families:payload}}),
+  clear: () => ({type: familiesTypes.Clear,}),
+  SelectedFamily: (payload:any) => ({type: familiesTypes.SelectedFamily, payload: {SelectedFamily:payload}}),
+  ClearSelectedFamily: () => ({type: familiesTypes.ClearSelectedFamily}),
+  updateFamily: (payload:any) => ({type: familiesTypes.Update, payload: {family:payload}}),
+  updateFromReducer: (payload:any) => ({type: familiesTypes.UpdateFromReducer, payload: {SelectedFamily:payload}}),
+  createFamily: (payload:any) => ({type: familiesTypes.Create, payload: {family:payload}}),
+}
+
+export const servicesActions = {
+  load: (payload: any) => ({type: servicesTypes.Load, payload: {services:payload}}),
+  clear: () => ({type: servicesTypes.Clear,}),
+  SelectedService: (payload:any) => ({type: servicesTypes.selectedService, payload: {selectedService:payload}}),
+  ClearSelectedService: () => ({type: servicesTypes.ClearSelectedService}),
+  updateService: (payload:any) => ({type: servicesTypes.Update, payload: {selectedService:payload}}),
+  updateFromReducer: (payload:any) => ({type: servicesTypes.UpdateFromReducer, payload: {selectedService:payload}}),
+  createService: (payload:any) => ({type: servicesTypes.Create, payload: {selectedService:payload}}),
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import {ServicesTable} from '../../../services/components/ServicesTable/ServicesTable'
+import {PlanServiceTable} from '../../../plan_services/components/PlanServiceTable/PlanServiceTable'
 import {FamiliesDetails} from './FamiliesDetails'
 
 export const FamiliesView = () => {
@@ -19,7 +19,7 @@ export const FamiliesView = () => {
           />
         </div>
         <div className='col-9'>
-          <ServicesTable stats='d-none' />
+          <PlanServiceTable stats='d-none' />
         </div>
       </div>
     </>

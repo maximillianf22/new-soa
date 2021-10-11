@@ -2,7 +2,7 @@ import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Swal from 'sweetalert2'
 import {RootState} from '../../../../../../setup'
-import { userActions, familiesActions } from '../../../../../redux/actions/actions';
+import { familiesActions } from '../../../../../redux/actions/actions';
 import { familiesTypes } from '../../../../../redux/types/types';
 import { uiActions } from '../../../../../redux/actions/uiActions';
 
@@ -71,12 +71,7 @@ export const TableBodyItem = ({item} : any) => {
         )}
         {tableHeads.includes('estado') && (
           <td>
-            <div className='d-flex align-items-center'>
-              <div className='d-flex justify-content-start flex-column'>
-                <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{fmStatus}</p>
-                <span className='text-muted fw-bold text-muted d-block fs-7'>CC: 1007345398</span>
-              </div>
-            </div>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{ fmStatus ? 'Activo' : 'Inactivo'}</p>
           </td>
         )}
         {tableHeads.includes('fecha de creación') && (
@@ -93,11 +88,6 @@ export const TableBodyItem = ({item} : any) => {
         {tableHeads.includes('modificado por') && (
           <td>
             <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{fmUsermod}</p>
-          </td>
-        )}
-        {tableHeads.includes('activo') && (
-          <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{fmIsActive}</p>
           </td>
         )}
         <td>

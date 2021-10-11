@@ -10,7 +10,7 @@ const optionsProfile = [
   {value: 'Bimestral', label: 'Bimestral'},
 ]
 
-export const InputDueDate = ({isRequired = '', init_date_validity = '', end_date_validity=''}: any) => {
+export const InputDueDate = ({isRequired = '', end_name, init_name}: any) => {
   const [open, setOpen] = useState(false)
   return (
     <>
@@ -36,14 +36,14 @@ export const InputDueDate = ({isRequired = '', init_date_validity = '', end_date
           <div className='col-6 pe-1'>
             <InputCustom
               type="date"
-              name='init_date_validity'
+              name={init_name}
               label="Fecha Inicio"
             />
           </div>
           <div className='col-6 ps-1'>
             <InputCustom
               type="date"
-              name='end_date_validity'
+              name={end_name}
               label="Fecha Final"
             />
           </div>

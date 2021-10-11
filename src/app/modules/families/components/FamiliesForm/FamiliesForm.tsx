@@ -2,7 +2,7 @@ import {Formik, Form, FormikProps, Field} from 'formik'
 import { useDispatch, useSelector } from 'react-redux'
 import {InputCustom, InputSelect} from '../../../global/components/inputs'
 import { RootState } from '../../../../../setup/redux/RootReducer';
-import { familiesActions } from '../../../../redux/actions/actions';
+import { familiesTypes } from '../../../../redux/types/types';
 
 const optionsGroups = [
   {value: 'vehicular', label: 'Vehicular'},
@@ -13,7 +13,7 @@ const optionsGroups = [
 export const FamiliesForm = () => {
   const SelectedFamily: any = useSelector<RootState>(({families}) => families.SelectedFamily)
   const {loading, editing: isEditing, viewing: isViewing}: any = useSelector<RootState>(({ui}) => ui)
-
+  const user:any = useSelector<RootState>(({auth}) => auth.user)
   const dispatch = useDispatch()
 
   return (
@@ -23,11 +23,13 @@ export const FamiliesForm = () => {
         enableReinitialize={true}
         onSubmit={(values) => {
           console.log('en submit', values)
-          if (values.fmId > 0) {
-            dispatch(familiesActions.updateFamily(values))
-          } else {
-           dispatch(familiesActions.createFamily(values))
+          if (!isEditing && !isViewing) {
+            values.fmUsermod = user.username;
           }
+          dispatch({
+            type: isEditing ? familiesTypes.Update : familiesTypes.Create,
+            payload: values
+          });
         }}
       >
         {(props: FormikProps<any>) => (
