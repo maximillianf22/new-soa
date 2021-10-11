@@ -36,6 +36,7 @@ export function* rootSaga() {
     tableSaga(),
     sagaUsers(),
     sagaAccounts(),
+    sagaPlans(),
     sagaFamilies(),
     sagaServices(),
     sagaPlanServices(),
