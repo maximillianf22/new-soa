@@ -79,7 +79,7 @@ export const TableHeader = () => {
             </form>
           </div>
           
-          <Link to='/plan-service/create' className='btn btn-sm btn-primary ms-2'>
+          <Link to='/plan-service/create' className='btn btn-sm btn-primary ms-2' onClick={handleNew}>
             <i className='fas fa-plus'></i>
             Nuevo
           </Link>

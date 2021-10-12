@@ -11,24 +11,24 @@ export interface ActionWithPayload<T> extends Action {
 const initialServicesState: IPlanServicesState = {
     planServices: [],
     selectedPlanService: {
-      "spId": 1,
-      "spNumberOfEvents": null,
-      "spCost": null,
-      "spVehicle": null,
-      "spDataVehicular": null,
-      "spServApp": null,
-      "spThreePoints": null,
-      "spVideocall": null,
-      "spGroupService": null,
-      "spGroupEqualService": null,
-      "spReAsignProvider": null,
+      "spId": 0,
+      "spNumberOfEvents": 0,
+      "spCost": 0,
+      "spVehicle": false,
+      "spDataVehicular": false,
+      "spServApp": false,
+      "spThreePoints": false,
+      "spVideocall": false,
+      "spGroupService": false,
+      "spGroupEqualService": false,
+      "spReAsignProvider": false,
       "spLogoUploadPath": "",
-      "spLabelForUser": "DidiTest",
-      "spFrecuency": null,
-      "spConditionsDescription": null,
-      "servId": 2,
-      "plId": 1,
-      "pId": null
+      "spLabelForUser": "",
+      "spFrecuency": false,
+      "spConditionsDescription": "",
+      "servId": 0,
+      "plId": 0,
+      "pId": 0
     }
 }
 

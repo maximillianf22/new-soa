@@ -6,7 +6,7 @@ import { StepperComponent } from '../../../../../_metronic/assets/ts/components'
 import { KTSVG } from '../../../../../_metronic/helpers'
 import { StepStages } from './StepStages'
 import { StepQuestions } from './StepQuestions'
-import { StepPlanService } from './StepPlanService'
+import { ViewEditForm } from './ViewEditForm';
 
 const FormWizzard: FC = () => {
   const stepperRef = useRef<HTMLDivElement | null>(null)
@@ -26,7 +26,7 @@ const FormWizzard: FC = () => {
     stepper.current.goPrev()
     setCurrentSchema(wizzardSchemas[stepper.current.currentStepIndex - 1])
   }
-  const submitStep = (values: ICreatePlanService, actions: FormikValues) => {
+  const submitStep = () => {
     if (!stepper.current) {
       return
     }
@@ -36,8 +36,6 @@ const FormWizzard: FC = () => {
       stepper.current.goNext()
     } else {
       stepper.current.goto(1)
-      actions.resetForm()
-      console.log('Haciendo submit', values)
     }
   }
   useEffect(() => {
@@ -66,17 +64,14 @@ const FormWizzard: FC = () => {
               <h3 className='stepper-title'>Configuracion preguntas por etapas</h3>
             </div>
           </div>
-          <Formik validationSchema={currentSchema} initialValues={initValues} onSubmit={submitStep}>
-            {() => (
-              <Form className='mx-auto w-100' id='kt_create_account_form'>
                 <div className='current' data-kt-stepper-element='content'>
-                  <StepPlanService/>
+                  <ViewEditForm/>
                 </div>
                 <div data-kt-stepper-element='content'>
-                  <StepStages />
+                  {/* <StepStages /> */}
                 </div>
                 <div data-kt-stepper-element='content'>
-                  <StepQuestions/>
+                  {/* <StepQuestions/> */}
                 </div>
                 <div className='d-flex flex-stack pt-0'>
                   <div className='ms-6'>
@@ -94,7 +89,7 @@ const FormWizzard: FC = () => {
                     </button>
                   </div>
                   <div>
-                    <button type='submit' className='btn btn-lg btn-primary me-0 mt-10'>
+                    <button type='submit' className='btn btn-lg btn-primary me-0 mt-10' onClick={submitStep}>
                       <span className='indicator-label'>
                         {!isSubmitButton && 'Continuar'}
                         {isSubmitButton && 'Guardar'}
@@ -103,9 +98,6 @@ const FormWizzard: FC = () => {
                     </button>
                   </div>
                 </div>
-              </Form>
-            )}
-          </Formik>
         </div>
       </div>
     </div>

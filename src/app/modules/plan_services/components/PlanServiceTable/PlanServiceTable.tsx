@@ -45,7 +45,7 @@ export const PlanServiceTable = ({stats}: IPlanServiceTable) => {
       type: tableTypes.Load,
       payload: {
         tableHeader: {
-          title: 'Servicios',
+          title: 'Plan servicios',
           count: 234,
           btnLink: '',
           btnModal: '#kt_modal_services',
