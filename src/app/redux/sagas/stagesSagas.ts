@@ -15,8 +15,8 @@ export function* sagaStages() {
     // Worker Sagas
     function* asyncLoad() {
       try {
-        const {data: {results}}: IfamilyResponseRR = yield call(getStages)
-        yield put(stagesActions.load(results))
+        const {data}: IfamilyResponseRR = yield call(getStages)
+        yield put(stagesActions.load(data))
       } catch (error) {
         console.log(error)
       }

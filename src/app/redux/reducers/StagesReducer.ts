@@ -29,7 +29,7 @@ interface IStagesState {
   selectedStage: StagesModel | undefined
 }
 
-export const planServicesReducer = persistReducer(
+export const stagesReducer = persistReducer(
   {storage, key: 'stages', whitelist: ['stages', 'selectedStage']},
   (state: IStagesState = initialStagesState, action: ActionWithPayload<IStagesState>) => {
     switch (action.type) {
@@ -39,10 +39,10 @@ export const planServicesReducer = persistReducer(
       case stagesTypes.Clear: {
         return {...initialStagesState};
       }
-      case stagesTypes.SelectedPlanService: {
+      case stagesTypes.SelectedStage: {
         return {...state, selectedStage: action.payload?.selectedStage};
       }
-      case stagesTypes.ClearSelectedPlanService: {
+      case stagesTypes.ClearSelectedStage: {
         return {...state, selectedStage: initialStagesState.selectedStage};
       }
       case stagesTypes.DeleteFromReducer: {

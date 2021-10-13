@@ -67,10 +67,10 @@ const FormWizzard: FC = () => {
                   <ViewEditForm/>
                 </div>
                 <div data-kt-stepper-element='content'>
-                  {/* <StepStages /> */}
+                  <StepStages />
                 </div>
                 <div data-kt-stepper-element='content'>
-                  {/* <StepQuestions/> */}
+                  <StepQuestions/>
                 </div>
                 <div className='d-flex flex-stack pt-0'>
                   <div className='ms-6'>
