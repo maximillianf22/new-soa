@@ -1,5 +1,4 @@
-import {Field} from 'formik'
-import React from 'react'
+import { Field, Formik, Form, FormikProps } from 'formik';
 import {KTSVG} from '../../../../../_metronic/helpers'
 import {InputCustom, InputSelect} from '../../../global/components/inputs'
 
@@ -18,6 +17,20 @@ const optionsStages = [
 export const StepQuestions = () => {
   return (
     <>
+     <Formik
+        initialValues={{}}
+        enableReinitialize={true}
+        onSubmit={(values) => {
+          console.log('en submit', values)
+          // dispatch({
+          //   type: isEditing ? planServicesTypes.Update : planServicesTypes.Create,
+          //   payload: values
+          // });
+          // dispatch({type: planServicesTypes.AsyncLoad})
+        }}
+      >
+        {(props: FormikProps<any>) => (
+        <Form>
       <div id='kt_account_profile_details' className='w-100 card'>
         <div className='card-body'>
           <div className='row mb-6'>
@@ -128,6 +141,9 @@ export const StepQuestions = () => {
           </div>
         </div>
       </div>
+      </Form>
+        )}
+      </Formik>
     </>
   )
 }

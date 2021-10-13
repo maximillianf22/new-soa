@@ -1,5 +1,4 @@
-import { Field } from 'formik'
-import React from 'react'
+import { Field, Formik, Form, FormikProps } from 'formik';
 import Board from 'react-trello'
 import { InputSelect } from '../../../global/components/inputs'
 
@@ -132,6 +131,20 @@ const data = {
 export const StepStages = () => {
   return (
     <>
+    <Formik
+        initialValues={{}}
+        enableReinitialize={true}
+        onSubmit={(values) => {
+          console.log('en submit', values)
+          // dispatch({
+          //   type: isEditing ? planServicesTypes.Update : planServicesTypes.Create,
+          //   payload: values
+          // });
+          // dispatch({type: planServicesTypes.AsyncLoad})
+        }}
+      >
+        {(props: FormikProps<any>) => (
+        <Form>
       <div className='card shadow-none bg-secondary'>
         <div className='card-title bg-white rounded p-10 d-flex bd-highlight'>
           <div className='bd-highlight w-75'>
@@ -151,6 +164,9 @@ export const StepStages = () => {
           <Board data={data} className='bg-secondary' style={{maxHeight: '700px'}} />
         </div>
       </div>
+      </Form>
+        )}
+      </Formik>
     </>
   )
 }
