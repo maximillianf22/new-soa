@@ -25,7 +25,7 @@ const MixedWidget1: React.FC<Props> = ({className, color}) => {
                 className={`btn btn-sm btn-icon btn-color-white btn-active-white btn-active-color-${color} border-0 me-n3`}
                 data-kt-menu-trigger='click'
                 data-kt-menu-placement='bottom-end'
-                data-kt-menu-flip='top-end'
+                data-kt-menu-flip='bottom-start'
               >
                 <KTSVG
                   path='/media/icons/duotone/Layout/Layout-4-blocks-2.svg'
