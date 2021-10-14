@@ -1,22 +1,32 @@
 import {Form, Formik, FormikProps} from 'formik'
-import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
+import { RootState } from '../../../../../setup';
 import { accountsActions } from '../../../../redux/actions/accountsActions';
+import { plansActions } from '../../../../redux/actions/plansActions';
+import { planTypes } from '../../../../redux/types/planTypes';
 import {IAccountInfo, IAccountsDetail} from '../../Interfaces/models'
 
 export const AccountsDetail = ({
-  selectedAccount,
-  accounts,
   count_vip,
   count_active,
   count_inactive,
 }: IAccountsDetail) => {
 
+  const {accounts, selectedAccount}: any = useSelector<RootState>(({accounts}) => accounts)
+
+
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch({type: planTypes.loadPlansByAcId, payload: selectedAccount})
+  }, [dispatch, selectedAccount])
 
   const selectAccountChange = (account: any) => {
 
     dispatch(accountsActions.selectedAccount(account))
+    // dispatch(plansActions.setAllReduxPlans(account.plans))
 
   }
 
@@ -49,7 +59,6 @@ export const AccountsDetail = ({
                     // isLoading={isLoading}
                     getOptionLabel={(option) => option.acName}
                     getOptionValue={(option) => option.acId.toString()}
-                    isClearable
                     isSearchable
                     onChange={(account) => selectAccountChange(account)}
                     name="accountSelect"

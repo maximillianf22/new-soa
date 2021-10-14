@@ -1,11 +1,16 @@
 export interface ICreatePlans {
-    description: string
-    code: string
-    url: string
-    initialDate: Date
-    finalDate: Date
-    dueDate: string
-  }
+  plId:              number;
+  plName:            string;
+  plIsVip:           boolean;
+  plStatus:          boolean;
+  plStartDate:       string;
+  plDueDate:         string;
+  plDaysToDue:       number;
+  plEventsShared:    boolean;
+  plnumEventsShared: number;
+  plFileUploadPath?: File;
+  acId:              number;
+}
   
 export interface IStatsItem {
     title: string;
@@ -31,6 +36,7 @@ export interface IPlanInitialValues {
   plans?: IPlanResponse[] | IPlanResponse
   selectedPlan?: IPlanResponse
   plId: number | null
+  acId: number | null
 }
 
 export interface IPlansReduxType {

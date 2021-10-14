@@ -3,21 +3,29 @@ import { ICreatePlans } from '../Interfaces/models'
 
 
 const createPlansSchemas = Yup.object().shape({
-  description: Yup.string().required('Este campo es requerido'),
-  code: Yup.string().required('Este campo es requerido'),
-  url: Yup.string().required('Este campo es requerido'),
-  initialDate: Yup.string().required('Este campo es requerido'),
-  finalDate: Yup.string().required('Este campo es requerido'),
-  dueDate: Yup.string().required('Este campo es requerido'),
+  plName: Yup.string().required('Este campo es requerido'),
+  plIsVip: Yup.boolean().required('Este campo es requerido'),
+  plStatus: Yup.boolean().required('Este campo es requerido'),
+  plStartDate: Yup.date().required('Este campo es requerido'),
+  plDueDate: Yup.date().required('Este campo es requerido'),
+  plDaysToDue: Yup.number().required('Este campo es requerido'),
+  plEventsShared: Yup.boolean().required('Este campo es requerido'),
+  plnumEventsShared: Yup.number().required('Este campo es requerido'),
+  // plFileUploadPath: Yup.string().required('Este campo es requerido'),
 })
 
 const initialValues: ICreatePlans = {
-  description: '',
-  code: '',
-  url: '',
-  initialDate: new Date(),
-  finalDate: new Date(),
-  dueDate: '',
+    plId: 0,
+    plName: '',
+    plIsVip: false,
+    plStatus: true,
+    plStartDate: '',
+    plDueDate: '',
+    plDaysToDue: 0,
+    plEventsShared: false,
+    plnumEventsShared: 0,
+    // plFileUploadPath: null,
+    acId: 0
 }
 
 export {createPlansSchemas, initialValues}

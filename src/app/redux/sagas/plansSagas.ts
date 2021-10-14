@@ -1,31 +1,29 @@
 import { call, put } from '@redux-saga/core/effects';
-import { accountTypes } from '../types/accountTypes';
 import { takeLatest } from 'redux-saga/effects';
-import { IPlansReduxType } from '../../modules/plans/Interfaces/models';
+import { IPlanResponse, IPlansReduxType } from '../../modules/plans/Interfaces/models';
 import { response } from '../../modules/global/models/uiModel';
-import { accountsActions } from '../actions/accountsActions';
+import { plansActions } from '../actions/plansActions';
 import { uiActions } from '../actions/uiActions';
 import { toast } from 'react-toastify';
-import { successToastOptions } from '../../modules/global/models/toastOptions';
-import { createPlan, deletePlan, getPlans, updatePlan } from '../../api/PlansService';
+import { errorToastOptions, successToastOptions } from '../../modules/global/models/toastOptions';
+import { createPlan, deletePlan, getPlanByAcId, getPlans, updatePlan } from '../../api/PlansService';
+import { planTypes } from '../types/planTypes';
 
 export function* sagaPlans() {
     // Worker Sagas
     function* sagaLoadPlans() {
       try {
         const {data}: response = yield call(getPlans)
-        yield put(accountsActions.load(data))
+        yield put(plansActions.load(data))
       } catch (error) {
         console.log(error)
       }
     }
-  
-    function* sagaDeletePlan({payload}: IPlansReduxType) {
+
+    function* sagaGetPlanByAcId({payload}:IPlansReduxType) {
       try {
-        const id = toast.loading("Eliminando...")
-        yield call(deletePlan, payload)
-        yield put(accountsActions.deleteRedux(payload))
-        toast.update(id, successToastOptions);
+        const {data}: response = yield call(getPlanByAcId, payload)
+        yield put(plansActions.loadPlansByAcId(data))
       } catch (error) {
         console.log(error)
       }
@@ -35,7 +33,7 @@ export function* sagaPlans() {
       try {
         const id = toast.loading("Actualizando...")
         const {data}: response = yield call(updatePlan, payload)
-        yield put(accountsActions.updateRedux(data))
+        yield put(plansActions.updateRedux(data))
         toast.update(id, successToastOptions);
       } catch (error) {
         console.log(error)
@@ -43,21 +41,41 @@ export function* sagaPlans() {
     }
   
     function* sagaCreatePlan({payload}:IPlansReduxType) {
+      const id = toast.loading("Creando...")      
+      yield put(uiActions.uiStartLoading())
       try {
-        yield put(uiActions.uiStartLoading())
-        const id = toast.loading("Creando...")
         const resp: response = yield call(createPlan, payload)
-        yield put(accountsActions.addRedux(resp.data))
+        yield put(plansActions.addRedux(resp.data))
         toast.update(id, successToastOptions);
         yield put(uiActions.uiFinishLoading())
-      } catch (error) {
-        console.log(error)
+      } catch (error: any) {
+        yield put(uiActions.uiFinishLoading())
+        if (error.response?.data?.plName?.length > 0) {
+          errorToastOptions.render = error.response.data.plName[0]
+        }
+        toast.update(id, errorToastOptions);
+        console.log(error.response)
+      }
+    }
+
+    function* sagaDeletePlan({payload}: IPlansReduxType) {
+      const id = toast.loading("Eliminando...")
+      console.log('delete', payload);
+      
+      try {
+        yield call(deletePlan, payload)
+        yield put(plansActions.deleteRedux(payload))
+        toast.update(id, successToastOptions);
+      } catch (error: any) {
+        console.log(error.response)
+        toast.update(id, errorToastOptions);
       }
     }
   
     // Watcher Sagas
-    yield takeLatest(accountTypes.get, sagaLoadPlans)
-    yield takeLatest(accountTypes.create, sagaCreatePlan)
-    yield takeLatest(accountTypes.update, sagaUpdatePlan)
-    yield takeLatest(accountTypes.delete, sagaDeletePlan)
+    yield takeLatest(planTypes.get, sagaLoadPlans)
+    yield takeLatest(planTypes.create, sagaCreatePlan)
+    yield takeLatest(planTypes.update, sagaUpdatePlan)
+    yield takeLatest(planTypes.delete, sagaDeletePlan)
+    yield takeLatest(planTypes.getByAcId, sagaGetPlanByAcId)
 }

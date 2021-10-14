@@ -1,7 +1,5 @@
-import React from 'react'
-import {Field, Form, Formik, FormikProps} from 'formik'
+import {Field} from 'formik'
 import {InputCustom, InputSelect} from '../../../global/components/inputs'
-import {initialValues} from './Helpers'
 
 const optionsServices = [
   {value: 'id1', label: 'Servicio Técnico'},
