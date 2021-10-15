@@ -15,16 +15,18 @@ import { plansReducer } from '../../app/redux/reducers/PlansRedux';
 import { sagaPlans } from '../../app/redux/sagas/plansSagas';
 import { sagaPlanServices } from '../../app/redux/sagas/planServicesSagas';
 import { planServicesReducer } from '../../app/redux/reducers/PlanServicesReducer';
+import { permitsReducer } from '../../app/redux/reducers/permitsRedux';
 
 export const rootReducer = combineReducers({
   accounts: accountsReducer,
   auth: auth.reducer,
   families: familiesReducer,
+  permits: permitsReducer,
   plans: plansReducer,
+  planServices: planServicesReducer,
+  services: servicesReducer,
   table: tableReducer,
   ui: uiReducer,
-  services: servicesReducer,
-  planServices: planServicesReducer,
   users: usersReducer,
 });
 

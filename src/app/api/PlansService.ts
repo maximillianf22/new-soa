@@ -14,7 +14,7 @@ export function createPlan(payload: any): Promise<IPlanResponse> {
   formData.append('plDaysToDue', payload.plDaysToDue)
   formData.append('plEventsShared', payload.plEventsShared)
   formData.append('plnumEventsShared', payload.plnumEventsShared)
-  if (payload.plFileUploadPath !== undefined) {
+  if (payload.plFileUploadPath !== undefined && payload.plFileUploadPath !== null) {
     formData.append('plFileUploadPath', payload.plFileUploadPath)
   }
   formData.append('acId', payload.acId)
@@ -43,7 +43,7 @@ export function updatePlan(payload:any): Promise<IPlanResponse[]> {
   formData.append('plDaysToDue', payload.plDaysToDue)
   formData.append('plEventsShared', payload.plEventsShared)
   formData.append('plnumEventsShared', payload.plnumEventsShared)
-  if (payload.plFileUploadPath !== undefined) {
+  if (payload.plFileUploadPath !== undefined && payload.plFileUploadPath !== null) {
     formData.append('plFileUploadPath', payload.plFileUploadPath)
   }
   formData.append('acId', payload.acId)

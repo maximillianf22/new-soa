@@ -5,7 +5,6 @@ import { PlansForm } from '../PlansForm'
 export const PlanCreateEdit = () => {
   const dispatch = useDispatch()
   const handleClose = () => {
-    console.log('entro');
     // dispatch(userActions.ClearSelectedUser());
   }
   return (

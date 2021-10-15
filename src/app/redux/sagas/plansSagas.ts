@@ -8,6 +8,8 @@ import { toast } from 'react-toastify';
 import { errorToastOptions, successToastOptions } from '../../modules/global/models/toastOptions';
 import { createPlan, deletePlan, getPlanByAcId, getPlans, updatePlan } from '../../api/PlansService';
 import { planTypes } from '../types/planTypes';
+import { accountsActions } from '../actions/accountsActions';
+import { getAccounts } from '../../api/AccountsService';
 
 export function* sagaPlans() {
     // Worker Sagas
@@ -34,6 +36,7 @@ export function* sagaPlans() {
         const id = toast.loading("Actualizando...")
         const {data}: response = yield call(updatePlan, payload)
         yield put(plansActions.updateRedux(data))
+        // yield put(accountsActions.load(yield call(getAccounts)))
         toast.update(id, successToastOptions);
       } catch (error) {
         console.log(error)

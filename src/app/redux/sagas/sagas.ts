@@ -8,6 +8,7 @@ import { takeLatest } from 'redux-saga/effects';
 import { login, Data } from '../../api/AuthCRUD';
 import { IfamilyResponse, IfamilyResponseRR } from '../../modules/families/Interfaces/models';
 import { getFamilies, deleteFamily, updateFamily, createFamily } from '../../api/FamilyService';
+import { permitActions } from '../actions/permitActions';
 
 
 interface ActionTypePayload {
@@ -100,6 +101,7 @@ export function* sagaUsers() {
         yield put(authActions.loading());
         const {data}:response = yield call(login, payload);
         yield put(authActions.login(data))
+        yield put(permitActions.loadReduxFromLogin(data))
       } catch (error:any) {
         yield put(authActions.loginError(error.response.data.detail))
       } finally {
