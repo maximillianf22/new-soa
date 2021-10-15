@@ -24,15 +24,18 @@ const permitByModuleAndAction = (permits: IPermitInfo[], module: string, action:
             return permit
         }
     })
-    console.log('permitArray', permitArray);
-    
-    if (permitArray.length > 0) {
-        console.log('entro true');
-        return true
-    } else {
-        console.log('entro false');
-        return false
-    }
+
+    return permitArray.length > 0 ? true : false
 }
 
-export {permitFilterByModules, permitByModuleAndAction}
+const permitByModule = (permits: IPermitInfo[], module: string) => {
+    const permitArray = permits.filter((permit) => {
+        if (permit.permAction.includes(module)) {
+            return permit
+        }
+    })
+    
+    return permitArray.length > 0 ? true : false
+}
+
+export {permitFilterByModules, permitByModuleAndAction, permitByModule}

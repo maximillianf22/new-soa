@@ -5,6 +5,7 @@ import {RootState} from '../../../../../../setup'
 import {toAbsoluteUrl} from '../../../../../../_metronic/helpers'
 import {userActions} from '../../../../../redux/actions/actions'
 import {usersTypes} from '../../../../../redux/types/types'
+import { permitByModuleAndAction } from '../../../../permits/PermitFilter'
 
 export const TableBodyItem = ({item}: any) => {
   const {
@@ -22,6 +23,8 @@ export const TableBodyItem = ({item}: any) => {
   } = item
 
   const table: any = useSelector<RootState>(({table}) => table)
+  const {permits}: any = useSelector<RootState>(({permits}) => permits)
+
   const {
     tableBody: {tableHeads},
   } = table
@@ -115,6 +118,7 @@ export const TableBodyItem = ({item}: any) => {
         )}
         <td>
           <div className='d-flex justify-content-end flex-shrink-0'>
+          { permitByModuleAndAction(permits, '_Providers_', 'show') && (
             <button
               type='button'
               className='btn btn-icon btn-info btn-sm me-1'
@@ -135,9 +139,11 @@ export const TableBodyItem = ({item}: any) => {
                   rolId,
                 })
               }
-            >
-              <i className='fa fa-eye'></i>
+              >
+                <i className='fa fa-eye'></i>
             </button>
+          )}
+          { permitByModuleAndAction(permits, '_Providers_', 'edit') && (
             <button
               type='button'
               className='btn btn-icon btn-success btn-sm me-1'
@@ -158,12 +164,15 @@ export const TableBodyItem = ({item}: any) => {
                   rolId,
                 })
               }
-            >
-              <i className='fa fa-edit'></i>
+              >
+                <i className='fa fa-edit'></i>
             </button>
+          )}
+          { permitByModuleAndAction(permits, '_Providers_', 'delete') && (
             <button className='btn btn-icon btn-danger btn-sm' onClick={() => handleDelete(id)}>
               <i className='fa fa-trash'></i>
             </button>
+          )}
           </div>
         </td>
       </tr>

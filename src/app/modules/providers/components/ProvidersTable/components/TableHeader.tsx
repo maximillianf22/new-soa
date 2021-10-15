@@ -7,6 +7,7 @@ import {KTSVG} from '../../../../../../_metronic/helpers'
 import * as Yup from 'yup'
 import Dropdown from './Dropdown'
 import CollapseFilters from './CollapseFilters'
+import { permitByModuleAndAction } from '../../../../permits/PermitFilter'
 
 const searchSchema = Yup.object().shape({
   search: Yup.string()
@@ -21,6 +22,7 @@ const initialValues = {
 
 export const TableHeader = () => {
   const table: any = useSelector<RootState>(({table}) => table)
+  const {permits}: any = useSelector<RootState>(({permits}) => permits)
 
   const {tableHeader, tableBody} = table
 
@@ -70,23 +72,25 @@ export const TableHeader = () => {
               />
             </form>
           </div>
-          {tableHeader?.btnLink ? (
-            <Link to={tableHeader?.btnLink} className='btn btn-sm btn-primary ms-2'>
-              <i className='fas fa-plus'></i>
-              Nuevo
-            </Link>
-          ) : (
-            <>
-              <button
-                type='button'
-                className='btn btn-sm btn-primary ms-2'
-                data-bs-toggle='modal'
-                data-bs-target={tableHeader?.btnModal}
-              >
+          { permitByModuleAndAction(permits, '_Providers_', 'add') && (
+            tableHeader?.btnLink ? (
+              <Link to={tableHeader?.btnLink} className='btn btn-sm btn-primary ms-2'>
                 <i className='fas fa-plus'></i>
                 Nuevo
-              </button>
-            </>
+                </Link>
+                ) : (
+                  <>
+                <button
+                  type='button'
+                  className='btn btn-sm btn-primary ms-2'
+                  data-bs-toggle='modal'
+                  data-bs-target={tableHeader?.btnModal}
+                  >
+                  <i className='fas fa-plus'></i>
+                  Nuevo
+                </button>
+              </>
+            )
           )}
 
           <button

@@ -1,6 +1,10 @@
+import { useSelector } from 'react-redux'
+import { RootState } from '../../../../../setup'
+import { permitByModule } from '../../../../modules/permits/PermitFilter'
 import { ItemDropdown } from './ItemDropdown'
 
 export const DropdownSoaang = () => {
+  const {permits}: any = useSelector<RootState>(({permits}) => permits)
   return (
     <>
       <div
@@ -12,11 +16,21 @@ export const DropdownSoaang = () => {
           data-kt-menu-trigger="{default:'click', lg: 'hover'}"
           data-kt-menu-placement='right-start'
         >
-          <ItemDropdown title='Cuentas' link='/accounts/home'/>
-          <ItemDropdown title='Planes' link='/plans/home'/>
-          <ItemDropdown title='Servicios' link='/plan-service/home'/>
-          <ItemDropdown title='Familias' link='/families/home'/>
-          <ItemDropdown title='Proveedores' link='/providers/home'/>
+          { permitByModule(permits, '_Accounts_') && (
+            <ItemDropdown title='Cuentas' link='/accounts/home'/>
+          )}
+          { permitByModule(permits, '_Plans_') && (
+            <ItemDropdown title='Planes' link='/plans/home'/>
+          )}
+          { permitByModule(permits, '_Services_') && (
+            <ItemDropdown title='Servicios' link='/plan-service/home'/>
+          )}
+          { permitByModule(permits, '_Families_') && (
+            <ItemDropdown title='Familias' link='/families/home'/>
+          )}
+          { permitByModule(permits, '_Providers_') && (
+            <ItemDropdown title='Proveedores' link='/providers/home'/>
+          )}
         </div>
       </div>
     </>
