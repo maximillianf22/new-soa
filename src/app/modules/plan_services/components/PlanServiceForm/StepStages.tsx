@@ -2,10 +2,9 @@ import { Field, Formik, Form, FormikProps } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import Board from 'react-trello'
 import { InputSelect } from '../../../global/components/inputs'
-import { stagesTypes } from '../../../../redux/types/stagesTypes';
 import { RootState } from '../../../../../setup/redux/RootReducer';
 import { StagesModel } from '../../../../redux/reducers/StagesReducer';
-import { useEffect } from 'react';
+import { planServicesTypes } from '../../../../redux/types/planServicesTypes';
 
 const optionsTemplates = [
   {value: '1', label: 'Plantilla1'},
@@ -15,7 +14,53 @@ const optionsTemplates = [
 
 export const StepStages = () => {
   const stages: any = useSelector<RootState>(({stages}) => stages.stages);
+  const selectedPlanService: any = useSelector<RootState>(({planServices}) => planServices.selectedPlanService);
+  const dispatch = useDispatch();
+  // let eventBus:any = undefined;
+  // const setEventBus = (handle:any) => {
+  //   eventBus = handle
+  // }
+  // // eventBus?.publish({type: 'MOVE_CARD', cardId: 'stage_10', index: 10})
+  // eventBus.publish({type: 'REMOVE_CARD', laneId: 'PLANNED', cardId: "stage_10"})
+
+
+//   let etapasToSbmt = [{
+//     ssOrderIndex: 1,
+//     ssTime: "00:00:00",
+//     ssTimeApp: "00:00:00",
+//     sId: 1
+// }]
   
+//   const onCardMoveAcrossLanes = (fromLaneId: any, toLaneId: any, cardId: any, index: any) => {
+//     const stage = {
+//       ssOrderIndex: index+1,
+//       ssTime: "00:00:00",
+//       ssTimeApp: "00:00:00",
+//       sId: cardId
+//     }
+//     if(!etapasToSbmt.includes(stage)) {
+//       etapasToSbmt.push(stage)
+//       // etapasToSbmt = etapasToSbmt.filter( s => s.sId === stage.sId)
+//     }
+//     // console.log(fromLaneId, toLaneId, cardId, index)
+//     // console.log(etapasToSbmt)
+//   }
+
+  const onDataChange = (newData:any) => {
+    const cards = newData.lanes[0].cards;
+    cards.map( (s:any, i:number) => {
+      s.ssOrderIndex = i+1;
+      s.sId = s.id;
+      s.spId = selectedPlanService.spId;
+      s.ssTime = "00:00:00";
+      s.ssTimeApp = "00:00:00";
+    })
+    const stages = {
+      items: cards
+    }
+    dispatch({type: planServicesTypes.StageValidation, payload:stages })
+  }
+
 
   const bc = ['ecf8ff', 'e8fff3', 'f8f5ff', 'fff8dd', 'fff5f8', 'f0fcff', 'fef2ff', 'ededed'];
   const colors = ['009ef7' ,'50cd89' ,'7239ea' ,'ffc700' ,'f1416c' ,'1ed2ff' ,'f563ff' ,'000000'];
@@ -24,9 +69,9 @@ export const StepStages = () => {
       if (stage.sstagenumber !==1 && stage.sstagenumber !==10) {
         return {
           description: stage.sdescription,
-          id: `stage_${stage.sid}`,
+          id: `${stage.sid}`,
           laneId: 'PLANNED',
-          title: `Etapa ${stages.sstagenumber} ${stages.sdescription}`,
+          title: `Etapa ${stage.sstagenumber} ${stage.sdescription}`,
           className: 'my-5',
           style: {
             backgroundColor: `#${bc[i-1]}`,
@@ -35,7 +80,6 @@ export const StepStages = () => {
         }
       }
     }).filter( (stage:StagesModel) => stage !== undefined );
-  console.log(stgs)
 
   const data = {
     lanes: [
@@ -43,7 +87,7 @@ export const StepStages = () => {
         cards: [
           {
             description: stages[0].sdescription,
-            id: 'stage_1',
+            id: '1',
             laneId: 'stages_selected',
             title: `Etapa ${stages[0].sstagenumber} ${stages[0].sdescription}`,
             draggable: false,
@@ -51,7 +95,7 @@ export const StepStages = () => {
           },
           {
             description: stages[9].sdescription,
-            id: 'stage_10',
+            id: '10',
             laneId: 'stages_selected',
             title: `Etapa ${stages[9].sstagenumber} ${stages[9].sdescription}`,
             className: 'my-5 bg-secondary',
@@ -104,8 +148,13 @@ export const StepStages = () => {
           </div>
         </div>
         <div className='card-body'>
-          <Board data={data} className='bg-secondary' style={{maxHeight: '700px'}} />
+          <Board data={data} onDataChange={onDataChange} className='bg-secondary' style={{maxHeight: '1200px'}} />
         </div>
+
+        <button type="submit" className='btn btn-lg btn-primary me-0 mt-10'>
+        Guardar
+                  <i className='fa fa-arrow-right svg-icon-3 ms-2 me-0'></i>
+              </button>
       </div>
       </Form>
         )}

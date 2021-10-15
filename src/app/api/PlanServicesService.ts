@@ -3,8 +3,21 @@ import { IPlanServicesResponse } from '../modules/plan_services/Interfaces/model
 
 
 export const PLAN_SERVICES_URL = `soaang-catalogs/api/services/plan-service/`;
+export const STAGE_VALIDATION_URL = `soaang-catalogs/api/service-stages-validations/`;
 
 // Servidor debe retonar IPlanServicesResponse
+
+export function stagesValidation(payload:any): Promise<any> {
+  // payload.items.map( (s:any, i:number) => {
+  //   delete s.className;
+  //   delete s.description;
+  //   delete s.laneId;
+  //   delete s.style;
+  //   delete s.title;
+  // })
+  console.log(payload)
+  return httpClient.post(`${STAGE_VALIDATION_URL}`, payload)
+}
 
 export function createPlanService(payload:any): Promise<IPlanServicesResponse> {
   

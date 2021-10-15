@@ -1,10 +1,13 @@
 import { IfamilyResponseRR } from '../../modules/families/Interfaces/models';
 import { call, takeLatest, put } from 'redux-saga/effects';
 import { IResponseServiceService } from '../../modules/services/Interfaces/models';
-import { getPlanServices, deletePlanService, updatePlanService, getPlanService, createPlanService } from '../../api/PlanServicesService';
+import { getPlanServices, deletePlanService, updatePlanService, getPlanService, createPlanService, stagesValidation } from '../../api/PlanServicesService';
 import { IPlanServicesResponse } from '../../modules/plan_services/Interfaces/models';
 import { planServicesActions } from '../actions/planServicesActions';
 import { planServicesTypes } from '../types/planServicesTypes';
+import { uiTypes } from '../types/types';
+import { toast } from 'react-toastify';
+import { successToastOptions, errorToastOptions } from '../../modules/global/models/toastOptions';
 
 interface ActionTypePayload {
     type: string, 
@@ -44,10 +47,26 @@ export function* sagaPlanServices() {
     function* sagaCreatePlanService({payload}:ActionTypePayload) {
       try {
         const resp: IPlanServicesResponse = yield call(createPlanService, payload)
+        console.log('en tryy', resp)
+        
+        yield put({type: uiTypes.uiFinishLoading})
         yield put({type: planServicesTypes.AsyncLoad})
+        yield put(planServicesActions.SelectedPlanService(resp.data))
+
       } catch (error) {
         console.log(error)
-      }
+        yield put({type: uiTypes.uiFinishLoading}) //Así funciona 
+      } 
+    }
+
+    function* sagaStagesValidation({payload}:ActionTypePayload) {
+      try {
+        const resp: IPlanServicesResponse = yield call(stagesValidation, payload)
+        console.log(resp);
+      } catch (error:any) {
+        console.log(error.response.data.Error)
+        toast.error(error.response.data.Error);
+      } 
     }
   
     // Watcher Sagas
@@ -55,4 +74,5 @@ export function* sagaPlanServices() {
     yield takeLatest(planServicesTypes.Delete, sagaDeletePlanService)
     yield takeLatest(planServicesTypes.Update, sagaUpdatePlanService)
     yield takeLatest(planServicesTypes.Create, sagaCreatePlanService)
+    yield takeLatest(planServicesTypes.StageValidation, sagaStagesValidation)
   }

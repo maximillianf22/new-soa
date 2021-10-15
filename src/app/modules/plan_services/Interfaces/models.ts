@@ -34,6 +34,7 @@ export interface IPlanServicesResponse {
   count: number
   next: null
   previous: null
+  data?: any 
   results: PlanServiceModel[]
 }
 
