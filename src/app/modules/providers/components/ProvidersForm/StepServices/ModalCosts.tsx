@@ -56,118 +56,14 @@ export const ModalCosts = () => {
                           <div className='col-md-1 fv-row p-1'>
                             <InputCustom type='text' name='Foraneo' label='Foraneo' />
                           </div>
-                          <div className='col-md-1 fv-row p-1'>
+                          <div className='col-md-1 fv-row p-1 text-center'>
                             <InputCustom
-                              className='form-check-input h-30px w-20px mt-7'
+                              className='form-check-input h-30px w-20px mt-3 ms-7 pt-0'
                               type='checkbox'
                               name='is_active'
                               checked
                               id='flexSwitchChecked'
-                            />
-                          </div>
-                        </div>
-                        <div className='d-flex justify-content-between text-start mb-4'>
-                          <div className='col-md-3 fv-row p-1'>
-                            <InputCustom type='text' name='item' label='Item costo' />
-                          </div>
-                          <div className='col-md-1 fv-row p-1'>
-                            <InputCustom type='number' name='unidad' label='unidad' />
-                          </div>
-                          <div className='col-md-2 fv-row p-1'>
-                            <InputCustom type='text' name='medida' label='Medida' />
-                          </div>
-                          <div className='col-md-1 fv-row p-1'>
-                            <InputCustom type='text' name='LocalDiurno' label='Diurno' />
-                          </div>
-                          <div className='col-md-1 fv-row p-1'>
-                            <InputCustom type='text' name='LocalNocturno' label='Nocturno' />
-                          </div>
-                          <div className='col-md-1 fv-row p-1'>
-                            <InputCustom type='text' name='FestivoDiurno' label='Festivo D' />
-                          </div>
-                          <div className='col-md-1 fv-row p-1'>
-                            <InputCustom type='text' name='FestivoNocturno' label='Festivo N' />
-                          </div>
-                          <div className='col-md-1 fv-row p-1'>
-                            <InputCustom type='text' name='Foraneo' label='Foraneo' />
-                          </div>
-                          <div className='col-md-1 fv-row p-1'>
-                            <InputCustom
-                              className='form-check-input h-30px w-20px mt-7'
-                              type='checkbox'
-                              name='is_active'
-                              checked
-                              id='flexSwitchChecked'
-                            />
-                          </div>
-                        </div>
-                        <div className='d-flex justify-content-between text-start mb-4'>
-                          <div className='col-md-3 fv-row p-1'>
-                            <InputCustom type='text' name='item' label='Item costo' />
-                          </div>
-                          <div className='col-md-1 fv-row p-1'>
-                            <InputCustom type='number' name='unidad' label='unidad' />
-                          </div>
-                          <div className='col-md-2 fv-row p-1'>
-                            <InputCustom type='text' name='medida' label='Medida' />
-                          </div>
-                          <div className='col-md-1 fv-row p-1'>
-                            <InputCustom type='text' name='LocalDiurno' label='Diurno' />
-                          </div>
-                          <div className='col-md-1 fv-row p-1'>
-                            <InputCustom type='text' name='LocalNocturno' label='Nocturno' />
-                          </div>
-                          <div className='col-md-1 fv-row p-1'>
-                            <InputCustom type='text' name='FestivoDiurno' label='Festivo D' />
-                          </div>
-                          <div className='col-md-1 fv-row p-1'>
-                            <InputCustom type='text' name='FestivoNocturno' label='Festivo N' />
-                          </div>
-                          <div className='col-md-1 fv-row p-1'>
-                            <InputCustom type='text' name='Foraneo' label='Foraneo' />
-                          </div>
-                          <div className='col-md-1 fv-row p-1'>
-                            <InputCustom
-                              className='form-check-input h-30px w-20px mt-7'
-                              type='checkbox'
-                              name='is_active'
-                              checked
-                              id='flexSwitchChecked'
-                            />
-                          </div>
-                        </div>
-                        <div className='d-flex justify-content-between text-start mb-4'>
-                          <div className='col-md-3 fv-row p-1'>
-                            <InputCustom type='text' name='item' label='Item costo' />
-                          </div>
-                          <div className='col-md-1 fv-row p-1'>
-                            <InputCustom type='number' name='unidad' label='unidad' />
-                          </div>
-                          <div className='col-md-2 fv-row p-1'>
-                            <InputCustom type='text' name='medida' label='Medida' />
-                          </div>
-                          <div className='col-md-1 fv-row p-1'>
-                            <InputCustom type='text' name='LocalDiurno' label='Diurno' />
-                          </div>
-                          <div className='col-md-1 fv-row p-1'>
-                            <InputCustom type='text' name='LocalNocturno' label='Nocturno' />
-                          </div>
-                          <div className='col-md-1 fv-row p-1'>
-                            <InputCustom type='text' name='FestivoDiurno' label='Festivo D' />
-                          </div>
-                          <div className='col-md-1 fv-row p-1'>
-                            <InputCustom type='text' name='FestivoNocturno' label='Festivo N' />
-                          </div>
-                          <div className='col-md-1 fv-row p-1'>
-                            <InputCustom type='text' name='Foraneo' label='Foraneo' />
-                          </div>
-                          <div className='col-md-1 fv-row p-1'>
-                            <InputCustom
-                              className='form-check-input h-30px w-20px mt-7'
-                              type='checkbox'
-                              name='is_active'
-                              checked
-                              id='flexSwitchChecked'
+                              label='Visible'
                             />
                           </div>
                         </div>
@@ -198,11 +94,120 @@ export const ModalCosts = () => {
                           </div>
                           <div className='col-md-1 fv-row p-1 text-center'>
                             <InputCustom
-                              className='form-check-input h-30px w-20px mt-7'
+                              className='form-check-input h-30px w-20px mt-3 ms-7 pt-0'
                               type='checkbox'
                               name='is_active'
                               checked
                               id='flexSwitchChecked'
+                              label='Visible'
+                            />
+                          </div>
+                        </div>
+                        <div className='d-flex justify-content-between text-start mb-4'>
+                          <div className='col-md-3 fv-row p-1'>
+                            <InputCustom type='text' name='item' label='Item costo' />
+                          </div>
+                          <div className='col-md-1 fv-row p-1'>
+                            <InputCustom type='number' name='unidad' label='unidad' />
+                          </div>
+                          <div className='col-md-2 fv-row p-1'>
+                            <InputCustom type='text' name='medida' label='Medida' />
+                          </div>
+                          <div className='col-md-1 fv-row p-1'>
+                            <InputCustom type='text' name='LocalDiurno' label='Diurno' />
+                          </div>
+                          <div className='col-md-1 fv-row p-1'>
+                            <InputCustom type='text' name='LocalNocturno' label='Nocturno' />
+                          </div>
+                          <div className='col-md-1 fv-row p-1'>
+                            <InputCustom type='text' name='FestivoDiurno' label='Festivo D' />
+                          </div>
+                          <div className='col-md-1 fv-row p-1'>
+                            <InputCustom type='text' name='FestivoNocturno' label='Festivo N' />
+                          </div>
+                          <div className='col-md-1 fv-row p-1'>
+                            <InputCustom type='text' name='Foraneo' label='Foraneo' />
+                          </div>
+                          <div className='col-md-1 fv-row p-1 text-center'>
+                            <InputCustom
+                              className='form-check-input h-30px w-20px mt-3 ms-7 pt-0'
+                              type='checkbox'
+                              name='is_active'
+                              checked
+                              id='flexSwitchChecked'
+                              label='Visible'
+                            />
+                          </div>
+                        </div>
+                        <div className='d-flex justify-content-between text-start mb-4'>
+                          <div className='col-md-3 fv-row p-1'>
+                            <InputCustom type='text' name='item' label='Item costo' />
+                          </div>
+                          <div className='col-md-1 fv-row p-1'>
+                            <InputCustom type='number' name='unidad' label='unidad' />
+                          </div>
+                          <div className='col-md-2 fv-row p-1'>
+                            <InputCustom type='text' name='medida' label='Medida' />
+                          </div>
+                          <div className='col-md-1 fv-row p-1'>
+                            <InputCustom type='text' name='LocalDiurno' label='Diurno' />
+                          </div>
+                          <div className='col-md-1 fv-row p-1'>
+                            <InputCustom type='text' name='LocalNocturno' label='Nocturno' />
+                          </div>
+                          <div className='col-md-1 fv-row p-1'>
+                            <InputCustom type='text' name='FestivoDiurno' label='Festivo D' />
+                          </div>
+                          <div className='col-md-1 fv-row p-1'>
+                            <InputCustom type='text' name='FestivoNocturno' label='Festivo N' />
+                          </div>
+                          <div className='col-md-1 fv-row p-1'>
+                            <InputCustom type='text' name='Foraneo' label='Foraneo' />
+                          </div>
+                          <div className='col-md-1 fv-row p-1 text-center'>
+                            <InputCustom
+                              className='form-check-input h-30px w-20px mt-3 ms-7 pt-0'
+                              type='checkbox'
+                              name='is_active'
+                              checked
+                              id='flexSwitchChecked'
+                              label='Visible'
+                            />
+                          </div>
+                        </div>
+                        <div className='d-flex justify-content-between text-start mb-4'>
+                          <div className='col-md-3 fv-row p-1'>
+                            <InputCustom type='text' name='item' label='Item costo' />
+                          </div>
+                          <div className='col-md-1 fv-row p-1'>
+                            <InputCustom type='number' name='unidad' label='unidad' />
+                          </div>
+                          <div className='col-md-2 fv-row p-1'>
+                            <InputCustom type='text' name='medida' label='Medida' />
+                          </div>
+                          <div className='col-md-1 fv-row p-1'>
+                            <InputCustom type='text' name='LocalDiurno' label='Diurno' />
+                          </div>
+                          <div className='col-md-1 fv-row p-1'>
+                            <InputCustom type='text' name='LocalNocturno' label='Nocturno' />
+                          </div>
+                          <div className='col-md-1 fv-row p-1'>
+                            <InputCustom type='text' name='FestivoDiurno' label='Festivo D' />
+                          </div>
+                          <div className='col-md-1 fv-row p-1'>
+                            <InputCustom type='text' name='FestivoNocturno' label='Festivo N' />
+                          </div>
+                          <div className='col-md-1 fv-row p-1'>
+                            <InputCustom type='text' name='Foraneo' label='Foraneo' />
+                          </div>
+                          <div className='col-md-1 fv-row p-1 text-center'>
+                            <InputCustom
+                              className='form-check-input h-30px w-20px mt-3 ms-7 pt-0'
+                              type='checkbox'
+                              name='is_active'
+                              checked
+                              id='flexSwitchChecked'
+                              label='Visible'
                             />
                           </div>
                         </div>
@@ -216,20 +221,23 @@ export const ModalCosts = () => {
                             ></textarea>
                           </div>
                           <div className='col-6 ps-10'>
-                            <b className='text-muted'>Distancia Kilometraje recorrido</b>
-                            <FormCheck className='my-4'
+                            <b className='text-muted mb-10'>Distancia Kilometraje recorrido</b>
+                            <FormCheck
+                              className='mt-8'
                               type='radio'
-                              label='Desde el inicio de aceptación de la asistencia hasta el contacto con el afiliado.'
+                              label='Desde aceptación de la asistencia hasta el contacto con el afiliado.'
                               name='formHorizontalRadios'
                               id='formHorizontalRadios1'
                             />
-                            <FormCheck className='my-4'
+                            <FormCheck
+                              className='my-4'
                               type='radio'
                               label='Desde el contacto con el afiliado hasta el destino final.'
                               name='formHorizontalRadios'
                               id='formHorizontalRadios2'
                             />
-                            <FormCheck className='my-4'
+                            <FormCheck
+                              className='my-4'
                               type='radio'
                               label='Desde la aceptación del servicio hasta el destino final.'
                               name='formHorizontalRadios'

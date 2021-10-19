@@ -6,6 +6,7 @@ import {Field, Form, Formik, FormikProps} from 'formik'
 import {InputCustom, InputSelect} from '../../../../global/components/inputs'
 import {initialValues} from '../Helpers'
 import {Button, OverlayTrigger, Tooltip} from 'react-bootstrap-v5'
+import {ModalMapPolygonSave} from './ModalMapPolygonSave'
 
 export const ModalMapPolygon = () => {
   // Poligono
@@ -75,15 +76,23 @@ export const ModalMapPolygon = () => {
       <div className='modal fade' tabIndex={-1} id='kt_modal_polygon'>
         <div className='modal-dialog modal-xl modal-dialog-centered'>
           <div className='modal-content'>
-            <div className='modal-body'>
+            <div className='modal-body p-5'>
               <div className='card' style={{minHeight: '40vh'}}>
                 <div className='card-body'>
-                  <div className='card-title bg-white rounded d-flex bd-highlight'>
-                    <div className='bd-highlight w-75'>
+                  <div className='card-header border-0 p-0 ps-2 pe-4 mb-0'>
+                    <h2 className='card-title align-items-start flex-column'>
                       <h3 className='fw-bold m-0'>Configuracion de areas de servicios</h3>
                       <p className='text-muted'>
                         Usando poligonos Ubica en el mapa las areas de servicio del proveedor
                       </p>
+                    </h2>
+                    <div className='card-toolbar'>
+                      <button
+                        type='button'
+                        className='btn-close'
+                        data-bs-dismiss='modal'
+                        aria-label='Close'
+                      ></button>
                     </div>
                   </div>
                   <Formik
@@ -104,7 +113,8 @@ export const ModalMapPolygon = () => {
                               required
                             />
                           </div>
-                          <div className='col-md-5 fv-row'>
+                          <div className='col-md-2 fv-row'></div>
+                          <div className='col-md-3 fv-row px-3'>
                             <label className='col-form-label required fw-bold fs-6 py-2'>
                               Sedes
                             </label>
@@ -114,9 +124,21 @@ export const ModalMapPolygon = () => {
                                 component={InputSelect}
                                 options={optionsSedes}
                               />
+                            </div>
+                          </div>
+                          <div className='col-md-3 fv-row'>
+                            <label className='col-form-label required fw-bold fs-6 py-2'>
+                              Poligonos
+                            </label>
+                            <div className='d-flex justify-content-between text-start'>
+                              <Field
+                                name='condicion'
+                                component={InputSelect}
+                                options={optionsSedes}
+                              />
                               <OverlayTrigger
                                 placement='top'
-                                delay={{show: 250, hide: 400}}
+                                delay={{show: 250, hide: 3000}}
                                 overlay={renderTooltip}
                               >
                                 <button className='btn btn-info btn-icon ms-3 p-4'>
@@ -130,7 +152,21 @@ export const ModalMapPolygon = () => {
                     )}
                   </Formik>
                   <div className='w-100 card mt-7'>
-                    <div className='App'>
+                    <div className='App2'>
+                      <div
+                        className='btn btn-white text-dark py-3 shadow btn-save-polygon'
+                        data-bs-toggle='modal'
+                        data-bs-target='#kt_modal_save_polygon'
+                      >
+                        Guardar <i className='fa fa-save fs-4 text-dark'></i>
+                      </div>
+                      <div
+                        className='btn btn-white text-dark py-3 shadow btn-create-polygon'
+                        data-bs-toggle='modal'
+                        data-bs-target='#kt_modal_save_polygon'
+                      >
+                        Nuevo <i className='fa fa-draw-polygon fs-4 text-dark'></i>
+                      </div>
                       <LoadScript
                         id='script-loader'
                         googleMapsApiKey='AIzaSyAVqj3iCGPfniWznDShImSfe8XQzjdiQrM'
@@ -161,16 +197,12 @@ export const ModalMapPolygon = () => {
                     </div>
                   </div>
                 </div>
-                <div className='modal-footer p-0 m-0 border-0 pe-8'>
-                  <button type='button' className='btn btn-danger' data-bs-dismiss='modal'>
-                    Cerrar
-                  </button>
-                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <ModalMapPolygonSave />
     </>
   )
 }

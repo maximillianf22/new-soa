@@ -1,0 +1,71 @@
+div label input {
+  margin-right: 100px;
+}
+body {
+  font-family: sans-serif;
+}
+
+#ck-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  height: calc(1.5em + 1.5rem + 2px);
+  width: calc(1.5em + 1.5rem + 2px);
+  border-radius: 50% !important;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: #bfbfbf;
+}
+
+#ck-button:hover {
+  background: #1bc5bd;
+}
+
+#ck-button label {
+  float: left;
+  width: 4em;
+}
+
+#ck-button label span {
+  text-align: center;
+  padding: 3px 0px;
+  display: block;
+}
+
+#ck-button label input {
+  position: absolute;
+  z-index: -10;
+}
+
+#ck-button input:checked + span {
+  background-color: #1bc5bd;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  height: calc(1.5em + 1.5rem + 2px);
+  width: calc(1.5em + 1.5rem + 2px);
+  border-radius: 50% !important;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  box-shadow: 0 0.1rem 1rem 0.25rem rgb(0 0 0 / 10%) !important;
+}
+
+.form-control-sm-mod {
+  min-height: 25px;
+  max-height: 25px;
+}
+
+.btn-sm-md {
+  min-height: 25px;
+  max-height: 25px;
+}
+
+@media (min-width: 992px) {
+  .modal-md {
+    max-width: 550px;
+  }
+}

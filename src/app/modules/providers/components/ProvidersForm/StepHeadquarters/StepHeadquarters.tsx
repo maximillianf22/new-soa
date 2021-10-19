@@ -1,12 +1,12 @@
-import ReactDOM from 'react-dom'
-import React, {useState, useRef, useCallback} from 'react'
-import {LoadScript, GoogleMap, Polygon, Marker, InfoWindow} from '@react-google-maps/api'
-import './styles.css'
+import React, {useState} from 'react'
+import {LoadScript, GoogleMap, Marker, InfoWindow} from '@react-google-maps/api'
 import {MapInfoWindows} from './MapInfoWindows'
 import {Field, Form, Formik, FormikProps} from 'formik'
 import {InputCustom, InputSelect} from '../../../../global/components/inputs'
 import {initialValues} from '../Helpers'
-import {Button, OverlayTrigger, Tooltip} from 'react-bootstrap-v5'
+import {OverlayTrigger, Tooltip} from 'react-bootstrap-v5'
+import {ModalHeadquarters} from './ModalHeadquarters'
+import './styles.css'
 
 export function StepHeadquarters() {
   const [showInfowindows, setShowInfowindows] = useState(false)
@@ -45,6 +45,14 @@ export function StepHeadquarters() {
         </div>
       </div>
       <div className='App'>
+        <div
+          className='btn btn-white text-dark py-3 border shadow btn-save-headquarter'
+          data-bs-toggle='modal'
+          data-bs-target='#kt_modal'
+        >
+          Guardar <i className='fa fa-save fs-4 text-dark'></i>
+        </div>
+        <ModalHeadquarters />
         <Formik
           initialValues={initialValues}
           enableReinitialize={true}

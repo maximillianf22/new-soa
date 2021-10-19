@@ -2,6 +2,8 @@ import React from 'react'
 import {InputCustom} from '../../../../global/components/inputs'
 import {Form, Formik, FormikProps} from 'formik'
 import {initialValues} from '../Helpers'
+import {ModalSchedule} from './ModalSchedule'
+import { ModalAccounts } from './ModalAccounts'
 
 export const FormContact = () => {
   return (
@@ -98,12 +100,20 @@ export const FormContact = () => {
                 </div>
               </div>
               <div className='col-md-2 mt-13 d-grid gap-2'>
-                <button className='btn btn-success btn-form'>
+                <button
+                  className='btn btn-success btn-form'
+                  data-bs-toggle='modal'
+                  data-bs-target='#kt_modal_schedule'
+                >
                   <i className='fa fa-calendar fa-lg'></i> Horario
                 </button>
               </div>
               <div className='col-md-2 mt-13 d-grid gap-2'>
-                <button className='btn btn-info btn-form'>
+                <button
+                  className='btn btn-info btn-form'
+                  data-bs-toggle='modal'
+                  data-bs-target='#kt_modal_accounts'
+                >
                   <i className='fa fa-list fa-lg'></i> Cuentas
                 </button>
               </div>
@@ -116,6 +126,8 @@ export const FormContact = () => {
           </Form>
         )}
       </Formik>
+      <ModalSchedule />
+      <ModalAccounts />
     </>
   )
 }
