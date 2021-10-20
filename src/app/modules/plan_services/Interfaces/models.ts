@@ -38,6 +38,14 @@ export interface IPlanServicesResponse {
   results: PlanServiceModel[]
 }
 
+export interface IQuestionsResponse {
+  count: number
+  next: null
+  previous: null
+  data?: any 
+  results: PlanServiceModel[]
+}
+
 export interface PlanServiceModel {
   spId:                    number;
   spNumberOfEvents:        number;

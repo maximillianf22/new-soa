@@ -46,30 +46,31 @@ export const StepStages = () => {
 //     // console.log(etapasToSbmt)
 //   }
 
+  const newStages = {
+    items: []
+  }
   const onDataChange = (newData:any) => {
     const cards = newData.lanes[0].cards;
     cards.map( (s:any, i:number) => {
-      s.ssOrderIndex = i+1;
       s.sId = s.id;
       s.spId = selectedPlanService.spId;
       s.ssTime = "00:00:00";
       s.ssTimeApp = "00:00:00";
     })
-    const stages = {
-      items: cards
-    }
-    dispatch({type: planServicesTypes.StageValidation, payload:stages })
+    newStages.items = cards;
+    dispatch({type: planServicesTypes.StageValidation, payload:newStages })
   }
-
-
+  // ################ TODO: cambios en backend para que guarde la data como se maneja en la librería y luego en el front hacer un color picker ################
   const bc = ['ecf8ff', 'e8fff3', 'f8f5ff', 'fff8dd', 'fff5f8', 'f0fcff', 'fef2ff', 'ededed'];
   const colors = ['009ef7' ,'50cd89' ,'7239ea' ,'ffc700' ,'f1416c' ,'1ed2ff' ,'f563ff' ,'000000'];
+  
   let stgs;
     stgs = stages.map( (stage: StagesModel, i:number) => {
       if (stage.sstagenumber !==1 && stage.sstagenumber !==10) {
         return {
           description: stage.sdescription,
           id: `${stage.sid}`,
+          ssOrderIndex: stage.sstagenumber,
           laneId: 'PLANNED',
           title: `Etapa ${stage.sstagenumber} ${stage.sdescription}`,
           className: 'my-5',
@@ -88,6 +89,7 @@ export const StepStages = () => {
           {
             description: stages[0].sdescription,
             id: '1',
+            ssOrderIndex: 1,
             laneId: 'stages_selected',
             title: `Etapa ${stages[0].sstagenumber} ${stages[0].sdescription}`,
             draggable: false,
@@ -96,6 +98,7 @@ export const StepStages = () => {
           {
             description: stages[9].sdescription,
             id: '10',
+            ssOrderIndex: 10,
             laneId: 'stages_selected',
             title: `Etapa ${stages[9].sstagenumber} ${stages[9].sdescription}`,
             className: 'my-5 bg-secondary',
@@ -122,7 +125,7 @@ export const StepStages = () => {
         initialValues={{}}
         enableReinitialize={true}
         onSubmit={(values) => {
-          console.log('en submit', values)
+          dispatch({type: planServicesTypes.StageSave, payload:newStages })
           // dispatch({
           //   type: isEditing ? planServicesTypes.Update : planServicesTypes.Create,
           //   payload: values

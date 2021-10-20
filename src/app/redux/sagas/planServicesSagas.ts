@@ -1,7 +1,7 @@
 import { IfamilyResponseRR } from '../../modules/families/Interfaces/models';
 import { call, takeLatest, put } from 'redux-saga/effects';
 import { IResponseServiceService } from '../../modules/services/Interfaces/models';
-import { getPlanServices, deletePlanService, updatePlanService, getPlanService, createPlanService, stagesValidation } from '../../api/PlanServicesService';
+import { getPlanServices, deletePlanService, updatePlanService, getPlanService, createPlanService, stagesValidation, stagesSave } from '../../api/PlanServicesService';
 import { IPlanServicesResponse } from '../../modules/plan_services/Interfaces/models';
 import { planServicesActions } from '../actions/planServicesActions';
 import { planServicesTypes } from '../types/planServicesTypes';
@@ -68,6 +68,16 @@ export function* sagaPlanServices() {
         toast.error(error.response.data.Error);
       } 
     }
+
+    function* sagaStagesSave({payload}:ActionTypePayload) {
+      try {
+        const resp: IPlanServicesResponse = yield call(stagesSave, payload)
+        console.log(resp);
+      } catch (error:any) {
+        console.log(error.response.data.Error)
+        toast.error(error.response.data.Error);
+      } 
+    }
   
     // Watcher Sagas
     yield takeLatest(planServicesTypes.AsyncLoad, asyncLoad)
@@ -75,4 +85,5 @@ export function* sagaPlanServices() {
     yield takeLatest(planServicesTypes.Update, sagaUpdatePlanService)
     yield takeLatest(planServicesTypes.Create, sagaCreatePlanService)
     yield takeLatest(planServicesTypes.StageValidation, sagaStagesValidation)
+    yield takeLatest(planServicesTypes.StageSave, sagaStagesSave)
   }

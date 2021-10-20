@@ -4,8 +4,15 @@ import { IPlanServicesResponse } from '../modules/plan_services/Interfaces/model
 
 export const PLAN_SERVICES_URL = `soaang-catalogs/api/services/plan-service/`;
 export const STAGE_VALIDATION_URL = `soaang-catalogs/api/service-stages-validations/`;
+export const STAGE_SAVE = `soaang-catalogs/api/service-stages/`;
 
 // Servidor debe retonar IPlanServicesResponse
+
+export function stagesSave(payload:any): Promise<any> {
+  payload.sid = payload.items[0].sId;
+  console.log(payload)
+  return httpClient.post(`${STAGE_SAVE}`, payload)
+}
 
 export function stagesValidation(payload:any): Promise<any> {
   // payload.items.map( (s:any, i:number) => {
@@ -15,7 +22,6 @@ export function stagesValidation(payload:any): Promise<any> {
   //   delete s.style;
   //   delete s.title;
   // })
-  console.log(payload)
   return httpClient.post(`${STAGE_VALIDATION_URL}`, payload)
 }
 
