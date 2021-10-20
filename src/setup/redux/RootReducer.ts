@@ -5,7 +5,7 @@ import * as auth from '../../app/modules/auth'
 import { tableReducer } from '../../app/redux/reducers/TableRedux';
 import { usersReducer } from '../../app/redux/reducers/UsersRedux';
 import { familiesReducer } from '../../app/redux/reducers/FamilyRedux';
-import { sagaUsers, authSaga, tableSaga, sagaFamilies } from '../../app/redux/sagas/sagas';
+import { sagaUsers, tableSaga } from '../../app/redux/sagas/sagas';
 import { uiReducer } from '../../app/redux/reducers/uiRedux';
 import { accountsReducer } from '../../app/redux/reducers/AccountsRedux';
 import { sagaAccounts } from '../../app/redux/sagas/accountsSagas';
@@ -17,6 +17,8 @@ import { sagaPlanServices } from '../../app/redux/sagas/planServicesSagas';
 import { planServicesReducer } from '../../app/redux/reducers/PlanServicesReducer';
 import { stagesReducer } from '../../app/redux/reducers/StagesReducer';
 import { sagaStages } from '../../app/redux/sagas/stagesSagas';
+import { sagaFamilies } from '../../app/redux/sagas/FamiliesSaga';
+import { authSaga } from '../../app/redux/sagas/authSaga';
 
 export const rootReducer = combineReducers({
   accounts: accountsReducer,
