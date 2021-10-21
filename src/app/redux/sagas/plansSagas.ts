@@ -1,6 +1,6 @@
 import { call, put } from '@redux-saga/core/effects';
 import { takeLatest } from 'redux-saga/effects';
-import { IPlanResponse, IPlansReduxType } from '../../modules/plans/Interfaces/models';
+import { IPlansReduxType } from '../../modules/plans/Interfaces/models';
 import { response } from '../../modules/global/models/uiModel';
 import { plansActions } from '../actions/plansActions';
 import { uiActions } from '../actions/uiActions';

@@ -7,6 +7,8 @@ import { ServiceModel } from '../../../services/Interfaces/models';
 import Select from 'react-select';
 import { IPlanResponse } from '../../../plans/Interfaces/models';
 import { planServicesTypes } from '../../../../redux/types/planServicesTypes';
+import { uiTypes } from '../../../../redux/types/types';
+import { useEffect } from 'react';
 
 
 const optionsFrecuencies = [
@@ -25,7 +27,7 @@ export const ViewEditForm = () => {
   const selectedPlanService: any = useSelector<RootState>(({planServices}) => planServices.selectedPlanService);
   const {services}: any = useSelector<RootState>(({services}) => services)
   const {plans}: any = useSelector<RootState>(({plans}) => plans)
-
+  
   const {loading, editing: isEditing, viewing: isViewing}: any = useSelector<RootState>(({ui}) => ui);
   const dispatch = useDispatch();
 
@@ -36,6 +38,9 @@ export const ViewEditForm = () => {
       props.values.spFrecuency === -1 ? props.setFieldValue("spFrecuency", 0) : props.setFieldValue("spFrecuency", -1);
     }
   };
+  useEffect(() => {
+    dispatch({type: uiTypes.uiStartLoading})
+  }, [])
 
   return (
     <>
