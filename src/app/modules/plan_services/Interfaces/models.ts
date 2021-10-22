@@ -34,26 +34,35 @@ export interface IPlanServicesResponse {
   count: number
   next: null
   previous: null
+  data?: any 
+  results: PlanServiceModel[]
+}
+
+export interface IQuestionsResponse {
+  count: number
+  next: null
+  previous: null
+  data?: any 
   results: PlanServiceModel[]
 }
 
 export interface PlanServiceModel {
   spId:                    number;
-  spNumberOfEvents:        null;
-  spCost:                  null;
-  spVehicle:               null;
-  spDataVehicular:         null;
-  spServApp:               null;
-  spThreePoints:           null;
-  spVideocall:             null;
-  spGroupService:          null;
-  spGroupEqualService:     null;
-  spReAsignProvider:       null;
+  spNumberOfEvents:        number;
+  spCost:                  number;
+  spVehicle:               boolean;
+  spDataVehicular:         boolean;
+  spServApp:               boolean;
+  spThreePoints:           boolean;
+  spVideocall:             boolean;
+  spGroupService:          boolean;
+  spGroupEqualService:     boolean;
+  spReAsignProvider:       boolean;
   spLogoUploadPath:        string;
   spLabelForUser:          string;
-  spFrecuency:             null;
-  spConditionsDescription: null;
+  spFrecuency:             boolean;
+  spConditionsDescription: string;
   servId:                  number;
   plId:                    number;
-  pId:                     null;
+  pId:                     number;
 }

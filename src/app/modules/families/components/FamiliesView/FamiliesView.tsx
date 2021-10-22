@@ -1,4 +1,3 @@
-import React from 'react'
 import {PlanServiceTable} from '../../../plan_services/components/PlanServiceTable/PlanServiceTable'
 import {FamiliesDetails} from './FamiliesDetails'
 

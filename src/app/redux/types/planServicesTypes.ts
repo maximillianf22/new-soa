@@ -7,6 +7,8 @@ export const planServicesTypes = {
     Create: '[planServicesRedux] create planService',
     SelectedPlanService: '[planServicesRedux] selected planService',
     ClearSelectedPlanService: '[planServicesRedux] clear selected planService',
+    StageValidation: '[planServicesRedux] stage validation',
+    StageSave: '[planServicesRedux] saving stage',
 
     DeleteFromReducer: '[planServicesRedux] delete planService from reducer',
     UpdateFromReducer: '[planServicesRedux] update planService from reducer',

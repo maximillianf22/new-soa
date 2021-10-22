@@ -27,7 +27,7 @@ export const TableHeader = () => {
   const {permits}: any = useSelector<RootState>(({permits}) => permits)
 
   const dispatch = useDispatch();
-  const {tableHeader, tableBody} = table;
+  const {tableHeader} = table;
 
   const handleNew = () => {
     dispatch(uiActions.uiIsViewing(false));

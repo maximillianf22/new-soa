@@ -1,6 +1,6 @@
 import {useFormik} from 'formik'
 import {useState} from 'react'
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {RootState} from '../../../../../../setup'
 import {KTSVG} from '../../../../../../_metronic/helpers'
@@ -8,6 +8,8 @@ import * as Yup from 'yup'
 import Dropdown from './Dropdown'
 import CollapseFilters from './CollapseFilters'
 import { permitByModuleAndAction } from '../../../../permits/PermitFilter'
+import { uiActions } from '../../../../../redux/actions/uiActions';
+import { planServicesTypes } from '../../../../../redux/types/planServicesTypes';
 
 const searchSchema = Yup.object().shape({
   search: Yup.string()
@@ -22,9 +24,15 @@ const initialValues = {
 
 export const TableHeader = () => {
   const table: any = useSelector<RootState>(({table}) => table)
+  const dispatch = useDispatch();
+  const {tableHeader} = table;
   const {permits}: any = useSelector<RootState>(({permits}) => permits)
 
-  const {tableHeader, tableBody} = table
+  const handleNew = () => {
+    dispatch(uiActions.uiIsViewing(false));
+    dispatch(uiActions.uiIsEditing(false));
+    dispatch({type: planServicesTypes.ClearSelectedPlanService})
+  }
 
   const [loading, setLoading] = useState(false)
   const formik = useFormik({
@@ -72,25 +80,11 @@ export const TableHeader = () => {
               />
             </form>
           </div>
-          { permitByModuleAndAction(permits, '_Plans_', 'add') && (
-            tableHeader?.btnLink ? (
-              <Link to={tableHeader?.btnLink} className='btn btn-sm btn-primary ms-2'>
-                <i className='fas fa-plus'></i>
-                Nuevo
-                </Link>
-                ) : (
-                  <>
-                <button
-                  type='button'
-                  className='btn btn-sm btn-primary ms-2'
-                  data-bs-toggle='modal'
-                  data-bs-target={tableHeader?.btnModal}
-                  >
-                  <i className='fas fa-plus'></i>
-                  Nuevo
-                </button>
-              </>
-            )
+          { permitByModuleAndAction(permits, '_ServicesPlans_', 'add') && (
+            <Link to='/plan-service/create' className='btn btn-sm btn-primary ms-2' onClick={handleNew}>
+              <i className='fas fa-plus'></i>
+              Nuevo
+            </Link>
           )}
 
           <button

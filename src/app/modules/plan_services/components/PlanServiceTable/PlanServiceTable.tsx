@@ -1,51 +1,69 @@
 import {useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { RootState } from '../../../../../setup'
-import { tableActions, userActions } from '../../../../redux/actions/actions'
-import { tableTypes, usersTypes } from '../../../../redux/types/types'
+import { tableActions } from '../../../../redux/actions/actions'
+import { tableTypes, servicesTypes } from '../../../../redux/types/types';
 import { IPlanServiceTable } from '../../Interfaces/models'
 import { TableComponent } from './components/TableComponent'
+import { planServicesTypes } from '../../../../redux/types/planServicesTypes';
+import { planTypes } from '../../../../redux/types/planTypes';
+import { stagesTypes } from '../../../../redux/types/stagesTypes';
 
 export const PlanServiceTable = ({stats}: IPlanServiceTable) => {
   const dispatch = useDispatch()
 
-  const users: any = useSelector<RootState>(({users}) => users.users)
+  const planServices: any = useSelector<RootState>(({planServices}) => planServices.planServices)
 
   const tableHeads = [
     'id',
-    'usuario',
-    'nombre',
-    'apellido',
-    'correo',
-    'activo',
-    'fecha creación',
-    'rol',
-  ]
+    'Número de eventos',
+    'Costo',
+    'Vehículo',
+    'Data vehicular',
+    'Venta por app',
+    'Ruta de tres puntos',
+    'Video llamada',
+    'Permite encoladas',
+    'Asistencia simultanea',
+    'Reasignacion de proveedor',
+    'Logo',
+    'Etiqueta',
+    'Frecuencia',
+    'Descripcion del servicio',
+    'Servicio',
+    'Plan',
+    'Moneda',
+  ];
+
+  useEffect(() => {
+    dispatch({type: planServicesTypes.AsyncLoad})
+    dispatch({type: planTypes.get})
+    dispatch({type: servicesTypes.AsyncLoad})
+    dispatch({type: stagesTypes.AsyncLoad});
+  }, [dispatch])
   
   useEffect(() => {
-  dispatch({type: usersTypes.AsyncLoad})
-
     dispatch({
       type: tableTypes.Load,
       payload: {
         tableHeader: {
-          title: 'Servicios',
+          title: 'Plan servicios',
           count: 234,
-          btnLink: 'create',
-          btnModal: '',
+          btnLink: '',
+          btnModal: '#kt_modal_services',
           tableHeads: tableHeads,
         },
         tableBody: {
-          tableHeads: ['usuario', 'nombre', 'correo', 'rol'],
-          tableContent: users,
+          tableHeads: ['id', 'Costo', 'Descripcion del servicio', 'Servicio', 'Plan'],
+          tableContent: planServices,
         },
       },
-    })
+    });
     return () => {
-      dispatch(userActions.clear())
+      // dispatch(servicesActions.clear())
       dispatch(tableActions.clear())
     }
-  }, [dispatch]) // eslint-disable-line
+  }, [dispatch, planServices]) // eslint-disable-line
 
   return (
     <>
