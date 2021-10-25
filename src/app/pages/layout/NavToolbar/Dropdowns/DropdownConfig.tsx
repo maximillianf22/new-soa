@@ -14,6 +14,7 @@ export const DropdownConfig = () => {
           data-kt-menu-placement='right-start'
         >
           <ItemDropdown title='Servicios Disponibles' link='/services/home' />
+          <ItemDropdown title='Items de costos' link='/item-costs/home' />
         </div>
       </div>
     </>

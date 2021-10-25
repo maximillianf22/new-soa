@@ -7,6 +7,7 @@ import {KTSVG} from '../../../../../../_metronic/helpers'
 import * as Yup from 'yup'
 import Dropdown from './Dropdown'
 import CollapseFilters from './CollapseFilters'
+import { permitByModuleAndAction } from '../../../../permits/PermitFilter'
 import { uiActions } from '../../../../../redux/actions/uiActions';
 import { planServicesTypes } from '../../../../../redux/types/planServicesTypes';
 
@@ -25,6 +26,7 @@ export const TableHeader = () => {
   const table: any = useSelector<RootState>(({table}) => table)
   const dispatch = useDispatch();
   const {tableHeader} = table;
+  const {permits}: any = useSelector<RootState>(({permits}) => permits)
 
   const handleNew = () => {
     dispatch(uiActions.uiIsViewing(false));
@@ -78,11 +80,12 @@ export const TableHeader = () => {
               />
             </form>
           </div>
-          
-          <Link to='/plan-service/create' className='btn btn-sm btn-primary ms-2' onClick={handleNew}>
-            <i className='fas fa-plus'></i>
-            Nuevo
-          </Link>
+          { permitByModuleAndAction(permits, '_ServicesPlans_', 'add') && (
+            <Link to='/plan-service/create' className='btn btn-sm btn-primary ms-2' onClick={handleNew}>
+              <i className='fas fa-plus'></i>
+              Nuevo
+            </Link>
+          )}
 
           <button
             className='btn btn-info btn-sm btn-icon ms-2'
@@ -100,7 +103,7 @@ export const TableHeader = () => {
               className='btn btn-sm btn-icon btn-gray btn-active-dark btn-active-color-white btn-color-dark'
               data-kt-menu-trigger='click'
               data-kt-menu-placement='bottom-start'
-              data-kt-menu-flip='top-end'
+              data-kt-menu-flip='bottom-start'
             >
               <i className='fas fa-cog'></i>
             </button>

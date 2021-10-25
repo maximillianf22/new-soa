@@ -5,6 +5,7 @@ import {RootState} from '../../../../../../setup'
 import { familiesTypes } from '../../../../../redux/types/types';
 import { uiActions } from '../../../../../redux/actions/uiActions';
 import { familiesActions } from '../../../../../redux/actions/familiesActions';
+import { permitByModuleAndAction } from '../../../../permits/PermitFilter';
 
 export const TableBodyItem = ({item} : any) => {
   
@@ -19,6 +20,8 @@ export const TableBodyItem = ({item} : any) => {
   } = item
 
   const table: any = useSelector<RootState>(({table}) => table)
+  const {permits}: any = useSelector<RootState>(({permits}) => permits)
+
   const {
     tableBody: {tableHeads},
   } = table
@@ -92,47 +95,53 @@ export const TableBodyItem = ({item} : any) => {
         )}
         <td>
           <div className='d-flex justify-content-end flex-shrink-0'>
-            <button
-              type='button'
-              className='btn btn-icon btn-info btn-sm me-1'
-              data-bs-toggle='modal'
-              data-bs-target='#kt_modal'
-              onClick={() =>
-                handleView({
-                  fmId,
-                  fmDescription,
-                  fmStatus,
-                  fmCreatedAt,
-                  fmUpdatedAt,
-                  fmUsermod,
-                  fmIsActive,
-                })
-              }
-            >
-              <i className='fa fa-eye'></i>
-            </button>
-            <button
-              type='button'
-              className='btn btn-icon btn-success btn-sm me-1'
-              data-bs-toggle='modal'
-              data-bs-target='#kt_modal'
-              onClick={() =>
-                handleEdit({
-                  fmId,
-                  fmDescription,
-                  fmStatus,
-                  fmCreatedAt,
-                  fmUpdatedAt,
-                  fmUsermod,
-                  fmIsActive,
-                })
-              }
-            >
-              <i className='fa fa-edit'></i>
-            </button>
-            <button className='btn btn-icon btn-danger btn-sm' onClick={() => handleDelete(fmId)}>
-              <i className='fa fa-trash'></i>
-            </button>
+            { permitByModuleAndAction(permits, '_Families_', 'show') && (
+              <button
+                type='button'
+                className='btn btn-icon btn-info btn-sm me-1'
+                data-bs-toggle='modal'
+                data-bs-target='#kt_modal'
+                onClick={() =>
+                  handleView({
+                    fmId,
+                    fmDescription,
+                    fmStatus,
+                    fmCreatedAt,
+                    fmUpdatedAt,
+                    fmUsermod,
+                    fmIsActive,
+                  })
+                }
+                >
+                  <i className='fa fa-eye'></i>
+              </button>
+            )}
+            { permitByModuleAndAction(permits, '_Families_', 'edit') && (
+              <button
+                type='button'
+                className='btn btn-icon btn-success btn-sm me-1'
+                data-bs-toggle='modal'
+                data-bs-target='#kt_modal'
+                onClick={() =>
+                  handleEdit({
+                    fmId,
+                    fmDescription,
+                    fmStatus,
+                    fmCreatedAt,
+                    fmUpdatedAt,
+                    fmUsermod,
+                    fmIsActive,
+                  })
+                }
+                >
+                <i className='fa fa-edit'></i>
+              </button>
+            )}
+            { permitByModuleAndAction(permits, '_Families_', 'delete') && (
+              <button className='btn btn-icon btn-danger btn-sm' onClick={() => handleDelete(fmId)}>
+                <i className='fa fa-trash'></i>
+              </button>
+            )}
           </div>
         </td>
       </tr>

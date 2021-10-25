@@ -1,0 +1,106 @@
+import React from 'react'
+import {Formik, Form, FormikProps, Field} from 'formik'
+import {InputCustom} from '../../../../global/components/inputs'
+import {initialValues} from '../Helpers'
+
+export const ModalTime = () => {
+  return (
+    <>
+      <div className='modal' tabIndex={-1} id='kt_modal_time'>
+        <div className='modal-dialog modal-dialog-centered modal-sm'>
+          <div className='modal-content'>
+            <div className='modal-body'>
+              <div className='card'>
+                <div className='card-body p-0'>
+                  <div className='text-center w-100 '>
+                    <h2 className='fw-bolder text-center text-dark'>Tiempo por etapa</h2>
+                    <p className='text-muted'>Coloque el tiempo en minutos para cada etapa</p>
+                  </div>
+                  <Formik
+                    initialValues={initialValues}
+                    enableReinitialize={true}
+                    onSubmit={(values) => {}}
+                  >
+                    {(props: FormikProps<any>) => (
+                      <Form>
+                        <table className='table table-borderless table-sm'>
+                          <thead>
+                            <tr className='fw-bolder text-muted bg-light text-uppercase'>
+                              <th scope='col' className='ps-4'>
+                                Etapa
+                              </th>
+                              <th scope='col'>Tiempo</th>
+                              <th scope='col'></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr className='px-4'>
+                              <th scope='row' className='pt-2 fw-bolder fs-5'>
+                                Etapa 5
+                              </th>
+                              <td>
+                                <input
+                                  type='number'
+                                  name='time'
+                                  className='form-control form-control-sm form-control-sm-mod form-control-solid'
+                                />
+                              </td>
+                              <td>
+                                <button className='btn btn-sm btn-sm-mod btn-danger py-1 px-1'>
+                                  <i className='fa fa-times ms-1'></i>
+                                </button>
+                              </td>
+                            </tr>
+                            <tr className='px-4'>
+                              <th scope='row' className='pt-2 fw-bolder fs-5'>
+                                Etapa 6
+                              </th>
+                              <td>
+                                <input
+                                  type='number'
+                                  name='time'
+                                  className='form-control form-control-sm form-control-sm-mod form-control-solid'
+                                />
+                              </td>
+                              <td>
+                                <button className='btn btn-sm btn-sm-mod btn-danger py-1 px-1'>
+                                  <i className='fa fa-times ms-1'></i>
+                                </button>
+                              </td>
+                            </tr>
+                            <tr className='px-4'>
+                              <th scope='row' className='pt-2 fw-bolder fs-5'>
+                                Etapa 7
+                              </th>
+                              <td>
+                                <input
+                                  type='number'
+                                  name='time'
+                                  className='form-control form-control-sm form-control-sm-mod form-control-solid'
+                                />
+                              </td>
+                              <td>
+                                <button className='btn btn-sm btn-sm-mod btn-danger py-1 px-1'>
+                                  <i className='fa fa-times ms-1'></i>
+                                </button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </Form>
+                    )}
+                  </Formik>
+                </div>
+              </div>
+              <div className='modal-footer p-0 m-0 border-0'>
+                <button type='button' className='btn btn-primary btn-sm m-0' data-bs-dismiss='modal'>
+                  Cerrar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}

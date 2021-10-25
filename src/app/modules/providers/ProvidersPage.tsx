@@ -3,7 +3,6 @@ import {PageTitle} from '../../../_metronic/layout/core'
 import {Switch, Route, Redirect} from 'react-router-dom'
 import {PageLink} from '../../../_metronic/layout/core'
 import { ProvidersTable } from './components/ProvidersTable/ProvidersTable'
-import { FormWizzard } from './components/ProvidersForm/FormWizzard'
 import { FormTab } from './components/ProvidersForm/FormTab'
 
 const ProvidersBreadCrumbs: Array<PageLink> = [

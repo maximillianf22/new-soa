@@ -4,6 +4,7 @@ import {RootState} from '../../../../../../setup'
 import { plansActions } from '../../../../../redux/actions/plansActions'
 import { uiActions } from '../../../../../redux/actions/uiActions'
 import { planTypes } from '../../../../../redux/types/planTypes'
+import { permitByModuleAndAction } from '../../../../permits/PermitFilter'
 
 export const TableBodyItem = ({item} : any) => {
   
@@ -16,6 +17,8 @@ export const TableBodyItem = ({item} : any) => {
   } = item
 
   const table: any = useSelector<RootState>(({table}) => table)
+  const {permits}: any = useSelector<RootState>(({permits}) => permits)
+
   const {
     tableBody: {tableHeads},
   } = table
@@ -82,49 +85,39 @@ export const TableBodyItem = ({item} : any) => {
             <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{plDueDate}</p>
           </td>
         )}
-
-        {/* {tableHeads.includes('activo') && (
-          <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{is_active}</p>
-          </td>
-        )}
-        {tableHeads.includes('fecha creación') && (
-          <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{date_joined}</p>
-          </td>
-        )}
-        {tableHeads.includes('rol') && (
-          <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{rolId}</p>
-          </td>
-        )} */}
         <td>
           <div className='d-flex justify-content-end flex-shrink-0'>
-            <button
-              type='button'
-              className='btn btn-icon btn-info btn-sm me-1'
-              data-bs-toggle='modal'
-              data-bs-target='#planCreateUpdateModal'
-              onClick={() =>
-                handleView()
-              }
-            >
-              <i className='fa fa-eye'></i>
-            </button>
-            <button
-              type='button'
-              className='btn btn-icon btn-success btn-sm me-1'
-              data-bs-toggle='modal'
-              data-bs-target='#planCreateUpdateModal'
-              onClick={() =>
-                handleEdit()
-              }
-            >
-              <i className='fa fa-edit'></i>
-            </button>
-            <button className='btn btn-icon btn-danger btn-sm' onClick={() => handleDelete(plId)}>
-              <i className='fa fa-trash'></i>
-            </button>
+            { permitByModuleAndAction(permits, '_Plans_', 'show') && (
+              <button
+                type='button'
+                className='btn btn-icon btn-info btn-sm me-1'
+                data-bs-toggle='modal'
+                data-bs-target='#planCreateUpdateModal'
+                onClick={() =>
+                  handleView()
+                }
+                >
+                  <i className='fa fa-eye'></i>
+              </button>
+            )}
+            { permitByModuleAndAction(permits, '_Plans_', 'edit') && (
+              <button
+                type='button'
+                className='btn btn-icon btn-success btn-sm me-1'
+                data-bs-toggle='modal'
+                data-bs-target='#planCreateUpdateModal'
+                onClick={() =>
+                  handleEdit()
+                }
+                >
+                <i className='fa fa-edit'></i>
+              </button>
+            )}
+            { permitByModuleAndAction(permits, '_Plans_', 'delete') && (
+              <button className='btn btn-icon btn-danger btn-sm' onClick={() => handleDelete(plId)}>
+                <i className='fa fa-trash'></i>
+              </button>
+            )}
           </div>
         </td>
       </tr>

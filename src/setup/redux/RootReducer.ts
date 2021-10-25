@@ -15,22 +15,30 @@ import { plansReducer } from '../../app/redux/reducers/PlansRedux';
 import { sagaPlans } from '../../app/redux/sagas/plansSagas';
 import { sagaPlanServices } from '../../app/redux/sagas/planServicesSagas';
 import { planServicesReducer } from '../../app/redux/reducers/PlanServicesReducer';
+import { permitsReducer } from '../../app/redux/reducers/permitsRedux';
 import { stagesReducer } from '../../app/redux/reducers/StagesReducer';
 import { sagaStages } from '../../app/redux/sagas/stagesSagas';
 import { sagaFamilies } from '../../app/redux/sagas/familiesSaga';
 import { authSaga } from '../../app/redux/sagas/authSaga';
+<<<<<<< HEAD
 import { questionsReducer } from '../../app/redux/reducers/QuestionsReducer';
 import { sagaQuestions } from '../../app/redux/sagas/questionsSagas';
+=======
+import { sagaProviders } from '../../app/redux/sagas/providerSagas';
+import { providersReducer } from '../../app/redux/reducers/ProvidersRedux';
+>>>>>>> 9eb41fb1e5dd859f42595fbd0397df9b4251feac
 
 export const rootReducer = combineReducers({
   accounts: accountsReducer,
   auth: auth.reducer,
   families: familiesReducer,
+  permits: permitsReducer,
   plans: plansReducer,
+  planServices: planServicesReducer,
+  providers: providersReducer,
+  services: servicesReducer,
   table: tableReducer,
   ui: uiReducer,
-  services: servicesReducer,
-  planServices: planServicesReducer,
   users: usersReducer,
   stages: stagesReducer,
   questions: questionsReducer
@@ -47,6 +55,7 @@ export function* rootSaga() {
     sagaFamilies(),
     sagaServices(),
     sagaPlanServices(),
+    sagaProviders(),
     sagaStages(),
     sagaQuestions()
   ])

@@ -8,6 +8,7 @@ import * as Yup from 'yup'
 import Dropdown from './Dropdown'
 import CollapseFilters from './CollapseFilters'
 import { uiActions } from "../../../../../redux/actions/uiActions";
+import { permitByModuleAndAction } from '../../../../permits/PermitFilter'
 const searchSchema = Yup.object().shape({
   search: Yup.string()
     .min(3, 'Mínimo 3 carácteres')
@@ -21,6 +22,8 @@ const initialValues = {
 
 export const TableHeader = () => {
   const table: any = useSelector<RootState>(({table}) => table)
+  const {permits}: any = useSelector<RootState>(({permits}) => permits)
+
   const {tableHeader, tableBody} = table
   const dispatch = useDispatch()
 
@@ -68,27 +71,29 @@ export const TableHeader = () => {
               />
             </form>
           </div>
-          {tableHeader?.btnLink ? (
-            <Link to={tableHeader?.btnLink} className='btn btn-sm btn-primary ms-2'>
-              <i className='fas fa-plus'></i>
-              Nuevo
-            </Link>
-          ) : (
-            <>
-              <button
-                type='button'
-                className='btn btn-sm btn-primary ms-2'
-                data-bs-toggle='modal'
-                data-bs-target={tableHeader?.btnModal}
-                onClick={() => {
-                  dispatch(uiActions.uiIsEditing(false))
-                  dispatch(uiActions.uiIsViewing(false))
-                }}
-              >
+          { permitByModuleAndAction(permits, '_Accounts_', 'add') && (
+            tableHeader?.btnLink ? (
+              <Link to={tableHeader?.btnLink} className='btn btn-sm btn-primary ms-2'>
                 <i className='fas fa-plus'></i>
                 Nuevo
-              </button>
-            </>
+              </Link>
+            ) : (
+              <>
+                <button
+                  type='button'
+                  className='btn btn-sm btn-primary ms-2'
+                  data-bs-toggle='modal'
+                  data-bs-target={tableHeader?.btnModal}
+                  onClick={() => {
+                    dispatch(uiActions.uiIsEditing(false))
+                    dispatch(uiActions.uiIsViewing(false))
+                  }}
+                  >
+                  <i className='fas fa-plus'></i>
+                  Nuevo
+                </button>
+              </>
+            )
           )}
 
           <button
@@ -107,7 +112,7 @@ export const TableHeader = () => {
               className='btn btn-sm btn-icon btn-gray btn-active-dark btn-active-color-white btn-color-dark'
               data-kt-menu-trigger='click'
               data-kt-menu-placement='bottom-start'
-              data-kt-menu-flip='top-end'
+              data-kt-menu-flip='bottom-start'
             >
               <i className='fas fa-cog'></i>
             </button>

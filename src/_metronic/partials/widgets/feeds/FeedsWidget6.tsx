@@ -40,7 +40,7 @@ const FeedsWidget6: React.FC<Props> = ({className}) => {
               className='btn btn-sm btn-icon btn-color-primary btn-active-light-primary'
               data-kt-menu-trigger='click'
               data-kt-menu-placement='bottom-end'
-              data-kt-menu-flip='top-end'
+              data-kt-menu-flip='bottom-start'
             >
               <KTSVG
                 path='/media/icons/duotone/Layout/Layout-4-blocks-2.svg'

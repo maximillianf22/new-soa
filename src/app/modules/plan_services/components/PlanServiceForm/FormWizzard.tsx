@@ -2,8 +2,15 @@ import { FC, useEffect, useRef, useState } from 'react'
 import { initialValues, wizzardSchemas } from './Helpers'
 import { ICreatePlanService } from '../../Interfaces/models'
 import { StepperComponent } from '../../../../../_metronic/assets/ts/components'
+<<<<<<< HEAD
 import { StepStages } from './StepStages'
 import { StepQuestions } from './StepQuestions'
+=======
+import { KTSVG } from '../../../../../_metronic/helpers'
+import { StepStages } from './StepStages/StepStages'
+import { StepQuestions } from './StepQuestions/StepQuestions'
+import { StepPlanService } from './StepPlanService'
+>>>>>>> 9eb41fb1e5dd859f42595fbd0397df9b4251feac
 import { ViewEditForm } from './ViewEditForm';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../../../setup/redux/RootReducer';
