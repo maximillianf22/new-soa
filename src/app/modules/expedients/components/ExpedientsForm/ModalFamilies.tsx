@@ -1,7 +1,7 @@
 import React from 'react'
 import { ModalServices } from './ModalServices'
 
-export const ModalAsistencia = () => {
+export const ModalFamilies= () => {
   return (
     <>
       <div className='modal' tabIndex={-1} id='kt_modal'>
@@ -20,9 +20,9 @@ export const ModalAsistencia = () => {
                       <div className='row'>
                         <div className='col-lg-3 my-3'>
                           <a data-bs-toggle="modal" data-bs-target="#kt_modal_services"  data-bs-dismiss='modal'>
-                            <label className='btn btn-outline btn-outline-dashed btn-outline-default pt-15 text-cemnter active w-100 h-150px align-items-center '>
+                            <label className='btn btn-outline bg-secondary pt-15 text-cemnter active w-100 h-150px align-items-center '>
                               <span className='text-center'>
-                                <i className='fa fa-car fs-4x'></i>
+                                <i className='fa fa-car fs-4x text-dark'></i>
                               </span>
                               <span className='d-block fw-bold text-center mt-10'>
                                 <span className='text-dark d-block fs-help mb-2'>
@@ -34,9 +34,9 @@ export const ModalAsistencia = () => {
                         </div>
                         <div className='col-lg-3 my-3'>
                           <a data-bs-toggle="modal" data-bs-target="#kt_modal_services"  data-bs-dismiss='modal'>
-                            <label className='btn btn-outline btn-outline-dashed btn-outline-default pt-15 text-cemnter active w-100 h-150px align-items-center '>
+                            <label className='btn btn-outline bg-secondary pt-15 text-cemnter active w-100 h-150px align-items-center '>
                               <span className='text-center'>
-                                <i className='fa fa-ambulance fs-4x'></i>
+                                <i className='fa fa-ambulance fs-4x text-dark'></i>
                               </span>
                               <span className='d-block fw-bold text-center mt-10'>
                                 <span className='text-dark d-block fs-help mb-2'>
@@ -48,9 +48,9 @@ export const ModalAsistencia = () => {
                         </div>
                         <div className='col-lg-3 my-3'>
                           <a data-bs-toggle="modal" data-bs-target="#kt_modal_services"  data-bs-dismiss='modal'>
-                            <label className='btn btn-outline btn-outline-dashed btn-outline-default pt-15 text-cemnter active w-100 h-150px align-items-center '>
+                            <label className='btn btn-outline bg-secondary pt-15 text-cemnter active w-100 h-150px align-items-center '>
                               <span className='text-center'>
-                                <i className='fa fa-home fs-4x'></i>
+                                <i className='fa fa-home fs-4x text-dark'></i>
                               </span>
                               <span className='d-block fw-bold text-center mt-10'>
                                 <span className='text-dark d-block fs-help mb-2'>
@@ -62,9 +62,9 @@ export const ModalAsistencia = () => {
                         </div>
                         <div className='col-lg-3 my-3'>
                           <a data-bs-toggle="modal" data-bs-target="#kt_modal_services"  data-bs-dismiss='modal'>
-                            <label className='btn btn-outline btn-outline-dashed btn-outline-default pt-15 text-cemnter active w-100 h-150px align-items-center '>
+                            <label className='btn btn-outline bg-secondary pt-15 text-cemnter active w-100 h-150px align-items-center '>
                               <span className='text-center'>
-                                <i className='fa fa-balance-scale fs-4x'></i>
+                                <i className='fa fa-balance-scale fs-4x text-dark'></i>
                               </span>
                               <span className='d-block fw-bold text-center mt-10'>
                                 <span className='text-dark d-block fs-help mb-2'>
@@ -76,9 +76,9 @@ export const ModalAsistencia = () => {
                         </div>
                         <div className='col-lg-3 my-3'>
                           <a data-bs-toggle="modal" data-bs-target="#kt_modal_services"  data-bs-dismiss='modal'>
-                            <label className='btn btn-outline btn-outline-dashed btn-outline-default pt-15 text-cemnter active w-100 h-150px align-items-center '>
+                            <label className='btn btn-outline bg-secondary pt-15 text-cemnter active w-100 h-150px align-items-center '>
                               <span className='text-center'>
-                                <i className='fa fa-paw fs-4x'></i>
+                                <i className='fa fa-paw fs-4x text-dark'></i>
                               </span>
                               <span className='d-block fw-bold text-center mt-10'>
                                 <span className='text-dark d-block fs-help mb-2'>
@@ -90,9 +90,9 @@ export const ModalAsistencia = () => {
                         </div>
                         <div className='col-lg-3 my-3'>
                           <a data-bs-toggle="modal" data-bs-target="#kt_modal_services"  data-bs-dismiss='modal'>
-                            <label className='btn btn-outline btn-outline-dashed btn-outline-default pt-15 text-cemnter active w-100 h-150px align-items-center '>
+                            <label className='btn btn-outline bg-secondary pt-15 text-cemnter active w-100 h-150px align-items-center '>
                               <span className='text-center'>
-                                <i className='fa fa-laptop fs-4x'></i>
+                                <i className='fa fa-laptop fs-4x text-dark'></i>
                               </span>
                               <span className='d-block fw-bold text-center mt-10'>
                                 <span className='text-dark d-block fs-help mb-2'>
@@ -104,9 +104,9 @@ export const ModalAsistencia = () => {
                         </div>
                         <div className='col-lg-3 my-3'>
                           <a data-bs-toggle="modal" data-bs-target="#kt_modal_services"  data-bs-dismiss='modal'>
-                            <label className='btn btn-outline btn-outline-dashed btn-outline-default pt-15 text-cemnter active w-100 h-150px align-items-center '>
+                            <label className='btn btn-outline bg-secondary pt-15 text-cemnter active w-100 h-150px align-items-center '>
                               <span className='text-center'>
-                                <i className='fa fa-plane fs-4x'></i>
+                                <i className='fa fa-plane fs-4x text-dark'></i>
                               </span>
                               <span className='d-block fw-bold text-center mt-10'>
                                 <span className='text-dark d-block fs-help mb-2'>
@@ -118,9 +118,9 @@ export const ModalAsistencia = () => {
                         </div>
                         <div className='col-lg-3 my-3'>
                           <a data-bs-toggle="modal" data-bs-target="#kt_modal_services"  data-bs-dismiss='modal'>
-                            <label className='btn btn-outline btn-outline-dashed btn-outline-default pt-15 text-cemnter active w-100 h-150px align-items-center '>
+                            <label className='btn btn-outline bg-secondary pt-15 text-cemnter active w-100 h-150px align-items-center '>
                               <span className='text-center'>
-                                <i className='fa fa-school fs-4x'></i>
+                                <i className='fa fa-school fs-4x text-dark'></i>
                               </span>
                               <span className='d-block fw-bold text-center mt-10'>
                                 <span className='text-dark d-block fs-help mb-2'>
@@ -132,9 +132,9 @@ export const ModalAsistencia = () => {
                         </div>
                         <div className='col-lg-3 my-3'>
                           <a data-bs-toggle="modal" data-bs-target="#kt_modal_services"  data-bs-dismiss='modal'>
-                            <label className='btn btn-outline btn-outline-dashed btn-outline-default pt-15 text-cemnter active w-100 h-150px align-items-center '>
+                            <label className='btn btn-outline bg-secondary pt-15 text-cemnter active w-100 h-150px align-items-center '>
                               <span className='text-center'>
-                                <i className='fa fa-shield-alt fs-4x'></i>
+                                <i className='fa fa-shield-alt fs-4x text-dark'></i>
                               </span>
                               <span className='d-block fw-bold text-center mt-10'>
                                 <span className='text-dark d-block fs-help mb-2'>
@@ -146,9 +146,9 @@ export const ModalAsistencia = () => {
                         </div>
                         <div className='col-lg-3 my-3'>
                           <a data-bs-toggle="modal" data-bs-target="#kt_modal_services"  data-bs-dismiss='modal'>
-                            <label className='btn btn-outline btn-outline-dashed btn-outline-default pt-15 text-cemnter active w-100 h-150px align-items-center '>
+                            <label className='btn btn-outline bg-secondary pt-15 text-cemnter active w-100 h-150px align-items-center '>
                               <span className='text-center'>
-                                <i className='fa fa-hand-holding-usd fs-4x'></i>
+                                <i className='fa fa-hand-holding-usd fs-4x text-dark'></i>
                               </span>
                               <span className='d-block fw-bold text-center mt-10'>
                                 <span className='text-dark d-block fs-help mb-2'>
@@ -160,9 +160,9 @@ export const ModalAsistencia = () => {
                         </div>
                         <div className='col-lg-3 my-3'>
                           <a data-bs-toggle="modal" data-bs-target="#kt_modal_services"  data-bs-dismiss='modal'>
-                            <label className='btn btn-outline btn-outline-dashed btn-outline-default pt-15 text-cemnter active w-100 h-150px align-items-center '>
+                            <label className='btn btn-outline bg-secondary pt-15 text-cemnter active w-100 h-150px align-items-center '>
                               <span className='text-center'>
-                                <i className='fa fa-road fs-4x'></i>
+                                <i className='fa fa-road fs-4x text-dark'></i>
                               </span>
                               <span className='d-block fw-bold text-center mt-10'>
                                 <span className='text-dark d-block fs-help mb-2'>
@@ -174,9 +174,9 @@ export const ModalAsistencia = () => {
                         </div>
                         <div className='col-lg-3 my-3'>
                           <a data-bs-toggle="modal" data-bs-target="#kt_modal_services"  data-bs-dismiss='modal'>
-                            <label className='btn btn-outline btn-outline-dashed btn-outline-default pt-15 text-cemnter active w-100 h-150px align-items-center '>
+                            <label className='btn btn-outline bg-secondary pt-15 text-cemnter active w-100 h-150px align-items-center '>
                               <span className='text-center'>
-                                <i className='fa fa-boxes fs-4x'></i>
+                                <i className='fa fa-boxes fs-4x text-dark'></i>
                               </span>
                               <span className='d-block fw-bold text-center mt-10'>
                                 <span className='text-dark d-block fs-help mb-2'>

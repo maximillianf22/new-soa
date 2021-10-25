@@ -56,9 +56,9 @@ export const ModalCosts = () => {
                           <div className='col-md-1 fv-row p-1'>
                             <InputCustom type='text' name='Foraneo' label='Foraneo' />
                           </div>
-                          <div className='col-md-1 fv-row p-1 text-center'>
+                          <div className='col-md-1 fv-row p-1 text-end'>
                             <InputCustom
-                              className='form-check-input h-30px w-20px mt-3 ms-7 pt-0'
+                              className='form-check-input h-30px w-20px mt-3 ms-15 pt-0'
                               type='checkbox'
                               name='is_active'
                               checked
@@ -92,9 +92,9 @@ export const ModalCosts = () => {
                           <div className='col-md-1 fv-row p-1'>
                             <InputCustom type='text' name='Foraneo' label='Foraneo' />
                           </div>
-                          <div className='col-md-1 fv-row p-1 text-center'>
+                          <div className='col-md-1 fv-row p-1 text-end'>
                             <InputCustom
-                              className='form-check-input h-30px w-20px mt-3 ms-7 pt-0'
+                              className='form-check-input h-30px w-20px mt-3 ms-15 pt-0'
                               type='checkbox'
                               name='is_active'
                               checked
@@ -128,9 +128,9 @@ export const ModalCosts = () => {
                           <div className='col-md-1 fv-row p-1'>
                             <InputCustom type='text' name='Foraneo' label='Foraneo' />
                           </div>
-                          <div className='col-md-1 fv-row p-1 text-center'>
+                          <div className='col-md-1 fv-row p-1 text-end'>
                             <InputCustom
-                              className='form-check-input h-30px w-20px mt-3 ms-7 pt-0'
+                              className='form-check-input h-30px w-20px mt-3 ms-15 pt-0'
                               type='checkbox'
                               name='is_active'
                               checked
@@ -164,9 +164,9 @@ export const ModalCosts = () => {
                           <div className='col-md-1 fv-row p-1'>
                             <InputCustom type='text' name='Foraneo' label='Foraneo' />
                           </div>
-                          <div className='col-md-1 fv-row p-1 text-center'>
+                          <div className='col-md-1 fv-row p-1 text-end'>
                             <InputCustom
-                              className='form-check-input h-30px w-20px mt-3 ms-7 pt-0'
+                              className='form-check-input h-30px w-20px mt-3 ms-15 pt-0'
                               type='checkbox'
                               name='is_active'
                               checked
@@ -200,9 +200,9 @@ export const ModalCosts = () => {
                           <div className='col-md-1 fv-row p-1'>
                             <InputCustom type='text' name='Foraneo' label='Foraneo' />
                           </div>
-                          <div className='col-md-1 fv-row p-1 text-center'>
+                          <div className='col-md-1 fv-row p-1 text-end'>
                             <InputCustom
-                              className='form-check-input h-30px w-20px mt-3 ms-7 pt-0'
+                              className='form-check-input h-30px w-20px mt-3 ms-15 pt-0'
                               type='checkbox'
                               name='is_active'
                               checked

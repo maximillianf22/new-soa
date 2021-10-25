@@ -4,7 +4,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { PageLink } from '../../../_metronic/layout/core';
 import { ExpedientsTable } from './components/ExpedientsTable/ExpedientsTable';
 import { ExpedientsForm } from './components/ExpedientsForm/ExpedientsForm';
-import { Stage1 } from './components/Stages/Stage1';
+import { StagesTab } from './components/Stages/StagesTab';
 
 
 const ExpedientsBreadCrumbs: Array<PageLink> = [
@@ -36,7 +36,7 @@ const ExpedientsBreadCrumbs: Array<PageLink> = [
 
         <Route path='/expedients/stage1'>
           <PageTitle breadcrumbs={ExpedientsBreadCrumbs}>Etapas del sertvicio</PageTitle>
-          <Stage1 />
+          <StagesTab />
         </Route>
 
         <Redirect from='/expedients' exact={true} to='/expedients/home' />

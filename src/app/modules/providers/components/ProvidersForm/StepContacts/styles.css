@@ -54,11 +54,6 @@ body {
   box-shadow: 0 0.1rem 1rem 0.25rem rgb(0 0 0 / 10%) !important;
 }
 
-.form-control-sm-mod {
-  min-height: 25px;
-  max-height: 25px;
-}
-
 .btn-sm-md {
   min-height: 25px;
   max-height: 25px;

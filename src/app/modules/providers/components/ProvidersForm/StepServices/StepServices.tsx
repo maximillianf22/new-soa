@@ -64,10 +64,10 @@ export const StepServices = () => {
 
               <table className='table table-hover table-rounded gy-3 gs-3 table-sm'>
                 <thead className='bg-light round'>
-                  <tr className='fw-bold fs-6 text-gray-800 border-bottom-2 border-gray-200'>
+                  <tr className='fw-bold fs-6 text-gray-800 border-bottom-2 border-gray-200 pb-5'>
                     <th></th>
-                    <th className='fw-bolder fs-5 text-uppercase w-300px'>Servicio</th>
-                    <th className='fw-bolder text-center fs-5 text-uppercase'>Familia</th>
+                    <th className='fw-bolder fs-5 text-uppercase w-300px pb-5'>Servicio</th>
+                    <th className='fw-bolder text-center fs-5 text-uppercase pb-5'>Familia</th>
                     <th className='fw-bolder text-uppercase text-end w-250px py-2'>
                       <div className='d-flex align-items-center position-relative d-sm-none d-none d-md-block d-lg-block'>
                         <KTSVG

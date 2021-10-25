@@ -5,7 +5,7 @@ import {InputCustom} from '../../../global/components/inputs'
 
 export const ModalAsistencia = () => {
   return (
-    <div>
+    <>
       <div className='modal' tabIndex={-1} id='kt_modal_asistencia'>
         <div className='modal-dialog modal-lg modal-dialog-centered'>
           <div className='modal-content'>
@@ -89,6 +89,6 @@ export const ModalAsistencia = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }

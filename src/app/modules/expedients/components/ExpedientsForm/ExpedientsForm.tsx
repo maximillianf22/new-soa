@@ -2,7 +2,8 @@ import {Formik, Form, FormikProps, Field} from 'formik'
 import {Button} from 'react-bootstrap-v5'
 import {InputCustom, InputSelect} from '../../../global/components/inputs'
 import {initialValues} from '../Helpers'
-import { ModalAsistencia } from './ModalFamilies'
+import {ModalFamilies} from './ModalFamilies'
+import {ModalSAC} from './ModalSAC'
 
 const optionsUnits = [{value: 'id', label: 'Kilometros'}]
 
@@ -14,19 +15,21 @@ export const ExpedientsForm = () => {
           <Form>
             <div className='card mb-5'>
               <div className='card-body pt-9 pb-0'>
-                <div className='d-flex bd-highlight w-25 mb-10'>
-                  <div className='pe-3 flex-fill bd-highlight w-100'>
-                    <label className={`col-form-label required fw-bold fs-6 py-2`}>
-                      Busqueda de afiliados
-                    </label>
-                    <Field name={'dueDate'} component={InputSelect} options={{}} />
+                <a data-bs-toggle='modal' data-bs-target='#kt_modal_SAC'>
+                  <div className='d-flex bd-highlight w-25 mb-10'>
+                    <div className='pe-3 flex-fill bd-highlight w-100'>
+                      <label className={`col-form-label required fw-bold fs-6 py-2`}>
+                        Busqueda de afiliados
+                      </label>
+                      <Field name={'dueDate'} component={InputSelect} options={{}} />
+                    </div>
+                    <div className='px-0 flex-fill bd-highlight mt-10'>
+                      <Button className='btn btn-icon btn-info btn-form'>
+                        <i className='fa fa-filter'></i>
+                      </Button>
+                    </div>
                   </div>
-                  <div className='px-0 flex-fill bd-highlight mt-10'>
-                    <Button className='btn btn-icon btn-info btn-form'>
-                      <i className='fa fa-filter'></i>
-                    </Button>
-                  </div>
-                </div>
+                </a>
                 <div className='d-flex flex-wrap flex-sm-nowrap mb-3'>
                   <div className='me-7 mb-4'>
                     <div className='symbol symbol-100px symbol-lg-160px symbol-fixed position-relative'>
@@ -99,7 +102,7 @@ export const ExpedientsForm = () => {
                               <span className='svg-icon svg-icon-3 svg-icon-success me-2'></span>
                               <div className='fs-4 fw-bolder'>Estado comercial</div>
                             </div>
-                            <div className='fw-bold fs-6 text-white badge badge-light-success '>
+                            <div className='fw-bold fs-6 text-success badge badge-light-success '>
                               Activo
                             </div>
                           </div>
@@ -163,7 +166,7 @@ export const ExpedientsForm = () => {
                         className='nav-link text-active-primary me-6 false'
                         href='/metronic8/react/demo1/crafted/pages/profile/campaigns'
                       >
-                        <i className='fas fa-map me-3'></i> 8  Ubicaciones
+                        <i className='fas fa-map me-3'></i> 8 Ubicaciones
                       </a>
                     </li>
                     <li className='nav-item'>
@@ -179,7 +182,7 @@ export const ExpedientsForm = () => {
                         className='nav-link text-active-primary me-6 false'
                         href='/metronic8/react/demo1/crafted/pages/profile/connections'
                       >
-                         <i className='fas fa-list-alt me-3'></i> Reclamos
+                        <i className='fas fa-list-alt me-3'></i> Reclamos
                       </a>
                     </li>
                   </ul>
@@ -191,8 +194,11 @@ export const ExpedientsForm = () => {
                 <div className='row'>
                   <div className='col-md-8'>
                     <h2 className='card-title align-items-start flex-column'>
-                      <span className='card-label fw-bolder fs-2 mb-1'>Etapa 1 Creación del expediente</span>
-                      <span className='text-muted mt-1 fw-bold fs-6'><br/>
+                      <span className='card-label fw-bolder fs-2 mb-1'>
+                        Etapa 1 Creación del expediente
+                      </span>
+                      <span className='text-muted mt-1 fw-bold fs-6'>
+                        <br />
                         Etapa de creacion del expediente con datos iniciales
                       </span>
                     </h2>
@@ -226,7 +232,11 @@ export const ExpedientsForm = () => {
                   <InputCustom type='text' name='appmaterno' label='Ubicación' required />
                 </div>
                 <div className='col-md-3 px-5 fv-row my-3 d-grid gap-2'>
-                  <button className='btn btn-primary mt-10' data-bs-toggle="modal" data-bs-target="#kt_modal" >
+                  <button
+                    className='btn btn-primary mt-10'
+                    data-bs-toggle='modal'
+                    data-bs-target='#kt_modal'
+                  >
                     Grabar expediente <i className='fa fa-save ms-3'></i>
                   </button>
                 </div>
@@ -235,7 +245,8 @@ export const ExpedientsForm = () => {
           </Form>
         )}
       </Formik>
-      <ModalAsistencia />
+      <ModalFamilies />
+      <ModalSAC />
     </>
   )
 }

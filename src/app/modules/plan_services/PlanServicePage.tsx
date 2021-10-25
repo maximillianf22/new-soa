@@ -2,9 +2,10 @@ import React from 'react'
 import {PageTitle} from '../../../_metronic/layout/core'
 import {Switch, Route, Redirect} from 'react-router-dom'
 import {PageLink} from '../../../_metronic/layout/core'
-import { PlanServiceTable } from './components/PlanServiceTable/PlanServiceTable'
-import { FormWizzard } from './components/PlanServiceForm/FormWizzard'
-import { ViewEditForm } from './components/PlanServiceForm/ViewEditForm';
+import {PlanServiceTable} from './components/PlanServiceTable/PlanServiceTable'
+import {FormWizzard} from './components/PlanServiceForm/FormWizzard'
+import {ViewEditForm} from './components/PlanServiceForm/ViewEditForm'
+import {PlanServiceViewEdit} from './components/PlanServiceViewEdit/PlanServiceViewEdit'
 
 const PlanServiceBreadCrumbs: Array<PageLink> = [
   {
@@ -41,7 +42,7 @@ const PlanServicePage: React.FC = () => {
 
       <Route path='/plan-service/edit'>
         <PageTitle breadcrumbs={PlanServiceBreadCrumbs}>Registro de Servicios</PageTitle>
-        <ViewEditForm />
+        <PlanServiceViewEdit />
       </Route>
 
       <Redirect from='/plan-service/' exact={true} to='/plan-service/home' />

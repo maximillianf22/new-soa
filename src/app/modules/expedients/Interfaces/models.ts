@@ -106,4 +106,11 @@ export interface IExpedientsDetails {
   count_inactive: number
 }
 
+export interface IStageTabItem {
+  href: string
+  number: string
+  title: string
+  description: string
+}
+
 export interface Request {}
