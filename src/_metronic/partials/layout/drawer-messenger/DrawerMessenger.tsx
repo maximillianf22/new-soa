@@ -37,7 +37,7 @@ const DrawerMessenger: FC = () => (
               className='btn btn-sm btn-icon btn-active-light-primary'
               data-kt-menu-trigger='click'
               data-kt-menu-placement='bottom-end'
-              data-kt-menu-flip='top-end'
+              data-kt-menu-flip='bottom-start'
             >
               <i className='bi bi-three-dots fs-3'></i>
             </button>

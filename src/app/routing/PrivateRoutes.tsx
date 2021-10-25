@@ -15,6 +15,8 @@ export function PrivateRoutes() {
   const ServicesPage = lazy(() => import('../modules/services/ServicesPage'))
   const PlanServicePage = lazy(() => import('../modules/plan_services/PlanServicePage'))
   const ProvidersPage = lazy(() => import('../modules/providers/ProvidersPage'))
+  const ItemCostsPage = lazy(() => import('../modules/items_costs/ItemCostsPage'))
+  const ExpedientsPage = lazy(() => import('../modules/expedients/ExpedientsPage'))
 
   const {permits}: any = useSelector<RootState>(({permits}) => permits)
 
@@ -40,6 +42,12 @@ export function PrivateRoutes() {
         )}
         { permitByModule(permits, '_Providers_') && (
           <Route path='/providers' component={ProvidersPage} />
+        )}
+        { permitByModule(permits, '_Providers_') && (
+          <Route path='/expedients' component={ExpedientsPage} />
+        )}
+        { permitByModule(permits, '_Providers_') && (
+          <Route path='/item-costs' component={ItemCostsPage} />
         )}
         <Redirect from='/auth' to='/home' />
         <Redirect exact from='/' to='/home' />

@@ -4,8 +4,8 @@ import {
   DropdownSoaang,
   DropdownConfig,
   DropdownOperationalMonitoring,
-  DropdownProceedings,
   DropdownTransparency,
+  DropdownExpedients,
 } from './Dropdowns'
 import {NavToolbarItem} from './NavToolbarItem'
 
@@ -33,7 +33,7 @@ export const NavToolbar = () => {
           description='Estadisticas, informes etc'
         />
         <NavToolbarItem
-          Dropdown={DropdownProceedings}
+          Dropdown={DropdownExpedients}
           title='Expedientes'
           description='Monitor de tareas, etapas etc'
         />

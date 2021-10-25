@@ -4,8 +4,8 @@ import { initialValues, wizzardSchemas } from './Helpers'
 import { ICreatePlanService } from '../../Interfaces/models'
 import { StepperComponent } from '../../../../../_metronic/assets/ts/components'
 import { KTSVG } from '../../../../../_metronic/helpers'
-import { StepStages } from './StepStages'
-import { StepQuestions } from './StepQuestions'
+import { StepStages } from './StepStages/StepStages'
+import { StepQuestions } from './StepQuestions/StepQuestions'
 import { StepPlanService } from './StepPlanService'
 import { ViewEditForm } from './ViewEditForm';
 import { useSelector } from 'react-redux';

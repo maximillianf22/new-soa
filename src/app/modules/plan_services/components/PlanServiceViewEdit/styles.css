@@ -1,0 +1,5 @@
+.nav-link.active > .stepper-tab {
+    border-bottom: 3px solid #181C32 !important;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}

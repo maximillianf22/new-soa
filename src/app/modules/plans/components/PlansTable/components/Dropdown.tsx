@@ -36,7 +36,7 @@ const Dropdown: React.FC = () => {
             <div className='mb-3'>
               <div className='py-3 fv-row table table-hover'>
                 <table className='table table-sm table-hover align-middle gs-0 gy-1 mb-0'>
-                  <tbody className='table-striped'>
+                  <tbody className='table-striped no-border border-0'>
                     {tableHeads?.map((th: string, i: number) => (
                       <tr key={i}>
                         <th className='d-flex align-items-center my-auto mt-1 w-150px ms-3'>

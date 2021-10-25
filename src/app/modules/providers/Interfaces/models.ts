@@ -1,3 +1,4 @@
+
 export interface ICreateProviders {
   razon_social: string
 }
@@ -22,6 +23,14 @@ export interface IProvidersTable {
   stats?: string
 }
 
+export interface IModalScheduleCustomCheckbox {
+  day: string
+}
+
+export interface IModalScheduleTableItem {
+  day: string
+  item_plus?: boolean
+}
 export interface IProviderInitialValues {
   providers?: IProviderInfo[] | IProviderInfo
   selectedProvider?: IProviderInfo
