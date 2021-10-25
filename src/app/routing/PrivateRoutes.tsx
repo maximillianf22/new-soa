@@ -43,10 +43,10 @@ export function PrivateRoutes() {
         { permitByModule(permits, '_Providers_') && (
           <Route path='/providers' component={ProvidersPage} />
         )}
-        { permitByModule(permits, '_Providers_') && (
+        { permitByModule(permits, '_Proceedings_') && (
           <Route path='/expedients' component={ExpedientsPage} />
         )}
-        { permitByModule(permits, '_Providers_') && (
+        { permitByModule(permits, '_ProviderServiceCost_') && (
           <Route path='/item-costs' component={ItemCostsPage} />
         )}
         <Redirect from='/auth' to='/home' />
