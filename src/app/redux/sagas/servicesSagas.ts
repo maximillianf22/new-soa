@@ -2,8 +2,8 @@ import { IfamilyResponseRR } from '../../modules/families/Interfaces/models';
 import { call, takeLatest, put } from 'redux-saga/effects';
 import { getServices, deleteService, updateService, createService, getService } from '../../api/ServicesService';
 import { IServicesResponse, IResponseServiceService } from '../../modules/services/Interfaces/models';
-import { servicesActions } from '../actions/actions';
 import { servicesTypes } from '../types/types';
+import { servicesActions } from '../actions/servicesActions';
 
 interface ActionTypePayload {
     type: string, 

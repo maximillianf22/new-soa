@@ -5,7 +5,7 @@ import * as auth from '../../app/modules/auth'
 import { tableReducer } from '../../app/redux/reducers/TableRedux';
 import { usersReducer } from '../../app/redux/reducers/UsersRedux';
 import { familiesReducer } from '../../app/redux/reducers/FamilyRedux';
-import { sagaUsers, tableSaga } from '../../app/redux/sagas/sagas';
+import { sagaUsers } from '../../app/redux/sagas/usersSagas';
 import { uiReducer } from '../../app/redux/reducers/uiRedux';
 import { accountsReducer } from '../../app/redux/reducers/AccountsRedux';
 import { sagaAccounts } from '../../app/redux/sagas/accountsSagas';
@@ -17,8 +17,10 @@ import { sagaPlanServices } from '../../app/redux/sagas/planServicesSagas';
 import { planServicesReducer } from '../../app/redux/reducers/PlanServicesReducer';
 import { stagesReducer } from '../../app/redux/reducers/StagesReducer';
 import { sagaStages } from '../../app/redux/sagas/stagesSagas';
-import { sagaFamilies } from '../../app/redux/sagas/FamiliesSaga';
+import { sagaFamilies } from '../../app/redux/sagas/familiesSaga';
 import { authSaga } from '../../app/redux/sagas/authSaga';
+import { questionsReducer } from '../../app/redux/reducers/QuestionsReducer';
+import { sagaQuestions } from '../../app/redux/sagas/questionsSagas';
 
 export const rootReducer = combineReducers({
   accounts: accountsReducer,
@@ -30,7 +32,8 @@ export const rootReducer = combineReducers({
   services: servicesReducer,
   planServices: planServicesReducer,
   users: usersReducer,
-  stages: stagesReducer
+  stages: stagesReducer,
+  questions: questionsReducer
 });
 
 export type RootState = ReturnType<typeof rootReducer>
@@ -38,7 +41,6 @@ export type RootState = ReturnType<typeof rootReducer>
 export function* rootSaga() {
   yield all([
     authSaga(),
-    tableSaga(),
     sagaUsers(),
     sagaAccounts(),
     sagaPlans(),
@@ -46,5 +48,6 @@ export function* rootSaga() {
     sagaServices(),
     sagaPlanServices(),
     sagaStages(),
+    sagaQuestions()
   ])
 };

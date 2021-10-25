@@ -1,5 +1,5 @@
 export const questionsTypes = {
-    AsyncLoad: '[questionsRedux] start loading data',
+    get: '[questionsRedux] start loading data',
     Load: '[questionsRedux] load data do reducer',
     Clear: '[questionsRedux] clear reducer data',
     Delete: '[questionsRedux] delete question',

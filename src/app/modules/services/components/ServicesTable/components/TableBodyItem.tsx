@@ -2,9 +2,9 @@ import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Swal from 'sweetalert2'
 import {RootState} from '../../../../../../setup'
-import { servicesActions } from '../../../../../redux/actions/actions';
-import {servicesTypes, usersTypes} from '../../../../../redux/types/types'
+import {servicesTypes} from '../../../../../redux/types/types'
 import { uiActions } from '../../../../../redux/actions/uiActions';
+import { servicesActions } from '../../../../../redux/actions/servicesActions';
 
 export const TableBodyItem = ({item} : any) => {
   

@@ -9,19 +9,13 @@ import { IPlanResponse } from '../../../plans/Interfaces/models';
 import { planServicesTypes } from '../../../../redux/types/planServicesTypes';
 import { uiTypes } from '../../../../redux/types/types';
 import { useEffect } from 'react';
+import { questionsActions } from '../../../../redux/actions/questionsActions';
 
-
-const optionsFrecuencies = [
-  {spFrecuency: '1', label: 'Semanal'},
-  {spFrecuency: '2', label: 'Mensual'},
-  {spFrecuency: '3', label: 'Anual'},
-]
 
 const optionsCoins = [
   {pId: '1', label: 'COP - Peso Colombiano'},
   {pId: '2', label: 'USD - Dolar Americano'},
 ]
-
 
 export const ViewEditForm = () => {
   const selectedPlanService: any = useSelector<RootState>(({planServices}) => planServices.selectedPlanService);
@@ -30,6 +24,10 @@ export const ViewEditForm = () => {
   
   const {loading, editing: isEditing, viewing: isViewing}: any = useSelector<RootState>(({ui}) => ui);
   const dispatch = useDispatch();
+
+  const handleSave = () => {
+    document.getElementById("continue")?.click();
+  }
 
   const handleFrecuency = (props :any) => {
     const spFrecuencyDiv :any = document.getElementById("spFrecuencyDiv");
@@ -40,7 +38,8 @@ export const ViewEditForm = () => {
   };
   useEffect(() => {
     dispatch({type: uiTypes.uiStartLoading})
-  }, [])
+    dispatch(questionsActions.get(selectedPlanService.spId));
+  }, [selectedPlanService]);
 
   return (
     <>
@@ -311,6 +310,7 @@ export const ViewEditForm = () => {
                   {!isViewing 
                   ?
                     <button 
+                      onClick={handleSave}
                       type='submit'
                       className='btn btn-primary'
                       data-bs-dismiss='modal'

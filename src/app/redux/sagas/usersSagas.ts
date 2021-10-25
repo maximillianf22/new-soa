@@ -1,19 +1,16 @@
 import { response } from '../reducers/AuthRedux';
 import { getUsers } from '../../api/TableCRUD';
 import { call, put } from '@redux-saga/core/effects';
-import { userActions, authActions } from '../actions/actions';
+import { userActions } from '../actions/actions';
 import { deleteUser, updateUser, createUser } from '../../api/UsersCRUD';
-import { usersTypes, authTypes } from '../types/types';
+import { usersTypes } from '../types/types';
 import { takeLatest } from 'redux-saga/effects';
-import { login, Data } from '../../api/AuthCRUD';
 
 
 interface ActionTypePayload {
   type: string, 
   payload: number
 }
-
-
 
 export function* sagaUsers() {
     // Worker Sagas
@@ -58,35 +55,4 @@ export function* sagaUsers() {
     yield takeLatest(usersTypes.Delete, sagaDeleteUser)
     yield takeLatest(usersTypes.Update, sagaUpdateUser)
     yield takeLatest(usersTypes.Create, sagaCreateUser)
-  }
-
-  export function* tableSaga() {
-    // Worker Sagas
-    // function* asyncLoad() {
-    //   try {
-    //     const {data}: response = yield call(getUsers)
-    //     yield put(tableActions.load({
-    //       tableHeader: {
-    //         title: 'Usuario',
-    //         count: 234,
-    //         btnLink: '/usuarios/crear',
-    //         btnModal: ''
-    //       },
-    //       tableBody: {
-    //           tableHeads: ['Nombre','Correo','Usuario','Rol'],
-    //           tableContent: data
-    //       }
-    //   }))
-    //   } catch (error) {
-    //     console.log(error)
-    //   }
-    // }
-  
-    // Watcher Sagas
-    // yield takeLatest(tableTypes.asyncLoad, asyncLoad) 
-  }
-
-  interface ActionTypePayloadAuth {
-    type: string, 
-    payload: Data
   }

@@ -1,8 +1,8 @@
 import { IfamilyResponseRR, IfamilyResponse } from '../../modules/families/Interfaces/models';
 import { call, takeLatest, put } from 'redux-saga/effects';
 import { getFamilies, deleteFamily, updateFamily, createFamily } from '../../api/FamilyService';
-import { familiesActions } from '../actions/actions';
 import { familiesTypes } from '../types/types';
+import { familiesActions } from '../actions/familiesActions';
 
 
 interface ActionTypePayload {

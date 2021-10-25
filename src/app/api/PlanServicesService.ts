@@ -10,7 +10,6 @@ export const STAGE_SAVE = `soaang-catalogs/api/service-stages/`;
 
 export function stagesSave(payload:any): Promise<any> {
   payload.sid = payload.items[0].sId;
-  console.log(payload)
   return httpClient.post(`${STAGE_SAVE}`, payload)
 }
 
