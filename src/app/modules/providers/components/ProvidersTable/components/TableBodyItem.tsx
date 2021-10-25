@@ -3,42 +3,53 @@ import {useDispatch, useSelector} from 'react-redux'
 import Swal from 'sweetalert2'
 import {RootState} from '../../../../../../setup'
 import {toAbsoluteUrl} from '../../../../../../_metronic/helpers'
-import {userActions} from '../../../../../redux/actions/actions'
-import {usersTypes} from '../../../../../redux/types/types'
+import { providerActions } from '../../../../../redux/actions/providersActions'
+import { providerTypes } from '../../../../../redux/types/providerTypes'
+import { permitByModuleAndAction } from '../../../../permits/PermitFilter'
 
 export const TableBodyItem = ({item}: any) => {
   const {
-    id,
-    username,
-    first_name,
-    last_name,
-    email,
-    is_active,
-    date_joined,
-    init_date_validity,
-    end_date_validity,
-    rolId,
-    password_change,
+    provId,
+    provFiscalName,
+    provTradeName,
+    dtId,
+    provDocumentNumber,
+    provInfrastructureAssessment,
+    provLoyaltyAssessment,
+    provSatisfactionAssessment,
+    provActivityStartDate,
+    provIsActive,
+    provEmail1,
+    provEmail2,
+    provInternal,
+    provAvatarUrl,
+    provContractUrl,
+    curId,
+    provUserApp,
+    provPasswordApp,
+    provBaseType
   } = item
 
   const table: any = useSelector<RootState>(({table}) => table)
+  const {permits}: any = useSelector<RootState>(({permits}) => permits)
+
   const {
     tableBody: {tableHeads},
   } = table
 
   const dispatch = useDispatch()
 
-  const handleView = (user: any) => {
-    user.toEdit = false
-    dispatch(userActions.SelectedUser(user))
+  const handleView = (provider: any) => {
+    provider.toEdit = false
+    dispatch(providerActions.selectedProvider(provider))
   }
-  const handleEdit = (user: any) => {
-    user.toEdit = true
-    dispatch(userActions.SelectedUser(user))
+  const handleEdit = (provider: any) => {
+    provider.toEdit = true
+    dispatch(providerActions.selectedProvider(provider))
   }
   const handleDelete = (id: any) => {
     Swal.fire({
-      title: '¿Está seguro que desea eliminar este usuario?',
+      title: '¿Está seguro que desea eliminar este proveedor?',
       text: 'No es posible revertir esta acción',
       icon: 'warning',
       showCancelButton: true,
@@ -48,8 +59,8 @@ export const TableBodyItem = ({item}: any) => {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch({type: usersTypes.Delete, payload: id})
-        Swal.fire('¡Eliminado!', 'El usuario fue eliminado correctamente.', 'success')
+        dispatch({type: providerTypes.delete, payload: id})
+        Swal.fire('¡Eliminado!', 'El proveedor fue eliminado correctamente.', 'success')
       }
     })
   }
@@ -59,10 +70,10 @@ export const TableBodyItem = ({item}: any) => {
       <tr>
         {tableHeads.includes('id') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{id}</p>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{provId}</p>
           </td>
         )}
-        {tableHeads.includes('usuario') && (
+        {tableHeads.includes('Razón social') && (
           <td>
               <div className='symbol symbol-45px me-2'>
                 <span className='symbol-label'>
@@ -77,33 +88,33 @@ export const TableBodyItem = ({item}: any) => {
             {/* <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{username}</p> */}
           </td>
         )}
-        {tableHeads.includes('nombre') && (
+        {tableHeads.includes('Nombre jurídico') && (
           <td>
             <div className='d-flex align-items-center'>
               <div className='d-flex justify-content-start flex-column'>
-                <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{first_name}</p>
-                <span className='text-muted fw-bold text-muted d-block fs-7'>CC: 1007345398</span>
+                <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{provTradeName}</p>
+                <span className='text-muted fw-bold text-muted d-block fs-7'>CC: {provDocumentNumber}</span>
               </div>
             </div>
           </td>
         )}
-        {tableHeads.includes('apellido') && (
+        {tableHeads.includes('Correo') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{last_name}</p>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{provEmail1}</p>
           </td>
         )}
-        {tableHeads.includes('correo') && (
+        {tableHeads.includes('Contacto') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{email}</p>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{provContractUrl}</p>
           </td>
         )}
 
-        {tableHeads.includes('activo') && (
+        {tableHeads.includes('Usuario app') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{is_active}</p>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{provUserApp}</p>
           </td>
         )}
-        {tableHeads.includes('fecha creación') && (
+        {/* {tableHeads.includes('fecha creación') && (
           <td>
             <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{date_joined}</p>
           </td>
@@ -112,58 +123,40 @@ export const TableBodyItem = ({item}: any) => {
           <td>
             <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{rolId}</p>
           </td>
-        )}
+        )} */}
         <td>
           <div className='d-flex justify-content-end flex-shrink-0'>
+          { permitByModuleAndAction(permits, '_Providers_', 'show') && (
             <button
               type='button'
               className='btn btn-icon btn-info btn-sm me-1'
               data-bs-toggle='modal'
               data-bs-target='#exampleModal'
               onClick={() =>
-                handleView({
-                  id,
-                  username,
-                  first_name,
-                  last_name,
-                  email,
-                  is_active,
-                  date_joined,
-                  password_change,
-                  init_date_validity,
-                  end_date_validity,
-                  rolId,
-                })
+                handleView(item)
               }
-            >
-              <i className='fa fa-eye'></i>
+              >
+                <i className='fa fa-eye'></i>
             </button>
+          )}
+          { permitByModuleAndAction(permits, '_Providers_', 'edit') && (
             <button
               type='button'
               className='btn btn-icon btn-success btn-sm me-1'
               data-bs-toggle='modal'
               data-bs-target='#exampleModal'
               onClick={() =>
-                handleEdit({
-                  id,
-                  username,
-                  first_name,
-                  last_name,
-                  email,
-                  is_active,
-                  date_joined,
-                  password_change,
-                  init_date_validity,
-                  end_date_validity,
-                  rolId,
-                })
+                handleEdit(item)
               }
-            >
-              <i className='fa fa-edit'></i>
+              >
+                <i className='fa fa-edit'></i>
             </button>
-            <button className='btn btn-icon btn-danger btn-sm' onClick={() => handleDelete(id)}>
+          )}
+          { permitByModuleAndAction(permits, '_Providers_', 'delete') && (
+            <button className='btn btn-icon btn-danger btn-sm' onClick={() => handleDelete(provId)}>
               <i className='fa fa-trash'></i>
             </button>
+          )}
           </div>
         </td>
       </tr>

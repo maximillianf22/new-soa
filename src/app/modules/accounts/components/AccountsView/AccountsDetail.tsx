@@ -46,7 +46,6 @@ export const AccountsDetail = ({
               initialValues={{name: ''}}
               enableReinitialize={true}
               onSubmit={(values) => {
-                //   console.log('en submit', values)
               }}
             >
               {(props: FormikProps<any>) => (
