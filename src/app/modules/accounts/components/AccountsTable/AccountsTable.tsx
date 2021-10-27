@@ -6,8 +6,9 @@ import { tableTypes } from '../../../../redux/types/types'
 import { accountTypes } from '../../../../redux/types/accountTypes'
 import { TableComponent } from './components/TableComponent'
 import { AccountCreateEdit } from './AccountCreateEdit'
+import { IAccountsTable } from '../../Interfaces/models'
 
-export const AccountsTable = () => {
+export const AccountsTable = ({stats}: IAccountsTable) => {
   const dispatch = useDispatch()
 
   const accounts: any = useSelector<RootState>(({accounts}) => accounts.accounts)
@@ -59,7 +60,7 @@ useEffect(() => {
 
   return (
     <>
-      <TableComponent title='Cuentas' />
+      <TableComponent title='Cuentas' stats={stats} />
       <AccountCreateEdit />
     </>
   )

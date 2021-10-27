@@ -75,7 +75,7 @@ export const TableHeader = () => {
                 type='text'
                 id='kt_filter_search_tableHeader'
                 className='form-control form-control-solid form-control-sm w-250px ps-15'
-                placeholder='Search'
+                placeholder='Buscar'
               />
             </form>
           </div>

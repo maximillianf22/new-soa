@@ -2,10 +2,10 @@ import React from 'react'
 import {IStats} from '../../../Interfaces/models'
 import {StatsItem} from './StatsItem'
 
-export const Stats = ({title}: IStats) => {
+export const Stats = ({title, stats}: IStats) => {
   return (
     <>
-      <div className='row pb-5'>
+      <div className={`row pb-5 ${stats}`}>
         <StatsItem title={title} state='Registrados' count={89} />
         <StatsItem title={title} state='Activos' count={89} />
         <StatsItem title={title} state='Inactivos' count={89} />

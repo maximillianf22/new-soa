@@ -14,6 +14,8 @@ export function PrivateRoutes() {
   const ProvidersPage = lazy(() => import('../modules/providers/ProvidersPage'))
   const ItemCostsPage = lazy(() => import('../modules/items_costs/ItemCostsPage'))
   const ExpedientsPage = lazy(() => import('../modules/expedients/ExpedientsPage'))
+  const PlatformsPage = lazy(() => import('../modules/platforms/PlatformsPage'))
+  const RolesPage = lazy(() => import('../modules/roles/RolesPage'))
 
   return (
     <Suspense fallback={<FallbackView />}>
@@ -28,6 +30,8 @@ export function PrivateRoutes() {
         <Route path='/families' component={FamiliesPage} />
         <Route path='/providers' component={ProvidersPage} />
         <Route path='/expedients' component={ExpedientsPage} />
+        <Route path='/platforms' component={PlatformsPage} />
+        <Route path='/roles' component={RolesPage} />
         <Redirect from='/auth' to='/home' />
         <Redirect exact from='/' to='/home' />
         <Redirect to='error/404' />
