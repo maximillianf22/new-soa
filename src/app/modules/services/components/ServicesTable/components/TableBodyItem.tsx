@@ -4,11 +4,8 @@ import Swal from 'sweetalert2'
 import {RootState} from '../../../../../../setup'
 import {servicesTypes} from '../../../../../redux/types/types'
 import { uiActions } from '../../../../../redux/actions/uiActions';
-<<<<<<< HEAD
 import { servicesActions } from '../../../../../redux/actions/servicesActions';
-=======
 import { permitByModuleAndAction } from '../../../../permits/PermitFilter';
->>>>>>> 9eb41fb1e5dd859f42595fbd0397df9b4251feac
 
 export const TableBodyItem = ({item} : any) => {
   
@@ -93,7 +90,7 @@ export const TableBodyItem = ({item} : any) => {
         )}
         <td>
           <div className='d-flex justify-content-end flex-shrink-0'>
-            { permitByModuleAndAction(permits, '_Services_', 'show') && (
+            { permitByModuleAndAction(permits, 'Services', 'show') && (
               <button
                 type='button'
                 className='btn btn-icon btn-info btn-sm me-1'
@@ -113,7 +110,7 @@ export const TableBodyItem = ({item} : any) => {
                   <i className='fa fa-eye'></i>
               </button>
             )}
-            { permitByModuleAndAction(permits, '_Services_', 'edit') && (
+            { permitByModuleAndAction(permits, 'Services', 'edit') && (
               <button
                 type='button'
                 className='btn btn-icon btn-success btn-sm me-1'
@@ -133,7 +130,7 @@ export const TableBodyItem = ({item} : any) => {
                 <i className='fa fa-edit'></i>
               </button>
             )}
-            { permitByModuleAndAction(permits, '_Services_', 'delete') && (
+            { permitByModuleAndAction(permits, 'Services', 'delete') && (
               <button className='btn btn-icon btn-danger btn-sm' onClick={() => handleDelete(servId)}>
                 <i className='fa fa-trash'></i>
               </button>

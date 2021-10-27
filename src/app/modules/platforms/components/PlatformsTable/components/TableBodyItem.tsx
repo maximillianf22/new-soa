@@ -2,20 +2,20 @@ import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Swal from 'sweetalert2'
 import {RootState} from '../../../../../../setup'
-import { servicesActions } from '../../../../../redux/actions/actions';
-import {servicesTypes, usersTypes} from '../../../../../redux/types/types'
+import { familiesTypes } from '../../../../../redux/types/types';
 import { uiActions } from '../../../../../redux/actions/uiActions';
-import { toAbsoluteUrl } from '../../../../../../_metronic/helpers';
+import { familiesActions } from '../../../../../redux/actions/familiesActions';
 
 export const TableBodyItem = ({item} : any) => {
   
   const {
-    servId,
-    servDescription,
-    servStartDate,
-    servDueDate,
-    servStatus,
     fmId,
+    fmDescription,
+    fmStatus,
+    fmCreatedAt,
+    fmUpdatedAt,
+    fmUsermod,
+    fmIsActive,
   } = item
 
   const table: any = useSelector<RootState>(({table}) => table)
@@ -25,17 +25,18 @@ export const TableBodyItem = ({item} : any) => {
 
   const dispatch = useDispatch()
 
-  const handleView = (Platform: any) => {
+  const handleView = (family: any) => {
+    family.toEdit = false
     dispatch(uiActions.uiIsEditing(false))
     dispatch(uiActions.uiIsViewing(true))
-    dispatch(servicesActions.SelectedService(Platform))
+    dispatch(familiesActions.SelectedFamily(family))
   }
-  const handleEdit = (Platform: any) => {
+  const handleEdit = (family: any) => {
+    family.toEdit = true;
     dispatch(uiActions.uiIsViewing(false))
     dispatch(uiActions.uiIsEditing(true))
-    dispatch(servicesActions.SelectedService(Platform))
+    dispatch(familiesActions.SelectedFamily(family))
   }
-
   const handleDelete = (id: any) => {
     Swal.fire({
       title: '¿Está seguro que desea eliminar este usuario?',
@@ -48,9 +49,9 @@ export const TableBodyItem = ({item} : any) => {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch({type: servicesTypes.Delete, payload: id})
-        dispatch({type: servicesTypes.DeleteFromReducer, payload: {SelectedService: {servId: id}}})
-        Swal.fire('¡Eliminado!', 'El usuario fue eliminado correctamente.', 'success')
+        // dispatch({type: ExpedientsTypes.Delete, payload: id})
+        dispatch({type: familiesTypes.DeleteFromReducer, payload: {SelectedFamily: {fmId: id}}})
+        Swal.fire('¡Eliminado!', 'La familia fue eliminada correctamente.', 'success')
       }
     })
   }
@@ -58,42 +59,35 @@ export const TableBodyItem = ({item} : any) => {
   return (
     <>
       <tr>
-      {tableHeads.includes('usuario') && (
+        {tableHeads.includes('id') && (
           <td>
-              <div className='symbol symbol-45px me-2'>
-                <span className='symbol-label'>
-                  <img
-                    src={toAbsoluteUrl('/media/svg/brand-logos/kickstarter.svg')}
-                    className='h-50 align-self-center'
-                    alt=''
-                  />
-                </span>
-              </div>
-              {/* Esto esta comentado para efectos de presentacion */}
-            {/* <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{servId}</p> */}
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{fmId}</p>
           </td>
         )}
         {tableHeads.includes('descripción') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{servDescription}</p>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{fmDescription}</p>
           </td>
         )}
-
-        {tableHeads.includes('fecha de creación') && (
-          <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{servStartDate}</p>
-          </td>
-        )}
-
-        {tableHeads.includes('fecha vencimiento') && (
-          <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{servDueDate}</p>
-          </td>
-        )}
-
         {tableHeads.includes('estado') && (
           <td>
-            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{servStatus}</p>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{ fmStatus ? 'Activo' : 'Inactivo'}</p>
+          </td>
+        )}
+        {tableHeads.includes('fecha de creación') && (
+          <td>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{fmCreatedAt}</p>
+          </td>
+        )}
+        {tableHeads.includes('fecha actualizado') && (
+          <td>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{fmUpdatedAt}</p>
+          </td>
+        )}
+
+        {tableHeads.includes('modificado por') && (
+          <td>
+            <p className='text-dark fw-bolder text-hover-primary d-block fs-6'>{fmUsermod}</p>
           </td>
         )}
         <td>
@@ -102,15 +96,16 @@ export const TableBodyItem = ({item} : any) => {
               type='button'
               className='btn btn-icon btn-info btn-sm me-1'
               data-bs-toggle='modal'
-              data-bs-target='#kt_modal_Platforms'
+              data-bs-target='#kt_modal'
               onClick={() =>
                 handleView({
-                  servId,
-                  servDescription,
-                  servStartDate,
-                  servDueDate,
-                  servStatus,
                   fmId,
+                  fmDescription,
+                  fmStatus,
+                  fmCreatedAt,
+                  fmUpdatedAt,
+                  fmUsermod,
+                  fmIsActive,
                 })
               }
             >
@@ -120,21 +115,22 @@ export const TableBodyItem = ({item} : any) => {
               type='button'
               className='btn btn-icon btn-success btn-sm me-1'
               data-bs-toggle='modal'
-              data-bs-target='#kt_modal_Platforms'
+              data-bs-target='#kt_modal'
               onClick={() =>
                 handleEdit({
-                  servId,
-                  servDescription,
-                  servStartDate,
-                  servDueDate,
-                  servStatus,
                   fmId,
+                  fmDescription,
+                  fmStatus,
+                  fmCreatedAt,
+                  fmUpdatedAt,
+                  fmUsermod,
+                  fmIsActive,
                 })
               }
             >
               <i className='fa fa-edit'></i>
             </button>
-            <button className='btn btn-icon btn-danger btn-sm' onClick={() => handleDelete(servId)}>
+            <button className='btn btn-icon btn-danger btn-sm' onClick={() => handleDelete(fmId)}>
               <i className='fa fa-trash'></i>
             </button>
           </div>
