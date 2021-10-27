@@ -7,14 +7,14 @@ import { RootState } from '../../../../setup'
 import Select from 'react-select'
 import { planTypes } from '../../../redux/types/planTypes'
 import { IAccountInfo } from '../../accounts/Interfaces/models'
+import { accountTypes } from '../../../redux/types/accountTypes'
+import { plansActions } from '../../../redux/actions/plansActions'
 
-export const PlansForm = () => {
+export const PlansForm = ({}) => {
 
   const {loading, editing: isEditing, viewing: isViewing}: any = useSelector<RootState>(({ui}) => ui)
   const selectedPlan: any = useSelector<RootState>(({plans}) => plans.selectedPlan)
   const {accounts, selectedAccount}: any = useSelector<RootState>(({accounts}) => accounts)
-
-  console.log(selectedPlan)
 
   const dispatch = useDispatch()
 
@@ -25,15 +25,19 @@ export const PlansForm = () => {
 
         validationSchema={createPlansSchemas}
         enableReinitialize={true}
-        onSubmit={(values) => {
+        onSubmit={(values, {resetForm}) => {
           if (values.acId === 0) {
             values.acId = selectedAccount.acId
           }
           console.log('en submit', values)
-          dispatch({
-            type: isEditing ? planTypes.update : planTypes.create,
-            payload: values
-          })
+          // dispatch({
+          //   type: isEditing ? planTypes.update : planTypes.create,
+          //   payload: values
+          // })
+          // dispatch({
+          //   type: accountTypes.get
+          // })
+          resetForm()
         }}
       >
         {(props: FormikProps<any>) => (
@@ -87,7 +91,12 @@ export const PlansForm = () => {
                         <label className='col-form-label required fw-bold fs-6  py-2'>Cuentas</label>
                         <Select
                           className='form-control p-0'
-                          value={accounts.find((account: IAccountInfo) => account.acId === selectedPlan.acId)}
+                          // defaultValue={accounts.find((account: IAccountInfo) => account.acId === selectedPlan.acId)}
+                          value={
+                            !isEditing && !isViewing ?
+                            accounts[0]
+                            : accounts.find((account: IAccountInfo) => account.acId === selectedPlan.acId)
+                          }
                           getOptionLabel={(option) => option.acName}
                           getOptionValue={(option) => option.acId.toString()}
                           isSearchable
@@ -96,6 +105,7 @@ export const PlansForm = () => {
                           isDisabled={isViewing}
                           onChange={(account) => {
                             props.setFieldValue("acId", account.acId);
+                            console.log('cambio', account);
                           }}
                         />
                       </div>
@@ -117,11 +127,6 @@ export const PlansForm = () => {
                         />
                       </div>
 
-                      {/* Este input se muestra cuando se checkea envio automatico de notificacion de vencimiento */}
-                      {/* <div className='col-md-6 px-5 fv-row mt-7'>
-                        <InputCustom type='number' name='daystoDue' label='Dias para envio de notificacion' />
-                      </div> */}
-
                       {/* Estos inputs se muestra cuando se checkea poliza compartida */}
                       { props.values.plEventsShared &&
                         <div className='col-md-6 px-5 fv-row my-3'>
@@ -132,10 +137,6 @@ export const PlansForm = () => {
                           disabled={isViewing}
                         />
                       </div>}
-                      {/* <div className='col-md-6 px-5 fv-row my-3'>
-                        <label className='col-form-label required fw-bold fs-6  py-2'>Metodo de consumo</label>
-                        <Field name='clients' component={InputSelect} options={optionsShared} />
-                      </div> */}
                       <div className='row'>
                         <div className='col-md-4 px-5 fv-row my-4 text-start'>
                           <div className='my-auto h-100 text-center mt-4'>
@@ -189,7 +190,7 @@ export const PlansForm = () => {
                     <button 
                       type='submit'
                       className='btn btn-primary'
-                      // data-bs-dismiss='modal'
+                      data-bs-dismiss='modal'
                       disabled={!props.dirty || !props.isValid}
                     >
                       {!loading && <span className='indicator-label'>{isEditing? 'Actualizar': 'Guardar'}</span>}

@@ -1,7 +1,9 @@
 export const stagesTypes = {
-    AsyncLoad: '[stagesRedux] start loading data',
-    Load: '[stagesRedux] load data do reducer',
-    Clear: '[stagesRedux] clear reducer data',
+    get: '[stagesRedux] start loading stages',
+    getPlanServiceStages: '[stagesRedux] get planServices stages',
+    Load: '[stagesRedux] load stages to reducer',
+    LoadPlanServiceStages: '[stagesRedux] load planServices stages to reducer',
+    Clear: '[stagesRedux] clear reducer stages',
     Delete: '[stagesRedux] delete stage',
     Update: '[stagesRedux] update stage',
     Create: '[stagesRedux] create stage',

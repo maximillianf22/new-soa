@@ -4,6 +4,7 @@ import { authActions } from '../actions/actions';
 import { response } from '../reducers/AuthRedux';
 import { takeLatest } from 'redux-saga/effects';
 import { authTypes } from '../types/types';
+import { permitActions } from '../actions/permitActions';
 
 interface ActionTypePayloadAuth {
     type: string, 
@@ -17,6 +18,7 @@ interface ActionTypePayloadAuth {
         yield put(authActions.loading());
         const {data}:response = yield call(login, payload);
         yield put(authActions.login(data))
+        yield put(permitActions.loadReduxFromLogin(data))
       } catch (error:any) {
         yield put(authActions.loginError(error.response.data.detail))
       } finally {

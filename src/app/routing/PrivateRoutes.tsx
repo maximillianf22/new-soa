@@ -1,8 +1,10 @@
 import React, {Suspense, lazy} from 'react'
+import {useSelector} from 'react-redux'
 import {Redirect, Route, Switch} from 'react-router-dom'
+import {RootState} from '../../setup'
 import {FallbackView} from '../../_metronic/partials'
+import {permitByModule} from '../modules/permits/PermitFilter'
 import {IndexPage} from '../pages/home'
-
 
 export function PrivateRoutes() {
   const UsersPage = lazy(() => import('../modules/users/UsersPage'))
@@ -17,24 +19,41 @@ export function PrivateRoutes() {
   const PlatformsPage = lazy(() => import('../modules/platforms/PlatformsPage'))
   const RolesPage = lazy(() => import('../modules/roles/RolesPage'))
 
+  const {permits}: any = useSelector<RootState>(({permits}) => permits)
+
   return (
     <Suspense fallback={<FallbackView />}>
       <Switch>
         <Route path='/home' component={IndexPage} />
         <Route path='/users' component={UsersPage} />
-        <Route path='/accounts' component={AccountsPage} />
-        <Route path='/plans' component={PlansPage} />
-        <Route path='/services' component={ServicesPage} />
-        <Route path='/item-costs' component={ItemCostsPage} />
-        <Route path='/plan-service' component={PlanServicePage} />
-        <Route path='/families' component={FamiliesPage} />
-        <Route path='/providers' component={ProvidersPage} />
-        <Route path='/expedients' component={ExpedientsPage} />
+        {permitByModule(permits, '_Accounts_') && (
+          <Route path='/accounts' component={AccountsPage} />
+        )}
+        {permitByModule(permits, '_Plans_') && <Route path='/plans' component={PlansPage} />}
+        {permitByModule(permits, '_Sercices_') && (
+          <Route path='/services' component={ServicesPage} />
+        )}
+        {permitByModule(permits, '_ServicesPlans_') && (
+          <Route path='/plan-service' component={PlanServicePage} />
+        )}
+        {permitByModule(permits, '_Families_') && (
+          <Route path='/families' component={FamiliesPage} />
+        )}
+        {permitByModule(permits, '_Providers_') && (
+          <Route path='/providers' component={ProvidersPage} />
+        )}
+        {permitByModule(permits, '_Proceedings_') && (
+          <Route path='/expedients' component={ExpedientsPage} />
+        )}
+        {permitByModule(permits, '_ProviderServiceCost_') && (
+          <Route path='/item-costs' component={ItemCostsPage} />
+        )}
         <Route path='/platforms' component={PlatformsPage} />
         <Route path='/roles' component={RolesPage} />
+
         <Redirect from='/auth' to='/home' />
         <Redirect exact from='/' to='/home' />
-        <Redirect to='error/404' />
+        <Redirect to='/home' />
       </Switch>
     </Suspense>
   )

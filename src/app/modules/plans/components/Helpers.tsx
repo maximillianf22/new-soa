@@ -11,6 +11,7 @@ const createPlansSchemas = Yup.object().shape({
   plDaysToDue: Yup.number().required('Este campo es requerido'),
   plEventsShared: Yup.boolean().required('Este campo es requerido'),
   plnumEventsShared: Yup.number().required('Este campo es requerido'),
+  acId: Yup.number().moreThan(0),
   // plFileUploadPath: Yup.string().required('Este campo es requerido'),
 })
 
