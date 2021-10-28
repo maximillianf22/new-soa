@@ -53,12 +53,12 @@ export const JustificationsViewEditForm = () => {
                       required
                       disabled={isViewing}
                     />
-                    <label className='col-form-label required fw-bold fs-6 py-2'>Tipo</label>
-                    <Select
-                      className='form-control p-0'
-                      isSearchable
+                    <InputCustom
+                      type='text'
                       name='type'
-                      options={optionsTypes}
+                      label='Tipo'
+                      required
+                      disabled={isViewing}
                     />
 
                     <label className='col-form-label required fw-bold fs-6 py-2'>Etapa</label>
