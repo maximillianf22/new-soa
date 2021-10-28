@@ -7,7 +7,6 @@ import { planServicesActions } from '../actions/planServicesActions';
 import { planServicesTypes } from '../types/planServicesTypes';
 import { uiTypes } from '../types/types';
 import { toast } from 'react-toastify';
-import { successToastOptions, errorToastOptions } from '../../modules/global/models/toastOptions';
 
 interface ActionTypePayload {
     type: string, 
@@ -47,7 +46,6 @@ export function* sagaPlanServices() {
     function* sagaCreatePlanService({payload}:ActionTypePayload) {
       try {
         const resp: IPlanServicesResponse = yield call(createPlanService, payload)
-        console.log('en tryy', resp)
         
         yield put({type: uiTypes.uiFinishLoading})
         yield put({type: planServicesTypes.AsyncLoad})
@@ -62,9 +60,7 @@ export function* sagaPlanServices() {
     function* sagaStagesValidation({payload}:ActionTypePayload) {
       try {
         const resp: IPlanServicesResponse = yield call(stagesValidation, payload)
-        console.log(resp);
       } catch (error:any) {
-        console.log(error.response.data.Error)
         toast.error(error.response.data.Error);
       } 
     }
@@ -72,9 +68,7 @@ export function* sagaPlanServices() {
     function* sagaStagesSave({payload}:ActionTypePayload) {
       try {
         const resp: IPlanServicesResponse = yield call(stagesSave, payload)
-        console.log(resp);
       } catch (error:any) {
-        console.log(error.response.data.Error)
         toast.error(error.response.data.Error);
       } 
     }

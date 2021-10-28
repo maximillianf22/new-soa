@@ -13,12 +13,18 @@ export interface IStatsItem {
   count: number
 }
 
+export interface IItemCostsTable {
+  stats?: string
+}
+
 export interface IStats {
   title: string
+  stats?: string
 }
 
 export interface ITableComponent {
   title: string
+  stats?: string
 }
 
 export interface IfamilyResponse {

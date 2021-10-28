@@ -1,5 +1,4 @@
-import React, { FC, useEffect, useRef, useState } from 'react'
-import { Formik, Form, FormikValues } from 'formik'
+import { FC, useEffect, useRef, useState } from 'react'
 import { initialValues, wizzardSchemas } from './Helpers'
 import { ICreatePlanService } from '../../Interfaces/models'
 import { StepperComponent } from '../../../../../_metronic/assets/ts/components'
@@ -98,7 +97,7 @@ const FormWizzard: FC = () => {
               </button>
             </div> */}
             <div>
-              <button onClick={submitStep} disabled={loading} className='btn btn-lg btn-primary me-0 mt-10'>
+              <button id="continue" onClick={submitStep} className='btn btn-lg btn-primary me-0 mt-10'>
                 <span className='indicator-label'>
                   {!isSubmitButton && 'Continuar'}
                   {isSubmitButton && 'Guardar'}

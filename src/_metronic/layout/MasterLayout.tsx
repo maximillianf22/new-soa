@@ -11,6 +11,7 @@ import {
   DrawerMessenger,
   ActivityDrawer,
 } from '../partials'
+import { SidePanel } from '../../app/pages/layout/SidePanel/SidePanel'
 
 const MasterLayout: React.FC = ({children}) => {
   return (
@@ -34,6 +35,7 @@ const MasterLayout: React.FC = ({children}) => {
       <ActivityDrawer />
       <DrawerMessenger />
       {/* end:: Drawers */}
+      <SidePanel/>
 
       <MasterInit />
       <ScrollTop />

@@ -3,7 +3,7 @@ import { call, takeLatest, put } from 'redux-saga/effects';
 import { IServicesResponse, IResponseServiceService } from '../../modules/services/Interfaces/models';
 import { servicesTypes } from '../types/types';
 import { stagesTypes } from '../types/stagesTypes';
-import { getStages, deleteStage, getStage, updateStage, createStage } from '../../api/StagesService';
+import { getStages, deleteStage, getStage, updateStage, createStage, getPlanServiceStages } from '../../api/StagesService';
 import { stagesActions } from '../actions/stagesActions';
 
 interface ActionTypePayload {
@@ -17,6 +17,17 @@ export function* sagaStages() {
       try {
         const {data}: IfamilyResponseRR = yield call(getStages)
         yield put(stagesActions.load(data))
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    function* sagaPlanServiceStages({payload}:ActionTypePayload) {
+      try {
+        console.log("En el saga sagaPlanServicesStages", payload)
+        const {data}: IfamilyResponseRR = yield call(getPlanServiceStages, payload)
+        console.log("los psStages en el saga",data)
+        yield put(stagesActions.loadPlanServiceStages(data))
       } catch (error) {
         console.log(error)
       }
@@ -51,7 +62,8 @@ export function* sagaStages() {
     }
   
     // Watcher Sagas
-    yield takeLatest(stagesTypes.AsyncLoad, asyncLoad)
+    yield takeLatest(stagesTypes.get, asyncLoad)
+    yield takeLatest(stagesTypes.getPlanServiceStages, sagaPlanServiceStages)
     yield takeLatest(stagesTypes.Delete, sagaDeleteStage)
     yield takeLatest(stagesTypes.Update, sagaUpdateStage)
     yield takeLatest(stagesTypes.Create, sagaCreateStage)

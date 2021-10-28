@@ -2,9 +2,9 @@ import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Swal from 'sweetalert2'
 import {RootState} from '../../../../../../setup'
-import { familiesActions } from '../../../../../redux/actions/actions';
 import { familiesTypes } from '../../../../../redux/types/types';
 import { uiActions } from '../../../../../redux/actions/uiActions';
+import { familiesActions } from '../../../../../redux/actions/familiesActions';
 import { permitByModuleAndAction } from '../../../../permits/PermitFilter';
 
 export const TableBodyItem = ({item} : any) => {

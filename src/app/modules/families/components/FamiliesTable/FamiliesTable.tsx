@@ -3,10 +3,11 @@ import {useDispatch, useSelector} from 'react-redux'
 import { RootState } from '../../../../../setup'
 import { tableActions } from '../../../../redux/actions/actions'
 import { tableTypes, familiesTypes } from '../../../../redux/types/types'
+import { IFamiliesTable } from '../../Interfaces/models'
 import { ModalForm } from '../FamiliesForm/ModalForm'
 import { TableComponent } from './components/TableComponent'
 
-export const FamiliesTable = () => {
+export const FamiliesTable = ({stats}: IFamiliesTable) => {
   const dispatch = useDispatch()
 
   const families: any = useSelector<RootState>(({families}) => families.families)
@@ -49,7 +50,7 @@ export const FamiliesTable = () => {
 
   return (
     <>
-      <TableComponent title='Familias'/>
+      <TableComponent title='Familias' stats={stats}/>
       <ModalForm />
     </>
   )

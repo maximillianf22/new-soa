@@ -5,7 +5,7 @@ import * as auth from '../../app/modules/auth'
 import { tableReducer } from '../../app/redux/reducers/TableRedux';
 import { usersReducer } from '../../app/redux/reducers/UsersRedux';
 import { familiesReducer } from '../../app/redux/reducers/FamilyRedux';
-import { sagaUsers, tableSaga } from '../../app/redux/sagas/sagas';
+import { sagaUsers } from '../../app/redux/sagas/usersSagas';
 import { uiReducer } from '../../app/redux/reducers/uiRedux';
 import { accountsReducer } from '../../app/redux/reducers/AccountsRedux';
 import { sagaAccounts } from '../../app/redux/sagas/accountsSagas';
@@ -18,8 +18,10 @@ import { planServicesReducer } from '../../app/redux/reducers/PlanServicesReduce
 import { permitsReducer } from '../../app/redux/reducers/permitsRedux';
 import { stagesReducer } from '../../app/redux/reducers/StagesReducer';
 import { sagaStages } from '../../app/redux/sagas/stagesSagas';
-import { sagaFamilies } from '../../app/redux/sagas/FamiliesSaga';
+import { sagaFamilies } from '../../app/redux/sagas/familiesSaga';
 import { authSaga } from '../../app/redux/sagas/authSaga';
+import { questionsReducer } from '../../app/redux/reducers/QuestionsReducer';
+import { sagaQuestions } from '../../app/redux/sagas/questionsSagas';
 import { sagaProviders } from '../../app/redux/sagas/providerSagas';
 import { providersReducer } from '../../app/redux/reducers/ProvidersRedux';
 
@@ -35,7 +37,8 @@ export const rootReducer = combineReducers({
   table: tableReducer,
   ui: uiReducer,
   users: usersReducer,
-  stages: stagesReducer
+  stages: stagesReducer,
+  questions: questionsReducer
 });
 
 export type RootState = ReturnType<typeof rootReducer>
@@ -43,7 +46,6 @@ export type RootState = ReturnType<typeof rootReducer>
 export function* rootSaga() {
   yield all([
     authSaga(),
-    tableSaga(),
     sagaUsers(),
     sagaAccounts(),
     sagaPlans(),
@@ -52,5 +54,6 @@ export function* rootSaga() {
     sagaPlanServices(),
     sagaProviders(),
     sagaStages(),
+    sagaQuestions()
   ])
 };

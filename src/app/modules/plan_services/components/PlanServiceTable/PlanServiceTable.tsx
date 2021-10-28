@@ -8,6 +8,7 @@ import { TableComponent } from './components/TableComponent'
 import { planServicesTypes } from '../../../../redux/types/planServicesTypes';
 import { planTypes } from '../../../../redux/types/planTypes';
 import { stagesTypes } from '../../../../redux/types/stagesTypes';
+import { questionsTypes } from '../../../../redux/types/questionsTypes';
 
 export const PlanServiceTable = ({stats}: IPlanServiceTable) => {
   const dispatch = useDispatch()
@@ -39,7 +40,7 @@ export const PlanServiceTable = ({stats}: IPlanServiceTable) => {
     dispatch({type: planServicesTypes.AsyncLoad})
     dispatch({type: planTypes.get})
     dispatch({type: servicesTypes.AsyncLoad})
-    dispatch({type: stagesTypes.AsyncLoad});
+    dispatch({type: stagesTypes.get});
   }, [dispatch])
   
   useEffect(() => {

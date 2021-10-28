@@ -1,65 +1,15 @@
 import React from 'react'
+import { IStats } from '../../../../users/interfaces/models'
+import { StatsItem } from './StatsItem'
 
-export const TableStats: React.FC = () => {
+export const TableStats = ({title, stats}: IStats) => {
   return (
     <>
-      <div className='row pb-5'>
-        <div className='col-3 d-none d-sm-none d-md-none d-lg-none d-xl-block'>
-          <div className='card h-100px p-5'>
-            <div className='d-flex bd-highlight'>
-              <div className='p-0 w-100 bd-highlight'>
-                <p className='text-muted mb-0 fw-bold fs-7 text-uppercase'>Usuarios</p>
-                <h1>Registrados</h1>
-              </div>
-              <div className='p-0 flex-shrink-1 bd-highlight '>
-                <h1 className='m-0 text-white rounded-circle bg-primary p-4'>89</h1>
-              </div>
-            </div>
-            <p className='text-muted fs-7 fw-light text-nowrap my-2'>Usuarios Registrados en la platforma</p>
-          </div>
-        </div>
-        <div className='col-3 d-none d-sm-none d-md-none d-lg-none d-xl-block'>
-          <div className='card h-100px p-5'>
-            <div className='d-flex bd-highlight'>
-              <div className='p-0 w-100 bd-highlight'>
-                <p className='text-muted mb-0 fw-bold fs-7 text-uppercase'>Usuarios</p>
-                <h1>Activos</h1>
-              </div>
-              <div className='p-0 flex-shrink-1 bd-highlight '>
-                  <h1 className='m-0 text-white rounded-circle bg-primary p-4'>89</h1>
-              </div>
-            </div>
-            <p className='text-muted fs-7 fw-light text-nowrap my-2'>Usuarios Activos en la platforma</p>
-          </div>
-        </div>
-        <div className='col-3 d-none d-sm-none d-md-none d-lg-none d-xl-block'>
-          <div className='card h-100px p-5'>
-            <div className='d-flex bd-highlight'>
-              <div className='p-0 w-100 bd-highlight'>
-                <p className='text-muted mb-0 fw-bold fs-7 text-uppercase'>Usuarios</p>
-                <h1>Inactivos</h1>
-              </div>
-              <div className='p-0 flex-shrink-1 bd-highlight '>
-                  <h1 className='m-0 text-white rounded-circle bg-primary p-4'>89</h1>
-              </div>
-            </div>
-            <p className='text-muted fs-7 fw-light text-nowrap my-2'>Usuarios Inactivos en la platforma</p>
-          </div>
-        </div>
-        <div className='col-3 d-none d-sm-none d-md-none d-lg-none d-xl-block'>
-          <div className='card h-100px p-5'>
-            <div className='d-flex bd-highlight'>
-              <div className='p-0 w-100 bd-highlight'>
-                <p className='text-muted mb-0 fw-bold fs-7 text-uppercase'>Usuarios</p>
-                <h1>Inhabilitados</h1>
-              </div>
-              <div className='p-0 flex-shrink-1 bd-highlight '>
-                  <h1 className='m-0 text-white rounded-circle bg-primary p-4'>89</h1>
-              </div>
-            </div>
-            <p className='text-muted fs-7 fw-light text-nowrap my-2'>Usuarios Inhabilitados en la platforma</p>
-          </div>
-        </div>
+      <div className={`row pb-5 ${stats}`}>
+        <StatsItem title={title} state='Registrados' count={89} />
+        <StatsItem title={title} state='Activos' count={89} />
+        <StatsItem title={title} state='Inactivos' count={89} />
+        <StatsItem title={title} state='Inhabilitados' count={89} />
       </div>
     </>
   )

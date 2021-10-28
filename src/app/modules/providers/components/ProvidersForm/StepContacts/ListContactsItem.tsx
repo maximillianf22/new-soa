@@ -6,7 +6,7 @@ export const ListContactsItem = ({nombre, telefono1, telefono2, active, responsa
     <>
       <div className='d-flex align-items-sm-center mb-7 mt-0'>
         <div className='d-flex align-items-center flex-row-fluid flex-wrap'>
-          <div className='flex-grow-1 me-2 w-50'>
+          <div className='flex-grow-1 me-2 text-nowrap w-50'>
             <a href='#' className='text-gray-800 text-hover-primary fs-6 fw-bolder text-nowrap'>
               {nombre} {apellido_materno}
               <span className={`badge badge-circle ${active? ('bg-success') : ('bg-danger') } h-10px w-10px mb-2`}></span>
