@@ -68,6 +68,19 @@ export const JustificationsViewEditForm = () => {
                       name='stage'
                       options={optionsStages}
                     />
+
+                    <div className='col-md-12 fv-row'>
+                      <label></label>
+                      <div className='form-check form-switch form-check-custom form-check-solid my-auto h-75'>
+                        <InputCustom
+                          className='form-check-input h-25px'
+                          type='checkbox'
+                          name='is_active'
+                          id='flexSwitchChecked'
+                        />
+                        <label className='form-check-label'>¿Activo?</label>
+                      </div>
+                    </div>
                   </div>
 
                   {/* Este select es el que puedes tomar de ejemplo los de arriba no estan funcionales */}
