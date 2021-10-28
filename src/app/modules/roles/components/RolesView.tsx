@@ -1,5 +1,5 @@
 import React from 'react'
-import { UsersTable } from '../../../users/components/UsersTable'
+import { UsersTable } from '../../users/components/UsersTable'
 import { ModalForm } from './ModalForm'
 
 export const RolesView = () => {

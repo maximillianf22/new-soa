@@ -117,7 +117,7 @@ const ChatInner: FC<Props> = ({isDrawer = false}) => {
                           href='#'
                           className='fs-5 fw-bolder text-gray-900 text-hover-primary ms-1'
                         >
-                          You
+                          Yousdasa
                         </a>
                       </div>
                       <div className='symbol  symbol-35px symbol-circle '>
@@ -182,7 +182,7 @@ const ChatInner: FC<Props> = ({isDrawer = false}) => {
             data-kt-element='send'
             onClick={sendMessage}
           >
-            Send
+            Senddfdf
           </button>
         </div>
       </div>

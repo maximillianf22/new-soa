@@ -2,8 +2,8 @@ import React from 'react'
 import {PageTitle} from '../../../_metronic/layout/core'
 import {Switch, Route, Redirect} from 'react-router-dom'
 import {PageLink} from '../../../_metronic/layout/core'
-import { RolesList } from './components/RolesList/RolesList'
-import { RolesView } from './components/RolesList/RolesView'
+import { RolesList } from './components/RolesList'
+import { RolesView } from './components/RolesView'
 
 const RolesBreadCrumbs: Array<PageLink> = [
   {

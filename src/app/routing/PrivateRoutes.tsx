@@ -18,6 +18,7 @@ export function PrivateRoutes() {
   const ExpedientsPage = lazy(() => import('../modules/expedients/ExpedientsPage'))
   const PlatformsPage = lazy(() => import('../modules/platforms/PlatformsPage'))
   const RolesPage = lazy(() => import('../modules/roles/RolesPage'))
+  const JustificationsPage = lazy(() => import('../modules/justifications/JustificationsPage'))
 
   const {permits}: any = useSelector<RootState>(({permits}) => permits)
 
@@ -50,6 +51,7 @@ export function PrivateRoutes() {
         )}
         <Route path='/platforms' component={PlatformsPage} />
         <Route path='/roles' component={RolesPage} />
+        <Route path='/justifications' component={JustificationsPage} />
 
         <Redirect from='/auth' to='/home' />
         <Redirect exact from='/' to='/home' />

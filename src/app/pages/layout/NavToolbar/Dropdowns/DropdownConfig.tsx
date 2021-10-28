@@ -17,6 +17,7 @@ export const DropdownConfig = () => {
           <ItemDropdown title='Items de costos' link='/item-costs/home' />
           <ItemDropdown title='Plataformas / Clientes' link='/platforms/home' />
           <ItemDropdown title='Roles' link='/roles/home' />
+          <ItemDropdown title='Justificaciones' link='/justifications/home' />
         </div>
       </div>
     </>
