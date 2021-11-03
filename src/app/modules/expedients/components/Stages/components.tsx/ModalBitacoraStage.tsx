@@ -13,7 +13,7 @@ export const ModalBitacoraStage = () => {
               <div className='card'>
                 <div className='card-body'>
                   <div className='text-center w-100 '>
-                    <h2 className='fw-bolder text-center text-dark'>Familias disponibles</h2>
+                    <h2 className='fw-bolder text-center text-dark'>Grabar información</h2>
                   </div>
                   <Formik
                     initialValues={initialValues}

@@ -1,5 +1,5 @@
 import React from 'react'
-import { ModalAsistencia } from '../../../../assistances/components/AssistancesForm/ModalAsistencia'
+import { ModalAssistances } from '../../../../assistances/components/AssistancesForm/ModalAssistances'
 
 export const StageOptions = () => {
   return (
@@ -35,7 +35,7 @@ export const StageOptions = () => {
           <button className='btn btn-sm btn-primary px-0'>Bitacora Etapa</button>
         </div>
       </div>
-      <ModalAsistencia />
+      <ModalAssistances />
     </>
   )
 }

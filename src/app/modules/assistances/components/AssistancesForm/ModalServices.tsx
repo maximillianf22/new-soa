@@ -1,5 +1,5 @@
 import React from 'react'
-import { ModalAsistencia } from './ModalAsistencia'
+import { ModalAssistances } from './ModalAssistances'
 
 export const ModalServices = () => {
   return (
@@ -206,7 +206,7 @@ export const ModalServices = () => {
           </div>
         </div>
       </div>
-      <ModalAsistencia/>
+      <ModalAssistances/>
     </>
   )
 }
