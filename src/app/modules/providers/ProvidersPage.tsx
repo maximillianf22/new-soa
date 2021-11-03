@@ -33,6 +33,11 @@ const ProvidersPage: React.FC = () => {
         <FormTab />
       </Route>
 
+      <Route path='/providers/edit'>
+        <PageTitle breadcrumbs={ProvidersBreadCrumbs}>Detalle del Proveedor</PageTitle>
+        <FormTab />
+      </Route>
+
       <Redirect from='/providers/' exact={true} to='/providers/home' />
       <Redirect to='/providers/home' />
     </Switch>

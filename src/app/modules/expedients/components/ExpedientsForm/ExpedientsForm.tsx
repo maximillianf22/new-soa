@@ -1,8 +1,7 @@
 import {Formik, Form, FormikProps, Field} from 'formik'
-import {Button} from 'react-bootstrap-v5'
+import { AssistancesTable } from '../../../assistances/components/AssistancesTable/AssistancesTable'
 import {InputCustom, InputSelect} from '../../../global/components/inputs'
 import {initialValues} from '../Helpers'
-import {ModalFamilies} from './ModalFamilies'
 import {ModalSAC} from './ModalSAC'
 
 const optionsUnits = [{value: 'id', label: 'Kilometros'}]
@@ -24,9 +23,9 @@ export const ExpedientsForm = () => {
                       <Field name={'dueDate'} component={InputSelect} options={{}} />
                     </div>
                     <div className='px-0 flex-fill bd-highlight mt-10'>
-                      <Button className='btn btn-icon btn-info btn-form'>
+                      <button className='btn btn-icon btn-info btn-form'>
                         <i className='fa fa-filter'></i>
-                      </Button>
+                      </button>
                     </div>
                   </div>
                 </a>
@@ -229,13 +228,20 @@ export const ExpedientsForm = () => {
                   <InputCustom type='text' name='appmaterno' label='Telefono 2' required />
                 </div>
                 <div className='col-md-3 px-5 fv-row my-3'>
-                  <InputCustom type='text' name='appmaterno' label='Ubicación' required />
+                <div className='d-flex bd-highlight w-100 mb-10'>
+                    <div className='pe-3 flex-fill bd-highlight w-100'>
+                    <InputCustom type='text' name='ubications' label='Ubicación' required />
+                    </div>
+                    <div className='px-0 flex-fill bd-highlight mt-10'>
+                      <button className='btn btn-icon btn-info btn-form'>
+                        <i className='fa fa-map-pin fs-3'></i>
+                      </button>
+                    </div>
+                  </div>
                 </div>
                 <div className='col-md-3 px-5 fv-row my-3 d-grid gap-2'>
                   <button
                     className='btn btn-primary mt-10'
-                    data-bs-toggle='modal'
-                    data-bs-target='#kt_modal'
                   >
                     Grabar expediente <i className='fa fa-save ms-3'></i>
                   </button>
@@ -245,7 +251,7 @@ export const ExpedientsForm = () => {
           </Form>
         )}
       </Formik>
-      <ModalFamilies />
+      <AssistancesTable />
       <ModalSAC />
     </>
   )
