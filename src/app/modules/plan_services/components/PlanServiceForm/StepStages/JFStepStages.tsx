@@ -9,7 +9,7 @@ import {ModalTime} from './ModalTime'
 
 const optionsTemplates = [{value: '1', label: 'Plantilla1'}]
 
-export const StepStages = () => {
+export const JFStepStages = () => {
   const stages: any = useSelector<RootState>(({stages}) => stages.stages)
   const selectedPlanService: any = useSelector<RootState>(
     ({planServices}) => planServices.selectedPlanService

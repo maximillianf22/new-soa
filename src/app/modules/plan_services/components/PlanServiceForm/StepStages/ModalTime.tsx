@@ -1,9 +1,17 @@
-import React from 'react'
-import {Formik, Form, FormikProps, Field} from 'formik'
-import {InputCustom} from '../../../../global/components/inputs'
-import {initialValues} from '../Helpers'
+import {Formik, Form, FormikProps} from 'formik'
+import { shallowEqual, useSelector } from 'react-redux';
+import { RootState } from '../../../../../../setup/redux/RootReducer';
 
 export const ModalTime = () => {
+
+  const items: any = useSelector<RootState>(({stages}) => stages.validatedStages?.items, shallowEqual);
+
+  let initialValues = {};
+    items?.map( (stage: any, i:number) => {
+      initialValues = {...initialValues,[stage.sId]: stage.ssTime}
+    });
+  
+
   return (
     <>
       <div className='modal' tabIndex={-1} id='kt_modal_time'>
@@ -19,7 +27,7 @@ export const ModalTime = () => {
                   <Formik
                     initialValues={initialValues}
                     enableReinitialize={true}
-                    onSubmit={(values) => {}}
+                    onSubmit={(values) => console.log(values)}
                   >
                     {(props: FormikProps<any>) => (
                       <Form>
@@ -34,57 +42,25 @@ export const ModalTime = () => {
                             </tr>
                           </thead>
                           <tbody>
-                            <tr className='px-4'>
-                              <th scope='row' className='pt-2 fw-bolder fs-5'>
-                                Etapa 5
-                              </th>
-                              <td>
-                                <input
-                                  type='number'
-                                  name='time'
-                                  className='form-control form-control-sm form-control-sm-mod form-control-solid'
-                                />
-                              </td>
-                              <td>
-                                <button className='btn btn-sm btn-sm-mod btn-danger py-1 px-1'>
-                                  <i className='fa fa-times ms-1'></i>
-                                </button>
-                              </td>
-                            </tr>
-                            <tr className='px-4'>
-                              <th scope='row' className='pt-2 fw-bolder fs-5'>
-                                Etapa 6
-                              </th>
-                              <td>
-                                <input
-                                  type='number'
-                                  name='time'
-                                  className='form-control form-control-sm form-control-sm-mod form-control-solid'
-                                />
-                              </td>
-                              <td>
-                                <button className='btn btn-sm btn-sm-mod btn-danger py-1 px-1'>
-                                  <i className='fa fa-times ms-1'></i>
-                                </button>
-                              </td>
-                            </tr>
-                            <tr className='px-4'>
-                              <th scope='row' className='pt-2 fw-bolder fs-5'>
-                                Etapa 7
-                              </th>
-                              <td>
-                                <input
-                                  type='number'
-                                  name='time'
-                                  className='form-control form-control-sm form-control-sm-mod form-control-solid'
-                                />
-                              </td>
-                              <td>
-                                <button className='btn btn-sm btn-sm-mod btn-danger py-1 px-1'>
-                                  <i className='fa fa-times ms-1'></i>
-                                </button>
-                              </td>
-                            </tr>
+                            {items?.map( (stage: any, index:number) => (
+                              <tr key={index} className='px-4'>
+                                <th scope='row' className='pt-2 fw-bolder fs-5'>
+                                  Etapa {stage.sId}
+                                </th>
+                                <td>
+                                  <input
+                                    type='text'
+                                    name={`${stage.sId}`}
+                                    onChange={(time) => {
+                                      items.map( (item:any) => item.sId === stage.sId ? item.ssTime =  `00:${time.target.value}:00` : item );
+                                      props.setFieldValue(`${stage.sId}`, `00:${time.target.value}:00`);
+                                    }}
+                                    className='form-control form-control-sm form-control-sm-mod form-control-solid'
+                                  />
+                                </td>
+                              </tr>
+                            ) )
+                            }
                           </tbody>
                         </table>
                       </Form>

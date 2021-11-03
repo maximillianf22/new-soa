@@ -16,7 +16,7 @@ export function* sagaStages() {
     function* asyncLoad() {
       try {
         const {data}: IfamilyResponseRR = yield call(getStages)
-        yield put(stagesActions.load(data))
+        yield put(stagesActions.load(data.results))
       } catch (error) {
         console.log(error)
       }
@@ -24,9 +24,8 @@ export function* sagaStages() {
 
     function* sagaPlanServiceStages({payload}:ActionTypePayload) {
       try {
-        console.log("En el saga sagaPlanServicesStages", payload)
+        // console.log("En el saga sagaPlanServicesStages", payload)
         const {data}: IfamilyResponseRR = yield call(getPlanServiceStages, payload)
-        console.log("los psStages en el saga",data)
         yield put(stagesActions.loadPlanServiceStages(data))
       } catch (error) {
         console.log(error)

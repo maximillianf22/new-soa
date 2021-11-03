@@ -4,6 +4,7 @@ import { stagesTypes } from '../types/stagesTypes';
 export const stagesActions = {
     load: (payload: any) => ({type: stagesTypes.Load, payload: {stages:payload}}),
     loadPlanServiceStages: (payload: any) => ({type: stagesTypes.LoadPlanServiceStages, payload: {planServiceStages:payload}}),
+    loadValidatedStages: (payload: any) => ({type: stagesTypes.LoadValidatedStages, payload: {validatedStages:payload}}),
     getPlanServiceStages: (payload: any) => ({type: stagesTypes.getPlanServiceStages, payload}),
     clear: () => ({type: stagesTypes.Clear,}),
     SelectedStage: (payload:any) => ({type: stagesTypes.SelectedStage, payload: {selectedStage:payload}}),

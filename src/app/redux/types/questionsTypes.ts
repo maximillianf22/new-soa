@@ -5,6 +5,7 @@ export const questionsTypes = {
     Delete: '[questionsRedux] delete question',
     Update: '[questionsRedux] update question',
     Create: '[questionsRedux] create question',
+    CreateOption: '[questionsRedux] create option question',
     SelectedQuestion: '[questionsRedux] selected question',
     ClearSelectedQuestion: '[questionsRedux] clear selected question',
 

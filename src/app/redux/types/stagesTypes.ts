@@ -2,6 +2,7 @@ export const stagesTypes = {
     get: '[stagesRedux] start loading stages',
     getPlanServiceStages: '[stagesRedux] get planServices stages',
     Load: '[stagesRedux] load stages to reducer',
+    LoadValidatedStages: '[stagesRedux] load validated stages to reducer',
     LoadPlanServiceStages: '[stagesRedux] load planServices stages to reducer',
     Clear: '[stagesRedux] clear reducer stages',
     Delete: '[stagesRedux] delete stage',

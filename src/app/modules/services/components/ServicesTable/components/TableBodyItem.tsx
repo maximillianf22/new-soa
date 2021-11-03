@@ -4,11 +4,8 @@ import Swal from 'sweetalert2'
 import {RootState} from '../../../../../../setup'
 import {servicesTypes} from '../../../../../redux/types/types'
 import { uiActions } from '../../../../../redux/actions/uiActions';
-<<<<<<< HEAD
 import { servicesActions } from '../../../../../redux/actions/servicesActions';
-=======
 import { permitByModuleAndAction } from '../../../../permits/PermitFilter';
->>>>>>> 9eb41fb1e5dd859f42595fbd0397df9b4251feac
 
 export const TableBodyItem = ({item} : any) => {
   

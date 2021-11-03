@@ -15,6 +15,7 @@ export interface StagesModel {
 
 const initialStagesState: IStagesState = {
     stages: [],
+    validatedStages: {items: []},
     planServiceStages: [],
     selectedStage: {
       "sid": 0,
@@ -22,26 +23,28 @@ const initialStagesState: IStagesState = {
       "sdescription": "",
       "sstatus": true
   }
-}
+};
 
 
 interface IStagesState {
   stages: StagesModel[] | undefined
+  validatedStages: {items: []} | undefined
   planServiceStages: StagesModel[] | undefined
   selectedStage: StagesModel | undefined
-}
+};
 
 export const stagesReducer = persistReducer(
   {storage, key: 'stages', whitelist: ['stages', 'planServiceStages', 'selectedStage']},
   (state: IStagesState = initialStagesState, action: ActionWithPayload<IStagesState>) => {
     switch (action.type) {
       case stagesTypes.Load: { 
-        console.log("carga de stages", action.payload?.stages)
         return {...state, stages: action.payload?.stages};
       }
       case stagesTypes.LoadPlanServiceStages: { 
-        console.log("En EL STAGES REDUCER",action.payload?.planServiceStages)
         return {...state, planServiceStages: action.payload?.planServiceStages};
+      }
+      case stagesTypes.LoadValidatedStages: { 
+        return {...state, validatedStages: action.payload?.validatedStages};
       }
       case stagesTypes.Clear: {
         return {...initialStagesState};

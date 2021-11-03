@@ -9,7 +9,8 @@ export const STAGE_SAVE = `soaang-catalogs/api/service-stages/`;
 // Servidor debe retonar IPlanServicesResponse
 
 export function stagesSave(payload:any): Promise<any> {
-  payload.sid = payload.items[0].sId;
+  // payload.sid = payload.items[0].sId;
+  console.log("en el service savestages",payload)
   return httpClient.post(`${STAGE_SAVE}`, payload)
 }
 

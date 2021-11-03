@@ -20,13 +20,10 @@ import { stagesReducer } from '../../app/redux/reducers/StagesReducer';
 import { sagaStages } from '../../app/redux/sagas/stagesSagas';
 import { sagaFamilies } from '../../app/redux/sagas/familiesSaga';
 import { authSaga } from '../../app/redux/sagas/authSaga';
-<<<<<<< HEAD
 import { questionsReducer } from '../../app/redux/reducers/QuestionsReducer';
 import { sagaQuestions } from '../../app/redux/sagas/questionsSagas';
-=======
 import { sagaProviders } from '../../app/redux/sagas/providerSagas';
 import { providersReducer } from '../../app/redux/reducers/ProvidersRedux';
->>>>>>> 9eb41fb1e5dd859f42595fbd0397df9b4251feac
 
 export const rootReducer = combineReducers({
   accounts: accountsReducer,

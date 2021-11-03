@@ -5,7 +5,7 @@ import { IQuestionsResponse } from '../../modules/plan_services/Interfaces/model
 import { questionsActions } from '../actions/questionsActions';
 import { questionsTypes } from '../types/questionsTypes';
 import { uiTypes } from '../types/types';
-import { getQuestions, deleteQuestion, getQuestion, createQuestion, updateQuestion } from '../../api/QuestionsService';
+import { getQuestions, deleteQuestion, getQuestion, createQuestion, updateQuestion, createQuestionOption } from '../../api/QuestionsService';
 
 interface ActionTypePayload {
     type: string, 
@@ -17,7 +17,6 @@ export function* sagaQuestions() {
     function* asyncLoad({payload}:ActionTypePayload) {
       try {
         const {data}: IfamilyResponseRR = yield call(getQuestions, payload)
-        console.log("en el saga questions", data)
         yield put(questionsActions.load(data))
       } catch (error) {
         console.log(error)
@@ -33,7 +32,6 @@ export function* sagaQuestions() {
     }
   
     function* sagaUpdateQuestion({payload}:ActionTypePayload) {
-console.log("en el saga questioonss")
       try {
         yield call(updateQuestion, payload);
         const {data}: IResponseServiceService = yield call(getQuestion, payload)
@@ -46,8 +44,15 @@ console.log("en el saga questioonss")
     function* sagaCreateQuestion({payload}:ActionTypePayload) {
       try {
         const resp: IQuestionsResponse = yield call(createQuestion, payload)
-        console.log(resp)
-        yield put(questionsActions.SelectedQuestion(resp.data))
+      } catch (error) {
+        console.log(error)
+        yield put({type: uiTypes.uiFinishLoading}) 
+      } 
+    };
+
+    function* sagaCreateQuestionOption({payload}:ActionTypePayload) {
+      try {
+        const resp: IQuestionsResponse = yield call(createQuestionOption, payload)
       } catch (error) {
         console.log(error)
         yield put({type: uiTypes.uiFinishLoading}) 
@@ -56,6 +61,7 @@ console.log("en el saga questioonss")
 
     // Watcher Sagas
     yield takeLatest(questionsTypes.get, asyncLoad)
+    yield takeLatest(questionsTypes.CreateOption, sagaCreateQuestionOption)
     yield takeLatest(questionsTypes.Delete, sagaDeleteQuestion)
     yield takeLatest(questionsTypes.Update, sagaUpdateQuestion)
     yield takeLatest(questionsTypes.Create, sagaCreateQuestion)

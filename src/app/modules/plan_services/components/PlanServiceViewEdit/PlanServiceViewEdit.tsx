@@ -1,9 +1,9 @@
 import React from 'react'
 import {StageTabItem} from '../../../expedients/components/Stages/components.tsx/StageTabItem'
-import {StepQuestions} from '../PlanServiceForm/StepQuestions/StepQuestions'
-import {StepStages} from '../PlanServiceForm/StepStages/StepStages'
+import {JFStepQuestions} from '../PlanServiceForm/StepQuestions/JFStepQuestions'
 import {ViewEditForm} from '../PlanServiceForm/ViewEditForm'
 import './styles.css'
+import { JFStepStages } from '../PlanServiceForm/StepStages/JFStepStages';
 
 export const PlanServiceViewEdit = () => {
   return (
@@ -50,10 +50,10 @@ export const PlanServiceViewEdit = () => {
               <ViewEditForm />
             </div>
             <div className='tab-pane fade' id='kt_tab_pane_2' role='tabpanel'>
-              <StepStages />
+              <JFStepStages />
             </div>
             <div className='tab-pane fade active show' id='kt_tab_pane_3' role='tabpanel'>
-              <StepQuestions />
+              <JFStepQuestions />
             </div>
           </div>
         </div>
