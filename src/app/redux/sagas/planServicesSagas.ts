@@ -67,6 +67,7 @@ export function* sagaPlanServices() {
 
     function* sagaStagesSave({payload}:ActionTypePayload) {
       try {
+        console.log("en saga plstages save", payload)
         const resp: IPlanServicesResponse = yield call(stagesSave, payload)
       } catch (error:any) {
         toast.error(error.response.data.Error);

@@ -16,7 +16,6 @@ export function getStages(): Promise<IServicesResponse> {
 };
 
 export function getPlanServiceStages(payload:number): Promise<IServicesResponse> {
-  // console.log(`${STAGES_URL}?service_plan_id=${payload}`)
   return httpClient.get(`${PLAN_SERVICE_STAGES_URL}?service_plan_id=${payload}`)
 };
 

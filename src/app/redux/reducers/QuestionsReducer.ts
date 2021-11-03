@@ -17,7 +17,7 @@ const initialQuestionsState: IQuestionsState = {
       "smIsRequired": true,
       "metadata_service_options": [
           {
-              "smoId": 1,
+              "smoId": 0,
               "smoOptionName": "",
               "smoIsActive": true
           }

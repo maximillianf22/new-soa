@@ -5,6 +5,9 @@ import { InputSelect } from '../../../global/components/inputs'
 import { RootState } from '../../../../../setup/redux/RootReducer';
 import { StagesModel } from '../../../../redux/reducers/StagesReducer';
 import { planServicesTypes } from '../../../../redux/types/planServicesTypes';
+import { ModalTime } from './StepStages/ModalTime';
+import { stagesActions } from '../../../../redux/actions/stagesActions';
+import { planServicesActions } from '../../../../redux/actions/planServicesActions';
 
 const optionsTemplates = [
   {value: '1', label: 'Plantilla1'},
@@ -17,22 +20,39 @@ export const StepStages = () => {
 
   const handleSave = () => {
     document.getElementById("continue")?.click();
+    dispatch(planServicesActions.SelectedPlanService(selectedPlanService));
   }
 
-  const newStages = {
-    items: []
-  }
+  // const [newStages, setNewStages] = useState({items: []});
+  const newStages = {items: []};
+
+
+  let cards:any = [];
+
   const onDataChange = (newData:any) => {
-    const cards = newData.lanes[0].cards;
+    cards = newData.lanes[0].cards;
     cards?.map( (s:any, i:number) => {
       s.sId = s.id;
       s.spId = selectedPlanService.spId;
-      s.ssTime = "00:00:00";
-      s.ssTimeApp = "00:00:00";
-    })
+      if (!s.ssTime) {
+        s.ssTime = "00:00:00";
+      };
+      if (!s.ssTimeApp) {
+        s.ssTimeApp = "00:00:00";
+      };
+      // s.ssTime = s.ssTime ? s.ssTime : s.ssTime = "00:00:00";
+      // s.ssTimeApp = s.ssTimeApp ? s.ssTimeApp : s.ssTimeApp = "00:00:00";
+    });
     newStages.items = cards;
+      // setNewStages({items: cards});
     dispatch({type: planServicesTypes.StageValidation, payload:newStages })
-  }
+    dispatch(stagesActions.loadValidatedStages(newStages))
+  };
+  // useEffect(() => {
+  //   dispatch(stagesActions.loadValidatedStages({items: cards}));
+  // }, [cards])
+
+  
   // ################ TODO: cambios en backend para que guarde la data como se maneja en la librería y luego en el front hacer un color picker ################
   const bc = ['ecf8ff', 'e8fff3', 'f8f5ff', 'fff8dd', 'fff5f8', 'f0fcff', 'fef2ff', 'ededed'];
   const colors = ['009ef7' ,'50cd89' ,'7239ea' ,'ffc700' ,'f1416c' ,'1ed2ff' ,'f563ff' ,'000000'];
@@ -40,7 +60,7 @@ export const StepStages = () => {
   let stgs;
   if (stages) {
 
-  stgs = stages?.map( (stage: StagesModel, i:number) => {
+  stgs = stages && stages.map( (stage: StagesModel, i:number) => {
     if (stage.sstagenumber !==1 && stage.sstagenumber !==10) {
       return {
         description: stage.sdescription,
@@ -106,6 +126,9 @@ export const StepStages = () => {
         enableReinitialize={true}
         onSubmit={(values) => {
           dispatch({type: planServicesTypes.StageSave, payload:newStages })
+          dispatch(stagesActions.getPlanServiceStages(selectedPlanService.spId));
+
+          console.log(newStages)
           // dispatch({
           //   type: isEditing ? planServicesTypes.Update : planServicesTypes.Create,
           //   payload: values
@@ -130,20 +153,36 @@ export const StepStages = () => {
               <Field name={'question_type'} component={InputSelect} options={optionsTemplates} />
           </div>
         </div>
+
         <div className='card-body'>
           { stages && 
             <Board data={data} onDataChange={onDataChange} className='bg-secondary' style={{maxHeight: '1200px'}} />
           }
         </div>
+        </div>
 
-        <button onClick={ handleSave } type="submit" className='btn btn-lg btn-primary me-0 mt-10'>
-          Guardar
-          <i className='fa fa-arrow-right svg-icon-3 ms-2 me-0'></i>
-        </button>
-      </div>
+        <div className='row px-10'>
+              <div className='col-3 d-grid gap-2 offset-md-6'>
+                <button
+                  className='btn btn-lg btn-info me-0 mt-10 mb-6'
+                  data-bs-toggle='modal'
+                  data-bs-target='#kt_modal_time'
+                >
+                  Programar tiempos
+                  <i className='fa fa-clock svg-icon-3 ms-2 me-0'></i>
+                </button>
+              </div>
+              <div className='col-3 d-grid gap-2'>
+                <button onClick={handleSave} type='submit' className='btn btn-lg btn-primary me-0 mt-10 mb-6'>
+                  Guardar
+                  <i className='fa fa-arrow-right svg-icon-3 ms-2 me-0'></i>
+                </button>
+              </div>
+            </div>
       </Form>
         )}
       </Formik>
+      <ModalTime />
     </>
   )
 }

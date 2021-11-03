@@ -38,7 +38,8 @@ export const ViewEditForm = () => {
   };
   useEffect(() => {
     dispatch({type: uiTypes.uiStartLoading})
-    dispatch(questionsActions.get(selectedPlanService.spId));
+    // dispatch(questionsActions.get(selectedPlanService.spId));
+    dispatch(questionsActions.get(1));
   }, [selectedPlanService]);
 
   return (

@@ -6,6 +6,7 @@ import { familiesTypes } from '../../../../../redux/types/types';
 import { uiActions } from '../../../../../redux/actions/uiActions';
 import { familiesActions } from '../../../../../redux/actions/familiesActions';
 
+
 export const TableBodyItem = ({item} : any) => {
   
   const {
