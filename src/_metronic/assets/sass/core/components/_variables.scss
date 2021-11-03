@@ -677,7 +677,7 @@ $card-border-dashed-color:                 			$border-dashed-color !default;
 $card-cap-bg:                       				$white !default;
 $card-py:                     				        2rem !default;
 $card-px:                    					    2.25rem !default;
-$card-border-radius:                				$border-radius !default;
+$card-border-radius:                				.8rem;
 
 $card-header-py:                                    0.5rem !default; // Custom variable
 $card-header-height: 								70px !default; // Custom variable
@@ -1052,7 +1052,7 @@ $bullet: (
 	dot-size: 4px,
 	bar-height: 4px,
 	bar-width: 8px,
-    bar-border-radius: 6px,
+    bar-border-radius: 0.85rem,
     line-height: 1px,
 	line-width: 5px,
 ) !default;

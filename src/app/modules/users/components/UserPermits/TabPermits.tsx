@@ -9,7 +9,7 @@ export const TabPermits = () => {
             type='text'
             id='kt_filter_search_TabPermits'
             className='form-control form-control-white form-control-sm ps-10'
-            placeholder='Search'
+            placeholder='Buscar'
           />
         </div>
         <div className='flex-fill bd-highlight fv-row my-auto'>

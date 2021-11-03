@@ -16,11 +16,13 @@ export interface IStatsItem {
 }
 
 export interface IStats {
-  title: string
+  title: string;
+  stats?: string;
 }
 
 export interface ITableComponent {
-  title: string
+  title: string;
+  stats?: string;
 }
 
 export interface IAccountsReduxType {
@@ -70,4 +72,8 @@ export interface IAccountsDetail {
   count_vip: number
   count_active: number
   count_inactive: number
+}
+
+export interface IAccountsTable {
+  stats?: string;
 }

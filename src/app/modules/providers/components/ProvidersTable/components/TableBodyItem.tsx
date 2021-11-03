@@ -127,17 +127,15 @@ export const TableBodyItem = ({item}: any) => {
         <td>
           <div className='d-flex justify-content-end flex-shrink-0'>
           { permitByModuleAndAction(permits, '_Providers_', 'show') && (
-            <button
-              type='button'
+            <a
+            href='edit'
               className='btn btn-icon btn-info btn-sm me-1'
-              data-bs-toggle='modal'
-              data-bs-target='#exampleModal'
               onClick={() =>
                 handleView(item)
               }
               >
                 <i className='fa fa-eye'></i>
-            </button>
+            </a>
           )}
           { permitByModuleAndAction(permits, '_Providers_', 'edit') && (
             <button

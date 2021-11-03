@@ -7,8 +7,6 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../../../../setup/redux/RootReducer';
 import { StepQuestions } from './StepQuestions/StepQuestions'
 import { StepStages } from './StepStages';
-import { JFStepStages } from './StepStages/JFStepStages';
-import { JFStepQuestions } from './StepQuestions/JFStepQuestions';
 
 const FormWizzard: FC = () => {
   const stepperRef = useRef<HTMLDivElement | null>(null)

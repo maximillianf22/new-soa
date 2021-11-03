@@ -12,7 +12,7 @@ export const ModalServices = () => {
                 <div className='card-body'>
                   <div className='text-center w-100 '>
                     <h2 className='fw-bolder text-center text-dark'>
-                      Familias disponibles
+                      Servicios disponibles
                     </h2>
                   </div>
                   <div className='w-100 card mt-7'>

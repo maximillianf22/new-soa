@@ -3,7 +3,7 @@ import {PageTitle} from '../../../_metronic/layout/core'
 import {Switch, Route, Redirect} from 'react-router-dom'
 import {PageLink} from '../../../_metronic/layout/core'
 import {ServicesTable} from './components/ServicesTable/ServicesTable'
-import {ServicesForm} from './components/ServicesForm'
+import { ServicesViewEditForm } from './components/ServicesViewEditForm'
 
 const ServicesBreadCrumbs: Array<PageLink> = [
   {
@@ -30,7 +30,7 @@ const ServicesPage: React.FC = () => {
 
       <Route path='/services/create'>
         <PageTitle breadcrumbs={ServicesBreadCrumbs}>Registro de Servicios</PageTitle>
-        <ServicesForm />
+        <ServicesViewEditForm />
       </Route>
 
       <Redirect from='/services' exact={true} to='/services/home' />

@@ -32,7 +32,7 @@ export const ModalSAC = () => {
                 </div>
               </div>
               <div className='card'>
-                <div className='card-body bg-white rounded'>
+                <div className='card-body rounded'>
                   <div className='row'>
                     <div className='col-6'>
                       <Formik

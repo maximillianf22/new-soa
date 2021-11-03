@@ -6,8 +6,9 @@ import {ModalSelectType} from './UsersForms/ModalSelectType'
 import { UserViewEdit } from './UserViewEdit';
 import { tableTypes, usersTypes } from '../../../redux/types/types';
 import { userActions, tableActions } from '../../../redux/actions/actions';
+import { IUsersTable } from '../interfaces/models'
 
-export const UsersTable = () => {
+export const UsersTable = ({stats}: IUsersTable) => {
   const dispatch = useDispatch()
 
   const users: any = useSelector<RootState>(({users}) => users.users)
@@ -52,7 +53,7 @@ export const UsersTable = () => {
 
   return (
     <>
-      <TableComponent />
+      <TableComponent title='Planes' stats={stats}/>
       <ModalSelectType />
       <UserViewEdit />
     </>

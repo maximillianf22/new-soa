@@ -4,7 +4,7 @@ import { ModalServices } from './ModalServices'
 export const ModalFamilies= () => {
   return (
     <>
-      <div className='modal' tabIndex={-1} id='kt_modal'>
+      <div className='modal' tabIndex={-1} id='kt_modal_families'>
         <div className='modal-dialog modal-lg modal-dialog-centered'>
           <div className='modal-content'>
             <div className='modal-body'>

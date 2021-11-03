@@ -1,5 +1,5 @@
 import React from 'react'
-import { ModalAsistencia } from '../../ExpedientsForm/ModalAsistencia'
+import { ModalAsistencia } from '../../../../assistances/components/AssistancesForm/ModalAsistencia'
 
 export const StageOptions = () => {
   return (
