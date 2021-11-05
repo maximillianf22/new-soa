@@ -11,4 +11,5 @@ export const questionsActions = {
     updateFromReducer: (payload:any) => ({type: questionsTypes.UpdateFromReducer, payload: {SelectedQuestion:payload}}),
     createQuestions: (payload:any) => ({type: questionsTypes.Create, payload}),
     createOptionQuestion: (payload:any) => ({type: questionsTypes.CreateOption, payload}),
+    deleteOption: (payload:any) => ({type: questionsTypes.DeleteOption, payload: {list_service_metadata_options_ids: [payload]}}),
 }

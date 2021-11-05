@@ -31,8 +31,8 @@ export function updateQuestion(payload:any): Promise<IQuestionsResponse> {
   return httpClient.patch(`${QUESTIONS_URL}/${payload.spId}/, payload`)
 };
 
-export function deleteQuestion(payload: any): Promise<IQuestionsResponse> {
-  return httpClient.delete(`${DELETE_OPTION_URL}`,payload)
+export function deleteOption(payload: any): Promise<IQuestionsResponse> {
+  return httpClient.post(`${DELETE_OPTION_URL}`,payload)
 };
 
 export function deleteQuestionOption(payload: any): Promise<IQuestionsResponse> {

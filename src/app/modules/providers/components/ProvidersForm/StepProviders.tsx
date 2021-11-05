@@ -53,10 +53,10 @@ export const StepProviders = () => {
                 <Select
                   className='form-control p-0'
                   defaultValue={optionsDocumentType?.find(
-                    (c) => c.dtId === selectedProvider?.dtId.toString()
+                    (c) => c.dtId === selectedProvider?.dtId?.toString()
                   )}
                   getOptionLabel={(option: any) => option.label}
-                  getOptionValue={(option: any) => option.dtId.toString()}
+                  getOptionValue={(option: any) => option.dtId?.toString()}
                   onChange={(document) => {
                     props.setFieldValue('dtId', document?.dtId)
                   }}

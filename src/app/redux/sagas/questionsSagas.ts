@@ -5,7 +5,7 @@ import { IQuestionsResponse } from '../../modules/plan_services/Interfaces/model
 import { questionsActions } from '../actions/questionsActions';
 import { questionsTypes } from '../types/questionsTypes';
 import { uiTypes } from '../types/types';
-import { getQuestions, deleteQuestion, getQuestion, createQuestion, updateQuestion, createQuestionOption } from '../../api/QuestionsService';
+import { getQuestions, getQuestion, createQuestion, updateQuestion, createQuestionOption, deleteOption } from '../../api/QuestionsService';
 
 interface ActionTypePayload {
     type: string, 
@@ -23,9 +23,9 @@ export function* sagaQuestions() {
       }
     }
   
-    function* sagaDeleteQuestion({payload}:ActionTypePayload) {
+    function* sagaDeleteOption({payload}:ActionTypePayload) {
       try {
-        const resp: IQuestionsResponse = yield call(deleteQuestion, payload)
+        const resp: IQuestionsResponse = yield call(deleteOption, payload)
       } catch (error) {
         console.log(error)
       }
@@ -62,7 +62,7 @@ export function* sagaQuestions() {
     // Watcher Sagas
     yield takeLatest(questionsTypes.get, asyncLoad)
     yield takeLatest(questionsTypes.CreateOption, sagaCreateQuestionOption)
-    yield takeLatest(questionsTypes.Delete, sagaDeleteQuestion)
+    yield takeLatest(questionsTypes.DeleteOption, sagaDeleteOption)
     yield takeLatest(questionsTypes.Update, sagaUpdateQuestion)
     yield takeLatest(questionsTypes.Create, sagaCreateQuestion)
 }

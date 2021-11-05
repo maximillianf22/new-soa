@@ -1,6 +1,6 @@
 import { Field, Formik, Form, FormikProps } from 'formik';
 import {KTSVG} from '../../../../../../_metronic/helpers'
-import {InputCustom, InputSelect} from '../../../../global/components/inputs'
+import {InputCustom} from '../../../../global/components/inputs'
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../../../../setup/redux/RootReducer';
 import { useEffect } from 'react';
@@ -255,7 +255,7 @@ export const StepQuestions = () => {
                         </td>
                         <td >
                           <div className='d-flex justify-content-end'>
-                            { metadata_service_options.length > 0 && 
+                            { metadata_service_options?.length > 0 && 
                             <button
                               className='btn btn-info btn-icon btn-sm p-1 me-3'
                               data-bs-toggle='modal'

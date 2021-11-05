@@ -53,12 +53,7 @@ export const ModalOptions = () => {
                           <td>
                             <div className='row'>
                               <div className='col-6 px-0'>
-                                <button className='btn btn-sm btn-sm-mod btn-success h-30px w-30px px-3 py-2'>
-                                  <i className='fa fa-edit m-0'></i>
-                                </button>
-                              </div>
-                              <div className='col-6 px-0'>
-                                <button className='btn btn-sm btn-sm-mod btn-danger h-30px w-30px px-3 py-2'>
+                                <button data-bs-dismiss='modal' onClick={ () => dispatch(questionsActions.deleteOption(option.smoId)) } className='btn btn-sm btn-sm-mod btn-danger h-30px w-30px px-3 py-2'>
                                   <i className='fa fa-times m-0'></i>
                                 </button>
                               </div>

@@ -3,6 +3,7 @@ export const questionsTypes = {
     Load: '[questionsRedux] load data do reducer',
     Clear: '[questionsRedux] clear reducer data',
     Delete: '[questionsRedux] delete question',
+    DeleteOption: '[questionsRedux] delete option',
     Update: '[questionsRedux] update question',
     Create: '[questionsRedux] create question',
     CreateOption: '[questionsRedux] create option question',
