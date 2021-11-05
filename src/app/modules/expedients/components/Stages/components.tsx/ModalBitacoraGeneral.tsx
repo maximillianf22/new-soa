@@ -6,7 +6,7 @@ import {InputCustom} from '../../../../global/components/inputs'
 export const ModalBitacoraGeneral = () => {
   return (
     <>
-      <div className='modal' tabIndex={-1} id='kt_modal_bitacora_etapa'>
+      <div className='modal' tabIndex={-1} id='kt_modal_bitacora'>
         <div className='modal-dialog modal-dialog-centered'>
           <div className='modal-content'>
             <div className='modal-body'>

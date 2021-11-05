@@ -4,7 +4,7 @@ import { ModalBitacoraGeneral } from './components.tsx/ModalBitacoraGeneral'
 import {StageTabItem} from './components.tsx/StageTabItem'
 import {Stage2} from './Stage2'
 import { Stage3 } from './Stage3'
-import { ModalAsistencia } from '../../../assistances/components/AssistancesForm/ModalAsistencia'
+import { ModalAssistances } from '../../../assistances/components/AssistancesForm/ModalAssistances'
 
 export const StagesTab = () => {
   return (
@@ -97,7 +97,7 @@ export const StagesTab = () => {
       </div>
       <ModalBitacoraStage />
       <ModalBitacoraGeneral />
-      <ModalAsistencia />
+      <ModalAssistances />
     </>
   )
 }

@@ -3,8 +3,9 @@ import {Formik, Form, FormikProps, Field} from 'formik'
 import {initialValues} from '../../../expedients/components/Helpers'
 import {InputCustom} from '../../../global/components/inputs'
 import {ModalFollowers} from './ModalFollowers'
+import { ModalAuthorization } from './ModalAuthorizations'
 
-export const ModalAsistencia = () => {
+export const ModalAssistances = () => {
   return (
     <>
       <div className='modal' tabIndex={-1} id='kt_modal_asistencia'>
@@ -143,6 +144,9 @@ export const ModalAsistencia = () => {
                   </div>
                 </div>
                 <div className='modal-footer p-0 m-0 border-0 pe-8'>
+                  <a className='btn btn-info' data-bs-toggle="modal" data-bs-target="#kt_modal_authorizations"  data-bs-dismiss='modal'>
+                    Autorizacion
+                  </a>
                   <a className='btn btn-primary' href='stage1'>
                     Guardar
                   </a>
@@ -153,6 +157,7 @@ export const ModalAsistencia = () => {
         </div>
       </div>
       <ModalFollowers />
+      <ModalAuthorization />
     </>
   )
 }

@@ -3,6 +3,7 @@ import { AssistancesTable } from '../../../assistances/components/AssistancesTab
 import {InputCustom, InputSelect} from '../../../global/components/inputs'
 import {initialValues} from '../Helpers'
 import {ModalSAC} from './ModalSAC'
+import { ModalUbications } from './ModalUbications/ModalUbications'
 
 const optionsUnits = [{value: 'id', label: 'Kilometros'}]
 
@@ -233,7 +234,7 @@ export const ExpedientsForm = () => {
                     <InputCustom type='text' name='ubications' label='Ubicación' required />
                     </div>
                     <div className='px-0 flex-fill bd-highlight mt-10'>
-                      <button className='btn btn-icon btn-info btn-form'>
+                      <button className='btn btn-icon btn-info btn-form' data-bs-toggle="modal" data-bs-target="#kt_modal_ubications"  data-bs-dismiss='modal'>
                         <i className='fa fa-map-pin fs-3'></i>
                       </button>
                     </div>
@@ -252,6 +253,7 @@ export const ExpedientsForm = () => {
         )}
       </Formik>
       <AssistancesTable />
+      <ModalUbications />
       <ModalSAC />
     </>
   )

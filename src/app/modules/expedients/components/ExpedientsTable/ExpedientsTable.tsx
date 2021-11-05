@@ -1,10 +1,10 @@
 import {useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import { RootState } from '../../../../../setup'
-import { tableActions } from '../../../../redux/actions/actions'
-import { tableTypes, familiesTypes } from '../../../../redux/types/types'
-import { IExpedientsTable } from '../../Interfaces/models'
-import { TableComponent } from './components/TableComponent'
+import {RootState} from '../../../../../setup'
+import {tableActions} from '../../../../redux/actions/actions'
+import {tableTypes, familiesTypes} from '../../../../redux/types/types'
+import {IExpedientsTable} from '../../Interfaces/models'
+import {TableComponent} from './components/TableComponent'
 
 export const ExpedientsTable = ({stats}: IExpedientsTable) => {
   const dispatch = useDispatch()
@@ -23,7 +23,7 @@ export const ExpedientsTable = ({stats}: IExpedientsTable) => {
   useEffect(() => {
     dispatch({type: familiesTypes.AsyncLoad})
   }, [dispatch])
-  
+
   useEffect(() => {
     dispatch({
       type: tableTypes.Load,
@@ -36,7 +36,7 @@ export const ExpedientsTable = ({stats}: IExpedientsTable) => {
           tableHeads: tableHeads,
         },
         tableBody: {
-          tableHeads: ['id', 'descripción', 'estado', 'modificado por',],
+          tableHeads: ['id', 'descripción', 'estado', 'modificado por'],
           tableContent: families,
         },
       },
@@ -49,7 +49,7 @@ export const ExpedientsTable = ({stats}: IExpedientsTable) => {
 
   return (
     <>
-      <TableComponent title='Planes' stats={stats}/>
+      <TableComponent title='Planes' stats={stats} />
     </>
   )
 }

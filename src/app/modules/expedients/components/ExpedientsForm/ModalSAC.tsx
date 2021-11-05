@@ -1,6 +1,5 @@
 import {Form, Formik, FormikProps} from 'formik'
 import React from 'react'
-import {Button} from 'react-bootstrap-v5'
 import {InputCustom} from '../../../global/components/inputs'
 import {initialValues} from '../Helpers'
 import { ModalSACTableRegular } from './ModalSACTableRegular'
@@ -47,9 +46,9 @@ export const ModalSAC = () => {
                                 <InputCustom type='text' name='SAC' label='Buscar afiliado' />
                               </div>
                               <div className='px-0 flex-fill bd-highlight mt-10'>
-                                <Button className='btn btn-icon btn-info btn-form'>
+                                <button className='btn btn-icon btn-info btn-form'>
                                   <i className='fa fa-filter'></i>
-                                </Button>
+                                </button>
                               </div>
                             </div>
                           </Form>
